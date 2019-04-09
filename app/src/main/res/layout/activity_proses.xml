@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPurple"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ProsesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DATA DIRI"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorDarkPurple"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="3"
+                    android:text="Nama"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kotak_putih"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="3"
+                    android:text="No. hp"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kotak_putih"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="3"
+                    android:text="Alamat"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kotak_putih"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DATA PESANAN"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorDarkPurple"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Sepatu Karet"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/linear_data_pesanan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_pesanan1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:contentDescription="@string/gambar_pesanan"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_image_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/img_remove1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_remove_square" />
+
+                    <TextView
+                        android:id="@+id/tv_quantity1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="8dp"
+                        android:text="0"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/img_add1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_add_square" />
+
+                    <TextView
+                        android:id="@+id/tv_harga1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="100dp"
+                        android:text="Rp 25.000"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Kaos kaki"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_data_pesanan2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/img_pesanan2"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="@string/gambar_pesanan"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_image_white_24dp" />
+
+                        <ImageView
+                            android:id="@+id/img_remove2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_remove_square" />
+
+                        <TextView
+                            android:id="@+id/tv_quantity2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="0"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/img_add2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_add_square" />
+
+                        <TextView
+                            android:id="@+id/tv_harga2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="100dp"
+                            android:text="Rp 104.300"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorDarkPurple"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingLeft="80dp"
+                    android:text="TOTAL"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10.5"
+                    android:text="Rp 129.300 "
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_batal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="BATAL"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_konfirmasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="KONFIRMASI"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

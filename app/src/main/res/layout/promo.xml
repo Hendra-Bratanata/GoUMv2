@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:src="@drawable/kotak_putih"
+        android:id="@+id/img_promo"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

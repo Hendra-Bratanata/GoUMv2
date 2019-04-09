@@ -1,0 +1,246 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPurple"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="8dp"
+    tools:context=".LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@color/colorPurple"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_footer_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/powered_by_diskominfo"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/myLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/form_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/card"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_register_form"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/calibri"
+                        android:gravity="center"
+                        android:text="Register Form"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="8dp">
+
+                        <EditText
+                            android:id="@+id/edt_nama_depan"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/kotak"
+                            android:hint="Nama Depan"
+                            android:inputType="text"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/edt_nama_belakang"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/kotak"
+                            android:hint="Nama Belakang"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="8dp">
+
+                        <EditText
+                            android:id="@+id/edt_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/edt_alamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Alamat"
+                            android:inputType="text"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/edt_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/edt_confirm_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Confirm Password"
+                            android:inputType="textPassword"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/item_attachment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/img_add_attachment"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/kotak_ungu"
+                            android:contentDescription="gambar"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_image_white_24dp" />
+
+                        <Button
+                            android:id="@+id/edt_attachment1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@id/img_add_attachment"
+                            android:background="@drawable/kotak_kosong"
+                            android:hint="attachment 1"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+
+                        <Button
+                            android:id="@+id/edt_attachment2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edt_attachment1"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@id/img_add_attachment"
+                            android:background="@drawable/kotak_kosong"
+                            android:hint="attachment 2"
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+
+                        <Button
+                            android:id="@+id/edt_attachment3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edt_attachment2"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_toEndOf="@id/img_add_attachment"
+                            android:background="@drawable/kotak_kosong"
+                            android:hint="attachment 3"
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10sp">
+
+                        <Button
+                            android:id="@+id/btn_register"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorDarkPurple"
+                            android:fontFamily="@font/calibri"
+                            android:gravity="center"
+                            android:text="REGISTER"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

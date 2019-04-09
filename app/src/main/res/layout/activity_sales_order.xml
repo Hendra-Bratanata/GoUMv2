@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPurple"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".SalesOrderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DATA PESANAN"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorDarkPurple"
+                android:visibility="visible" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="4">
+
+                <TableRow android:layout_width="match_parent">
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="70dp"
+                        android:layout_column="0"
+                        android:text="Tanggal"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="70dp"
+                        android:layout_column="1"
+                        android:text="Pembeli"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="30dp"
+                        android:layout_column="2"
+                        android:text="Qty"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="100dp"
+                        android:layout_column="3"
+                        android:text="Total Harga"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="50dp"
+                        android:layout_column="4"
+                        android:text="Act"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:padding="3dp" />
+                </TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorDarkPurple"
+                    android:visibility="visible" />
+                <TableRow android:layout_width="match_parent">
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11dp"
+                        android:width="70dp"
+                        android:layout_column="0"
+                        android:text="10-04-2019"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11dp"
+                        android:width="70dp"
+                        android:layout_column="1"
+                        android:text="Bayu Agung"
+                        android:padding="3dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11dp"
+                        android:width="70dp"
+                        android:layout_column="1"
+                        android:text="20" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11dp"
+                        android:width="70dp"
+                        android:layout_column="1"
+                        android:text="Rp 1.004.300" />
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:width="50dp"
+                        android:layout_column="1"
+                        android:drawableLeft="@drawable/ic_wa"
+                        android:drawableRight="@drawable/ic_add_square"
+                        android:padding="3dp" />
+                </TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorDarkPurple"
+                    android:visibility="visible" />
+
+            </TableLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

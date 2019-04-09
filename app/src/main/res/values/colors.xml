@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C158DC</color>
+    <color name="colorPrimaryDark">#5C007A</color>
+    <color name="colorAccent">#E6B7F2</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorPurple">#C158DC</color>
+    <color name="colorDarkPurple">#5C007A</color>
+    <color name="colorYoungPurple">#E6B7F2</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="textInputLayout">#96ffffff</color>
+</resources>
