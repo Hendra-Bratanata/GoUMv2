@@ -12,6 +12,7 @@
     tools:context=".SalesOrderActivity">
 
     <LinearLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -43,94 +44,165 @@
                 android:stretchColumns="4">
 
                 <TableRow android:layout_width="match_parent">
+
                     <TextView
+                        android:layout_width="90dp"
                         android:gravity="center"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="70dp"
-                        android:layout_column="0"
+                        android:padding="3dp"
                         android:text="Tanggal"
-                        android:padding="3dp" />
-                    <TextView
-                        android:gravity="center"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="70dp"
-                        android:layout_column="1"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="3dp"
                         android:text="Pembeli"
-                        android:padding="3dp" />
-                    <TextView
-                        android:gravity="center"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="30dp"
-                        android:layout_column="2"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="3dp"
                         android:text="Qty"
-                        android:padding="3dp" />
-                    <TextView
-                        android:gravity="center"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="100dp"
-                        android:layout_column="3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:gravity="center"
+                        android:padding="3dp"
                         android:text="Total Harga"
-                        android:padding="3dp" />
-                    <TextView
-                        android:gravity="center"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="50dp"
-                        android:layout_column="4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:gravity="center"
+                        android:padding="3dp"
                         android:text="Act"
-                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                        android:padding="3dp" />
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
                 </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/colorDarkPurple"
+                    android:visibility="visible" />
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="31 Maret 2019"
+                        android:textColor="@color/colorBlack"
+                        />
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Bayu Agung"
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="20"
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Rp 1.004.300"
+                        android:textColor="@color/colorBlack" />
+
+                    <LinearLayout
+                        android:padding="4dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            android:src="@drawable/ic_check_box_black_24dp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:src="@drawable/ic_close" />
+                    </LinearLayout>
+                </TableRow>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="@color/colorDarkPurple"
                     android:visibility="visible" />
+
                 <TableRow android:layout_width="match_parent">
+
                     <TextView
+                        android:layout_width="90dp"
                         android:gravity="center"
+                        android:padding="2dp"
+                        android:text="01 April 2019"
                         android:textColor="@color/colorBlack"
-                        android:textSize="11dp"
-                        android:width="70dp"
-                        android:layout_column="0"
-                        android:text="10-04-2019"
-                        android:padding="3dp" />
+                        />
+
                     <TextView
+                        android:layout_width="90dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="11dp"
-                        android:width="70dp"
-                        android:layout_column="1"
+                        android:padding="2dp"
                         android:text="Bayu Agung"
-                        android:padding="3dp" />
+                        android:textColor="@color/colorBlack" />
+
                     <TextView
+                        android:layout_width="50dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="11dp"
-                        android:width="70dp"
-                        android:layout_column="1"
-                        android:text="20" />
+                        android:padding="2dp"
+                        android:text="20"
+                        android:textColor="@color/colorBlack" />
+
                     <TextView
+                        android:layout_width="90dp"
                         android:gravity="center"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="11dp"
-                        android:width="70dp"
-                        android:layout_column="1"
-                        android:text="Rp 1.004.300" />
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:width="50dp"
-                        android:layout_column="1"
-                        android:drawableLeft="@drawable/ic_wa"
-                        android:drawableRight="@drawable/ic_add_square"
-                        android:padding="3dp" />
+                        android:padding="2dp"
+                        android:text="Rp 1.004.300"
+                        android:textColor="@color/colorBlack" />
+
+                    <LinearLayout
+                        android:padding="4dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            android:src="@drawable/ic_check_box_black_24dp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:src="@drawable/ic_close" />
+                    </LinearLayout>
                 </TableRow>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -140,6 +212,27 @@
             </TableLayout>
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_proses_semua"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="PROSES SEMUA"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
