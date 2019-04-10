@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -87,6 +86,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/minus"
                     android:src="@drawable/ic_remove_square" />
 
                 <TextView
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:padding="8dp"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textColor="@color/colorBlack"
                     android:textSize="26sp"
                     android:textStyle="bold" />
@@ -105,6 +105,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/plus"
                     android:src="@drawable/ic_add_square" />
 
             </LinearLayout>
@@ -121,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorDarkPurple"
                     android:fontFamily="@font/calibri"
-                    android:text="Add To Cart"
+                    android:text="@string/masukkan_ke_keranjang"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
@@ -145,7 +146,7 @@
                         android:id="@+id/img_toko"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="gambar"
+                        android:contentDescription="@string/gambar"
                         android:scaleType="centerCrop"
                         android:src="@drawable/logo_rumah" />
 
@@ -160,7 +161,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="USAHA BARU"
+                            android:text="@string/usaha_baru"
                             android:textColor="@color/colorDarkPurple"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -169,9 +170,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:drawableLeft="@drawable/ic_location"
+                            android:drawableStart="@drawable/ic_location"
                             android:drawablePadding="6dp"
-                            android:text="Tigaraksa"
+                            android:text="@string/tigaraksa"
                             android:textColor="@color/colorDarkPurple"
                             android:textSize="18sp" />
 
@@ -182,16 +183,17 @@
                             android:orientation="horizontal">
 
                             <Button
-                                android:paddingStart="5dp"
-                                android:paddingEnd="0dp"
                                 android:id="@+id/btn_login"
+                                style="?android:attr/buttonBarButtonStyle"
                                 android:layout_width="125dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:background="@drawable/kotak_kosong"
                                 android:drawableStart="@drawable/ic_wa"
                                 android:fontFamily="@font/calibri"
-                                android:text="Chat Penjual"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="0dp"
+                                android:text="@string/chat_penjual"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorDarkPurple"
                                 android:textSize="16sp"
@@ -199,11 +201,12 @@
 
                             <Button
                                 android:id="@+id/btn_register"
+                                style="?android:attr/buttonBarButtonStyle"
                                 android:layout_width="125dp"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/kotak_kosong"
                                 android:fontFamily="@font/calibri"
-                                android:text="Detail"
+                                android:text="@string/detail"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorDarkPurple"
                                 android:textSize="16sp"
@@ -229,7 +232,7 @@
                         android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
                         android:gravity="center"
-                        android:text="Transaksi Sukses \n 99%"
+                        android:text="@string/transaksi_sukses"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"
@@ -243,7 +246,7 @@
                         android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
                         android:gravity="center"
-                        android:text="Pesan Dibalas \n 90% (1jam)"
+                        android:text="@string/pesan_dibalas"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"
@@ -256,7 +259,7 @@
                         android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
                         android:gravity="center"
-                        android:text="Chat Dibalas \n 98% (1jam)"
+                        android:text="@string/chat_dibalas"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"

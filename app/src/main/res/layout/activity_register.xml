@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/calibri"
                         android:gravity="center"
-                        android:text="Register Form"
+                        android:text="@string/formulir_pendaftaran"
                         android:textColor="@color/colorDarkPurple"
                         android:textSize="26sp"
                         android:textStyle="bold" />
@@ -77,26 +77,28 @@
                         android:paddingBottom="8dp">
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_nama_depan"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginEnd="3dp"
                             android:layout_weight="1"
                             android:background="@drawable/kotak"
-                            android:hint="Nama Depan"
+                            android:hint="@string/nama_depan"
                             android:inputType="text"
                             android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_nama_belakang"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginStart="3dp"
                             android:layout_weight="1"
                             android:background="@drawable/kotak"
-                            android:hint="Nama Belakang"
+                            android:hint="@string/nama_belakang"
                             android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
@@ -111,47 +113,51 @@
                         android:paddingBottom="8dp">
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_email"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/kotak"
-                            android:hint="Email"
+                            android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_alamat"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/kotak"
-                            android:hint="Alamat"
+                            android:hint="@string/alamat"
                             android:inputType="text"
                             android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_password"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/kotak"
-                            android:hint="Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
                         <EditText
+                            android:padding="4dp"
                             android:id="@+id/edt_confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@drawable/kotak"
-                            android:hint="Confirm Password"
+                            android:hint="@string/konfirmasi_password"
                             android:inputType="textPassword"
                             android:text=""
                             android:textColor="@color/colorBlack"
@@ -185,7 +191,7 @@
                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/img_add_attachment"
                             android:background="@drawable/kotak_kosong"
-                            android:hint="attachment 1"
+                            android:hint="@string/lampiran_1"
                             android:text=""
                             android:textSize="14sp"
                             android:textStyle="italic" />
@@ -200,7 +206,7 @@
                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/img_add_attachment"
                             android:background="@drawable/kotak_kosong"
-                            android:hint="attachment 2"
+                            android:hint="@string/lampiran_2"
                             android:textSize="14sp"
                             android:textStyle="italic" />
 
@@ -213,7 +219,7 @@
                             android:layout_marginRight="@dimen/activity_vertical_margin"
                             android:layout_toEndOf="@id/img_add_attachment"
                             android:background="@drawable/kotak_kosong"
-                            android:hint="attachment 3"
+                            android:hint="@string/lampiran_3"
                             android:textSize="14sp"
                             android:textStyle="italic" />
                     </RelativeLayout>
@@ -233,7 +239,7 @@
                             android:background="@color/colorDarkPurple"
                             android:fontFamily="@font/calibri"
                             android:gravity="center"
-                            android:text="REGISTER"
+                            android:text="@string/daftar"
                             android:textAllCaps="false"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"

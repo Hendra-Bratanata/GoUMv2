@@ -56,7 +56,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/logonewumkm" />
-
+            <!---->
+            <!--<TextView-->
+                <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
+                <!--android:id="@+id/tv_masukkan_no_hp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Masukkan nomor ponsel Anda untuk Masuk ke Aplikasi GO UMKM"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
             <LinearLayout
                 android:id="@+id/form_login"
                 android:layout_width="match_parent"
@@ -69,19 +79,6 @@
                 android:paddingRight="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin">
 
-                <EditText
-                    android:id="@+id/edt_email_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/kotak"
-                    android:drawableEnd="@drawable/ic_email_white_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="email"
-                    android:inputType="textEmailAddress"
-                    android:padding="7dp"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@android:color/black" />
 
 
                 <EditText
@@ -92,11 +89,9 @@
                     android:background="@drawable/kotak"
                     android:drawableEnd="@drawable/ic_lock_white_24dp"
                     android:drawablePadding="16dp"
-                    android:hint="password"
-                    android:inputType="textPassword"
+                    android:hint="08XXXXXXXX"
                     android:padding="7dp"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@android:color/black" />
+                    android:textColor="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +108,7 @@
                         android:layout_marginEnd="10dp"
                         android:background="@color/colorDarkPurple"
                         android:fontFamily="@font/calibri"
-                        android:text="LOGIN"
+                        android:text="@string/masuk"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"
@@ -126,7 +121,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@color/colorDarkPurple"
                         android:fontFamily="@font/calibri"
-                        android:text="REGISTER"
+                        android:text="@string/daftar"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"

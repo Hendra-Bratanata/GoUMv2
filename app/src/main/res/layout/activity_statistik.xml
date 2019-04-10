@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPurple"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".StatistikActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorDarkPurple"
+                android:textAlignment="center"
+                android:text="@string/data_penjualan"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="310dp"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:contentDescription="@string/logo_tangerang"
+                        android:layout_gravity="center"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/tangerang"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/logo_umkm"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/logonewumkm"/>
+
+                    <TextView
+                        android:id="@+id/nama_toko"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/toko_laris"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/calibri"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/email_toko"
+                        android:fontFamily="@font/calibri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email_penjual"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorDarkPurple" />
+
+                    <TextView
+                        android:id="@+id/tv_jumlah_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jumlah_produk"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/calibri"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/jumlah_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_80"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/calibri"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="3dp"
+                        android:textAlignment="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="220dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_cetak"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorDarkPurple"
+                    android:fontFamily="@font/calibri"
+                    android:text="@string/cetak"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+</LinearLayout>

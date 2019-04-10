@@ -8,7 +8,7 @@
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Login" />
+            android:title="@string/login" />
         <item
             android:id="@+id/nav_toko"
             android:icon="@drawable/ic_store_black_24dp"
@@ -20,7 +20,7 @@
         <item
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_regist"
-            android:title="Register" />
+            android:title="@string/register" />
         <item
             android:id="@+id/nav_keranjang"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
@@ -33,7 +33,7 @@
         <item
             android:id="@+id/nav_sales_order"
             android:icon="@drawable/ic_sales"
-            android:title="Sales Order" />
+            android:title="@string/sales_order" />
 
         <item
             android:id="@+id/nav_promo"
@@ -42,7 +42,7 @@
         <item
             android:id="@+id/nav_social"
             android:icon="@drawable/ic_people_black_24dp"
-            android:title="Social" />
+            android:title="@string/social" />
     </group>
 
 </menu>

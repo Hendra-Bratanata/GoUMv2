@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/calibri"
         android:gravity="center"
-        android:text="New Product"
+        android:text="@string/tambah_produk"
         android:textColor="@color/colorDarkPurple"
         android:textSize="26sp"
         android:textStyle="bold"
