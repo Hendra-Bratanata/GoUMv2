@@ -1,3 +1,3 @@
 # UI-UX
 UMKM
-Drawable ada yang ditambah
+selesai yang di mockup, tinggal penambahan kalau ada revisi
