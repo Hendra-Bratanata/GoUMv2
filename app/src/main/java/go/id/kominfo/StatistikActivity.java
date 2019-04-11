@@ -1,13 +1,15 @@
-package com.ardi.ui_ux;
+package go.id.kominfo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NewProductActivity extends AppCompatActivity {
+
+
+public class StatistikActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_product);
+        setContentView(R.layout.activity_statistik);
     }
 }

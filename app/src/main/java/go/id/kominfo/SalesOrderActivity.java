@@ -1,13 +1,15 @@
-package com.ardi.ui_ux;
+package go.id.kominfo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ProsesActivity extends AppCompatActivity {
+
+
+public class SalesOrderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proses);
+        setContentView(R.layout.activity_sales_order);
     }
 }

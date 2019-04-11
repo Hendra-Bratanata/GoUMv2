@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ardi.ui_ux">
+    package="go.id.kominfo">
 
     <application
         android:allowBackup="true"
@@ -9,21 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailProductActivity"></activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SalesOrderActivity" />
-        <activity android:name=".KeranjangActivity" />
-        <activity android:name=".ProsesActivity" />
-        <activity android:name=".NewProductActivity" />
-        <activity android:name=".FlashScreenActivity" />
-        <activity android:name=".StatistikActivity" />
+        <activity android:name="go.id.kominfo.DetailProductActivity"></activity>
+        <activity android:name="go.id.kominfo.RegisterActivity" />
+        <activity android:name="go.id.kominfo.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="go.id.kominfo.SalesOrderActivity" />
+        <activity android:name="go.id.kominfo.KeranjangActivity" />
+        <activity android:name="go.id.kominfo.ProsesActivity" />
+        <activity android:name="go.id.kominfo.NewProductActivity" />
+        <activity android:name="go.id.kominfo.LoginActivity" />
+        <activity android:name="go.id.kominfo.StatistikActivity" />
+
+
+
         <activity
-            android:name=".LoginActivity"
+            android:name="go.id.kominfo.FlashScreenActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
