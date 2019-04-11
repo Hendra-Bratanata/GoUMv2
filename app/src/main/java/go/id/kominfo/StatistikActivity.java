@@ -1,7 +1,9 @@
-package com.ardi.ui_ux;
+package go.id.kominfo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+
 
 public class StatistikActivity extends AppCompatActivity {
 

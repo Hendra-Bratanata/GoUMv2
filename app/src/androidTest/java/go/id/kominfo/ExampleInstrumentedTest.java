@@ -1,4 +1,4 @@
-package com.ardi.ui_ux;
+package go.id.kominfo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
