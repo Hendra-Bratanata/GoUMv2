@@ -9,5 +9,6 @@
     <color name="colorYoungPurple">#E6B7F2</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorred">#E70A0A</color>
+    <color name="colorYoungred">#FDABAB</color>
     <color name="textInputLayout">#96ffffff</color>
 </resources>
