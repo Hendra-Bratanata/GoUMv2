@@ -82,7 +82,7 @@
 
 
                 <EditText
-                    android:id="@+id/edt_password_login"
+                    android:id="@+id/edt_phonelogin"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="10dp"

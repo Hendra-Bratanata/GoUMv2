@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UI-UX</string>
+    <string name="app_name">GoUMKM</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -54,4 +54,5 @@
     <string name="_80">80</string>
     <string name="data_penjualan">Data Penjualan</string>
     <string name="email_penjual">kominfo@kabtangerang.go.id</string>
+    <string name="strike"><strike>Rp200.000</strike></string>
 </resources>
