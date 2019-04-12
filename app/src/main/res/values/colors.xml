@@ -8,7 +8,8 @@
     <color name="colorDarkPurple">#5C007A</color>
     <color name="colorYoungPurple">#E6B7F2</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorred">#E70A0A</color>
-    <color name="colorYoungred">#ffcdd2</color>
+    <color name="colorred">#d50000</color>
+    <color name="colorYoungred">#fdebec</color>
     <color name="textInputLayout">#96ffffff</color>
+    <color name="textDiscount">#ff5722</color>
 </resources>
