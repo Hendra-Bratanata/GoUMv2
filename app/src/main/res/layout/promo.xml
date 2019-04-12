@@ -61,17 +61,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:padding="2dp">
+            android:paddingStart="8dp"
+            android:paddingEnd="0dp">
 
 
             <TextView
                 android:id="@+id/tv_promo"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center|center_horizontal"
                 android:background="@drawable/bulat"
                 android:paddingStart="3dp"
-                android:paddingEnd="1dp"
+                android:paddingEnd="2dp"
                 android:text="10% "
                 android:textAlignment="center"
                 android:textColor="@color/colorred"
