@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:id="@+id/lyPromo"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="130dp">
 
         <ImageView
@@ -57,26 +57,25 @@
 
 
         <FrameLayout
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="0dp"
             android:padding="2dp">
 
 
             <TextView
                 android:id="@+id/tv_promo"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/bulat"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="1dp"
                 android:text="10% "
                 android:textAlignment="center"
                 android:textColor="@color/colorred"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
         </FrameLayout>
 
