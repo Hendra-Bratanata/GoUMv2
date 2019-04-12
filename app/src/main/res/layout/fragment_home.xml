@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPurple"
     android:padding="10dp"
     tools:context="go.id.kominfo.HomeFragment">
 
     <LinearLayout
-        android:layout_marginTop="5dp"
-        android:paddingBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/rv_banner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--tools:listitem="@layout/banner_iklan">-->
+        <!--</android.support.v7.widget.RecyclerView>-->
 
         <ImageView
             android:id="@+id/iklan_banner"
@@ -27,32 +37,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Promo"
-            android:textStyle="bold"
             android:textColor="@color/colorBlack"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/Linear_layout_promo"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_promo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/promo"
                 android:orientation="horizontal"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:listitem="@layout/promo">
 
             </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -95,9 +105,10 @@
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/promo"
                         android:orientation="horizontal"
-                        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        tools:listitem="@layout/promo">
+
                     </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
             </LinearLayout>
@@ -125,9 +136,9 @@
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/promo"
                         android:orientation="horizontal"
-                        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        tools:listitem="@layout/promo">
 
                     </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
@@ -156,9 +167,9 @@
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/promo"
                         android:orientation="horizontal"
-                        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        tools:listitem="@layout/promo">
 
                     </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
