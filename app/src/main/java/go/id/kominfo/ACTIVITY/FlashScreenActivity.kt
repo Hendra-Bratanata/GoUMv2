@@ -1,7 +1,8 @@
-package go.id.kominfo
+package go.id.kominfo.ACTIVITY
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import go.id.kominfo.R
 import org.jetbrains.anko.startActivity
 
 

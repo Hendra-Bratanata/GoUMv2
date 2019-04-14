@@ -1,9 +1,9 @@
-<LinearLayout android:orientation="vertical"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -12,15 +12,17 @@
         <RelativeLayout
             android:id="@+id/lyPromo"
             android:layout_width="100dp"
-            android:layout_height="130dp">
+            android:layout_height="100dp">
 
             <ImageView
-                android:id="@+id/img_promo"
+
+                android:id="@+id/img_katagori1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/logo_rumah"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitCenter" />
 
             <!--<FrameLayout-->
             <!--android:layout_width="match_parent"-->
@@ -56,58 +58,17 @@
             <!--</FrameLayout>-->
 
 
-            <FrameLayout
-                android:layout_width="40dp"
+            <TextView
+                android:id="@+id/tv_hargaKatagori"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="0dp"
-                android:padding="2dp">
+                android:layout_gravity="center"
+                android:text="Rp200.000 "
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-
-                <TextView
-                    android:id="@+id/tv_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bulat"
-                    android:paddingStart="2dp"
-                    android:paddingEnd="2dp"
-                    android:text="10% "
-                    android:textAlignment="center"
-                    android:textColor="@color/colorred"
-                    android:textSize="15sp" />
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorWhite"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_hargaNormal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
-                    android:textAlignment="center"
-                    android:textColor="#6F6D6D"
-                    android:textSize="11sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/tv_hargaPromo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:text="Rp200.000 "
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
         </RelativeLayout>
 
 

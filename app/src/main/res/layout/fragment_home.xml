@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPurple"
     android:padding="10dp"
-    tools:context="go.id.kominfo.HomeFragment">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,6 +103,7 @@
                     android:paddingBottom="5dp">
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_pria"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -134,6 +135,7 @@
                     android:paddingBottom="5dp">
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_wanita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -165,6 +167,7 @@
                     android:paddingBottom="5dp">
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_electronik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
