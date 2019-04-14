@@ -32,139 +32,147 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_keranjang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_keranjang">
+
+                </android.support.v7.widget.RecyclerView>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Sepatu Karet"
-                    android:textColor="@color/colorBlack"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:text="Sepatu Karet"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textStyle="bold" />-->
 
-                <LinearLayout
-                    android:id="@+id/linear_data_pesanan1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/linear_data_pesanan1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="5dp"-->
+                    <!--android:orientation="horizontal">-->
 
-                    <ImageView
-                        android:id="@+id/img_pesanan1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:contentDescription="@string/gambar_pesanan"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_image_white_24dp" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_pesanan1"-->
+                        <!--android:layout_width="80dp"-->
+                        <!--android:layout_height="80dp"-->
+                        <!--android:contentDescription="@string/gambar_pesanan"-->
+                        <!--android:scaleType="centerCrop"-->
+                        <!--android:src="@drawable/ic_image_white_24dp" />-->
 
-                    <ImageView
-                        android:id="@+id/img_remove1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_remove_square" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_remove1"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:src="@drawable/ic_remove_square" />-->
 
-                    <TextView
-                        android:id="@+id/tv_quantity1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="0"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_quantity1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:padding="8dp"-->
+                        <!--android:text="0"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <ImageView
-                        android:id="@+id/img_add1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_add_square" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_add1"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:src="@drawable/ic_add_square" />-->
 
-                    <TextView
-                        android:id="@+id/tv_harga1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="100dp"
-                        android:text="Rp 25.000"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_harga1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:layout_marginStart="100dp"-->
+                        <!--android:text="Rp 25.000"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textStyle="bold" />-->
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Kaos kaki"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:text="Kaos kaki"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <LinearLayout
-                        android:id="@+id/linear_data_pesanan2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:orientation="horizontal">
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/linear_data_pesanan2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginBottom="5dp"-->
+                        <!--android:orientation="horizontal">-->
 
-                        <ImageView
-                            android:id="@+id/img_pesanan2"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:contentDescription="@string/gambar_pesanan"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_image_white_24dp" />
+                        <!--<ImageView-->
+                            <!--android:id="@+id/img_pesanan2"-->
+                            <!--android:layout_width="80dp"-->
+                            <!--android:layout_height="80dp"-->
+                            <!--android:contentDescription="@string/gambar_pesanan"-->
+                            <!--android:scaleType="centerCrop"-->
+                            <!--android:src="@drawable/ic_image_white_24dp" />-->
 
-                        <ImageView
-                            android:id="@+id/img_remove2"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_remove_square" />
+                        <!--<ImageView-->
+                            <!--android:id="@+id/img_remove2"-->
+                            <!--android:layout_width="20dp"-->
+                            <!--android:layout_height="20dp"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:src="@drawable/ic_remove_square" />-->
 
-                        <TextView
-                            android:id="@+id/tv_quantity2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:padding="8dp"
-                            android:text="0"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_quantity2"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:padding="8dp"-->
+                            <!--android:text="0"-->
+                            <!--android:textColor="@color/colorBlack"-->
+                            <!--android:textSize="16sp"-->
+                            <!--android:textStyle="bold" />-->
 
-                        <ImageView
-                            android:id="@+id/img_add2"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_add_square" />
+                        <!--<ImageView-->
+                            <!--android:id="@+id/img_add2"-->
+                            <!--android:layout_width="20dp"-->
+                            <!--android:layout_height="20dp"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:src="@drawable/ic_add_square" />-->
 
-                        <TextView
-                            android:id="@+id/tv_harga2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="100dp"
-                            android:text="Rp 104.300"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_harga2"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:layout_marginStart="100dp"-->
+                            <!--android:text="Rp 104.300"-->
+                            <!--android:textColor="@color/colorBlack"-->
+                            <!--android:textSize="16sp"-->
+                            <!--android:textStyle="bold" />-->
+                    <!--</LinearLayout>-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -172,7 +180,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/colorDarkPurple"
                     android:visibility="visible" />
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/linear_total"

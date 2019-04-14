@@ -1,76 +1,64 @@
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="200dp"
     android:orientation="vertical"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_gravity="center">
+
     <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="6dp"
         app:cardCornerRadius="7dp">
 
         <RelativeLayout
             android:id="@+id/lyPromo"
-            android:layout_width="100dp"
-            android:layout_height="100dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
-
                 android:id="@+id/img_katagori1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:background="@drawable/logo_rumah"
-                android:scaleType="fitCenter" />
-
-            <!--<FrameLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="25dp"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_marginBottom="10dp">-->
-
-            <!--&lt;!&ndash;<View&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_gravity="bottom"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:background="@drawable/kotak" />&ndash;&gt;-->
-            <!--<TextView-->
-            <!--android:id="@+id/tv_hargaPromo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Rp200.000 "-->
-            <!--android:textStyle="bold"-->
-            <!--android:textAlignment="center"-->
-            <!--android:layout_gravity="bottom|center"-->
-            <!--android:textColor="@color/colorBlack"-->
-            <!--android:textSize="12sp" />-->
-            <!--<TextView-->
-            <!--android:id="@+id/tv_hargaNormal"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textStyle="italic"-->
-            <!--android:textColor="#6F6D6D"-->
-            <!--android:textAlignment="center"-->
-            <!--android:layout_gravity="top|center"-->
-            <!--android:textSize="10sp" />-->
-
-            <!--</FrameLayout>-->
-
+                android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
 
             <TextView
+                android:layout_marginStart="2dp"
+                android:paddingTop="2dp"
+                android:id="@+id/tv_namaKatagori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="baju baru buat lebaran beli di go umkm murah meriah"
+                android:fontFamily="@font/tahoma"
+                android:maxLines="2"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:padding="4dp"
                 android:id="@+id/tv_hargaKatagori"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Rp200.000 "
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/textDiscount"
                 android:textSize="14sp"
+                android:fontFamily="@font/tahoma"
                 android:textStyle="bold" />
 
-        </RelativeLayout>
-
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
