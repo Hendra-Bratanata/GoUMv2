@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "11466222867",
+    "firebase_url": "https://goumkm-555ae.firebaseio.com",
+    "project_id": "goumkm-555ae",
+    "storage_bucket": "goumkm-555ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11466222867:android:a1056da078751d9c",
+        "android_client_info": {
+          "package_name": "go.id.kominfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11466222867-5asg1vt454nt6sig0p8eb92jpsfrj7f3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "go.id.kominfo",
+            "certificate_hash": "51ce36b8fd9f8cc669269e659b5900eae4da6e39"
+          }
+        },
+        {
+          "client_id": "11466222867-6hhsjmiep72c93bfna1b7048umceapbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCosqaFC19mK0i-B_asoH2ICMow-dxJnbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11466222867-6hhsjmiep72c93bfna1b7048umceapbm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
