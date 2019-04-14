@@ -29,12 +29,13 @@ class KatagoryAdapter(val listProduk: List<Produk>) : RecyclerView.Adapter<Katag
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val gambarMakanan: ImageView = view.find(R.id.img_katagori1)
         val tvHargaNormal: TextView = view.find(R.id.tv_hargaKatagori)
+        val tvNamaProduk: TextView = view.find(R.id.tv_namaKatagori)
         fun bindItem(produk: Produk) {
 
 
             Picasso.get().load(produk.gambar).into(gambarMakanan)
             tvHargaNormal.text = produk.harga.toString()
-
+            tvNamaProduk.text = produk.nm_produk.toString()
         }
 
     }

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPurple"
-    android:padding="10dp"
     >
 
     <LinearLayout
@@ -45,7 +44,8 @@
             android:id="@+id/Linear_layout_promo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_promo"
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:background="@drawable/kotak_putih"
+            android:background="@drawable/kotak_promo"
             android:orientation="vertical">
 
             <LinearLayout
@@ -97,7 +97,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal"
                     android:paddingBottom="5dp">
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                        tools:listitem="@layout/promo">
+                        tools:listitem="@layout/kategori1">
 
                     </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
@@ -129,7 +129,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal"
                     android:paddingBottom="5dp">
@@ -140,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                        tools:listitem="@layout/promo">
+                        tools:listitem="@layout/kategori1">
 
                     </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
@@ -155,13 +155,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Elektronik"
+                    android:text="Kuliner"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal"
                     android:paddingBottom="5dp">
