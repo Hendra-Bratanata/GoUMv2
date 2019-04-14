@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="go.id.kominfo.DetailProductActivity"></activity>
-        <activity android:name="go.id.kominfo.RegisterActivity" />
-        <activity android:name="go.id.kominfo.MainActivity"
+        <activity android:name="go.id.kominfo.ACTIVITY.DetailProductActivity"></activity>
+        <activity android:name="go.id.kominfo.ACTIVITY.RegisterActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="go.id.kominfo.ACTIVITY.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="go.id.kominfo.SalesOrderActivity" />
-        <activity android:name="go.id.kominfo.KeranjangActivity" />
-        <activity android:name="go.id.kominfo.ProsesActivity" />
-        <activity android:name="go.id.kominfo.NewProductActivity" />
-        <activity android:name="go.id.kominfo.LoginActivity" />
-        <activity android:name="go.id.kominfo.StatistikActivity" />
+        <activity android:name="go.id.kominfo.ACTIVITY.SalesOrderActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="go.id.kominfo.ACTIVITY.KeranjangActivity" />
+        <activity android:name="go.id.kominfo.ACTIVITY.ProsesActivity" />
+        <activity android:name="go.id.kominfo.ACTIVITY.NewProductActivity" />
+        <activity android:name="go.id.kominfo.ACTIVITY.LoginActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="go.id.kominfo.ACTIVITY.StatistikActivity" />
 
 
 
         <activity
-            android:name="go.id.kominfo.FlashScreenActivity"
+            android:name="go.id.kominfo.ACTIVITY.FlashScreenActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
 

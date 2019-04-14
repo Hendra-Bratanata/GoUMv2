@@ -1,8 +1,8 @@
-package go.id.kominfo
+package go.id.kominfo.POJO
 
 import com.google.gson.annotations.SerializedName
 
-data class Promo(
+data class Produk(
 
         @SerializedName("kd_umkm")
         val kd_umkm: String? = null,

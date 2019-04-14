@@ -1,4 +1,4 @@
-package go.id.kominfo
+package go.id.kominfo.ACTIVITY
 
 import android.os.Build
 import android.os.Bundle
@@ -13,22 +13,53 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.LinearLayout
 import com.google.gson.Gson
+import go.id.kominfo.ADAPTER.PromoAdapter
+import go.id.kominfo.ADAPTER.KatagoryAdapter
+import go.id.kominfo.ApiRepository.ApiReposirtory
+import go.id.kominfo.INTERFACE.MainView
+import go.id.kominfo.POJO.Produk
+import go.id.kominfo.PRESENTER.PromoPresenter
+import go.id.kominfo.R
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.startActivity
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
-    override fun showData(listPromo: List<Promo>) {
+    override fun showDataWanita(listProduk: List<Produk>) {
+        listWanita.clear()
+        listWanita.addAll(listProduk)
+        katagoriAdapterWanita.notifyDataSetChanged()
+    }
+
+    override fun showDataMinuman(listProduk: List<Produk>) {
+        listMinuman.clear()
+        listMinuman.addAll(listProduk)
+        katagoriAdapterMinuman.notifyDataSetChanged()
+    }
+
+    override fun showDataPria(listProduk: List<Produk>) {
+        listPria.clear()
+        listPria.addAll(listProduk)
+        katagoriAdapterPria.notifyDataSetChanged()
+    }
+
+    override fun showData(listProduk: List<Produk>) {
         list.clear()
-        list.addAll(listPromo)
+        list.addAll(listProduk)
         adapter.notifyDataSetChanged()
 
     }
 
     internal lateinit var window: Window
-    lateinit var list: MutableList<Promo>
+    lateinit var list: MutableList<Produk>
+    lateinit var listPria: MutableList<Produk>
+    lateinit var listWanita: MutableList<Produk>
+    lateinit var listMinuman: MutableList<Produk>
     lateinit var presenter: PromoPresenter
+    lateinit var katagoriAdapterPria: KatagoryAdapter
+    lateinit var katagoriAdapterMinuman: KatagoryAdapter
+    lateinit var katagoriAdapterWanita: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
@@ -55,13 +86,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         list = mutableListOf()
         adapter = PromoAdapter(list)
-        rv_promo.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        rv_promo.adapter = adapter
-        gson = Gson()
-        apiReposirtory = ApiReposirtory()
-        presenter = PromoPresenter(this,gson,apiReposirtory)
-        presenter.getPromo()
 
+        listPria = mutableListOf()
+        katagoriAdapterPria = KatagoryAdapter(listPria)
+
+        listWanita = mutableListOf()
+        katagoriAdapterWanita = KatagoryAdapter(listWanita)
+
+        listMinuman = mutableListOf()
+        katagoriAdapterMinuman = KatagoryAdapter(listMinuman)
+
+
+
+        rv_promo.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_promo.adapter = adapter
+
+        rv_pria.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_pria.adapter = katagoriAdapterPria
+
+        rv_wanita.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_wanita.adapter = katagoriAdapterWanita
+
+        rv_electronik.layoutManager =LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_electronik.adapter = katagoriAdapterMinuman
+
+       gson = Gson()
+        apiReposirtory = ApiReposirtory()
+
+        presenter = PromoPresenter(this, gson, apiReposirtory)
+        presenter.getPromo()
+        presenter.getFashionPria()
+        presenter.getFashionWanita()
+        presenter.getMinuman()
 
 
     }
@@ -88,6 +144,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val id = item.itemId
 
 
+
         return if (id == R.id.action_cart) {
             true
         } else super.onOptionsItemSelected(item)
@@ -97,6 +154,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         val id = item.itemId
+
+        when (id) {
+            R.id.nav_login -> {
+                startActivity<LoginActivity>()
+            }
+        }
 
 
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout

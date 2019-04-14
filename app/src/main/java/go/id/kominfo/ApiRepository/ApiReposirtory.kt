@@ -1,4 +1,4 @@
-package go.id.kominfo
+package go.id.kominfo.ApiRepository
 
 import java.net.URL
 

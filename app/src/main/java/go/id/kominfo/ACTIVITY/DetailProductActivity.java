@@ -1,4 +1,4 @@
-package go.id.kominfo;
+package go.id.kominfo.ACTIVITY;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.Window;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
+
+import go.id.kominfo.R;
 
 public class DetailProductActivity extends AppCompatActivity {
 
