@@ -55,4 +55,8 @@
     <string name="data_penjualan">Data Penjualan</string>
     <string name="email_penjual">kominfo@kabtangerang.go.id</string>
     <string name="strike"><strike>Rp200.000</strike></string>
+    <string name="deskripsi_otp">Selesaikan registrasi anda dengan memasukkan kode verifikasi yang kami kirim ke:</string>
+    <string name="nomor_otp">08128123456</string>
+    <string name="verifikasi_OTP">KODE VERIFIKASI</string>
+    <string name="berikutnya">Berikutnya</string>
 </resources>
