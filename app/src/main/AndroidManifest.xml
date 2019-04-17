@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ACTIVITY.VerifikasiOtpActivity"></activity>
+        <activity android:name=".ACTIVITY.DetailBannerActivity"></activity>
+        <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity android:name=".ACTIVITY.DetailProductActivity" />
         <activity
             android:name=".ACTIVITY.RegisterActivity"
@@ -25,8 +26,8 @@
         <activity android:name=".ACTIVITY.ProsesActivity" />
         <activity android:name=".ACTIVITY.NewProductActivity" />
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".ACTIVITY.LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ACTIVITY.StatistikActivity" />
         <activity

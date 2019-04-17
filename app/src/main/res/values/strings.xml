@@ -60,4 +60,5 @@
     <string name="verifikasi_OTP">KODE VERIFIKASI</string>
     <string name="berikutnya">Berikutnya</string>
     <string name="act">Act</string>
+    <string name="total_harga">Total Harga</string>
 </resources>
