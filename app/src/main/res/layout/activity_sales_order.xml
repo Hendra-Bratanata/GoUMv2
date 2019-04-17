@@ -81,7 +81,7 @@
                         android:layout_width="80dp"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="Act"
+                        android:text="@string/act"
                         android:textColor="@color/colorBlack"
                         android:textStyle="bold" />
             </LinearLayout>

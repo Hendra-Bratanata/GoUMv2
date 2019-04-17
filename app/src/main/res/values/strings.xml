@@ -59,4 +59,5 @@
     <string name="nomor_otp">08128123456</string>
     <string name="verifikasi_OTP">KODE VERIFIKASI</string>
     <string name="berikutnya">Berikutnya</string>
+    <string name="act">Act</string>
 </resources>
