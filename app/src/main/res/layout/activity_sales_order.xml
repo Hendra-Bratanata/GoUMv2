@@ -72,7 +72,7 @@
                         android:layout_width="100dp"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="Total Harga"
+                        android:text="@string/total_harga"
                         android:textColor="@color/colorBlack"
                         android:textStyle="bold" />
 
