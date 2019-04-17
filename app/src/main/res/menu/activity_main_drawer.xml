@@ -39,10 +39,7 @@
             android:id="@+id/nav_promo"
             android:icon="@drawable/ic_discount"
             android:title="Promo" />
-        <item
-            android:id="@+id/nav_social"
-            android:icon="@drawable/ic_people_black_24dp"
-            android:title="@string/social" />
+
     </group>
 
 </menu>

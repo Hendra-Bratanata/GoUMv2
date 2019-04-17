@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    tools:context=".ACTIVITY.VerifikasiOtpActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_verifikasi_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="@string/verifikasi_OTP"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_deskripsi_verifikasi_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="@string/deskripsi_otp"
+            android:textSize="17sp" />
+
+
+        <TextView
+            android:id="@+id/tv_nomor_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="@string/nomor_otp"
+            android:textColor="@color/colorDarkPurple"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/kotak_kosong"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:weightSum="4">
+
+            <EditText
+
+                android:id="@+id/edDigit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:gravity="center"
+                android:hint="1"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edDigit2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:gravity="center"
+                android:hint="2"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edDigit3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:gravity="center"
+                android:hint="3"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edDigit4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:gravity="center"
+                android:hint="4"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_berikut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorDarkPurple"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="@string/berikutnya"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:id="@+id/tv_menerima_kode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:padding="4dp"
+            android:text="tidak menerima kode?"
+            android:textSize="16sp" />
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            android:id="@+id/tv_kirim_kembali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:text="kirim kembali kode verifikasi"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_setelah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:padding="4dp"
+            android:text="setelah"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_detik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="60"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_huruf_detik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:fontFamily="@font/typo_grotesk_demo"
+            android:text="detik"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>
