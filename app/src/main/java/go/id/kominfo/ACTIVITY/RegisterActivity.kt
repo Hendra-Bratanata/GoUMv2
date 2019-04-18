@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.Window
+import com.google.gson.Gson
+import go.id.kominfo.ApiRepository.ApiReposirtory
+import go.id.kominfo.PRESENTER.PromoPresenter
+import go.id.kominfo.PRESENTER.TokenPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlin.random.Random
@@ -17,6 +21,9 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var alamat:String
     lateinit var noHp:String
     lateinit var token:String
+    lateinit var gson: Gson
+    lateinit var presenter: TokenPresenter
+    lateinit var apiReposirtory: ApiReposirtory
 
 
     internal lateinit var window: Window
@@ -27,6 +34,10 @@ class RegisterActivity : AppCompatActivity() {
             window = this.getWindow()
             window.statusBarColor = ContextCompat.getColor(this, R.color.colorDarkPurple)
         }
+gson = Gson()
+        apiReposirtory = ApiReposirtory()
+        presenter = TokenPresenter(apiReposirtory)
+
 
         btn_register.setOnClickListener {
             namaDepan = edt_nama_depan.text.toString()
@@ -44,8 +55,10 @@ class RegisterActivity : AppCompatActivity() {
 
             }
             println(token)
+            presenter.kirimToken(token)
 
 
         }
     }
+
 }

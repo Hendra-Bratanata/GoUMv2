@@ -24,4 +24,14 @@ fun getPromo():String{
         Log.d("data",Url)
         return  Url
     }
+    fun kirimToken (token:String):String{
+        val Url = BuildConfig.BASE_URLI +"send-sms.php?token=$token"
+        Log.d("data",Url)
+        return  Url
+}
+    fun getBenner ():String{
+        val Url = BuildConfig.BASE_URL +"banner.php"
+        Log.d("data",Url)
+        return  Url
+    }
 }

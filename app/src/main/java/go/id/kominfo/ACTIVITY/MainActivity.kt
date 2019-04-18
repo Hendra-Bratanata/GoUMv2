@@ -14,10 +14,15 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import com.google.gson.Gson
-import go.id.kominfo.ADAPTER.PromoAdapter
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import go.id.kominfo.ADAPTER.BannerAdapter
 import go.id.kominfo.ADAPTER.KatagoryAdapter
+import go.id.kominfo.ADAPTER.PromoAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.MainView
+import go.id.kominfo.ITEM.Pria
+import go.id.kominfo.POJO.Banner
 import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.PromoPresenter
 import go.id.kominfo.R
@@ -26,6 +31,14 @@ import org.jetbrains.anko.startActivity
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+    override fun showDataBanner(listBann: List<Banner>) {
+        listBanner.clear()
+        listBanner.addAll(listBann)
+        bannerAdapter.notifyDataSetChanged()
+
+    }
+
+
     override fun showDataWanita(listProduk: List<Produk>) {
         listWanita.clear()
         listWanita.addAll(listProduk)
@@ -39,9 +52,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun showDataPria(listProduk: List<Produk>) {
+
+        listPria = mutableListOf()
         listPria.clear()
         listPria.addAll(listProduk)
-        katagoriAdapterPria.notifyDataSetChanged()
+        listPria.map {
+            group.add(Pria(it){
+                startActivity<DetailProductActivity>("detail" to it)
+            })
+        }
     }
 
     override fun showData(listProduk: List<Produk>) {
@@ -53,16 +72,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     internal lateinit var window: Window
     lateinit var list: MutableList<Produk>
+    lateinit var listBanner: MutableList<Banner>
     lateinit var listPria: MutableList<Produk>
     lateinit var listWanita: MutableList<Produk>
     lateinit var listMinuman: MutableList<Produk>
     lateinit var presenter: PromoPresenter
+    lateinit var bannerAdapter: BannerAdapter
     lateinit var katagoriAdapterPria: KatagoryAdapter
     lateinit var katagoriAdapterMinuman: KatagoryAdapter
     lateinit var katagoriAdapterWanita: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
+    var group : GroupAdapter<ViewHolder> = GroupAdapter()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,32 +108,48 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
 
         list = mutableListOf()
-        adapter = PromoAdapter(list)
+        adapter = PromoAdapter(list,{
+            startActivity<DetailProductActivity>("detail" to it)
+        })
 
-        listPria = mutableListOf()
-        katagoriAdapterPria = KatagoryAdapter(listPria)
 
         listWanita = mutableListOf()
-        katagoriAdapterWanita = KatagoryAdapter(listWanita)
+        katagoriAdapterWanita = KatagoryAdapter(listWanita, {
+            startActivity<DetailProductActivity>("detail" to it)
+        })
 
         listMinuman = mutableListOf()
-        katagoriAdapterMinuman = KatagoryAdapter(listMinuman)
+        katagoriAdapterMinuman = KatagoryAdapter(listMinuman, {
+            startActivity<DetailProductActivity>("detail" to it)
+        })
+
+        listBanner = mutableListOf()
+        bannerAdapter = BannerAdapter(listBanner, {
+            startActivity<DetailBannerActivity>("banner" to it)
+        })
+
+        rv_pria.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+            adapter = group
+        }
 
 
 
         rv_promo.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_promo.adapter = adapter
 
-        rv_pria.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_pria.adapter = katagoriAdapterPria
+
 
         rv_wanita.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_wanita.adapter = katagoriAdapterWanita
 
-        rv_electronik.layoutManager =LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_electronik.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_electronik.adapter = katagoriAdapterMinuman
 
-       gson = Gson()
+        rv_banner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_banner.adapter = bannerAdapter
+
+        gson = Gson()
         apiReposirtory = ApiReposirtory()
 
         presenter = PromoPresenter(this, gson, apiReposirtory)
@@ -118,6 +157,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         presenter.getFashionPria()
         presenter.getFashionWanita()
         presenter.getMinuman()
+        presenter.getBenner()
 
 
     }
@@ -156,8 +196,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val id = item.itemId
 
         when (id) {
+            //test
             R.id.nav_login -> {
                 startActivity<LoginActivity>()
+            }
+            R.id.nav_register -> {
+                startActivity<RegisterActivity>()
+            }
+            R.id.nav_keranjang -> {
+                startActivity<KeranjangActivity>()
+            }
+            R.id.nav_statistik -> {
+                startActivity<StatistikActivity>()
+            }
+            R.id.nav_toko -> {
+                startActivity<SalesOrderActivity>()
             }
         }
 
