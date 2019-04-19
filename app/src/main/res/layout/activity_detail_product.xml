@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.smarteist.autoimageslider.SliderLayout
-            android:id="@+id/imageSlider"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@drawable/rectangle" />
@@ -81,10 +81,10 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/img_remove"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <ImageButton
+                    android:id="@+id/btnMin"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/minus"
                     android:src="@drawable/ic_remove_square" />
@@ -100,10 +100,10 @@
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/img_add"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <ImageButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/plus"
                     android:src="@drawable/ic_add_square" />
@@ -119,6 +119,7 @@
                 <Button
                     android:id="@+id/btn_add_to_cart"
                     android:layout_width="220dp"
+                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:background="@color/colorDarkPurple"
                     android:fontFamily="@font/calibri"

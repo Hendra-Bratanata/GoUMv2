@@ -14,22 +14,17 @@
         android:orientation="vertical"
         android:paddingBottom="8dp">
 
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/rv_banner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="horizontal"-->
-        <!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-        <!--tools:listitem="@layout/banner_iklan">-->
-        <!--</android.support.v7.widget.RecyclerView>-->
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/banner_iklan">
+        </android.support.v7.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/iklan_banner"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/iklan" />
+
 
         <TextView
             android:layout_width="match_parent"

@@ -1,27 +1,28 @@
 package go.id.kominfo.POJO
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Produk(
 
         @SerializedName("kd_umkm")
-        val kd_umkm: String? = null,
+        var kd_umkm: String? = null,
         @SerializedName("kd_produk")
-        val kd_produk: String? = null,
+        var kd_produk: String? = null,
         @SerializedName("nm_produk")
-        val nm_produk: String? = null,
+        var nm_produk: String? = null,
         @SerializedName("gambar")
-        val gambar: String? = null,
+        var gambar: String? = null,
         @SerializedName("jenis")
-        val jenis: String? = null,
+        var jenis: String? = null,
         @SerializedName("harga")
-        val harga: String? = null,
+        var harga: String? = null,
         @SerializedName("diskon")
-        val diskon: String? = null,
+        var diskon: String? = null,
         @SerializedName("masa_diskon")
-        val masa_diskon: String? = null,
+        var masa_diskon: String? = null,
         @SerializedName("deskripsi")
-        val deskripsi: String? = null
+        var deskripsi: String? = null
 
 
-        )
+        ):Serializable
