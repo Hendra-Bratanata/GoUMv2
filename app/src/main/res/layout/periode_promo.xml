@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/ic_kalender"
                     android:gravity="center"
-                    android:text="periode promo" />
+                    android:text="periode event" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Tanpa Minimum Transaksi" />
+                    android:text="HTM 50K" />
             </LinearLayout>
         </LinearLayout>
 
