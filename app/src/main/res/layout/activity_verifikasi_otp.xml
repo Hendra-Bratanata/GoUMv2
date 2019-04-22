@@ -71,8 +71,6 @@
                 android:fontFamily="@font/typo_grotesk_demo"
                 android:gravity="center"
                 android:hint="1"
-                android:nextFocusForward="@+id/edDigit2"
-                android:singleLine="true"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxLength="1"
