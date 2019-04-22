@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ACTIVITY.DetailBannerActivity"></activity>
+        <activity android:name=".ACTIVITY.ProfilTokoActivity"></activity>
+        <activity android:name=".ACTIVITY.DetailBannerActivity" />
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity android:name=".ACTIVITY.DetailProductActivity" />
         <activity

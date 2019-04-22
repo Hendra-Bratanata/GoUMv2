@@ -61,4 +61,7 @@
     <string name="berikutnya">Berikutnya</string>
     <string name="act">Act</string>
     <string name="total_harga">Total Harga</string>
+    <string name="deskripsi_toko">Toko ini hanya menjual produk produk yang terjamin 100% original, untuk informasi lebih lanjut silahkan hubungi kami langung</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="lorem">orem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quia itaque officia qui, ratione voluptatibus ad aut, temporibus illo blanditiis quis. Id, laborum deleniti culpa officia, provident iste cum labore, officiis beatae laudantium voluptatum corrupti nihil quam asperiores quisquam aliquid eum omnis ea unde, itaque suscipit iusto.</string>
 </resources>

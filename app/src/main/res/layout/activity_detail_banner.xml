@@ -50,9 +50,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
->
+                    android:orientation="vertical">
+
                     <include layout="@layout/periode_promo" />
+
                     <include layout="@layout/syarat_ketentuan" />
                 </LinearLayout>
 
