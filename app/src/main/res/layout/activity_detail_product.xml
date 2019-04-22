@@ -138,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card"
+                android:background="@drawable/kotak_abu"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -220,56 +220,56 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="4dp"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:layout_marginEnd="4dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:orientation="horizontal">-->
 
-                    <TextView
-                        android:id="@+id/tv_transaksi"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:gravity="center"
-                        android:text="@string/transaksi_sukses"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_transaksi"-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="4dp"-->
+                        <!--android:background="@drawable/kotak_ungu"-->
+                        <!--android:fontFamily="@font/calibri"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/transaksi_sukses"-->
+                        <!--android:textAllCaps="false"-->
+                        <!--android:textColor="@color/colorWhite"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <TextView
-                        android:id="@+id/tv_pesan_dibalas"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:gravity="center"
-                        android:text="@string/pesan_dibalas"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_pesan_dibalas"-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="4dp"-->
+                        <!--android:background="@drawable/kotak_ungu"-->
+                        <!--android:fontFamily="@font/calibri"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/pesan_dibalas"-->
+                        <!--android:textAllCaps="false"-->
+                        <!--android:textColor="@color/colorWhite"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <TextView
-                        android:id="@+id/tv_diskusi_dibalas"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:gravity="center"
-                        android:text="@string/chat_dibalas"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_diskusi_dibalas"-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/kotak_ungu"-->
+                        <!--android:fontFamily="@font/calibri"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/chat_dibalas"-->
+                        <!--android:textAllCaps="false"-->
+                        <!--android:textColor="@color/colorWhite"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textStyle="bold" />-->
+                <!--</LinearLayout>-->
             </LinearLayout>
 
         </LinearLayout>
