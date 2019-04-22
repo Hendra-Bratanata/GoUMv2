@@ -11,9 +11,9 @@ import org.jetbrains.anko.uiThread
 
 class TokenPresenter( val apiReposirtory: ApiReposirtory){
 
-    fun kirimToken (token :String){
+    fun kirimToken (token :String,noHp:String){
         doAsync {
-           apiReposirtory.doRequest(PromoAPI.kirimToken(token))
+           apiReposirtory.doRequest(PromoAPI.kirimToken(token,noHp))
 
         }
 

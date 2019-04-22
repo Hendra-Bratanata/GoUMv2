@@ -58,9 +58,9 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
 
         }
     }
-    fun kirimToken (token :String){
+    fun kirimToken (token :String,noHp :String){
         doAsync {
-           apiReposirtory.doRequest(PromoAPI.kirimToken(token))
+           apiReposirtory.doRequest(PromoAPI.kirimToken(token,noHp))
 
         }
 

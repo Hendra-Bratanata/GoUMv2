@@ -84,10 +84,12 @@
                     android:id="@+id/edt_phonelogin"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
+
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/kotak"
                     android:drawableEnd="@drawable/ic_lock_white_24dp"
                     android:drawablePadding="16dp"
+                    android:inputType="numberDecimal"
                     android:hint="62XXXXXXXX"
                     android:padding="7dp"
                     android:textColor="@android:color/black"
@@ -103,7 +105,7 @@
 
                     <Button
                         android:id="@+id/btn_login"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:background="@color/colorDarkPurple"
@@ -114,18 +116,6 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/btn_register"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:background="@color/colorDarkPurple"
-                        android:fontFamily="@font/calibri"
-                        android:text="@string/daftar"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
