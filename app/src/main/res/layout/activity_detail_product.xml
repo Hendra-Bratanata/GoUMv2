@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPurple"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/colorWhite"
     tools:context="go.id.kominfo.ACTIVITY.DetailProductActivity">
 
     <LinearLayout
@@ -19,12 +15,18 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@drawable/rectangle" />
+            android:src="@drawable/rectangle"
+            android:scaleType="fitXY"
+            android:fitsSystemWindows="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
 
             <TextView
                 android:id="@+id/tv_nama_produk"
@@ -87,6 +89,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/minus"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/ic_remove_square" />
 
                 <TextView
@@ -106,6 +109,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/plus"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/ic_add_square" />
 
             </LinearLayout>
