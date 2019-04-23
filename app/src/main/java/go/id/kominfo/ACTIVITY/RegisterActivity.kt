@@ -55,7 +55,7 @@ gson = Gson()
 
             }
             println(token)
-            presenter.kirimToken(token)
+            presenter.kirimToken(token,noHp)
 
 
         }
