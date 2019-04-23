@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Fashion Pria"
+                    android:text="Fashion"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
@@ -118,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Fashion Wanita"
+                    android:text="Craft"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
