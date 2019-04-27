@@ -1,0 +1,255 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+
+    android:paddingTop="@dimen/activity_vertical_margin"
+
+    android:paddingBottom="8dp"
+    tools:context="go.id.kominfo.ACTIVITY.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@color/colorWhite"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_footer_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/powered_by_diskominfo"
+            android:textColor="@color/colorDarkPurple"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/myLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/form_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:fontFamily="@font/calibri"
+                    android:gravity="center"
+                    android:text="@string/formulir_pendaftaran"
+                    android:textColor="@color/colorDarkPurple"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:id="@+id/tv_register_form"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:fontFamily="@font/calibri"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Tambahkan File"-->
+                <!--android:textColor="@color/colorDarkPurple"-->
+                <!--android:textSize="26sp"-->
+                <!--android:textStyle="bold" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp">
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_no_npwp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:hint="@string/nomor_npwp"-->
+                    <!--android:inputType="text"-->
+                    <!--android:padding="4dp"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textColorHint="@color/colorDarkPurple"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_nama_toko"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:hint="@string/nama_toko"-->
+                    <!--android:inputType="text"-->
+                    <!--android:padding="4dp"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textColorHint="@color/colorDarkPurple"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_alamat_toko"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="80dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:gravity="start"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:hint="@string/alamat_toko"-->
+                    <!--android:inputType="text"-->
+                    <!--android:padding="4dp"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textColorHint="@color/colorDarkPurple"-->
+                    <!--android:textSize="16sp" />-->
+                    <TextView
+                        android:id="@+id/tv_tambah_ktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambahkan Foto KTP"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include layout="@layout/item_file_pendaftaran" />
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambahkan Foto NPWP"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include layout="@layout/item_file_pendaftaran" />
+
+                    <TextView
+                        android:id="@+id/tv_toko"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambahkan Foto Toko"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include layout="@layout/item_file_pendaftaran" />
+
+                    <TextView
+                        android:id="@+id/tv_iumk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambahkan Foto IUMK"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include layout="@layout/item_file_pendaftaran" />
+
+                    <TextView
+                        android:id="@+id/tv_lainnya"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambahkan Foto Halal/lainnya"
+                        android:textColor="@color/colorDarkPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include layout="@layout/item_file_pendaftaran" />
+                </LinearLayout>
+
+                <!--<RelativeLayout-->
+                <!--android:id="@+id/item_attachment"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:padding="8dp">-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/img_add_attachment"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:background="@drawable/kotak_ungu"-->
+                <!--android:contentDescription="gambar"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:src="@drawable/ic_image_white_24dp" />-->
+
+                <!--<Button-->
+                <!--android:id="@+id/edt_attachment1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_marginLeft="@dimen/activity_vertical_margin"-->
+                <!--android:layout_marginRight="@dimen/activity_vertical_margin"-->
+                <!--android:layout_marginBottom="4dp"-->
+                <!--android:layout_toEndOf="@id/img_add_attachment"-->
+                <!--android:background="@drawable/kotak_kosong"-->
+                <!--android:hint="Pilih Foto KTP"-->
+                <!--android:text=""-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="italic" />-->
+
+                <!--</RelativeLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10sp">
+
+                    <Button
+                        android:id="@+id/btn_selesai"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorDarkPurple"
+                        android:fontFamily="@font/calibri"
+                        android:gravity="center"
+                        android:text="@string/selesai"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
