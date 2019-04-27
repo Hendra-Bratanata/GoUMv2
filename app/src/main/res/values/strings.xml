@@ -65,4 +65,17 @@
     <string name="bagikan">Bagikan</string>
     <string name="lorem">orem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quia itaque officia qui, ratione voluptatibus ad aut, temporibus illo blanditiis quis. Id, laborum deleniti culpa officia, provident iste cum labore, officiis beatae laudantium voluptatum corrupti nihil quam asperiores quisquam aliquid eum omnis ea unde, itaque suscipit iusto.</string>
     <string name="image">image</string>
+    <string name="upload_file">upload file</string>
+    <string name="pilih_file">Pilih File</string>
+    <string name="kirim">Kirim</string>
+    <string name="img_27042019_jpg">img-27042019.jpg</string>
+    <string name="tambah_file">tambah file</string>
+    <string name="simpan">simpan</string>
+    <string name="lanjutkan">LANJUTKAN</string>
+    <string name="nomor_ktp">Nomor KTP</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="nomor_npwp">Nomor NPWP</string>
+    <string name="nama_toko">Nama Toko</string>
+    <string name="alamat_toko">Alamat Toko</string>
+    <string name="selesai">SELESAI</string>
 </resources>

@@ -40,8 +40,8 @@ gson = Gson()
 
 
         btn_register.setOnClickListener {
-            namaDepan = edt_nama_depan.text.toString()
-            namaBelakang = edt_nama_belakang.text.toString()
+            namaDepan = edt_nama_lengkap.text.toString()
+//            namaBelakang = edt_nama_belakang.text.toString()
             email = edt_email.text.toString()
             alamat = edt_alamat.text.toString()
             noHp = edt_noHp.text.toString()
