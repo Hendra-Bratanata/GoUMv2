@@ -52,6 +52,13 @@ dependencies {
     implementation 'com.xwray:groupie-kotlin-android-extensions:2.1.0'
     implementation 'com.xwray:groupie:2.1.0'
 
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+
+
+
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
 
 }
 repositories {

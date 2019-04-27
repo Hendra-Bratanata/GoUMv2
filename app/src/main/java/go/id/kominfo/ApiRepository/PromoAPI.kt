@@ -34,4 +34,9 @@ fun getPromo():String{
         Log.d("data",Url)
         return  Url
     }
+    fun kirimFoto (data:String):String{
+        val Url = BuildConfig.BASE_URLI +"addImage.php?imageUpload=$data"
+        Log.d("data","foto dikirim")
+        return  Url
+    }
 }

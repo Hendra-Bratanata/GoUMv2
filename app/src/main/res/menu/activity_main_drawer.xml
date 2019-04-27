@@ -4,21 +4,24 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-
+        <item
+            android:id="@+id/nav_akun"
+            android:visible="false"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Akun" />
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/login" />
         <item
             android:id="@+id/nav_toko"
+            android:visible="false"
             android:icon="@drawable/ic_store_black_24dp"
             android:title="Toko" />
-        <item
-            android:id="@+id/nav_akun"
-            android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="Akun" />
+
         <item
             android:id="@+id/nav_register"
+            android:visible="false"
             android:icon="@drawable/ic_regist"
             android:title="@string/register" />
         <item
@@ -28,18 +31,24 @@
 
         <item
             android:id="@+id/nav_statistik"
+            android:visible="false"
             android:icon="@drawable/ic_poll_black_24dp"
             android:title="Statistik" />
         <item
             android:id="@+id/nav_sales_order"
+            android:visible="false"
             android:icon="@drawable/ic_sales"
             android:title="@string/sales_order" />
 
         <item
-            android:id="@+id/nav_promo"
-            android:icon="@drawable/ic_discount"
-            android:title="Promo" />
-
+        android:id="@+id/nav_promo"
+        android:icon="@drawable/ic_discount"
+        android:title="Promo" />
+        <item
+            android:visible="false"
+            android:id="@+id/nav_logOut"
+            android:icon="@drawable/ic_assignment_return_black_24dp"
+            android:title="Keluar" />
     </group>
 
 </menu>
