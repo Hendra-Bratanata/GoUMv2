@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -78,7 +79,7 @@
 
                         <EditText
                             android:padding="4dp"
-                            android:id="@+id/edt_nama_depan"
+                            android:id="@+id/edt_nama_depan_register"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginEnd="3dp"
@@ -93,7 +94,7 @@
 
                         <EditText
                             android:padding="4dp"
-                            android:id="@+id/edt_nama_belakang"
+                            android:id="@+id/edt_nama_belakang_register"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginStart="3dp"
@@ -116,7 +117,7 @@
 
                         <EditText
                             android:padding="4dp"
-                            android:id="@+id/edt_email"
+                            android:id="@+id/edt_email_register"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
@@ -130,7 +131,7 @@
 
                         <EditText
                             android:padding="4dp"
-                            android:id="@+id/edt_alamat"
+                            android:id="@+id/edt_alamat_register"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
@@ -144,7 +145,7 @@
 
                         <EditText
                             android:padding="4dp"
-                            android:id="@+id/edt_noHp"
+                            android:id="@+id/edt_noHp_register"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
@@ -167,8 +168,8 @@
 
                         <ImageView
                             android:id="@+id/img_add_attachment"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="77dp"
+                            android:layout_height="52dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
                             android:background="@drawable/kotak_ungu"
@@ -176,44 +177,118 @@
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_image_white_24dp" />
 
+                        <ImageView
+                            android:id="@+id/img_add_attachment2"
+                            android:layout_width="77dp"
+                            android:layout_height="52dp"
+                            android:layout_below="@+id/img_add_attachment"
+                            android:layout_alignStart="@+id/img_add_attachment"
+                            android:layout_alignEnd="@+id/img_add_attachment"
+                            android:layout_marginStart="-1dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginEnd="1dp"
+                            android:background="@drawable/kotak_ungu"
+                            android:contentDescription="gambar"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_image_white_24dp" />
+
+                        <ImageView
+                            android:id="@+id/img_add_attachment3"
+                            android:layout_width="77dp"
+                            android:layout_height="52dp"
+                            android:layout_below="@+id/img_add_attachment2"
+                            android:layout_alignStart="@+id/img_add_attachment2"
+                            android:layout_alignEnd="@+id/img_add_attachment2"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="1dp"
+                            android:background="@drawable/kotak_ungu"
+                            android:contentDescription="gambar"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_image_white_24dp" />
+
                         <Button
-                            android:id="@+id/edt_attachment1"
-                            android:layout_width="match_parent"
+                            android:theme="@style/Base.Widget.AppCompat.Button.Borderless"
+                            android:id="@+id/edt_attachment1_register"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
                             android:layout_marginLeft="@dimen/activity_vertical_margin"
                             android:layout_marginRight="@dimen/activity_vertical_margin"
                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/img_add_attachment"
-                            android:background="@drawable/kotak_kosong"
                             android:hint="@string/lampiran_1"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+                        <Button
+                            android:theme="@style/Base.Widget.AppCompat.Button.Borderless"
+                            android:id="@+id/edt_attachment1_register_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@id/edt_attachment1_register"
+                            android:hint="@string/lampiran_2"
                             android:text=""
                             android:textSize="14sp"
                             android:textStyle="italic" />
 
                         <Button
-                            android:id="@+id/edt_attachment2"
-                            android:layout_width="match_parent"
+                            android:id="@+id/edt_attachment2_register"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/edt_attachment1"
+                            android:layout_below="@id/edt_attachment1_register"
+                            android:layout_marginStart="14dp"
                             android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginTop="10dp"
                             android:layout_marginRight="@dimen/activity_vertical_margin"
                             android:layout_marginBottom="4dp"
                             android:layout_toEndOf="@id/img_add_attachment"
-                            android:background="@drawable/kotak_kosong"
+                            android:hint="@string/lampiran_1"
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+                        <Button
+                            android:id="@+id/edt_attachment2_register_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edt_attachment1_register"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@id/edt_attachment2_register"
                             android:hint="@string/lampiran_2"
                             android:textSize="14sp"
                             android:textStyle="italic" />
 
                         <Button
-                            android:id="@+id/edt_attachment3"
-                            android:layout_width="match_parent"
+                            android:id="@+id/edt_attachment3_register_register"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/edt_attachment2"
+                            android:layout_below="@id/edt_attachment2_register"
+                            android:layout_marginStart="14dp"
                             android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginTop="5dp"
                             android:layout_marginRight="@dimen/activity_vertical_margin"
                             android:layout_toEndOf="@id/img_add_attachment"
-                            android:background="@drawable/kotak_kosong"
-                            android:hint="@string/lampiran_3"
+                            android:hint="@string/lampiran_1"
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
+                        <Button
+                            android:id="@+id/edt_attachment3_register_register_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edt_attachment2_register"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="@dimen/activity_vertical_margin"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="@dimen/activity_vertical_margin"
+                            android:layout_toEndOf="@id/edt_attachment3_register_register"
+                            android:hint="@string/lampiran_2"
                             android:textSize="14sp"
                             android:textStyle="italic" />
                     </RelativeLayout>
@@ -243,4 +318,11 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminate="true"
+       android:theme="@style/AppTheme.Putih"
+        android:id="@+id/progressRegister"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

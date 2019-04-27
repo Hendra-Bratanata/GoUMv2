@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.widget.ProgressBar
 import com.google.gson.Gson
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -22,12 +25,20 @@ import go.id.kominfo.ADAPTER.PromoAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.MainView
 import go.id.kominfo.ITEM.Pria
+import go.id.kominfo.ITEM.SharedPreference
 import go.id.kominfo.POJO.Banner
 import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.PromoPresenter
 import go.id.kominfo.R
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.promo.*
+import org.jetbrains.anko.UI
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.onRefresh
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
@@ -46,9 +57,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun showDataMinuman(listProduk: List<Produk>) {
+        swpMain.isRefreshing = false
+        conn = 1
         listMinuman.clear()
         listMinuman.addAll(listProduk)
         katagoriAdapterMinuman.notifyDataSetChanged()
+        loading.visibility =View.INVISIBLE
+        viewVisible()
+
     }
 
     override fun showDataPria(listProduk: List<Produk>) {
@@ -57,7 +73,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         listPria.clear()
         listPria.addAll(listProduk)
         listPria.map {
-            group.add(Pria(it){
+            group.add(Pria(it) {
                 startActivity<DetailProductActivity>("detail" to it)
             })
         }
@@ -71,6 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     internal lateinit var window: Window
+    lateinit var loading:ProgressBar
     lateinit var list: MutableList<Produk>
     lateinit var listBanner: MutableList<Banner>
     lateinit var listPria: MutableList<Produk>
@@ -84,7 +101,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
-    var group : GroupAdapter<ViewHolder> = GroupAdapter()
+    var group: GroupAdapter<ViewHolder> = GroupAdapter()
+    lateinit var sharedPreferences: SharedPreference
+    var LOGIN = false
+    var NOHP = ""
+    lateinit var swpMain:SwipeRefreshLayout
+    var conn = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,7 +119,48 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+        loading = progressBarMain
+        swpMain = swpfMain
 
+        viewGone()
+
+
+
+        sharedPreferences = SharedPreference(this)
+        LOGIN = sharedPreferences.getValueBoolien("LOGIN", false)
+        NOHP = sharedPreferences.getValueString("noHP").toString()
+        Log.d("LOGIN", "$LOGIN")
+        Log.d("No HP", "$NOHP")
+
+        if (LOGIN) {
+            Log.d("in LOGIN ", "$LOGIN")
+            Log.d("in No HP", "$NOHP")
+            val nav: NavigationView = findViewById(R.id.nav_view)
+            val M: Menu = nav.menu
+            var nav_login = M.findItem(R.id.nav_login)
+            var nav_toko = M.findItem(R.id.nav_toko)
+            var nav_stat = M.findItem(R.id.nav_statistik)
+            var nav_salesOrder = M.findItem(R.id.nav_sales_order)
+            var nav_reg = M.findItem(R.id.nav_register)
+            val logOut = M.findItem(R.id.nav_logOut)
+            val akun = M.findItem(R.id.nav_akun)
+
+
+            nav_login.setVisible(false)
+            akun.setVisible(LOGIN)
+            akun.setTitle(NOHP)
+            nav_toko.setVisible(LOGIN)
+            nav_reg.setVisible(LOGIN)
+            nav_salesOrder.setVisible(LOGIN)
+            nav_stat.setVisible(LOGIN)
+            logOut.setVisible(LOGIN)
+            nav_login.setOnMenuItemClickListener {
+                false
+            }
+
+            nav.setNavigationItemSelectedListener(this)
+
+        }
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -108,7 +171,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
 
         list = mutableListOf()
-        adapter = PromoAdapter(list,{
+        adapter = PromoAdapter(list, {
             startActivity<DetailProductActivity>("detail" to it)
         })
 
@@ -129,7 +192,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
 
         rv_pria.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = group
         }
 
@@ -151,15 +214,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         gson = Gson()
         apiReposirtory = ApiReposirtory()
-
         presenter = PromoPresenter(this, gson, apiReposirtory)
+
+       requestData()
+        swpMain.onRefresh {
+            swpMain.isRefreshing =  true
+            conn = 0
+            requestData()
+        }
+
+
+    }
+
+    private fun requestData() {
+
         presenter.getPromo()
         presenter.getFashionPria()
         presenter.getFashionWanita()
         presenter.getMinuman()
         presenter.getBenner()
 
-
+        if(conn == 0) {
+            Thread(Runnable {
+                Thread.sleep(5000)
+                requestData()
+                println("req Runnable")
+            }).start()
+        }
     }
 
     override fun onBackPressed() {
@@ -174,6 +255,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
+
+
         return true
     }
 
@@ -212,6 +296,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_toko -> {
                 startActivity<SalesOrderActivity>()
             }
+            R.id.nav_logOut -> {
+                sharedPreferences.clearSharedPreference()
+                startActivity<MainActivity>()
+            }
         }
 
 
@@ -219,4 +307,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+   fun viewGone(){
+       tvPromoMain.visibility = View.GONE
+       tvStoreMain.visibility = View.GONE
+       tvFashionMain.visibility = View.GONE
+       tvCraftMain.visibility = View.GONE
+       tvKulinerMain.visibility =View.GONE
+   }
+    fun viewVisible(){
+        tvPromoMain.visibility = View.VISIBLE
+        tvStoreMain.visibility = View.VISIBLE
+        tvFashionMain.visibility = View.VISIBLE
+        tvCraftMain.visibility = View.VISIBLE
+        tvKulinerMain.visibility =View.VISIBLE
+    }
+
+
 }
