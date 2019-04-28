@@ -57,6 +57,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/logonewumkm" />
+
+            <TextView
+                android:id="@+id/tv_pesan_login"
+                android:visibility="gone"
+                android:background="@color/colorYoungPurple"
+                android:textColor="@color/colorred"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Pendaftaran GAGAl" />
             <!---->
             <!--<TextView-->
             <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
@@ -89,11 +100,12 @@
                     android:background="@drawable/kotak"
                     android:drawableEnd="@drawable/ic_contact_phone_black_24dp"
                     android:drawablePadding="16dp"
+                    android:hint="08XXXXXXXX"
                     android:inputType="numberDecimal"
-                    android:hint="62XXXXXXXX"
                     android:padding="7dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPurple" />
+
                 <EditText
                     android:id="@+id/edt_password_login"
                     android:layout_width="fill_parent"
@@ -102,11 +114,12 @@
                     android:background="@drawable/kotak"
                     android:drawableEnd="@drawable/ic_lock_white_24dp"
                     android:drawablePadding="16dp"
-                    android:inputType="textPassword"
                     android:hint="Masukkan Password"
+                    android:inputType="textPassword"
                     android:padding="7dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPurple" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,12 +130,27 @@
 
                     <Button
                         android:id="@+id/btn_login"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
                         android:background="@color/colorDarkPurple"
                         android:fontFamily="@font/calibri"
                         android:text="@string/masuk"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_register_login"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDarkPurple"
+                        android:fontFamily="@font/calibri"
+                        android:text="@string/daftar"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"
@@ -133,6 +161,7 @@
         </LinearLayout>
     </ScrollView>
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

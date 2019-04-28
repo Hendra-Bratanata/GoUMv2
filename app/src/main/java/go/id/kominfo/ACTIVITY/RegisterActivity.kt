@@ -15,27 +15,26 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.view.Window
-import android.widget.ProgressBar
-import android.widget.Toast
 import com.google.gson.Gson
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ApiRepository.RetrofitClient
+import go.id.kominfo.INTERFACE.DaftarView
+import go.id.kominfo.ITEM.MD5
 import go.id.kominfo.ITEM.ScalingUtilities
 import go.id.kominfo.ITEM.ScalingUtilities.createScaledBitmap
 import go.id.kominfo.ITEM.ScalingUtilities.decodeFile
+import go.id.kominfo.POJO.Daftar
 import go.id.kominfo.POJO.DataRespon
-import go.id.kominfo.PRESENTER.TokenPresenter
+import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_register.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.appcompat.v7.alertDialogLayout
-import org.jetbrains.anko.imageBitmap
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,27 +43,33 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
-import kotlin.random.Random
 
 
-class RegisterActivity : AppCompatActivity() {
-    lateinit var namaDepan: String
-    lateinit var namaBelakang: String
-    lateinit var email: String
-    lateinit var alamat: String
-    lateinit var noHp: String
-    lateinit var token: String
+class RegisterActivity : AppCompatActivity(),DaftarView {
+    override fun showData(list: List<Daftar>) {
+        val pesan = list[0].pesan.toString()
+        val kode= list[0].kode.toString()
+
+        if (kode == "1"){
+            toast("Pendaftaran $pesan")
+            startActivity<Register2>()
+            this.finish()
+        }else{
+            toast("pendaftaran $pesan")
+        }
+    }
+
     lateinit var gson: Gson
-    lateinit var presenter: TokenPresenter
+    lateinit var presenter: DaftarPresenter
     lateinit var apiReposirtory: ApiReposirtory
     lateinit var file: File
     lateinit var file1: File
     lateinit var file2: File
     lateinit var options: BitmapFactory.Options
-    lateinit var progressBar: ProgressBar
-    lateinit var bitmap: Bitmap
-    lateinit var byteArray: ByteArray
     internal lateinit var window: Window
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -78,45 +83,61 @@ class RegisterActivity : AppCompatActivity() {
 
 
         gson = Gson()
-        progressBar = progressRegister
-        progressBar.visibility = View.GONE
+
         apiReposirtory = ApiReposirtory()
 
-        presenter = TokenPresenter(apiReposirtory)
-        edt_attachment2_register.visibility = View.GONE
-        edt_attachment3_register_register.visibility = View.GONE
-        img_add_attachment2.visibility = View.GONE
-        img_add_attachment3.visibility = View.GONE
-
-        edt_attachment1_register.setOnClickListener {
-            getImage(1)
-        }
-        edt_attachment2_register.setOnClickListener {
-            getImage(2)
-        }
-        edt_attachment3_register_register.setOnClickListener {
-            getImage(3)
-        }
+        presenter = DaftarPresenter(apiReposirtory,gson,this)
 
 
         btn_register.setOnClickListener {
-            //            namaDepan = edt_nama_depan.text.toString()
-//            namaBelakang = edt_nama_belakang.text.toString()
-//            email = edt_email.text.toString()
-//            alamat = edt_alamat.text.toString()
-//            noHp = edt_noHp.text.toString()
-//            token = ""
-//
-//
-//            for (i in 1 until 5) {
-//                var number = Random.nextInt(0, 9)
-//                var num = number
-//                token += num.toString()
-//
-//            }
-//            println(token)
-//            presenter.kirimToken(token, noHp)
-            uploadImanges()
+            val ktp = edt_no_ktp.text.toString()
+            val npwp = edt_no_npwp.text.toString()
+            val nama = edt_nama_lengkap.text.toString()
+            val email = edt_email.text.toString()
+            val hp = edt_noHp.text.toString()
+            val pass = edt_password_register.text.toString()
+            val repass = edt_repassword_register.text.toString()
+            val namaToko = edt_nama_toko.text.toString()
+            val alamatToko = edt_alamat.text.toString()
+
+            if(TextUtils.isEmpty(ktp)){
+                edt_no_ktp.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(npwp)){
+                edt_no_npwp.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(nama)){
+                edt_nama_lengkap.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(email)){
+                edt_email.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(hp)){
+                edt_noHp.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(pass)){
+                edt_password_register.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(repass)){
+                edt_repassword_register.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(namaToko)){
+                edt_nama_toko.error = "Wajib di isi"
+            }
+            if(TextUtils.isEmpty(alamatToko)){
+                edt_alamat.error = "Wajib di isi"
+            }
+            else{
+                if (repass != pass){
+                    edt_password_register.error = "Password Tidak Sama"
+                    edt_repassword_register.error = "Password Tidak Sama"
+                }else{
+                    val Md5 = MD5()
+                    val newPass = Md5.EncriptMD5(pass)
+                    presenter.kirimToken(ktp,npwp,nama,email,hp,newPass,namaToko,alamatToko)
+                }
+            }
+
 
 
         }
@@ -139,28 +160,16 @@ class RegisterActivity : AppCompatActivity() {
             if (requestCode == 1) {
                 println("code Request $requestCode")
                 getData(data,1)
-                img_add_attachment.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath, options))
-                edt_attachment1_register.setText(file.name)
-                edt_attachment2_register.visibility = View.VISIBLE
-                img_add_attachment2.visibility =View.VISIBLE
-
 
             }
             if (requestCode == 2) {
                 println("code $requestCode")
                 getData(data,2)
-                img_add_attachment2.setImageBitmap(BitmapFactory.decodeFile(file1.absolutePath, options))
-                edt_attachment2_register.setText(file1.name)
-                edt_attachment3_register_register.visibility = View.VISIBLE
-                img_add_attachment3.visibility = View.VISIBLE
-
 
             }
             if (requestCode == 3) {
                 println("code $requestCode")
                 getData(data,3)
-                img_add_attachment3.setImageBitmap(BitmapFactory.decodeFile(file2.absolutePath, options))
-                edt_attachment3_register_register.setText(file2.name)
 
 
             }
@@ -179,12 +188,12 @@ class RegisterActivity : AppCompatActivity() {
 
         val apiServices = RetrofitClient.getApiServices()
         var upload: Call<DataRespon> = apiServices.addImages(multipartBody,multipartBody1,multipartBody2)
-        progressBar.visibility = View.VISIBLE
+
         upload.enqueue(object : Callback<DataRespon> {
 
             override fun onFailure(call: Call<DataRespon>, t: Throwable) {
                 println("ERRROO ${t.message}")
-                progressBar.visibility = View.GONE
+
                 toast("Gagal Mengupload data").show()
 
 
@@ -199,7 +208,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
                 if (data?.kode.equals("1",false)) {
-                    progressBar.visibility = View.GONE
+
 
 
                 }

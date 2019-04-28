@@ -17,6 +17,10 @@
         <activity android:name=".ACTIVITY.DetailBannerActivity" />
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity android:name=".ACTIVITY.DetailProductActivity" />
+        <activity android:name=".ACTIVITY.Register2"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ACTIVITY.RegisterActivity"
             android:windowSoftInputMode="stateHidden" />

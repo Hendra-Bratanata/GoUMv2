@@ -31,14 +31,9 @@ import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.PromoPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.promo.*
-import org.jetbrains.anko.UI
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
-import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
@@ -62,7 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         listMinuman.clear()
         listMinuman.addAll(listProduk)
         katagoriAdapterMinuman.notifyDataSetChanged()
-        loading.visibility =View.INVISIBLE
+        loading.visibility = View.INVISIBLE
         viewVisible()
 
     }
@@ -87,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     internal lateinit var window: Window
-    lateinit var loading:ProgressBar
+    lateinit var loading: ProgressBar
     lateinit var list: MutableList<Produk>
     lateinit var listBanner: MutableList<Banner>
     lateinit var listPria: MutableList<Produk>
@@ -105,9 +100,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var sharedPreferences: SharedPreference
     var LOGIN = false
     var NOHP = ""
-    lateinit var swpMain:SwipeRefreshLayout
+    lateinit var swpMain: SwipeRefreshLayout
     var conn = 0
 
+
+    var KDUMKM: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,6 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         sharedPreferences = SharedPreference(this)
         LOGIN = sharedPreferences.getValueBoolien("LOGIN", false)
         NOHP = sharedPreferences.getValueString("noHP").toString()
+        KDUMKM = sharedPreferences.getValueString("kd_umkm").toString()
         Log.d("LOGIN", "$LOGIN")
         Log.d("No HP", "$NOHP")
 
@@ -141,16 +139,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             var nav_toko = M.findItem(R.id.nav_toko)
             var nav_stat = M.findItem(R.id.nav_statistik)
             var nav_salesOrder = M.findItem(R.id.nav_sales_order)
-            var nav_reg = M.findItem(R.id.nav_register)
+
             val logOut = M.findItem(R.id.nav_logOut)
             val akun = M.findItem(R.id.nav_akun)
 
 
             nav_login.setVisible(false)
+
             akun.setVisible(LOGIN)
             akun.setTitle(NOHP)
             nav_toko.setVisible(LOGIN)
-            nav_reg.setVisible(LOGIN)
+
             nav_salesOrder.setVisible(LOGIN)
             nav_stat.setVisible(LOGIN)
             logOut.setVisible(LOGIN)
@@ -216,9 +215,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         apiReposirtory = ApiReposirtory()
         presenter = PromoPresenter(this, gson, apiReposirtory)
 
-       requestData()
+        requestData()
         swpMain.onRefresh {
-            swpMain.isRefreshing =  true
+            swpMain.isRefreshing = true
             conn = 0
             requestData()
         }
@@ -234,7 +233,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         presenter.getMinuman()
         presenter.getBenner()
 
-        if(conn == 0) {
+        if (conn == 0) {
             Thread(Runnable {
                 Thread.sleep(5000)
                 requestData()
@@ -307,19 +306,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
-   fun viewGone(){
-       tvPromoMain.visibility = View.GONE
-       tvStoreMain.visibility = View.GONE
-       tvFashionMain.visibility = View.GONE
-       tvCraftMain.visibility = View.GONE
-       tvKulinerMain.visibility =View.GONE
-   }
-    fun viewVisible(){
+
+    fun viewGone() {
+        tvPromoMain.visibility = View.GONE
+        tvStoreMain.visibility = View.GONE
+        tvFashionMain.visibility = View.GONE
+        tvCraftMain.visibility = View.GONE
+        tvKulinerMain.visibility = View.GONE
+    }
+
+    fun viewVisible() {
         tvPromoMain.visibility = View.VISIBLE
         tvStoreMain.visibility = View.VISIBLE
         tvFashionMain.visibility = View.VISIBLE
         tvCraftMain.visibility = View.VISIBLE
-        tvKulinerMain.visibility =View.VISIBLE
+        tvKulinerMain.visibility = View.VISIBLE
     }
 
 

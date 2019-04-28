@@ -2,7 +2,6 @@ package go.id.kominfo.PRESENTER
 
 
 import com.google.gson.Gson
-import go.id.kominfo.ADAPTER.BannerAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ApiRepository.PromoAPI
 import go.id.kominfo.INTERFACE.MainView
@@ -58,13 +57,7 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
 
         }
     }
-    fun kirimToken (token :String,noHp :String){
-        doAsync {
-           apiReposirtory.doRequest(PromoAPI.kirimToken(token,noHp))
 
-        }
-
-    }
     fun getBenner (){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getBenner())

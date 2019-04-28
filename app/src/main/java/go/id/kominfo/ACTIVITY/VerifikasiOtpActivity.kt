@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ITEM.SharedPreference
-import go.id.kominfo.PRESENTER.TokenPresenter
+import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_verifikasi_otp.*
 import org.jetbrains.anko.startActivity
 
 class VerifikasiOtpActivity : AppCompatActivity() {
-    lateinit var presenter: TokenPresenter
+    lateinit var presenter: DaftarPresenter
     lateinit var apiReposirtory: ApiReposirtory
     var d1: String = ""
     var d2: String = ""
@@ -29,8 +29,7 @@ class VerifikasiOtpActivity : AppCompatActivity() {
         val token = intent.getStringExtra("Token").toString()
         tv_nomor_otp.text = noHp
         apiReposirtory = ApiReposirtory()
-        presenter = TokenPresenter(apiReposirtory)
-        presenter.kirimToken(token, noHp)
+
         println(token)
 
         btn_berikut.setOnClickListener {

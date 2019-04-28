@@ -1,91 +1,128 @@
 package go.id.kominfo.ACTIVITY
 
-import android.app.ProgressDialog
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.Window
-import android.widget.ProgressBar
+import com.google.gson.Gson
+import go.id.kominfo.ApiRepository.ApiReposirtory
+import go.id.kominfo.INTERFACE.UserView
+import go.id.kominfo.ITEM.MD5
 import go.id.kominfo.ITEM.SharedPreference
+import go.id.kominfo.POJO.User
+import go.id.kominfo.PRESENTER.UserPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
-import kotlin.random.Random
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), UserView {
+    lateinit var hp: String
+    lateinit var pass: String
+    lateinit var confirm: String
+
+
+    override fun showData(listUser: List<User>) {
+        var ada = true
+
+        for (i in listUser.indices) {
+
+            val user: User? = listUser[i]
+            println(user?.hp.equals(hp))
+
+            if (user?.hp == hp) {
+                ada = false
+
+
+                val MD5 = MD5()
+                pass = MD5.EncriptMD5(edt_password_login.text.toString())
+
+                //Password
+                if (user.pass == pass) {
+                    println("USER: ${user.konfirmasi}")
+
+                    if (user.konfirmasi.equals("y", true)) {
+                        pref.save("LOGIN",true)
+                        pref.save("noHP","$hp")
+                        pref.save("kd_umkm","${user.kdUmkm.toString()}")
+                        startActivity<MainActivity>()
+                        this.finish()
+                    } else {
+                        tv_pesan_login.setText("Pendaftaran anda Belum dikonfirmasi")
+                        tv_pesan_login.visibility = View.VISIBLE
+                    }
+                } else if (user.pass != pass) {
+                    tv_pesan_login.text = "Password Salah"
+                    tv_pesan_login.visibility = View.VISIBLE
+
+                }
+
+            }
+        }
+
+
+if (ada){
+    tv_pesan_login.setText("Nomor tidak terdaftar ")
+    tv_pesan_login.visibility = View.VISIBLE
+}
+
+        progressBar.visibility = View.GONE
+    }
 
     internal lateinit var window: Window
+    lateinit var presenter: UserPresenter
+    lateinit var gson: Gson
+    lateinit var apiReposirtory: ApiReposirtory
+    lateinit var pref:SharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val pref = SharedPreference(this)
-        val loading  = progressBar
-        loading.visibility =View.INVISIBLE
+         pref = SharedPreference(this)
+        val loading = progressBar
+        loading.visibility = View.INVISIBLE
 
 
         if (Build.VERSION.SDK_INT >= 21) { //ganti warna status bar diatas OS lolipop
             window = this.getWindow()
             window.statusBarColor = ContextCompat.getColor(this, R.color.colorDarkPurple)
         }
+        gson = Gson()
+        apiReposirtory = ApiReposirtory()
+        presenter = UserPresenter(apiReposirtory, gson, this)
+
 
 
 
         btn_login.setOnClickListener {
-            loading.visibility =View.VISIBLE
-            val noHp = edt_phonelogin.text.toString()
-            var token = ""
+            loading.visibility = View.VISIBLE
 
-
-            for (i in 1 until 5) {
-                var number = Random.nextInt(0, 9)
-                var num = number
-                token += num.toString()
-
-            }
+            hp = edt_phonelogin.text.toString()
 
             if (edt_phonelogin.text.isNullOrBlank()) {
                 edt_phonelogin.setError("Tidak Boleh Kosong")
             } else {
 
-                if (noHp.length < 12 || noHp.length > 13) {
+                if (hp.length < 12 || hp.length > 13) {
                     edt_phonelogin.setError("Nomor Tidak Valid")
 
                 } else {
-                    if (noHp.substring(0, 2).equals("62")) {
-                        val nomorHp = "6285750077049"
-                        val pass = "test123"
-                        val password = edt_password_login.text.toString()
-                        println("62 ok")
-                        println("$noHp == $nomorHp" )
-                        println("$pass == ${edt_password_login.text}" )
 
-
-
-                        if(noHp == nomorHp && password == pass){
-                            println("sama")
-                            loading.visibility =View.INVISIBLE
-                            pref.save("LOGIN",true)
-                            pref.save("noHP","$noHp")
-                            startActivity<MainActivity>()
-                            this.finish()
-                        }else{
-                            toast("nomor belum terdaftar atau passwaord salah")
-                        }
-
-
-                    } else {
-                        edt_phonelogin.setError("Harus dimulai dengan 62")
-                    }
-
+                    presenter.ambilDataUser()
 
                 }
-                loading.visibility =View.INVISIBLE
             }
         }
+
+
+
+
+        btn_register_login.setOnClickListener {
+            startActivity<RegisterActivity>()
+        }
+
+
     }
 }
