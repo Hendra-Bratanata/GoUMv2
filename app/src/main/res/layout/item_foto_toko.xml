@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_foto_toko"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="4dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:id="@+id/cv_foto_toko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_foto_toko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/calibri"
+            android:text="Tambahkan Foto Toko"
+            android:textColor="@color/colorDarkPurple"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+        <RelativeLayout
+            android:background="@color/colorWhite"
+            android:id="@+id/item_upload_file"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/img_item_foto_toko"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/upload_file"
+                android:scaleType="centerCrop"
+                android:src="@color/colorAccent"/>
+
+            <Button
+                android:id="@+id/btn_pilih"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_toEndOf="@id/img_item_foto_toko"
+                android:layout_toRightOf="@id/img_item_foto_toko"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:background="@color/colorDarkPurple"
+                android:text="@string/pilih_file"
+                android:textStyle="bold"/>
+
+            <Button
+                android:textColor="@color/colorWhite"
+                android:id="@+id/btn_kirim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_pilih"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_toEndOf="@id/img_item_foto_toko"
+                android:background="@color/colorDarkPurple"
+                android:textSize="16sp"
+                android:text="@string/kirim"/>
+            <TextView
+                android:text="@string/img_27042019_jpg"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:id="@+id/tv_nama_file"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_item_foto_toko"
+                android:layout_alignParentBottom="true"
+                android:maxLines="2" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

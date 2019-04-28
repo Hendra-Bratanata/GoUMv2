@@ -3,11 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-
     android:paddingTop="@dimen/activity_vertical_margin"
-
     android:paddingBottom="8dp"
-    tools:context="go.id.kominfo.ACTIVITY.LoginActivity">
+    tools:context="go.id.kominfo.ACTIVITY.RegisterActivity">
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -189,84 +187,6 @@
             android:id="@+id/btn_kirim3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_pilih3"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_item_file"
-            android:background="@color/colorDarkPurple"
-            android:textSize="16sp"
-            android:text="@string/kirim"/>
-        <TextView
-            android:text="@string/img_27042019_jpg"
-            android:gravity="center"
-            android:layout_alignParentStart="true"
-            android:id="@+id/tv_nama_file"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_item_file"
-            android:layout_alignParentBottom="true"
-            android:maxLines="2" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/item_upload_file"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:padding="8dp">
-
-        <ImageView
-            android:id="@+id/img_item_file"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:contentDescription="@string/upload_file"
-            android:scaleType="centerCrop"
-            android:src="@color/colorAccent"/>
-
-        <Button
-            android:id="@+id/btn_pilih"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_item_file"
-            android:layout_toRightOf="@id/img_item_file"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:background="@color/colorDarkPurple"
-            android:text="@string/pilih_file"
-            android:textStyle="bold"/>
-
-        <Button
-            android:textColor="@color/colorWhite"
-            android:id="@+id/btn_kirim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_pilih"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/img_item_file"
-            android:background="@color/colorDarkPurple"
-            android:textSize="16sp"
-            android:text="@string/kirim"/>
-        <TextView
-            android:text="@string/img_27042019_jpg"
-            android:gravity="center"
-            android:layout_alignParentStart="true"
-            android:id="@+id/tv_nama_file"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_item_file"
-            android:layout_alignParentBottom="true"
-            android:maxLines="2" />
-    </RelativeLayout>
-
-</LinearLayout>
-
 
     </ScrollView>
 </RelativeLayout>
