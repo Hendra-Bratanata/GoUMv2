@@ -35,7 +35,7 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/img_item_file"
+                android:id="@+id/img_item_file_npwp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
@@ -46,14 +46,14 @@
                 android:src="@color/colorAccent"/>
 
             <Button
-                android:id="@+id/btn_pilih"
+                android:id="@+id/btn_pilih_npwp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
-                android:layout_toEndOf="@id/img_item_file"
-                android:layout_toRightOf="@id/img_item_file"
+                android:layout_toEndOf="@id/img_item_file_npwp"
+                android:layout_toRightOf="@id/img_item_file_npwp"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
                 android:background="@color/colorDarkPurple"
@@ -62,14 +62,14 @@
 
             <Button
                 android:textColor="@color/colorWhite"
-                android:id="@+id/btn_kirim"
+                android:id="@+id/btn_kirim_npwp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_pilih"
+                android:layout_below="@id/btn_pilih_npwp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
-                android:layout_toEndOf="@id/img_item_file"
+                android:layout_toEndOf="@id/img_item_file_npwp"
                 android:background="@color/colorDarkPurple"
                 android:textSize="16sp"
                 android:text="@string/kirim"/>
@@ -77,10 +77,10 @@
                 android:text="@string/img_27042019_jpg"
                 android:gravity="center"
                 android:layout_alignParentStart="true"
-                android:id="@+id/tv_nama_file"
+                android:id="@+id/tv_nama_file_npwp"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_item_file"
+                android:layout_below="@id/img_item_file_npwp"
                 android:layout_alignParentBottom="true"
                 android:maxLines="2" />
         </RelativeLayout>

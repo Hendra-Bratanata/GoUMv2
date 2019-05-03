@@ -28,6 +28,7 @@ import go.id.kominfo.ITEM.ScalingUtilities.createScaledBitmap
 import go.id.kominfo.ITEM.ScalingUtilities.decodeFile
 import go.id.kominfo.POJO.Daftar
 import go.id.kominfo.POJO.DataRespon
+import go.id.kominfo.POJO.Umkm
 import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_register.*
@@ -52,7 +53,7 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
 
         if (kode == "1"){
             toast("Pendaftaran $pesan")
-            startActivity<Register2>()
+            startActivity<Register2>("noHp" to hp)
             this.finish()
         }else{
             toast("pendaftaran $pesan")
@@ -62,10 +63,8 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
     lateinit var gson: Gson
     lateinit var presenter: DaftarPresenter
     lateinit var apiReposirtory: ApiReposirtory
-    lateinit var file: File
-    lateinit var file1: File
-    lateinit var file2: File
-    lateinit var options: BitmapFactory.Options
+    lateinit var hp:String
+
     internal lateinit var window: Window
 
 
@@ -94,7 +93,7 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
             val npwp = edt_no_npwp.text.toString()
             val nama = edt_nama_lengkap.text.toString()
             val email = edt_email.text.toString()
-            val hp = edt_noHp.text.toString()
+             hp = edt_noHp.text.toString()
             val pass = edt_password_register.text.toString()
             val repass = edt_repassword_register.text.toString()
             val namaToko = edt_nama_toko.text.toString()
@@ -143,109 +142,7 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
         }
     }
 
-    private fun getImage(code: Int) {
-        println("GetImages $code")
-        var inten = Intent()
-        inten.setType("image/*")
-        inten.setAction(Intent.ACTION_PICK)
-        startActivityForResult(Intent.createChooser(inten, "open gallery"), code)
 
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            println("resault $resultCode")
-            if (requestCode == 1) {
-                println("code Request $requestCode")
-                getData(data,1)
-
-            }
-            if (requestCode == 2) {
-                println("code $requestCode")
-                getData(data,2)
-
-            }
-            if (requestCode == 3) {
-                println("code $requestCode")
-                getData(data,3)
-
-
-            }
-        }
-    }
-
-    fun uploadImanges() {
-//        val regBody = RequestBody.create(MediaType.parse("multipart/form-file"), file)
-        val regBody = RequestBody.create(MediaType.parse("multipart/form-file"),file)
-        val regBody1 = RequestBody.create(MediaType.parse("multipart/form-file"),file1)
-        val regBody2 = RequestBody.create(MediaType.parse("multipart/form-file"),file2)
-
-        val multipartBody = MultipartBody.Part.createFormData("imageUpload", file.name, regBody)
-        val multipartBody1 = MultipartBody.Part.createFormData("imageUpload", file1.name, regBody1)
-        val multipartBody2 = MultipartBody.Part.createFormData("imageUpload", file2.name, regBody2)
-
-        val apiServices = RetrofitClient.getApiServices()
-        var upload: Call<DataRespon> = apiServices.addImages(multipartBody,multipartBody1,multipartBody2)
-
-        upload.enqueue(object : Callback<DataRespon> {
-
-            override fun onFailure(call: Call<DataRespon>, t: Throwable) {
-                println("ERRROO ${t.message}")
-
-                toast("Gagal Mengupload data").show()
-
-
-            }
-
-            override fun onResponse(call: Call<DataRespon>, response: Response<DataRespon>) {
-                println("Ada Di Onresponse")
-                var data: DataRespon? = response.body()
-                println("${data?.pesan}")
-                println("${data?.kode}")
-                toast("Sukses")
-
-
-                if (data?.kode.equals("1",false)) {
-
-
-
-                }
-            }
-
-
-        })
-    }
-
-    private fun getData(data: Intent?,kode:Int) {
-
-        if (data != null) {
-            val dataImg: Uri? = data.data
-            val imgProjection = arrayOf(MediaStore.Images.Media.DATA)
-
-            val cursor: Cursor = contentResolver.query(dataImg!!, imgProjection, null, null, null)
-
-            cursor.moveToFirst()
-            val indexImg = cursor.getColumnIndex(imgProjection[0])
-            Log.d("Log", cursor.getString(indexImg))
-            val part_img = cursor.getString(indexImg)
-
-            if(kode == 1){
-                file = File(part_img)
-            }
-            if (kode == 2){
-                file1 = File(part_img)
-            }
-            if (kode == 3){
-                file2 = File(part_img)
-            }
-
-            options = BitmapFactory.Options()
-            options.inSampleSize = 16
-        }
-
-    }
 
     fun getResizedBitmap(bm: Bitmap, newWidth: Int, newHeight: Int): Bitmap {
         val width: Int = bm.width
