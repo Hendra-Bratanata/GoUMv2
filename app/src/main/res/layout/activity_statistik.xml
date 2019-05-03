@@ -144,7 +144,7 @@
                     android:id="@+id/btn_cetak"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorDarkPurple"
+                    android:background="@drawable/kotak_ungu"
                     android:fontFamily="@font/calibri"
                     android:text="@string/cetak"
                     android:textColor="@color/colorWhite"

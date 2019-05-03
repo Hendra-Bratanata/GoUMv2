@@ -266,7 +266,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@color/colorDarkPurple"
+                android:background="@drawable/kotak_ungu"
                 android:fontFamily="@font/calibri"
                 android:text="REGISTER"
                 android:textAllCaps="false"

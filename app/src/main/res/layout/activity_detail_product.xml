@@ -99,7 +99,7 @@
                     android:layout_gravity="center_vertical"
                     android:padding="8dp"
                     android:text="@string/_0"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorDarkPurple"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
