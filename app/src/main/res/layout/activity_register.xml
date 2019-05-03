@@ -225,7 +225,7 @@
                         android:id="@+id/btn_register"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorDarkPurple"
+                        android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
                         android:gravity="center"
                         android:text="@string/lanjutkan"

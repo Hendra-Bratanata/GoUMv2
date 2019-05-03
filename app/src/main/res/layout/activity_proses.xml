@@ -178,7 +178,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="30dp"
+            android:paddingBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -188,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@color/colorDarkPurple"
+                android:background="@drawable/kotak_ungu"
                 android:fontFamily="@font/calibri"
                 android:text="BATAL"
                 android:textAllCaps="false"
@@ -202,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:background="@color/colorDarkPurple"
+                android:background="@drawable/kotak_ungu"
                 android:fontFamily="@font/calibri"
                 android:text="KONFIRMASI"
                 android:textAllCaps="false"

@@ -43,7 +43,7 @@
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/upload_file"
                 android:scaleType="centerCrop"
-                android:src="@color/colorAccent"/>
+                android:src="@drawable/npwp"/>
 
             <Button
                 android:id="@+id/btn_pilih_npwp"

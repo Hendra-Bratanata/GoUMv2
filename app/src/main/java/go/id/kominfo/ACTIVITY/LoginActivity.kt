@@ -44,9 +44,9 @@ class LoginActivity : AppCompatActivity(), UserView {
                     println("USER: ${user.konfirmasi}")
 
                     if (user.konfirmasi.equals("y", true)) {
-                        pref.save("LOGIN",true)
-                        pref.save("noHP","$hp")
-                        pref.save("kd_umkm","${user.kdUmkm.toString()}")
+                        pref.save("LOGIN", true)
+                        pref.save("noHP", "$hp")
+                        pref.save("kd_umkm", "${user.kdUmkm.toString()}")
                         startActivity<MainActivity>()
                         this.finish()
                     } else {
@@ -63,10 +63,10 @@ class LoginActivity : AppCompatActivity(), UserView {
         }
 
 
-if (ada){
-    tv_pesan_login.setText("Nomor tidak terdaftar ")
-    tv_pesan_login.visibility = View.VISIBLE
-}
+        if (ada) {
+            tv_pesan_login.setText("Nomor tidak terdaftar ")
+            tv_pesan_login.visibility = View.VISIBLE
+        }
 
         progressBar.visibility = View.GONE
     }
@@ -75,12 +75,12 @@ if (ada){
     lateinit var presenter: UserPresenter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
-    lateinit var pref:SharedPreference
+    lateinit var pref: SharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-         pref = SharedPreference(this)
+        pref = SharedPreference(this)
         val loading = progressBar
         loading.visibility = View.INVISIBLE
 
