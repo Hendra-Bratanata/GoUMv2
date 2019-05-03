@@ -293,7 +293,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity<StatistikActivity>()
             }
             R.id.nav_toko -> {
-                startActivity<SalesOrderActivity>()
+                startActivity<ProfilTokoActivity>()
             }
             R.id.nav_logOut -> {
                 sharedPreferences.clearSharedPreference()

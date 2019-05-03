@@ -12,7 +12,7 @@
     card_view:cardCornerRadius="4dp">
 
     <LinearLayout
-        android:id="@+id/cv_file"
+        android:id="@+id/cv_file_ktp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -29,14 +29,15 @@
             android:textStyle="bold" />
 
         <RelativeLayout
-            android:id="@+id/item_upload_file"
+            android:id="@+id/item_upload_file_ktp"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+
             android:background="@color/colorWhite"
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/img_item_file"
+                android:id="@+id/img_item_file_ktp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentStart="true"
@@ -47,14 +48,14 @@
                 android:src="@color/colorAccent" />
 
             <Button
-                android:id="@+id/btn_pilih"
+                android:id="@+id/btn_pilih_ktp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@id/img_item_file"
-                android:layout_toRightOf="@id/img_item_file"
+                android:layout_toEndOf="@id/img_item_file_ktp"
+                android:layout_toRightOf="@id/img_item_file_ktp"
                 android:background="@color/colorDarkPurple"
                 android:text="@string/pilih_file"
                 android:textColor="@color/colorWhite"
@@ -62,24 +63,26 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btn_kirim"
+                android:id="@+id/btn_kirim_ktp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_pilih"
+                android:layout_below="@id/btn_pilih_ktp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@id/img_item_file"
+                android:layout_toEndOf="@id/img_item_file_ktp"
                 android:background="@color/colorDarkPurple"
                 android:text="@string/kirim"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv_nama_file"
+                android:id="@+id/tv_nama_file_ktp"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_item_file"
+                android:layout_below="@id/img_item_file_ktp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:gravity="center"
@@ -87,31 +90,6 @@
                 android:text="@string/img_27042019_jpg" />
         </RelativeLayout>
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingBottom="8dp"-->
-        <!--android:paddingLeft="8dp"-->
-        <!--android:paddingRight="8dp">-->
-
-        <!--<Button-->
-        <!--android:id="@+id/btn_set_detail"-->
-        <!--style="@style/Widget.AppCompat.Button.Colored"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="@string/detail"/>-->
-
-        <!--<Button-->
-        <!--android:id="@+id/btn_set_share"-->
-        <!--style="@style/Widget.AppCompat.Button.Colored"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="@string/share"/>-->
-
-        <!--</LinearLayout>-->
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

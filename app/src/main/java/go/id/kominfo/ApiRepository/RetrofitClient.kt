@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private var retrofit:Retrofit? = null
-    private var  Url : String = "http://ichiro.tech/"
+    private var  Url : String = "http://35.196.161.29/goumkm/api/"
 
     fun getClient(): Retrofit?{
         if(retrofit == null){

@@ -70,4 +70,9 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getUmkm(hp:String):String{
+        val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$hp"
+        Log.d("data",Url)
+        return  Url
+    }
 }

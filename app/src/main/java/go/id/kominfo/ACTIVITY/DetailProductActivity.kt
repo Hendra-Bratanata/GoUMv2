@@ -60,6 +60,10 @@ class DetailProductActivity : AppCompatActivity() {
             }
 
         }
+
+        btn_add_to_cart.setOnClickListener {
+
+        }
       
 
     }
