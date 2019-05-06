@@ -27,6 +27,7 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
+
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="fill_parent"
@@ -34,22 +35,38 @@
         android:layout_above="@+id/footer"
         android:fillViewport="true"
         >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <include layout="@layout/item_ktp"/>
-            <include layout="@layout/item_npwp"/>
-            <include layout="@layout/item_foto_iumk"/>
-            <include layout="@layout/item_foto_toko"/>
-            <include layout="@layout/item_foto_lainnya"/>
 
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutReg2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <include layout="@layout/item_ktp"/>
+                <include layout="@layout/item_npwp"/>
+                <include layout="@layout/item_foto_iumk"/>
+                <include layout="@layout/item_foto_toko"/>
+                <include layout="@layout/item_foto_lainnya"/>
+
+
+
+            </LinearLayout>
+
     </ScrollView>
+
+
     <ProgressBar
+        android:id="@+id/progressBarReg"
         android:layout_width="150dp"
         android:layout_height="1500dp"
-        android:id="@+id/progressBarReg"
-        android:layout_centerInParent="true"/>
+        android:layout_alignBottom="@+id/footer"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/btn_selesai_reg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selesai"
+        android:textSize="16sp"
+
+        android:layout_above="@id/footer"/>
 </RelativeLayout>

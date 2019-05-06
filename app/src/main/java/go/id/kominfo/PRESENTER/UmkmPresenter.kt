@@ -9,12 +9,21 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class UmkmPresenter(val apiReposirtory: ApiReposirtory,val gson: Gson,val umkmView: UmkmView){
-    fun getUmkmData(hp:String){
+    fun getUmkmDataHp(hp:String){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getUmkm(hp)),UmkmResponse::class.java)
 
             uiThread {
-                umkmView.showData(data.data)
+                umkmView.showDataUmkm(data.data)
+            }
+        }
+    }
+    fun getUmkmDataKdUmkm(hp:String){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getUmkm(hp)),UmkmResponse::class.java)
+
+            uiThread {
+                umkmView.showDataUmkm(data.data)
             }
         }
     }

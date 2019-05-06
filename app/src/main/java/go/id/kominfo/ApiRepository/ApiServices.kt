@@ -13,50 +13,25 @@ interface ApiServices {
     @Multipart
     @POST("register_part2.php")
     fun addImages1(
-            @Part foto:MultipartBody.Part,
-            @Part("kd_umkm") kdumkm:RequestBody)
+            @Part foto: MultipartBody.Part,
+            @Part("kd_umkm") kdumkm: RequestBody)
 
-            :Call<DataRespon>
-    @Multipart
-    @POST("register_part2.php")
-    fun addImages2(
-            @Part foto:MultipartBody.Part,
-            @Part foto2:MultipartBody.Part,
-            @Part("kd_umkm") kdumkm:RequestBody)
-
-            :Call<DataRespon>
+            : Call<DataRespon>
 
     @Multipart
     @POST("register_part2.php")
-    fun addImages3(
-            @Part foto:MultipartBody.Part,
-            @Part foto2:MultipartBody.Part,
-            @Part foto3:MultipartBody.Part,
-            @Part("kd_umkm") kdumkm:RequestBody)
+    fun addProduk(
+            @Part foto: MultipartBody.Part,
+            @Part("kd_umkm") kdumkm: RequestBody,
+            @Part("kd_kategori") kd_kategori: RequestBody,
+            @Part("nm_produk") nm_produk: RequestBody,
+            @Part("harga") harga: RequestBody,
+            @Part("diskon") diskon: RequestBody,
+            @Part("exp_diskon") exp_diskon: RequestBody,
+            @Part("deskripsi") deskripsi: RequestBody)
 
-            :Call<DataRespon>
 
-    @Multipart
-    @POST("register_part2.php")
-    fun addImages4(
-            @Part foto:MultipartBody.Part,
-            @Part foto2:MultipartBody.Part,
-            @Part foto3:MultipartBody.Part,
-            @Part foto4:MultipartBody.Part,
-            @Part("kd_umkm") kdumkm:RequestBody)
+            : Call<DataRespon>
 
-            :Call<DataRespon>
-
-    @Multipart
-    @POST("register_part2.php")
-    fun addImages5(
-            @Part foto:MultipartBody.Part,
-            @Part foto2:MultipartBody.Part,
-            @Part foto3:MultipartBody.Part,
-            @Part foto4:MultipartBody.Part,
-            @Part foto5:MultipartBody.Part,
-            @Part("kd_umkm") kdumkm:RequestBody)
-
-            :Call<DataRespon>
 
 }
