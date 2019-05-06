@@ -5,6 +5,16 @@ import go.id.kominfo.BuildConfig
 import java.net.URLEncoder
 
 object PromoAPI {
+    fun getKatagori(): String {
+        val Url = BuildConfig.BASE_URL + "index_kategori.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getProduk(): String {
+        val Url = BuildConfig.BASE_URL + "produk.php"
+        Log.d("data", Url)
+        return Url
+    }
     fun getPromo(): String {
         val Url = BuildConfig.BASE_URL + "promo.php"
         Log.d("data", Url)
@@ -72,6 +82,11 @@ object PromoAPI {
     }
     fun getUmkm(hp:String):String{
         val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$hp"
+        Log.d("data",Url)
+        return  Url
+    }
+    fun getUmkmKd(kd:String):String{
+        val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$kd"
         Log.d("data",Url)
         return  Url
     }

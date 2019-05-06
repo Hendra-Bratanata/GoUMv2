@@ -48,7 +48,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn_login"
+                        android:id="@+id/btn_aturToko"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/btn_register"
+                        android:id="@+id/btn_TambahProduk"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"

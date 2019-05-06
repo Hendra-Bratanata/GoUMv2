@@ -67,29 +67,25 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/edt_jenis_produk"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/kotak"
-                    android:hint="Jenis Produk"
-                    android:inputType="text"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/edt_harga_produk"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="8dp"
+                android:id="@+id/edt_harga_produk"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kotak"
+                android:hint="Harga Produk"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+                <Spinner
                     android:background="@drawable/kotak"
-                    android:hint="Harga Produk"
-                    android:inputType="text"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp" />
+                    android:id="@+id/spinnerTambahProduk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem=""/>
 
             </LinearLayout>
 
@@ -111,23 +107,37 @@
                 android:textStyle="bold" />
 
             <EditText
+          android:visibility="gone"
                 android:id="@+id/edt_promo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/kotak"
                 android:gravity="center"
-                android:hint="10%"
-                android:inputType="text"
+                android:hint="10"
+                android:inputType="number"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="%"
+                android:textSize="26dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+            />
 
-            <CheckBox
-                android:id="@+id/checkbox_promo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="15dp" />
+               <CheckBox
+                   android:buttonTint="@color/colorDarkPurple"
+                   android:checked="false"
+
+                   android:id="@+id/checkbox_promo"
+                   android:layout_width="40dp"
+                   android:layout_height="40dp"
+                   android:layout_marginStart="15dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,6 +146,9 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -149,95 +162,100 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
                 android:paddingEnd="10dp"
-                android:text="Periode"
+                android:text="Batas Akhir Periode"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!--<EditText-->
+                <!--android:id="@+id/edt_tanggal_mulai"-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@drawable/kotak"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="28"-->
+                <!--android:inputType="date"-->
+                <!--android:text=""-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edt_bulan_mulai"-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@drawable/kotak"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="04"-->
+                <!--android:inputType="date"-->
+                <!--android:text=""-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edt_tahun_mulai"-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@drawable/kotak"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="19"-->
+                <!--android:inputType="date"-->
+                <!--android:text=""-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="6dp"-->
+                <!--android:paddingEnd="10dp"-->
+                <!--android:text="s/d"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
+
             <EditText
-                android:id="@+id/edt_tanggal"
+                android:visibility="gone"
+                android:id="@+id/edt_tangga_akhir"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/kotak"
                 android:gravity="center"
                 android:hint="28"
-                android:inputType="text"
+                android:inputType="date"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/edt_bulantahun"
+                android:id="@+id/edt_bulan_akhir"
                 android:layout_width="25dp"
+                android:visibility="gone"
                 android:layout_height="25dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/kotak"
-                android:gravity="center"
-                android:hint="04"
-                android:inputType="text"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_tahun"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/kotak"
-                android:gravity="center"
-                android:hint="19"
-                android:inputType="text"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:paddingEnd="10dp"
-                android:text="s/d"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edt_tanggal2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/kotak"
-                android:gravity="center"
-                android:hint="28"
-                android:inputType="text"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_bulan2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:clickable="false"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/kotak"
                 android:gravity="center"
                 android:hint="05"
-                android:inputType="text"
+                android:inputType="date"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/edt_tahun2"
+                android:id="@+id/edt_tahun_akhir"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:visibility="gone"
+                android:clickable="false"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/kotak"
                 android:gravity="center"
                 android:hint="19"
-                android:inputType="text"
+                android:inputType="date"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
@@ -253,26 +271,29 @@
             android:padding="10sp">
 
             <EditText
+                android:id="@+id/edt_deskripsi_produk"
                 android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
+                android:inputType="numberDecimal"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:background="@drawable/kotak_putih"
                 android:hint="@string/deskripsi_dodol_tenjo"
                 android:gravity="start"/>
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_TambahProdukBaru"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/kotak_ungu"
                 android:fontFamily="@font/calibri"
-                android:text="REGISTER"
+                android:text="Tambah"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </LinearLayout>
 
@@ -294,4 +315,10 @@
     </LinearLayout>
 
 
+<ProgressBar
+    android:visibility="gone"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_centerInParent="true"
+    android:id="@+id/progresBarProduk"/>
 </RelativeLayout>

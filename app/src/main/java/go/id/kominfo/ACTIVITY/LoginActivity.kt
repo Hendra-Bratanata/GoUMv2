@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.View.*
 import android.view.Window
 import com.google.gson.Gson
 import go.id.kominfo.ApiRepository.ApiReposirtory
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity(), UserView {
     lateinit var confirm: String
 
 
-    override fun showData(listUser: List<User>) {
+    override fun showDataUser(listUser: List<User>) {
         var ada = true
 
         for (i in listUser.indices) {
@@ -51,11 +52,11 @@ class LoginActivity : AppCompatActivity(), UserView {
                         this.finish()
                     } else {
                         tv_pesan_login.setText("Pendaftaran anda Belum dikonfirmasi")
-                        tv_pesan_login.visibility = View.VISIBLE
+                        tv_pesan_login.visibility = VISIBLE
                     }
                 } else if (user.pass != pass) {
                     tv_pesan_login.text = "Password Salah"
-                    tv_pesan_login.visibility = View.VISIBLE
+                    tv_pesan_login.visibility = VISIBLE
 
                 }
 
@@ -65,10 +66,10 @@ class LoginActivity : AppCompatActivity(), UserView {
 
         if (ada) {
             tv_pesan_login.setText("Nomor tidak terdaftar ")
-            tv_pesan_login.visibility = View.VISIBLE
+            tv_pesan_login.visibility = VISIBLE
         }
 
-        progressBar.visibility = View.GONE
+        progressBar.visibility = GONE
     }
 
     internal lateinit var window: Window
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity(), UserView {
         setContentView(R.layout.activity_login)
         pref = SharedPreference(this)
         val loading = progressBar
-        loading.visibility = View.INVISIBLE
+        loading.visibility = INVISIBLE
 
 
         if (Build.VERSION.SDK_INT >= 21) { //ganti warna status bar diatas OS lolipop
@@ -97,16 +98,18 @@ class LoginActivity : AppCompatActivity(), UserView {
 
 
         btn_login.setOnClickListener {
-            loading.visibility = View.VISIBLE
+            loading.visibility = VISIBLE
 
             hp = edt_phonelogin.text.toString()
 
             if (edt_phonelogin.text.isNullOrBlank()) {
                 edt_phonelogin.setError("Tidak Boleh Kosong")
+                loading.visibility = GONE
             } else {
 
                 if (hp.length < 12 || hp.length > 13) {
                     edt_phonelogin.setError("Nomor Tidak Valid")
+                    loading.visibility = GONE
 
                 } else {
 

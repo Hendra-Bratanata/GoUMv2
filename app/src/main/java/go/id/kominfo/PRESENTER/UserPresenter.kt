@@ -13,7 +13,7 @@ class UserPresenter(val api:ApiReposirtory,val gson: Gson,val view:UserView){
         doAsync {
             val data = gson.fromJson(api.doRequest(PromoAPI.getUser()),UserResponse::class.java)
             uiThread {
-                view.showData(data.data)
+                view.showDataUser(data.data)
             }
         }
     }
