@@ -15,9 +15,9 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:src="@drawable/rectangle"
+            android:fitsSystemWindows="true"
             android:scaleType="fitXY"
-            android:fitsSystemWindows="true"/>
+            android:src="@drawable/rectangle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,12 +39,28 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_deskripsi_produk_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/deskripsi_produk"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <View
+                android:layout_marginTop="4dp"
+                android:background="#b9bdbf"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:visibility="visible"/>
+
+            <TextView
                 android:id="@+id/tv_deskripsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/description"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorBlack" />
 
             <LinearLayout
                 android:id="@+id/linear_horizontal"
@@ -85,11 +101,11 @@
 
                 <ImageButton
                     android:id="@+id/btnMin"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/minus"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/minus"
                     android:src="@drawable/ic_remove_square" />
 
                 <TextView
@@ -105,11 +121,11 @@
 
                 <ImageButton
                     android:id="@+id/btnAdd"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/plus"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@string/plus"
                     android:src="@drawable/ic_add_square" />
 
             </LinearLayout>
@@ -123,7 +139,6 @@
                 <Button
                     android:id="@+id/btn_add_to_cart"
                     android:layout_width="220dp"
-                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:background="@color/colorDarkPurple"
                     android:fontFamily="@font/calibri"
@@ -131,7 +146,8 @@
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <LinearLayout
@@ -190,9 +206,10 @@
                             <Button
                                 android:id="@+id/btn_login"
                                 style="?android:attr/buttonBarButtonStyle"
-                                android:layout_width="125dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/kotak_kosong"
                                 android:drawableStart="@drawable/ic_wa"
                                 android:fontFamily="@font/calibri"
@@ -207,8 +224,9 @@
                             <Button
                                 android:id="@+id/btn_register"
                                 style="?android:attr/buttonBarButtonStyle"
-                                android:layout_width="125dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:background="@drawable/kotak_kosong"
                                 android:fontFamily="@font/calibri"
                                 android:text="@string/detail"
@@ -221,54 +239,54 @@
                 </LinearLayout>
 
                 <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginStart="4dp"-->
-                    <!--android:layout_marginTop="4dp"-->
-                    <!--android:layout_marginEnd="4dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:orientation="horizontal">-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="4dp"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_marginEnd="4dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:orientation="horizontal">-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tv_transaksi"-->
-                        <!--android:layout_width="120dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginEnd="4dp"-->
-                        <!--android:background="@drawable/kotak_ungu"-->
-                        <!--android:fontFamily="@font/calibri"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="@string/transaksi_sukses"-->
-                        <!--android:textAllCaps="false"-->
-                        <!--android:textColor="@color/colorWhite"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textStyle="bold" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/tv_transaksi"-->
+                <!--android:layout_width="120dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="4dp"-->
+                <!--android:background="@drawable/kotak_ungu"-->
+                <!--android:fontFamily="@font/calibri"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/transaksi_sukses"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tv_pesan_dibalas"-->
-                        <!--android:layout_width="120dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginEnd="4dp"-->
-                        <!--android:background="@drawable/kotak_ungu"-->
-                        <!--android:fontFamily="@font/calibri"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="@string/pesan_dibalas"-->
-                        <!--android:textAllCaps="false"-->
-                        <!--android:textColor="@color/colorWhite"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textStyle="bold" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/tv_pesan_dibalas"-->
+                <!--android:layout_width="120dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="4dp"-->
+                <!--android:background="@drawable/kotak_ungu"-->
+                <!--android:fontFamily="@font/calibri"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/pesan_dibalas"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tv_diskusi_dibalas"-->
-                        <!--android:layout_width="120dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@drawable/kotak_ungu"-->
-                        <!--android:fontFamily="@font/calibri"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="@string/chat_dibalas"-->
-                        <!--android:textAllCaps="false"-->
-                        <!--android:textColor="@color/colorWhite"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textStyle="bold" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/tv_diskusi_dibalas"-->
+                <!--android:layout_width="120dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/kotak_ungu"-->
+                <!--android:fontFamily="@font/calibri"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/chat_dibalas"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
                 <!--</LinearLayout>-->
             </LinearLayout>
 

@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/calibri"
                 android:maxLines="2"
-                android:text="Promo buy one get one bagi member go UMKM"
+                android:text="Promo buy one get one bagi member go-um"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp" />

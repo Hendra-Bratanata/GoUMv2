@@ -54,7 +54,7 @@
                         android:contentDescription="@string/logo_umkm"
                         android:layout_width="120dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/logonewumkm"/>
+                        android:src="@drawable/goumbaru"/>
 
                     <TextView
                         android:id="@+id/nama_toko"

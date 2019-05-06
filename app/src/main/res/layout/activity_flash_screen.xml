@@ -12,23 +12,16 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/img_logo_tangerang"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tangerang" />
+        android:layout_height="160dp"
+        android:src="@drawable/goumkab" />
 
-    <ImageView
-        android:layout_centerHorizontal="true"
-        android:id="@+id/img_logo_umkm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_logo_tangerang"
-        android:src="@drawable/logonewumkm" />
 
     <TextView
         android:id="@+id/tv_powered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/powered_by_diskominfo"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorDarkPurple"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"/>
 </RelativeLayout>
