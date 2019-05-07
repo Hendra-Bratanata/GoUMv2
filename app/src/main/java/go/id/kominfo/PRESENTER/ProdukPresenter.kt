@@ -24,5 +24,16 @@ class ProdukPresenter(val view: ProdukView, val gson: Gson, val apiReposirtory: 
 
        }
     }
+    fun getProdukByKdUmkm(id:String){
+        doAsync {
+            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getProdukbyKode(id))
+                    , PromoResponse::class.java)
+            uiThread {
+                view.showDataProduk(data.data)
+
+            }
+
+        }
+    }
 
 }

@@ -19,7 +19,7 @@ interface ApiServices {
             : Call<DataRespon>
 
     @Multipart
-    @POST("register_part2.php")
+    @POST("tambah_produk_user.php")
     fun addProduk(
             @Part foto: MultipartBody.Part,
             @Part("kd_umkm") kdumkm: RequestBody,

@@ -52,6 +52,8 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     lateinit var apiReposirtory: ApiReposirtory
     lateinit var pref : SharedPreference
     lateinit var produkAdapter: ProdukAdapter
+    var kodeRequest = 0
+    lateinit var umkm :Umkm
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,9 +61,13 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
         setContentView(R.layout.toko)
         pref = SharedPreference(this)
         val hp = pref.getValueString("noHP")
+
+        kodeRequest = intent.getIntExtra("kodeRequest",0)
+
+
         listProduk = mutableListOf()
         produkAdapter = ProdukAdapter(listProduk,{
-            startActivity<DetailProductActivity>("detail" to it )
+            startActivity<DetailProductActivity>("detail" to it,"detailCode" to 12 )
         })
         rv_produk_terjual_toko.layoutManager = GridLayoutManager(this,2)
         rv_produk_terjual_toko.adapter = produkAdapter
@@ -75,10 +81,17 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
         apiReposirtory = ApiReposirtory()
 
         presenter = UmkmPresenter(apiReposirtory,gson,this)
-        presenter.getUmkmDataHp(hp!!)
+
+        if(kodeRequest == 1001){
+            presenter.getUmkmDataHp(hp!!)
+        }
+        if(kodeRequest == 1002){
+            presenter.getUmkmDataKdUmkm(umkm.kdUmkm)
+        }
+
 
         presenterProduk = ProdukPresenter(this,gson,apiReposirtory)
-        presenterProduk.getProduk()
+        pref.getValueString("kd_umkm")?.let { presenterProduk.getProdukByKdUmkm(it) }
 
         btn_TambahProduk.setOnClickListener {
       startActivity<NewProductActivity>()

@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_nama_barang_keranjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -31,7 +32,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/img_pesanan1"
+                android:id="@+id/img_Gambar_keranjang"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:contentDescription="@string/gambar_pesanan"
@@ -39,14 +40,14 @@
                 android:src="@drawable/ic_image_white_24dp" />
 
             <ImageView
-                android:id="@+id/img_remove1"
+                android:id="@+id/img_min_keranjang"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_remove_square" />
 
             <TextView
-                android:id="@+id/tv_quantity1"
+                android:id="@+id/tv_quantity_keranjang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -57,14 +58,14 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/img_add1"
+                android:id="@+id/img_add_keranjang"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_add_square" />
 
             <TextView
-                android:id="@+id/tv_harga1"
+                android:id="@+id/tv_harga_kerjang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

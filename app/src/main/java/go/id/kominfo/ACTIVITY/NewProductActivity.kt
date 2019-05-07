@@ -23,7 +23,6 @@ import go.id.kominfo.PRESENTER.KatagoriPresenter
 
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_new_product.*
-import kotlinx.android.synthetic.main.register_part2.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -36,7 +35,9 @@ import java.io.File
 
 class NewProductActivity : AppCompatActivity(),KatagoriView {
     override fun addKatagori(listKatagory: List<Katagori>) {
+
         for (i in listKatagory.indices) {
+            listKatagoryId.add(listKatagory[i].kodeKatagori.toString())
             listItem.add(listKatagory[i].namaKatagori.toString())
         }
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, listItem)
@@ -50,6 +51,8 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
     lateinit var call: Call<DataRespon>
 
     lateinit var listKatagory: MutableList<Katagori>
+    lateinit var listKatagoryId: MutableList<String>
+
     //    lateinit var spinner: Spinner
     lateinit var listItem: MutableList<String>
     lateinit var file: File
@@ -62,6 +65,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
         setContentView(R.layout.activity_new_product)
         pref = SharedPreference(this)
         listKatagory = mutableListOf()
+        listKatagoryId = mutableListOf()
         gson = Gson()
         apiReposirtory = ApiReposirtory()
 
@@ -69,6 +73,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
 
 //        spinner = spinner()
         listItem = mutableListOf()
+
 
 
         presenter = KatagoriPresenter(this, gson, apiReposirtory)
@@ -94,16 +99,17 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
         }
 
         btn_TambahProdukBaru.setOnClickListener {
+
             val kd_umkm = pref.getValueString("kd_umkm")
-            val katagoriItem= spinnerTambahProduk.selectedItem.toString()
+            val katagoriItem= listKatagoryId[spinnerTambahProduk.selectedItemPosition]
             val nm_produk = edt_nama_produk.text.toString()
             val harga = edt_harga_produk.text.toString()
-            val diskon:String? = checkbox_promo.isChecked.toString()
+            val diskon:String? = edt_promo.text.toString()
             val tanggalAkhir:String? = edt_tangga_akhir.text.toString()
             val bulanAkhir:String? = edt_bulan_akhir.text.toString()
             val tahunAkhir:String?= edt_tahun_akhir.text.toString()
 
-            val exp_diskon = "$tanggalAkhir-$bulanAkhir-$tahunAkhir"
+            val exp_diskon = "20$tahunAkhir-$bulanAkhir-$tanggalAkhir"
             val deskripsi = edt_deskripsi_produk.text.toString()
 
             if(nm_produk.isEmpty()){
@@ -117,6 +123,13 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
             else{
                 uploadImanges(kd_umkm,katagoriItem,nm_produk,harga,diskon,exp_diskon,deskripsi)
                 progresBarProduk.visibility = View.VISIBLE
+                println("kd_umkm: $kd_umkm")
+                println("katagori Id: $katagoriItem")
+                println("nama Produk: $nm_produk")
+                println("Harga: $harga")
+                println("diskon: $diskon")
+                println("exp diskon: $exp_diskon")
+                println(" deskripsi: $deskripsi")
             }
 
         }
@@ -194,12 +207,13 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
         val apiServices = RetrofitClient.getApiServices()
 
         call = apiServices.addProduk(multipartBody,kd_umkm,ktgori,namaProduk,harga,diskon,exp_diskon,deskripsi)
+        println("CALL ${call}")
 
 
         call.enqueue(object : Callback<DataRespon> {
 
             override fun onFailure(call: Call<DataRespon>, t: Throwable) {
-                println("ERRROO ${t.message}")
+                println("ERRROO ${t}")
                 progresBarProduk.visibility = View.GONE
 
                 toast("Gagal Mengupload data").show()
@@ -209,6 +223,8 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
 
             override fun onResponse(call: Call<DataRespon>, response: Response<DataRespon>) {
                 println("Ada Di Onresponse")
+                println("response $response")
+                println("Call $call")
                 val data: DataRespon? = response.body()
                 toast("Permintaan anda Akan segera dikonfirmasi, Terima Kasih").duration = Toast.LENGTH_LONG
 

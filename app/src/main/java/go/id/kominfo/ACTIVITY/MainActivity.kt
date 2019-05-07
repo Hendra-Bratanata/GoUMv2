@@ -293,7 +293,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity<StatistikActivity>()
             }
             R.id.nav_toko -> {
-                startActivity<TokoActivity>()
+                startActivity<TokoActivity>("kodeRequest" to 1001)
             }
             R.id.nav_logOut -> {
                 sharedPreferences.clearSharedPreference()

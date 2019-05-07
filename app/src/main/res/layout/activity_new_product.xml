@@ -275,7 +275,6 @@
                 android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:inputType="numberDecimal"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:background="@drawable/kotak_putih"
                 android:hint="@string/deskripsi_dodol_tenjo"
