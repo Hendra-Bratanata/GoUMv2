@@ -10,6 +10,11 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getProdukbyKode(id:String): String {
+        val Url = BuildConfig.BASE_URL + "produk_by_id.php?kd_umkm=$id"
+        Log.d("data", Url)
+        return Url
+    }
     fun getProduk(): String {
         val Url = BuildConfig.BASE_URL + "produk.php"
         Log.d("data", Url)
@@ -80,13 +85,13 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
-    fun getUmkm(hp:String):String{
-        val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$hp"
+    fun getUmkm(kdUmkm:String):String{
+        val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$kdUmkm"
         Log.d("data",Url)
         return  Url
     }
     fun getUmkmKd(kd:String):String{
-        val Url = BuildConfig.BASE_URL+"user_umkm_hp.php?hp=$kd"
+        val Url = BuildConfig.BASE_URL+"user_umkm_kdUmkm.php?kdUmkm=$kd"
         Log.d("data",Url)
         return  Url
     }

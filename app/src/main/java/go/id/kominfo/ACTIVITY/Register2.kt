@@ -250,11 +250,8 @@ class Register2 : AppCompatActivity(), UmkmView {
             override fun onResponse(call: Call<DataRespon>, response: Response<DataRespon>) {
                 println("Ada Di Onresponse")
                 val data: DataRespon? = response.body()
-                toast("Permintaan anda Akan segera dikonfirmasi, Terima Kasih").duration = Toast.LENGTH_LONG
-                println("Upload ${data?.pesan0} ${data?.pesan1}  ${data?.pesan2}  ${data?.pesan2} ${data?.pesan4}")
-                println("Upload ${data?.kode0} ${data?.kode1}  ${data?.kode2}  ${data?.kode3} ${data?.kode4}")
-                sukses = true
-                sukses(code)
+                toast("${data!!.pesan}").duration = Toast.LENGTH_LONG
+                println("Upload ${data?.pesan}")
                 progressBarReg.visibility = GONE
 
             }

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp">
+
+
+        <ImageView
+                android:scaleType="centerCrop"
+                android:layout_margin="3dp"
+                android:id="@+id/imageItem"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+        />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    android:layout_margin="1dp"
+                    android:textStyle="bold"
+                    android:id="@+id/tvNamaItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_vertical"
+                    tools:text="Barcelona FC"/>
+            <TextView
+                    android:textColor="#000"
+                    android:id="@+id/tvHargaItem"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_margin="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:text="Barcelona FC"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/tvJumlahItem"
+                    android:textStyle="bold"
+                    android:layout_toLeftOf="@+id/minPesanan"
+                    android:textSize="12sp"
+                    android:textColor="#000"
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:text="Barcelona FC"/>
+            <Button
+                    android:text="+"
+                    android:textAlignment="center"
+                    android:textSize="10sp"
+                    android:textColor="#fff"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/plusPesanan"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+
+            />
+            <Button
+                    android:text="-"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="#fff"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/minPesanan"
+                   android:layout_toLeftOf="@+id/plusPesanan"
+                    android:layout_marginRight="20dp"
+
+            />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

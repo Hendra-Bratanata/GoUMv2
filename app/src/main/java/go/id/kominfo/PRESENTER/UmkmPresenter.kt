@@ -18,9 +18,9 @@ class UmkmPresenter(val apiReposirtory: ApiReposirtory,val gson: Gson,val umkmVi
             }
         }
     }
-    fun getUmkmDataKdUmkm(hp:String){
+    fun getUmkmDataKdUmkm(kdUmkm:String){
         doAsync {
-            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getUmkm(hp)),UmkmResponse::class.java)
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getUmkmKd(kdUmkm)),UmkmResponse::class.java)
 
             uiThread {
                 umkmView.showDataUmkm(data.data)
