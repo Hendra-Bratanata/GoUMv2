@@ -26,20 +26,20 @@ object PromoAPI {
         return Url
     }
 
-    fun getfashionPria(): String {
-        val Url = BuildConfig.BASE_URL + "kategori/fashion_pria.php"
+    fun getFashion(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/fashion.php"
         Log.d("data", Url)
         return Url
     }
 
-    fun getfashionWanita(): String {
-        val Url = BuildConfig.BASE_URL + "kategori/fashion_wanita.php"
+    fun getCraft(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/craft.php"
         Log.d("data", Url)
         return Url
     }
 
-    fun getMinuman(): String {
-        val Url = BuildConfig.BASE_URL + "kategori/minuman.php"
+    fun getKuliner(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/kuliner.php"
         Log.d("data", Url)
         return Url
     }

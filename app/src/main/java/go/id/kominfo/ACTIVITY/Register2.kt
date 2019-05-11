@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.item_foto_toko.*
 import kotlinx.android.synthetic.main.item_ktp.*
 import kotlinx.android.synthetic.main.item_npwp.*
 import kotlinx.android.synthetic.main.register_part2.*
+import kotlinx.android.synthetic.main.toko.*
 import okhttp3.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -77,12 +78,12 @@ class Register2 : AppCompatActivity(), UmkmView {
             getImage(2)
             btn_kirim_npwp.isClickable = true
         }
-        ////        btn_pilih_reg3.setOnClickListener {
-        ////            getImage(3)
-        ////        }
-        ////        btn_pilih_reg4.setOnClickListener {
-        ////            getImage(4)
-        ////        }
+                btn_pilih_iumk.setOnClickListener {
+                    getImage(3)
+                }
+                btn_pilih_foto.setOnClickListener {
+                    getImage(4)
+                }
         ////        btn_pilih_reg5.setOnClickListener {
         ////            getImage(5)
         ////        }
@@ -93,7 +94,7 @@ class Register2 : AppCompatActivity(), UmkmView {
         btn_kirim_ktp.setOnClickListener {
             uploadImanges(1)
             progressBarReg.visibility = VISIBLE
-            println("Kode umkm: $kode")
+
 
 
 
@@ -102,6 +103,14 @@ class Register2 : AppCompatActivity(), UmkmView {
             uploadImanges(2)
             progressBarReg.visibility = VISIBLE
 
+        }
+        btn_kirim_iumk.setOnClickListener {
+            uploadImanges(3)
+            progressBarReg.visibility = VISIBLE
+        }
+        btn_kirim_toko.setOnClickListener {
+            uploadImanges(4)
+            progressBarReg.visibility = VISIBLE
         }
 
         btn_selesai_reg2.setOnClickListener {
@@ -118,16 +127,29 @@ class Register2 : AppCompatActivity(), UmkmView {
             btn_kirim_ktp.isClickable = false
         }
         if(sukses && code == 2 ){
+            cv_iumk.visibility= VISIBLE
             btn_kirim_npwp.setText("Terkirim")
             btn_kirim_npwp.setBackgroundColor(resources.getColor(R.color.colorHijau))
             btn_kirim_npwp.isClickable = false
+        }
+        if(sukses && code == 3 ){
+            cv_foto_toko.visibility = VISIBLE
+            btn_kirim_iumk.setText("Terkirim")
+            btn_kirim_iumk.setBackgroundColor(resources.getColor(R.color.colorHijau))
+            btn_kirim_iumk.isClickable = false
+        }
+        if(sukses && code == 4 ){
+
+            btn_kirim_toko.setText("Terkirim")
+            btn_kirim_toko.setBackgroundColor(resources.getColor(R.color.colorHijau))
+            btn_kirim_toko.isClickable = false
         }
     }
 
     private fun init() {
         //Hilangkan semua view Extra file
-//        val hp = intent.getStringExtra("noHp")
-        val hp = intent.extras.getString("noHP")
+
+        val hp = intent.extras.getString("noHp")
         gson = Gson()
         apiReposirtory = ApiReposirtory()
         presenter = UmkmPresenter(apiReposirtory, gson, this)
@@ -175,35 +197,31 @@ class Register2 : AppCompatActivity(), UmkmView {
                 img_item_file_npwp.setImageBitmap(bitmap)
                 tv_nama_file_npwp.text = file.name
                btn_kirim_npwp.visibility = VISIBLE
-                jumlahData = 2
 
 
             }
-//            if (requestCode == 3) {
-//                println("code $requestCode")
-//                getData(data, 3)
-//                val bitmap = BitmapFactory.decodeFile(file3.absolutePath, options)
-//                img_item_file3.setImageBitmap(bitmap)
-//                tv_nama_file3.text = file3.name
-//
-//                item_upload_file4.visibility = VISIBLE
-//                jumlahData = 3
-//
-//
-//            }
-//            if (requestCode == 4) {
-//                println("code $requestCode")
-//                getData(data, 4)
-//                val bitmap = BitmapFactory.decodeFile(file4.absolutePath, options)
-//                img_item_file4.setImageBitmap(bitmap)
-//                tv_nama_file4.text = file4.name
-//
-//                item_upload_file5.visibility = VISIBLE
-//
-//                jumlahData = 4
-//
-//
-//            }
+            if (requestCode == 3) {
+                println("code $requestCode")
+                getData(data, 3)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+                img_item_foto_iumk.setImageBitmap(bitmap)
+                tv_nama_file_iumk.text = file.name
+                btn_kirim_iumk.visibility = VISIBLE
+
+
+
+            }
+            if (requestCode == 4) {
+                println("code $requestCode")
+                getData(data, 4)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+                img_item_foto_toko.setImageBitmap(bitmap)
+                tv_nama_file_toko.text = file.name
+                btn_kirim_toko.visibility = VISIBLE
+
+
+
+            }
 //            if (requestCode == 5) {
 //                println("code $requestCode")
 //                getData(data, 5)
@@ -229,6 +247,12 @@ class Register2 : AppCompatActivity(), UmkmView {
         if(code == 2){
             multipartBody = MultipartBody.Part.createFormData("npwp",file.name,regBody)
         }
+        if(code == 3){
+            multipartBody = MultipartBody.Part.createFormData("iumk",file.name,regBody)
+        }
+        if(code == 4){
+            multipartBody = MultipartBody.Part.createFormData("toko",file.name,regBody)
+        }
 
 
         val apiServices = RetrofitClient.getApiServices()
@@ -252,6 +276,15 @@ class Register2 : AppCompatActivity(), UmkmView {
                 val data: DataRespon? = response.body()
                 toast("${data!!.pesan}").duration = Toast.LENGTH_LONG
                 println("Upload ${data?.pesan}")
+                if(data.pesan.equals("Sukses",true)){
+                    sukses = true
+                    sukses(code)
+
+
+                }else{
+                    sukses = false
+                }
+                println(sukses)
                 progressBarReg.visibility = GONE
 
             }
@@ -275,7 +308,7 @@ class Register2 : AppCompatActivity(), UmkmView {
             val partImg = cursor.getString(indexImg)
             file = File(partImg)
             options = BitmapFactory.Options()
-            options.inSampleSize = 16
+            options.inSampleSize = 1
         }
 
     }

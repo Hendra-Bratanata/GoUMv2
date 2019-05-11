@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import go.id.kominfo.ADAPTER.ProdukAdapter
@@ -25,10 +26,17 @@ import org.jetbrains.anko.yesButton
 
 class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     override fun showDataProduk(listProduk: List<Produk>) {
+
        this.listProduk.clear()
         this.listProduk.addAll(listProduk)
         produkAdapter.notifyDataSetChanged()
-
+        if(!listProduk.isEmpty()){
+            rv_produk_terjual_toko.visibility = View.VISIBLE
+            tv_toko_kosong.visibility =View.GONE
+        }else{
+            tv_toko_kosong.visibility = View.VISIBLE
+            rv_produk_terjual_toko.visibility = View.GONE
+        }
     }
 
     override fun showDataUmkm(listUmkm: List<Umkm>) {
@@ -72,11 +80,6 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
         rv_produk_terjual_toko.layoutManager = GridLayoutManager(this,2)
         rv_produk_terjual_toko.adapter = produkAdapter
 
-
-
-
-
-
         gson = Gson()
         apiReposirtory = ApiReposirtory()
 
@@ -95,6 +98,7 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
 
         btn_TambahProduk.setOnClickListener {
       startActivity<NewProductActivity>()
+            finish()
 
 
 

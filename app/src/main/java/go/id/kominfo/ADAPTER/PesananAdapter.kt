@@ -45,7 +45,7 @@ class PesananAdapter(val menus: List<Pesanan>, val Min:(Pesanan)->Unit, val Plus
             Picasso.get().load(menus.gambar).into(gambar)
             jumlah.text = menus.jumlah.toString()
             nama.text = menus.nama.toString()
-            harga.text = menus.harga.toString()
+            harga.text = "Rp${menus.harga}"
             Log.d("Tag", "adapter " + menus.harga)
 
             mMin.setOnClickListener {

@@ -25,7 +25,7 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
     }
     fun getFashionPria (){
         doAsync {
-            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getfashionPria())
+            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getFashion())
                     , PromoResponse::class.java)
             uiThread {
                 view.showDataPria(data.data)
@@ -36,7 +36,7 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
     }
     fun getFashionWanita (){
         doAsync {
-            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getfashionWanita())
+            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getCraft())
                     , PromoResponse::class.java)
             uiThread {
                 view.showDataWanita(data.data)
@@ -48,7 +48,7 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
 
     fun getMinuman (){
         doAsync {
-            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getMinuman())
+            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getKuliner())
                     , PromoResponse::class.java)
             uiThread {
                 view.showDataMinuman(data.data)

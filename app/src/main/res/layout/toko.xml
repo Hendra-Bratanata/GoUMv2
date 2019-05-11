@@ -108,8 +108,18 @@
             android:paddingEnd="10dp"
             android:id="@+id/rv_produk_terjual_toko"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:id="@+id/tv_toko_kosong"
+            android:text="BELUM ADA PRODUK"/>
+
     </LinearLayout>
 </ScrollView>

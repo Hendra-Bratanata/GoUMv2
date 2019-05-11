@@ -226,9 +226,11 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
                 println("response $response")
                 println("Call $call")
                 val data: DataRespon? = response.body()
-                toast("Permintaan anda Akan segera dikonfirmasi, Terima Kasih").duration = Toast.LENGTH_LONG
+                toast("Produk Telah Ditambahkan").duration = Toast.LENGTH_LONG
 
                 progresBarProduk.visibility = View.GONE
+                startActivity<TokoActivity>()
+                finish()
 
             }
 
