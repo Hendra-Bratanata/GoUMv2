@@ -60,14 +60,14 @@
 
             <TextView
                 android:id="@+id/tv_pesan_login"
-                android:visibility="gone"
-                android:background="@color/colorYoungPurple"
-                android:textColor="@color/colorred"
-                android:gravity="center"
-                android:textSize="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Pendaftaran GAGAl" />
+                android:background="@color/colorYoungPurple"
+                android:gravity="center"
+                android:text="Pendaftaran GAGAl"
+                android:textColor="@color/colorred"
+                android:textSize="20dp"
+                android:visibility="gone" />
             <!---->
             <!--<TextView-->
             <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
@@ -159,11 +159,12 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        style="@android:style/Widget.ProgressBar.Large"/>
+        android:visibility="gone" />
 </RelativeLayout>

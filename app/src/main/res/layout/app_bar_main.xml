@@ -20,24 +20,24 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageView
-                android:gravity="start"
-                android:src="@drawable/tangerang"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:gravity="start"
+                android:src="@drawable/tangerang" />
 
             <EditText
-                android:gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:hint="cari produk disini"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/kotak_search"
                 android:drawableStart="@drawable/ic_search_white_24dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorDarkPurple"
                 android:drawablePadding="10dp"
-                android:padding="10dp"/>
+                android:gravity="center_vertical"
+                android:hint="cari produk disini"
+                android:padding="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorDarkPurple" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
