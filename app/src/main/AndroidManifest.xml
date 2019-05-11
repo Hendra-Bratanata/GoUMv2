@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/goumlogoputih"
+        android:icon="@drawable/goumkab"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/goumlogoputih"
+        android:roundIcon="@drawable/goumkab"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ACTIVITY.TokoActivity"></activity>

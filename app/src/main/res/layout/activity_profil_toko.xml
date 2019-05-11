@@ -84,7 +84,8 @@
         <include layout="@layout/deskripsi_toko" />
         <include layout="@layout/informasi_toko" />
         <include layout="@layout/catatan_toko" />
-    </LinearLayout>
 
+
+    </LinearLayout>
 
 </ScrollView>
