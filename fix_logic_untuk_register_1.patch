@@ -1,0 +1,1567 @@
+Index: app/src/main/java/go/id/kominfo/ITEM/MD5.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ITEM/MD5.java	(date 1556375174976)
++++ app/src/main/java/go/id/kominfo/ITEM/MD5.java	(date 1556375174976)
+@@ -0,0 +1,25 @@
++package go.id.kominfo.ITEM;
++
++import java.security.MessageDigest;
++import java.security.NoSuchAlgorithmException;
++
++public class MD5 {
++    public String EncriptMD5(String s) {
++        try {
++            // Create MD5 Hash
++            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
++            digest.update(s.getBytes());
++            byte messageDigest[] = digest.digest();
++
++            // Create Hex String
++            StringBuffer hexString = new StringBuffer();
++            for (int i=0; i<messageDigest.length; i++)
++                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
++
++            return hexString.toString();
++        }catch (NoSuchAlgorithmException e) {
++            e.printStackTrace();
++        }
++        return "";
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/PRESENTER/PromoPresenter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/PRESENTER/PromoPresenter.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/PRESENTER/PromoPresenter.kt	(date 1556373212213)
+@@ -2,7 +2,6 @@
+ 
+ 
+ import com.google.gson.Gson
+-import go.id.kominfo.ADAPTER.BannerAdapter
+ import go.id.kominfo.ApiRepository.ApiReposirtory
+ import go.id.kominfo.ApiRepository.PromoAPI
+ import go.id.kominfo.INTERFACE.MainView
+@@ -58,13 +57,7 @@
+ 
+         }
+     }
+-    fun kirimToken (token :String,noHp :String){
+-        doAsync {
+-           apiReposirtory.doRequest(PromoAPI.kirimToken(token,noHp))
+ 
+-        }
+-
+-    }
+     fun getBenner (){
+         doAsync {
+             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getBenner())
+Index: app/src/main/java/go/id/kominfo/POJO/UserResponse.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/POJO/UserResponse.kt	(date 1556375496041)
++++ app/src/main/java/go/id/kominfo/POJO/UserResponse.kt	(date 1556375496041)
+@@ -0,0 +1,3 @@
++package go.id.kominfo.POJO
++
++data class UserResponse(val data:List<User>)
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_register.xml	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/res/layout/activity_register.xml	(date 1556370775825)
+@@ -153,6 +153,32 @@
+                         android:textColor="@color/colorBlack"
+                         android:textColorHint="@color/colorDarkPurple"
+                         android:textSize="16sp" />
++                    <EditText
++                        android:id="@+id/edt_password_register"
++                        android:layout_width="match_parent"
++                        android:layout_height="40dp"
++                        android:layout_marginBottom="8dp"
++                        android:background="@drawable/kotak"
++                        android:hint="Password"
++                        android:inputType="textPassword"
++                        android:padding="4dp"
++                        android:text=""
++                        android:textColor="@color/colorBlack"
++                        android:textColorHint="@color/colorDarkPurple"
++                        android:textSize="16sp" />
++                    <EditText
++                        android:id="@+id/edt_repassword_register"
++                        android:layout_width="match_parent"
++                        android:layout_height="40dp"
++                        android:layout_marginBottom="8dp"
++                        android:background="@drawable/kotak"
++                        android:hint="Konfirmasi Password"
++                        android:inputType="textPassword"
++                        android:padding="4dp"
++                        android:text=""
++                        android:textColor="@color/colorBlack"
++                        android:textColorHint="@color/colorDarkPurple"
++                        android:textSize="16sp" />
+ 
+ 
+                     <EditText
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/res/layout/activity_login.xml	(date 1556379877353)
+@@ -57,6 +57,17 @@
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:src="@drawable/logonewumkm" />
++
++            <TextView
++                android:id="@+id/tv_pesan_login"
++                android:visibility="gone"
++                android:background="@color/colorYoungPurple"
++                android:textColor="@color/colorred"
++                android:gravity="center"
++                android:textSize="20dp"
++                android:layout_width="match_parent"
++                android:layout_height="50dp"
++                android:text="Pendaftaran GAGAl" />
+             <!---->
+             <!--<TextView-->
+             <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
+@@ -89,11 +100,12 @@
+                     android:background="@drawable/kotak"
+                     android:drawableEnd="@drawable/ic_contact_phone_black_24dp"
+                     android:drawablePadding="16dp"
++                    android:hint="08XXXXXXXX"
+                     android:inputType="numberDecimal"
+-                    android:hint="62XXXXXXXX"
+                     android:padding="7dp"
+                     android:textColor="@android:color/black"
+                     android:textColorHint="@color/colorPurple" />
++
+                 <EditText
+                     android:id="@+id/edt_password_login"
+                     android:layout_width="fill_parent"
+@@ -102,11 +114,12 @@
+                     android:background="@drawable/kotak"
+                     android:drawableEnd="@drawable/ic_lock_white_24dp"
+                     android:drawablePadding="16dp"
+-                    android:inputType="textPassword"
+                     android:hint="Masukkan Password"
++                    android:inputType="textPassword"
+                     android:padding="7dp"
+                     android:textColor="@android:color/black"
+                     android:textColorHint="@color/colorPurple" />
++
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+@@ -117,9 +130,10 @@
+ 
+                     <Button
+                         android:id="@+id/btn_login"
+-                        android:layout_width="match_parent"
++                        android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginEnd="10dp"
++                        android:layout_weight="1"
+                         android:background="@color/colorDarkPurple"
+                         android:fontFamily="@font/calibri"
+                         android:text="@string/masuk"
+@@ -128,11 +142,26 @@
+                         android:textSize="16sp"
+                         android:textStyle="bold" />
+ 
++                    <Button
++                        android:id="@+id/btn_register_login"
++                        android:layout_width="0dp"
++                        android:layout_height="wrap_content"
++                        android:layout_marginEnd="10dp"
++                        android:layout_weight="1"
++                        android:background="@color/colorDarkPurple"
++                        android:fontFamily="@font/calibri"
++                        android:text="@string/daftar"
++                        android:textAllCaps="false"
++                        android:textColor="@color/colorWhite"
++                        android:textSize="16sp"
++                        android:textStyle="bold" />
++
+                 </LinearLayout>
+             </LinearLayout>
+         </LinearLayout>
+     </ScrollView>
+     <ProgressBar
++        android:visibility="gone"
+         android:id="@+id/progressBar"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+Index: app/src/main/java/go/id/kominfo/ApiRepository/PromoAPI.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ApiRepository/PromoAPI.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/ApiRepository/PromoAPI.kt	(date 1556378269845)
+@@ -2,41 +2,72 @@
+ 
+ import android.util.Log
+ import go.id.kominfo.BuildConfig
++import java.net.URLEncoder
+ 
+-object PromoAPI{
+-fun getPromo():String{
+-    val Url = BuildConfig.BASE_URL +"promo.php"
+-    Log.d("data",Url)
+-    return  Url
+-}
+-    fun getfashionPria ():String{
+-        val Url = BuildConfig.BASE_URL +"kategori/fashion_pria.php"
+-        Log.d("data",Url)
+-        return  Url
++object PromoAPI {
++    fun getPromo(): String {
++        val Url = BuildConfig.BASE_URL + "promo.php"
++        Log.d("data", Url)
++        return Url
++    }
++
++    fun getfashionPria(): String {
++        val Url = BuildConfig.BASE_URL + "kategori/fashion_pria.php"
++        Log.d("data", Url)
++        return Url
+     }
+-    fun getfashionWanita ():String{
+-        val Url = BuildConfig.BASE_URL +"kategori/fashion_wanita.php"
+-        Log.d("data",Url)
+-        return  Url
++
++    fun getfashionWanita(): String {
++        val Url = BuildConfig.BASE_URL + "kategori/fashion_wanita.php"
++        Log.d("data", Url)
++        return Url
+     }
+-    fun getMinuman ():String{
+-        val Url = BuildConfig.BASE_URL +"kategori/minuman.php"
+-        Log.d("data",Url)
+-        return  Url
++
++    fun getMinuman(): String {
++        val Url = BuildConfig.BASE_URL + "kategori/minuman.php"
++        Log.d("data", Url)
++        return Url
+     }
+-    fun kirimToken (token:String,noHp:String):String{
+-        val Url = BuildConfig.BASE_URLI +"send-sms.php?token=$token&noHp=$noHp"
+-        Log.d("data",Url)
+-        return  Url
+-}
+-    fun getBenner ():String{
+-        val Url = BuildConfig.BASE_URL +"banner.php"
+-        Log.d("data",Url)
+-        return  Url
++
++    fun kirimRegister(ktp: String,
++                      npwp: String,
++                      nama: String,
++                      email: String,
++                      hp: String,
++                      pass: String,
++                      nmToko: String,
++                      almToko: String
++                   ): String {
++        val namaUser = URLEncoder.encode(nama,"ASCII")
++        val namaToko = URLEncoder.encode(nmToko,"ASCII")
++        val alamatToko = URLEncoder.encode(almToko,"ASCII")
++        val Url = BuildConfig.BASE_URL + "register.php?ktp_pemilik=$ktp" +
++                "&npwp_pemilik=$npwp" +
++                "&nm_pemilik=$namaUser" +
++                "&email=$email" +
++                "&no_hp=$hp" +
++                "&password=$pass" +
++                "&nm_umkm=$namaToko" +
++                "&alamat=$alamatToko"
++
++        Log.d("data", Url)
++        return Url
++    }
++
++    fun getBenner(): String {
++        val Url = BuildConfig.BASE_URL + "banner.php"
++        Log.d("data", Url)
++        return Url
+     }
+-    fun kirimFoto (data:String):String{
+-        val Url = BuildConfig.BASE_URLI +"addImage.php?imageUpload=$data"
+-        Log.d("data","foto dikirim")
+-        return  Url
++
++    fun kirimFoto(data: String): String {
++        val Url = BuildConfig.BASE_URLI + "addImage.php?imageUpload=$data"
++        Log.d("data", "foto dikirim")
++        return Url
++    }
++    fun getUser(): String {
++        val Url = BuildConfig.BASE_URL + "login.php"
++        Log.d("data", Url)
++        return Url
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/POJO/DaftarResponse.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/POJO/DaftarResponse.kt	(date 1556376945832)
++++ app/src/main/java/go/id/kominfo/POJO/DaftarResponse.kt	(date 1556376945832)
+@@ -0,0 +1,3 @@
++package go.id.kominfo.POJO
++
++data class DaftarResponse(val data: List<Daftar>)
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/PRESENTER/UserPresenter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/PRESENTER/UserPresenter.kt	(date 1556380531384)
++++ app/src/main/java/go/id/kominfo/PRESENTER/UserPresenter.kt	(date 1556380531384)
+@@ -0,0 +1,20 @@
++package go.id.kominfo.PRESENTER
++
++import com.google.gson.Gson
++import go.id.kominfo.ApiRepository.ApiReposirtory
++import go.id.kominfo.ApiRepository.PromoAPI
++import go.id.kominfo.INTERFACE.UserView
++import go.id.kominfo.POJO.UserResponse
++import org.jetbrains.anko.doAsync
++import org.jetbrains.anko.uiThread
++
++class UserPresenter(val api:ApiReposirtory,val gson: Gson,val view:UserView){
++    fun ambilDataUser(){
++        doAsync {
++            val data = gson.fromJson(api.doRequest(PromoAPI.getUser()),UserResponse::class.java)
++            uiThread {
++                view.showData(data.data)
++            }
++        }
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/PRESENTER/TokenPresenter.kt
+===================================================================
+--- app/src/main/java/go/id/kominfo/PRESENTER/TokenPresenter.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/PRESENTER/DaftarPresenter.kt	(date 1556376945868)
+@@ -6,19 +6,38 @@
+ import com.google.gson.Gson
+ import go.id.kominfo.ApiRepository.ApiReposirtory
+ import go.id.kominfo.ApiRepository.PromoAPI
+-import go.id.kominfo.INTERFACE.MainView
+-import go.id.kominfo.POJO.PromoResponse
++import go.id.kominfo.INTERFACE.DaftarView
++import go.id.kominfo.INTERFACE.UserView
++import go.id.kominfo.POJO.DaftarResponse
++import go.id.kominfo.POJO.UserResponse
+ import org.jetbrains.anko.doAsync
+ import org.jetbrains.anko.uiThread
+ import java.io.ByteArrayOutputStream
+-import java.io.File
+ 
+-class TokenPresenter( val apiReposirtory: ApiReposirtory){
++class DaftarPresenter(val apiReposirtory:ApiReposirtory, val gson: Gson, val view: DaftarView){
+ 
+-    fun kirimToken (token :String,noHp:String) {
++lateinit var data:DaftarResponse
++    fun kirimToken (ktp: String,
++                    npwp: String,
++                    nama: String,
++                    email: String,
++                    hp: String,
++                    pass: String,
++                    nmToko: String,
++                    almToko: String){
++
+         doAsync {
+-            apiReposirtory.doRequest(PromoAPI.kirimToken(token, noHp))
+-
++             data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.kirimRegister(ktp,
++                    npwp,
++                    nama,
++                    email,
++                    hp,
++                    pass,
++                    nmToko,
++                    almToko)),DaftarResponse::class.java)
++            uiThread {
++                view.showData(data.data)
++            }
+         }
+     }
+         fun kirimfoto(bitmap: Bitmap) {
+Index: app/src/main/java/go/id/kominfo/POJO/User.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/POJO/User.kt	(date 1556375496020)
++++ app/src/main/java/go/id/kominfo/POJO/User.kt	(date 1556375496020)
+@@ -0,0 +1,15 @@
++package go.id.kominfo.POJO
++
++import com.google.gson.annotations.SerializedName
++
++data class User(
++        @SerializedName("kd_umkm")
++        val kdUmkm: String?= null,
++        @SerializedName("no_hp")
++        val hp: String?= null,
++        @SerializedName("password")
++        val pass: String?= null,
++        @SerializedName("konfirmasi")
++        val konfirmasi: String?= null
++
++)
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/ACTIVITY/RegisterActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ACTIVITY/RegisterActivity.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/ACTIVITY/RegisterActivity.kt	(date 1556384827863)
+@@ -15,27 +15,26 @@
+ import android.support.v4.app.ActivityCompat
+ import android.support.v4.content.ContextCompat
+ import android.support.v7.app.AppCompatActivity
++import android.text.TextUtils
+ import android.util.Log
+-import android.view.View
+ import android.view.Window
+-import android.widget.ProgressBar
+-import android.widget.Toast
+ import com.google.gson.Gson
+ import go.id.kominfo.ApiRepository.ApiReposirtory
+ import go.id.kominfo.ApiRepository.RetrofitClient
++import go.id.kominfo.INTERFACE.DaftarView
++import go.id.kominfo.ITEM.MD5
+ import go.id.kominfo.ITEM.ScalingUtilities
+ import go.id.kominfo.ITEM.ScalingUtilities.createScaledBitmap
+ import go.id.kominfo.ITEM.ScalingUtilities.decodeFile
++import go.id.kominfo.POJO.Daftar
+ import go.id.kominfo.POJO.DataRespon
+-import go.id.kominfo.PRESENTER.TokenPresenter
++import go.id.kominfo.PRESENTER.DaftarPresenter
+ import go.id.kominfo.R
+ import kotlinx.android.synthetic.main.activity_register.*
+ import okhttp3.MediaType
+ import okhttp3.MultipartBody
+ import okhttp3.RequestBody
+-import org.jetbrains.anko.alert
+-import org.jetbrains.anko.appcompat.v7.alertDialogLayout
+-import org.jetbrains.anko.imageBitmap
++import org.jetbrains.anko.startActivity
+ import org.jetbrains.anko.toast
+ import retrofit2.Call
+ import retrofit2.Callback
+@@ -44,27 +43,33 @@
+ import java.io.FileInputStream
+ import java.io.FileNotFoundException
+ import java.io.FileOutputStream
+-import kotlin.random.Random
++
+ 
++class RegisterActivity : AppCompatActivity(),DaftarView {
++    override fun showData(list: List<Daftar>) {
++        val pesan = list[0].pesan.toString()
++        val kode= list[0].kode.toString()
+ 
+-class RegisterActivity : AppCompatActivity() {
+-    lateinit var namaDepan: String
+-    lateinit var namaBelakang: String
+-    lateinit var email: String
+-    lateinit var alamat: String
+-    lateinit var noHp: String
+-    lateinit var token: String
++        if (kode == "1"){
++            toast("Pendaftaran $pesan")
++            startActivity<Register2>()
++            this.finish()
++        }else{
++            toast("pendaftaran $pesan")
++        }
++    }
++
+     lateinit var gson: Gson
+-    lateinit var presenter: TokenPresenter
++    lateinit var presenter: DaftarPresenter
+     lateinit var apiReposirtory: ApiReposirtory
+     lateinit var file: File
+     lateinit var file1: File
+     lateinit var file2: File
+     lateinit var options: BitmapFactory.Options
+-    lateinit var progressBar: ProgressBar
+-    lateinit var bitmap: Bitmap
+-    lateinit var byteArray: ByteArray
+     internal lateinit var window: Window
++
++
++
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_register)
+@@ -78,45 +83,61 @@
+ 
+ 
+         gson = Gson()
+-        progressBar = progressRegister
+-        progressBar.visibility = View.GONE
++
+         apiReposirtory = ApiReposirtory()
+ 
+-        presenter = TokenPresenter(apiReposirtory)
+-        edt_attachment2_register.visibility = View.GONE
+-        edt_attachment3_register_register.visibility = View.GONE
+-        img_add_attachment2.visibility = View.GONE
+-        img_add_attachment3.visibility = View.GONE
+-
+-        edt_attachment1_register.setOnClickListener {
+-            getImage(1)
+-        }
+-        edt_attachment2_register.setOnClickListener {
+-            getImage(2)
+-        }
+-        edt_attachment3_register_register.setOnClickListener {
+-            getImage(3)
+-        }
++        presenter = DaftarPresenter(apiReposirtory,gson,this)
+ 
+ 
+         btn_register.setOnClickListener {
+-            //            namaDepan = edt_nama_depan.text.toString()
+-//            namaBelakang = edt_nama_belakang.text.toString()
+-//            email = edt_email.text.toString()
+-//            alamat = edt_alamat.text.toString()
+-//            noHp = edt_noHp.text.toString()
+-//            token = ""
+-//
+-//
+-//            for (i in 1 until 5) {
+-//                var number = Random.nextInt(0, 9)
+-//                var num = number
+-//                token += num.toString()
+-//
+-//            }
+-//            println(token)
+-//            presenter.kirimToken(token, noHp)
+-            uploadImanges()
++            val ktp = edt_no_ktp.text.toString()
++            val npwp = edt_no_npwp.text.toString()
++            val nama = edt_nama_lengkap.text.toString()
++            val email = edt_email.text.toString()
++            val hp = edt_noHp.text.toString()
++            val pass = edt_password_register.text.toString()
++            val repass = edt_repassword_register.text.toString()
++            val namaToko = edt_nama_toko.text.toString()
++            val alamatToko = edt_alamat.text.toString()
++
++            if(TextUtils.isEmpty(ktp)){
++                edt_no_ktp.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(npwp)){
++                edt_no_npwp.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(nama)){
++                edt_nama_lengkap.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(email)){
++                edt_email.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(hp)){
++                edt_noHp.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(pass)){
++                edt_password_register.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(repass)){
++                edt_repassword_register.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(namaToko)){
++                edt_nama_toko.error = "Wajib di isi"
++            }
++            if(TextUtils.isEmpty(alamatToko)){
++                edt_alamat.error = "Wajib di isi"
++            }
++            else{
++                if (repass != pass){
++                    edt_password_register.error = "Password Tidak Sama"
++                    edt_repassword_register.error = "Password Tidak Sama"
++                }else{
++                    val Md5 = MD5()
++                    val newPass = Md5.EncriptMD5(pass)
++                    presenter.kirimToken(ktp,npwp,nama,email,hp,newPass,namaToko,alamatToko)
++                }
++            }
++
+ 
+ 
+         }
+@@ -139,28 +160,16 @@
+             if (requestCode == 1) {
+                 println("code Request $requestCode")
+                 getData(data,1)
+-                img_add_attachment.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath, options))
+-                edt_attachment1_register.setText(file.name)
+-                edt_attachment2_register.visibility = View.VISIBLE
+-                img_add_attachment2.visibility =View.VISIBLE
+-
+ 
+             }
+             if (requestCode == 2) {
+                 println("code $requestCode")
+                 getData(data,2)
+-                img_add_attachment2.setImageBitmap(BitmapFactory.decodeFile(file1.absolutePath, options))
+-                edt_attachment2_register.setText(file1.name)
+-                edt_attachment3_register_register.visibility = View.VISIBLE
+-                img_add_attachment3.visibility = View.VISIBLE
+-
+ 
+             }
+             if (requestCode == 3) {
+                 println("code $requestCode")
+                 getData(data,3)
+-                img_add_attachment3.setImageBitmap(BitmapFactory.decodeFile(file2.absolutePath, options))
+-                edt_attachment3_register_register.setText(file2.name)
+ 
+ 
+             }
+@@ -179,12 +188,12 @@
+ 
+         val apiServices = RetrofitClient.getApiServices()
+         var upload: Call<DataRespon> = apiServices.addImages(multipartBody,multipartBody1,multipartBody2)
+-        progressBar.visibility = View.VISIBLE
++
+         upload.enqueue(object : Callback<DataRespon> {
+ 
+             override fun onFailure(call: Call<DataRespon>, t: Throwable) {
+                 println("ERRROO ${t.message}")
+-                progressBar.visibility = View.GONE
++
+                 toast("Gagal Mengupload data").show()
+ 
+ 
+@@ -199,7 +208,7 @@
+ 
+ 
+                 if (data?.kode.equals("1",false)) {
+-                    progressBar.visibility = View.GONE
++
+ 
+ 
+                 }
+Index: app/src/main/java/go/id/kominfo/INTERFACE/UserView.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/INTERFACE/UserView.kt	(date 1556375496073)
++++ app/src/main/java/go/id/kominfo/INTERFACE/UserView.kt	(date 1556375496073)
+@@ -0,0 +1,7 @@
++package go.id.kominfo.INTERFACE
++
++import go.id.kominfo.POJO.User
++
++interface UserView {
++    fun showData(listUser:List<User>)
++}
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/INTERFACE/DaftarView.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/INTERFACE/DaftarView.kt	(date 1556376945804)
++++ app/src/main/java/go/id/kominfo/INTERFACE/DaftarView.kt	(date 1556376945804)
+@@ -0,0 +1,7 @@
++package go.id.kominfo.INTERFACE
++
++import go.id.kominfo.POJO.Daftar
++
++interface DaftarView{
++    fun showData( list:List<Daftar>)
++}
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/POJO/Daftar.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/POJO/Daftar.kt	(date 1556376945957)
++++ app/src/main/java/go/id/kominfo/POJO/Daftar.kt	(date 1556376945957)
+@@ -0,0 +1,10 @@
++package go.id.kominfo.POJO
++
++import com.google.gson.annotations.SerializedName
++
++data class Daftar(
++        @SerializedName("pesan")
++        val pesan: String? = null,
++        @SerializedName("kode")
++        val kode: String?=null
++)
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/ACTIVITY/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ACTIVITY/MainActivity.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/ACTIVITY/MainActivity.kt	(date 1556384601594)
+@@ -31,14 +31,9 @@
+ import go.id.kominfo.PRESENTER.PromoPresenter
+ import go.id.kominfo.R
+ import kotlinx.android.synthetic.main.activity_main.*
+-import kotlinx.android.synthetic.main.app_bar_main.*
+-import kotlinx.android.synthetic.main.content_main.*
+ import kotlinx.android.synthetic.main.fragment_home.*
+-import kotlinx.android.synthetic.main.promo.*
+-import org.jetbrains.anko.UI
+ import org.jetbrains.anko.startActivity
+ import org.jetbrains.anko.support.v4.onRefresh
+-import kotlin.concurrent.thread
+ 
+ 
+ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+@@ -62,7 +57,7 @@
+         listMinuman.clear()
+         listMinuman.addAll(listProduk)
+         katagoriAdapterMinuman.notifyDataSetChanged()
+-        loading.visibility =View.INVISIBLE
++        loading.visibility = View.INVISIBLE
+         viewVisible()
+ 
+     }
+@@ -87,7 +82,7 @@
+     }
+ 
+     internal lateinit var window: Window
+-    lateinit var loading:ProgressBar
++    lateinit var loading: ProgressBar
+     lateinit var list: MutableList<Produk>
+     lateinit var listBanner: MutableList<Banner>
+     lateinit var listPria: MutableList<Produk>
+@@ -105,10 +100,12 @@
+     lateinit var sharedPreferences: SharedPreference
+     var LOGIN = false
+     var NOHP = ""
+-    lateinit var swpMain:SwipeRefreshLayout
++    lateinit var swpMain: SwipeRefreshLayout
+     var conn = 0
+ 
+ 
++    var KDUMKM: String = ""
++
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
+@@ -129,6 +126,7 @@
+         sharedPreferences = SharedPreference(this)
+         LOGIN = sharedPreferences.getValueBoolien("LOGIN", false)
+         NOHP = sharedPreferences.getValueString("noHP").toString()
++        KDUMKM = sharedPreferences.getValueString("kd_umkm").toString()
+         Log.d("LOGIN", "$LOGIN")
+         Log.d("No HP", "$NOHP")
+ 
+@@ -141,16 +139,17 @@
+             var nav_toko = M.findItem(R.id.nav_toko)
+             var nav_stat = M.findItem(R.id.nav_statistik)
+             var nav_salesOrder = M.findItem(R.id.nav_sales_order)
+-            var nav_reg = M.findItem(R.id.nav_register)
++
+             val logOut = M.findItem(R.id.nav_logOut)
+             val akun = M.findItem(R.id.nav_akun)
+ 
+ 
+             nav_login.setVisible(false)
++
+             akun.setVisible(LOGIN)
+             akun.setTitle(NOHP)
+             nav_toko.setVisible(LOGIN)
+-            nav_reg.setVisible(LOGIN)
++
+             nav_salesOrder.setVisible(LOGIN)
+             nav_stat.setVisible(LOGIN)
+             logOut.setVisible(LOGIN)
+@@ -216,9 +215,9 @@
+         apiReposirtory = ApiReposirtory()
+         presenter = PromoPresenter(this, gson, apiReposirtory)
+ 
+-       requestData()
++        requestData()
+         swpMain.onRefresh {
+-            swpMain.isRefreshing =  true
++            swpMain.isRefreshing = true
+             conn = 0
+             requestData()
+         }
+@@ -234,7 +233,7 @@
+         presenter.getMinuman()
+         presenter.getBenner()
+ 
+-        if(conn == 0) {
++        if (conn == 0) {
+             Thread(Runnable {
+                 Thread.sleep(5000)
+                 requestData()
+@@ -307,19 +306,21 @@
+         drawer.closeDrawer(GravityCompat.START)
+         return true
+     }
+-   fun viewGone(){
+-       tvPromoMain.visibility = View.GONE
+-       tvStoreMain.visibility = View.GONE
+-       tvFashionMain.visibility = View.GONE
+-       tvCraftMain.visibility = View.GONE
+-       tvKulinerMain.visibility =View.GONE
+-   }
+-    fun viewVisible(){
++
++    fun viewGone() {
++        tvPromoMain.visibility = View.GONE
++        tvStoreMain.visibility = View.GONE
++        tvFashionMain.visibility = View.GONE
++        tvCraftMain.visibility = View.GONE
++        tvKulinerMain.visibility = View.GONE
++    }
++
++    fun viewVisible() {
+         tvPromoMain.visibility = View.VISIBLE
+         tvStoreMain.visibility = View.VISIBLE
+         tvFashionMain.visibility = View.VISIBLE
+         tvCraftMain.visibility = View.VISIBLE
+-        tvKulinerMain.visibility =View.VISIBLE
++        tvKulinerMain.visibility = View.VISIBLE
+     }
+ 
+ 
+Index: app/src/main/java/go/id/kominfo/ACTIVITY/Register2.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ACTIVITY/Register2.kt	(date 1556384601543)
++++ app/src/main/java/go/id/kominfo/ACTIVITY/Register2.kt	(date 1556384601543)
+@@ -0,0 +1,15 @@
++package go.id.kominfo.ACTIVITY
++
++import android.os.Bundle
++import android.support.v7.app.AppCompatActivity
++import go.id.kominfo.R
++
++class Register2 : AppCompatActivity(){
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.register_part2)
++
++
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/ACTIVITY/LoginActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ACTIVITY/LoginActivity.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/ACTIVITY/LoginActivity.kt	(date 1556384827807)
+@@ -1,91 +1,128 @@
+ package go.id.kominfo.ACTIVITY
+ 
+-import android.app.ProgressDialog
+ import android.os.Build
+ import android.os.Bundle
+ import android.support.v4.content.ContextCompat
+ import android.support.v7.app.AppCompatActivity
+ import android.view.View
+ import android.view.Window
+-import android.widget.ProgressBar
++import com.google.gson.Gson
++import go.id.kominfo.ApiRepository.ApiReposirtory
++import go.id.kominfo.INTERFACE.UserView
++import go.id.kominfo.ITEM.MD5
+ import go.id.kominfo.ITEM.SharedPreference
++import go.id.kominfo.POJO.User
++import go.id.kominfo.PRESENTER.UserPresenter
+ import go.id.kominfo.R
+ import kotlinx.android.synthetic.main.activity_login.*
+ import org.jetbrains.anko.startActivity
+-import org.jetbrains.anko.toast
+-import kotlin.random.Random
++
++
++class LoginActivity : AppCompatActivity(), UserView {
++    lateinit var hp: String
++    lateinit var pass: String
++    lateinit var confirm: String
++
++
++    override fun showData(listUser: List<User>) {
++        var ada = true
++
++        for (i in listUser.indices) {
++
++            val user: User? = listUser[i]
++            println(user?.hp.equals(hp))
++
++            if (user?.hp == hp) {
++                ada = false
++
++
++                val MD5 = MD5()
++                pass = MD5.EncriptMD5(edt_password_login.text.toString())
++
++                //Password
++                if (user.pass == pass) {
++                    println("USER: ${user.konfirmasi}")
+ 
++                    if (user.konfirmasi.equals("y", true)) {
++                        pref.save("LOGIN",true)
++                        pref.save("noHP","$hp")
++                        pref.save("kd_umkm","${user.kdUmkm.toString()}")
++                        startActivity<MainActivity>()
++                        this.finish()
++                    } else {
++                        tv_pesan_login.setText("Pendaftaran anda Belum dikonfirmasi")
++                        tv_pesan_login.visibility = View.VISIBLE
++                    }
++                } else if (user.pass != pass) {
++                    tv_pesan_login.text = "Password Salah"
++                    tv_pesan_login.visibility = View.VISIBLE
+ 
+-class LoginActivity : AppCompatActivity() {
++                }
++
++            }
++        }
++
++
++if (ada){
++    tv_pesan_login.setText("Nomor tidak terdaftar ")
++    tv_pesan_login.visibility = View.VISIBLE
++}
++
++        progressBar.visibility = View.GONE
++    }
+ 
+     internal lateinit var window: Window
++    lateinit var presenter: UserPresenter
++    lateinit var gson: Gson
++    lateinit var apiReposirtory: ApiReposirtory
++    lateinit var pref:SharedPreference
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_login)
+-        val pref = SharedPreference(this)
+-        val loading  = progressBar
+-        loading.visibility =View.INVISIBLE
++         pref = SharedPreference(this)
++        val loading = progressBar
++        loading.visibility = View.INVISIBLE
+ 
+ 
+         if (Build.VERSION.SDK_INT >= 21) { //ganti warna status bar diatas OS lolipop
+             window = this.getWindow()
+             window.statusBarColor = ContextCompat.getColor(this, R.color.colorDarkPurple)
+         }
++        gson = Gson()
++        apiReposirtory = ApiReposirtory()
++        presenter = UserPresenter(apiReposirtory, gson, this)
++
+ 
+ 
+ 
+         btn_login.setOnClickListener {
+-            loading.visibility =View.VISIBLE
+-            val noHp = edt_phonelogin.text.toString()
+-            var token = ""
+-
++            loading.visibility = View.VISIBLE
+ 
+-            for (i in 1 until 5) {
+-                var number = Random.nextInt(0, 9)
+-                var num = number
+-                token += num.toString()
+-
+-            }
++            hp = edt_phonelogin.text.toString()
+ 
+             if (edt_phonelogin.text.isNullOrBlank()) {
+                 edt_phonelogin.setError("Tidak Boleh Kosong")
+             } else {
+ 
+-                if (noHp.length < 12 || noHp.length > 13) {
++                if (hp.length < 12 || hp.length > 13) {
+                     edt_phonelogin.setError("Nomor Tidak Valid")
+ 
+                 } else {
+-                    if (noHp.substring(0, 2).equals("62")) {
+-                        val nomorHp = "6285750077049"
+-                        val pass = "test123"
+-                        val password = edt_password_login.text.toString()
+-                        println("62 ok")
+-                        println("$noHp == $nomorHp" )
+-                        println("$pass == ${edt_password_login.text}" )
+-
+ 
++                    presenter.ambilDataUser()
+ 
+-                        if(noHp == nomorHp && password == pass){
+-                            println("sama")
+-                            loading.visibility =View.INVISIBLE
+-                            pref.save("LOGIN",true)
+-                            pref.save("noHP","$noHp")
+-                            startActivity<MainActivity>()
+-                            this.finish()
+-                        }else{
+-                            toast("nomor belum terdaftar atau passwaord salah")
+-                        }
++                }
++            }
++        }
+ 
+ 
+-                    } else {
+-                        edt_phonelogin.setError("Harus dimulai dengan 62")
+-                    }
+ 
+ 
+-                }
+-                loading.visibility =View.INVISIBLE
+-            }
++        btn_register_login.setOnClickListener {
++            startActivity<RegisterActivity>()
+         }
++
++
+     }
+ }
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/AndroidManifest.xml	(date 1556384969787)
+@@ -17,6 +17,10 @@
+         <activity android:name=".ACTIVITY.DetailBannerActivity" />
+         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
+         <activity android:name=".ACTIVITY.DetailProductActivity" />
++        <activity android:name=".ACTIVITY.Register2"
++            android:windowSoftInputMode="stateHidden"
++            android:screenOrientation="portrait"
++            />
+         <activity
+             android:name=".ACTIVITY.RegisterActivity"
+             android:windowSoftInputMode="stateHidden" />
+Index: app/src/main/res/layout/register_part2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/register_part2.xml	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/res/layout/register_part2.xml	(date 1556385231509)
+@@ -34,222 +34,239 @@
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:layout_above="@+id/footer"
+-        android:fillViewport="true">
+-
+-        <LinearLayout
+-            android:id="@+id/myLayout"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:fillViewport="true"
+-            android:orientation="vertical">
+-
+-
+-            <LinearLayout
+-                android:id="@+id/form_register"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginTop="10dp"
+-                android:orientation="vertical">
++        android:fillViewport="true"
++        >
++<LinearLayout
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical">
++    <RelativeLayout
++        android:id="@+id/item_upload_file"
++        android:layout_width="match_parent"
++        android:layout_height="150dp"
++        android:padding="8dp">
+ 
+-                <TextView
+-                    android:id="@+id/tv_"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginBottom="20sp"
+-                    android:fontFamily="@font/calibri"
+-                    android:gravity="center"
+-                    android:text="@string/formulir_pendaftaran"
+-                    android:textColor="@color/colorDarkPurple"
+-                    android:textSize="26sp"
+-                    android:textStyle="bold" />
+-                <!--<TextView-->
+-                <!--android:id="@+id/tv_register_form"-->
+-                <!--android:layout_width="match_parent"-->
+-                <!--android:layout_height="wrap_content"-->
+-                <!--android:fontFamily="@font/calibri"-->
+-                <!--android:gravity="center"-->
+-                <!--android:text="Tambahkan File"-->
+-                <!--android:textColor="@color/colorDarkPurple"-->
+-                <!--android:textSize="26sp"-->
+-                <!--android:textStyle="bold" />-->
++        <ImageView
++            android:id="@+id/img_item_file"
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:layout_alignParentLeft="true"
++            android:layout_alignParentStart="true"
++            android:layout_alignParentTop="true"
++            android:contentDescription="@string/upload_file"
++            android:scaleType="centerCrop"
++            android:src="@color/colorAccent"/>
++
++        <Button
++            android:id="@+id/btn_pilih"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:layout_toRightOf="@id/img_item_file"
++            android:textColor="@color/colorWhite"
++            android:textSize="16sp"
++            android:background="@color/colorDarkPurple"
++            android:text="@string/pilih_file"
++            android:textStyle="bold"/>
+ 
+-                <LinearLayout
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:orientation="vertical"
+-                    android:paddingLeft="8dp"
+-                    android:paddingRight="8dp"
+-                    android:paddingBottom="8dp">
+-
+-                    <!--<EditText-->
+-                    <!--android:id="@+id/edt_no_npwp"-->
+-                    <!--android:layout_width="match_parent"-->
+-                    <!--android:layout_height="40dp"-->
+-                    <!--android:layout_marginBottom="8dp"-->
+-                    <!--android:background="@drawable/kotak"-->
+-                    <!--android:hint="@string/nomor_npwp"-->
+-                    <!--android:inputType="text"-->
+-                    <!--android:padding="4dp"-->
+-                    <!--android:text=""-->
+-                    <!--android:textColor="@color/colorBlack"-->
+-                    <!--android:textColorHint="@color/colorDarkPurple"-->
+-                    <!--android:textSize="16sp" />-->
+-
+-                    <!--<EditText-->
+-                    <!--android:id="@+id/edt_nama_toko"-->
+-                    <!--android:layout_width="match_parent"-->
+-                    <!--android:layout_height="40dp"-->
+-                    <!--android:layout_marginBottom="8dp"-->
+-                    <!--android:background="@drawable/kotak"-->
+-                    <!--android:hint="@string/nama_toko"-->
+-                    <!--android:inputType="text"-->
+-                    <!--android:padding="4dp"-->
+-                    <!--android:text=""-->
+-                    <!--android:textColor="@color/colorBlack"-->
+-                    <!--android:textColorHint="@color/colorDarkPurple"-->
+-                    <!--android:textSize="16sp" />-->
+-
+-                    <!--<EditText-->
+-                    <!--android:id="@+id/edt_alamat_toko"-->
+-                    <!--android:layout_width="match_parent"-->
+-                    <!--android:layout_height="80dp"-->
+-                    <!--android:layout_marginBottom="8dp"-->
+-                    <!--android:gravity="start"-->
+-                    <!--android:background="@drawable/kotak"-->
+-                    <!--android:hint="@string/alamat_toko"-->
+-                    <!--android:inputType="text"-->
+-                    <!--android:padding="4dp"-->
+-                    <!--android:text=""-->
+-                    <!--android:textColor="@color/colorBlack"-->
+-                    <!--android:textColorHint="@color/colorDarkPurple"-->
+-                    <!--android:textSize="16sp" />-->
+-                    <TextView
+-                        android:id="@+id/tv_tambah_ktp"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="16dp"
+-                        android:fontFamily="@font/calibri"
+-                        android:text="Tambahkan Foto KTP"
+-                        android:textColor="@color/colorDarkPurple"
+-                        android:textSize="14sp"
+-                        android:textStyle="bold" />
+-
+-                    <include layout="@layout/item_file_pendaftaran" />
+-
+-                    <TextView
+-                        android:id="@+id/tv"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="16dp"
+-                        android:layout_marginTop="10dp"
+-                        android:fontFamily="@font/calibri"
+-                        android:text="Tambahkan Foto NPWP"
+-                        android:textColor="@color/colorDarkPurple"
+-                        android:textSize="14sp"
+-                        android:textStyle="bold" />
++        <Button
++            android:textColor="@color/colorWhite"
++            android:id="@+id/btn_kirim"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/btn_pilih"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:background="@color/colorDarkPurple"
++            android:textSize="16sp"
++            android:text="@string/kirim"/>
++        <TextView
++            android:text="@string/img_27042019_jpg"
++            android:gravity="center"
++            android:layout_alignParentStart="true"
++            android:id="@+id/tv_nama_file"
++            android:layout_width="100dp"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/img_item_file"
++            android:layout_alignParentBottom="true"
++            android:maxLines="2" />
++    </RelativeLayout>
++    <RelativeLayout
++        android:id="@+id/item_upload_file2"
++        android:layout_width="match_parent"
++        android:layout_height="150dp"
++        android:padding="8dp">
+ 
+-                    <include layout="@layout/item_file_pendaftaran" />
++        <ImageView
++            android:id="@+id/img_item_file2"
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:layout_alignParentLeft="true"
++            android:layout_alignParentStart="true"
++            android:layout_alignParentTop="true"
++            android:contentDescription="@string/upload_file"
++            android:scaleType="centerCrop"
++            android:src="@color/colorAccent"/>
+ 
+-                    <TextView
+-                        android:id="@+id/tv_toko"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="16dp"
+-                        android:layout_marginTop="10dp"
+-                        android:fontFamily="@font/calibri"
+-                        android:text="Tambahkan Foto Toko"
+-                        android:textColor="@color/colorDarkPurple"
+-                        android:textSize="14sp"
+-                        android:textStyle="bold" />
++        <Button
++            android:id="@+id/btn_pilih2"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file2"
++            android:layout_toRightOf="@id/img_item_file2"
++            android:textColor="@color/colorWhite"
++            android:textSize="16sp"
++            android:background="@color/colorDarkPurple"
++            android:text="@string/pilih_file"
++            android:textStyle="bold"/>
+ 
+-                    <include layout="@layout/item_file_pendaftaran" />
+-
+-                    <TextView
+-                        android:id="@+id/tv_iumk"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="16dp"
+-                        android:layout_marginTop="10dp"
+-                        android:fontFamily="@font/calibri"
+-                        android:text="Tambahkan Foto IUMK"
+-                        android:textColor="@color/colorDarkPurple"
+-                        android:textSize="14sp"
+-                        android:textStyle="bold" />
+-
+-                    <include layout="@layout/item_file_pendaftaran" />
+-
+-                    <TextView
+-                        android:id="@+id/tv_lainnya"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="16dp"
+-                        android:layout_marginTop="10dp"
+-                        android:fontFamily="@font/calibri"
+-                        android:text="Tambahkan Foto Halal/lainnya"
+-                        android:textColor="@color/colorDarkPurple"
+-                        android:textSize="14sp"
+-                        android:textStyle="bold" />
++        <Button
++            android:textColor="@color/colorWhite"
++            android:id="@+id/btn_kirim2"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/btn_pilih2"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file2"
++            android:background="@color/colorDarkPurple"
++            android:textSize="16sp"
++            android:text="@string/kirim"/>
++        <TextView
++            android:text="@string/img_27042019_jpg"
++            android:gravity="center"
++            android:layout_alignParentStart="true"
++            android:id="@+id/tv_nama_file2"
++            android:layout_width="100dp"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/img_item_file2"
++            android:layout_alignParentBottom="true"
++            android:maxLines="2" />
++    </RelativeLayout>
++    <RelativeLayout
++        android:id="@+id/item_upload_file"
++        android:layout_width="match_parent"
++        android:layout_height="150dp"
++        android:padding="8dp">
++
++        <ImageView
++            android:id="@+id/img_item_file"
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:layout_alignParentLeft="true"
++            android:layout_alignParentStart="true"
++            android:layout_alignParentTop="true"
++            android:contentDescription="@string/upload_file"
++            android:scaleType="centerCrop"
++            android:src="@color/colorAccent"/>
++
++        <Button
++            android:id="@+id/btn_pilih3"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:layout_toRightOf="@id/img_item_file"
++            android:textColor="@color/colorWhite"
++            android:textSize="16sp"
++            android:background="@color/colorDarkPurple"
++            android:text="@string/pilih_file"
++            android:textStyle="bold"/>
+ 
+-                    <include layout="@layout/item_file_pendaftaran" />
+-                </LinearLayout>
+-
+-                <!--<RelativeLayout-->
+-                <!--android:id="@+id/item_attachment"-->
+-                <!--android:layout_width="match_parent"-->
+-                <!--android:layout_height="wrap_content"-->
+-                <!--android:layout_marginTop="10dp"-->
+-                <!--android:padding="8dp">-->
+-
+-                <!--<ImageView-->
+-                <!--android:id="@+id/img_add_attachment"-->
+-                <!--android:layout_width="100dp"-->
+-                <!--android:layout_height="100dp"-->
+-                <!--android:layout_alignParentStart="true"-->
+-                <!--android:layout_alignParentTop="true"-->
+-                <!--android:background="@drawable/kotak_ungu"-->
+-                <!--android:contentDescription="gambar"-->
+-                <!--android:scaleType="centerCrop"-->
+-                <!--android:src="@drawable/ic_image_white_24dp" />-->
+-
+-                <!--<Button-->
+-                <!--android:id="@+id/edt_attachment1"-->
+-                <!--android:layout_width="match_parent"-->
+-                <!--android:layout_height="wrap_content"-->
+-                <!--android:layout_centerInParent="true"-->
+-                <!--android:layout_marginLeft="@dimen/activity_vertical_margin"-->
+-                <!--android:layout_marginRight="@dimen/activity_vertical_margin"-->
+-                <!--android:layout_marginBottom="4dp"-->
+-                <!--android:layout_toEndOf="@id/img_add_attachment"-->
+-                <!--android:background="@drawable/kotak_kosong"-->
+-                <!--android:hint="Pilih Foto KTP"-->
+-                <!--android:text=""-->
+-                <!--android:textSize="14sp"-->
+-                <!--android:textStyle="italic" />-->
+-
+-                <!--</RelativeLayout>-->
+-
+-                <LinearLayout
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginTop="4dp"
+-                    android:gravity="center"
+-                    android:orientation="vertical"
+-                    android:padding="10sp">
++        <Button
++            android:textColor="@color/colorWhite"
++            android:id="@+id/btn_kirim3"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/btn_pilih3"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:background="@color/colorDarkPurple"
++            android:textSize="16sp"
++            android:text="@string/kirim"/>
++        <TextView
++            android:text="@string/img_27042019_jpg"
++            android:gravity="center"
++            android:layout_alignParentStart="true"
++            android:id="@+id/tv_nama_file"
++            android:layout_width="100dp"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/img_item_file"
++            android:layout_alignParentBottom="true"
++            android:maxLines="2" />
++    </RelativeLayout>
++    <RelativeLayout
++        android:id="@+id/item_upload_file"
++        android:layout_width="match_parent"
++        android:layout_height="150dp"
++        android:padding="8dp">
++
++        <ImageView
++            android:id="@+id/img_item_file"
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:layout_alignParentLeft="true"
++            android:layout_alignParentStart="true"
++            android:layout_alignParentTop="true"
++            android:contentDescription="@string/upload_file"
++            android:scaleType="centerCrop"
++            android:src="@color/colorAccent"/>
+ 
+-                    <Button
+-                        android:id="@+id/btn_selesai"
+-                        android:layout_width="150dp"
+-                        android:layout_height="wrap_content"
+-                        android:background="@color/colorDarkPurple"
+-                        android:fontFamily="@font/calibri"
+-                        android:gravity="center"
+-                        android:text="@string/selesai"
+-                        android:textAllCaps="false"
+-                        android:textColor="@color/colorWhite"
+-                        android:textSize="16sp"
+-                        android:textStyle="bold" />
+-                </LinearLayout>
+-            </LinearLayout>
+-        </LinearLayout>
++        <Button
++            android:id="@+id/btn_pilih"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:layout_toRightOf="@id/img_item_file"
++            android:textColor="@color/colorWhite"
++            android:textSize="16sp"
++            android:background="@color/colorDarkPurple"
++            android:text="@string/pilih_file"
++            android:textStyle="bold"/>
++
++        <Button
++            android:textColor="@color/colorWhite"
++            android:id="@+id/btn_kirim"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/btn_pilih"
++            android:layout_marginBottom="8dp"
++            android:layout_marginLeft="@dimen/activity_vertical_margin"
++            android:layout_marginRight="@dimen/activity_vertical_margin"
++            android:layout_toEndOf="@id/img_item_file"
++            android:background="@color/colorDarkPurple"
++            android:textSize="16sp"
++            android:text="@string/kirim"/>
++        <TextView
++            android:text="@string/img_27042019_jpg"
++            android:gravity="center"
++            android:layout_alignParentStart="true"
++            android:id="@+id/tv_nama_file"
++            android:layout_width="100dp"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/img_item_file"
++            android:layout_alignParentBottom="true"
++            android:maxLines="2" />
++    </RelativeLayout>
++
++</LinearLayout>
++
++
+     </ScrollView>
+ </RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/go/id/kominfo/ACTIVITY/VerifikasiOtpActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/go/id/kominfo/ACTIVITY/VerifikasiOtpActivity.kt	(revision 1b5e53b56d8a980679b38c48edade24b57781085)
++++ app/src/main/java/go/id/kominfo/ACTIVITY/VerifikasiOtpActivity.kt	(date 1556378427919)
+@@ -4,13 +4,13 @@
+ import android.support.v7.app.AppCompatActivity
+ import go.id.kominfo.ApiRepository.ApiReposirtory
+ import go.id.kominfo.ITEM.SharedPreference
+-import go.id.kominfo.PRESENTER.TokenPresenter
++import go.id.kominfo.PRESENTER.DaftarPresenter
+ import go.id.kominfo.R
+ import kotlinx.android.synthetic.main.activity_verifikasi_otp.*
+ import org.jetbrains.anko.startActivity
+ 
+ class VerifikasiOtpActivity : AppCompatActivity() {
+-    lateinit var presenter: TokenPresenter
++    lateinit var presenter: DaftarPresenter
+     lateinit var apiReposirtory: ApiReposirtory
+     var d1: String = ""
+     var d2: String = ""
+@@ -29,8 +29,7 @@
+         val token = intent.getStringExtra("Token").toString()
+         tv_nomor_otp.text = noHp
+         apiReposirtory = ApiReposirtory()
+-        presenter = TokenPresenter(apiReposirtory)
+-        presenter.kirimToken(token, noHp)
++
+         println(token)
+ 
+         btn_berikut.setOnClickListener {
