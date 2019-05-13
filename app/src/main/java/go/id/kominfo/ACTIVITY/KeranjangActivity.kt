@@ -4,15 +4,17 @@ import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import go.id.kominfo.ADAPTER.PesananAdapter
+import go.id.kominfo.ADAPTER.tambahTitik
 import go.id.kominfo.ITEM.database
 import go.id.kominfo.POJO.Pesanan
 import go.id.kominfo.POJO.Produk
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_keranjang.*
-import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.select
-import org.jetbrains.anko.db.update
+import org.jetbrains.anko.db.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 
 class KeranjangActivity : AppCompatActivity() {
@@ -31,11 +33,16 @@ class KeranjangActivity : AppCompatActivity() {
 
         rv_keranjang.layoutManager = LinearLayoutManager(this)
         adapterKanan = PesananAdapter(listPesanan, {
+            hapusPesananJumlah(it, 1)
+            startActivity<KeranjangActivity>()
+            finish()
+
 
 
         }, {
-
-
+            tambahPesanan(it)
+            startActivity<KeranjangActivity>()
+            finish()
         })
         rv_keranjang.adapter = adapterKanan
 
@@ -60,7 +67,7 @@ class KeranjangActivity : AppCompatActivity() {
                 }
                 listPesanan.addAll(pesanan)
 
-                tvHargaTotalKeranjang.text = hargaTotal.toString()
+                tvHargaTotalKeranjang.text = tambahTitik(hargaTotal.toString())
             }
             adapterKanan.notifyDataSetChanged()
 
@@ -68,7 +75,7 @@ class KeranjangActivity : AppCompatActivity() {
         }
     }
 
-    private fun hapusPesananJumlah(it: Produk, i: Int) {
+    private fun hapusPesananJumlah(it: Pesanan, i: Int) {
         try {
             database?.use {
                 var jumlah = 0
@@ -78,23 +85,80 @@ class KeranjangActivity : AppCompatActivity() {
                 for (i in hasil.indices) {
                     val id = hasil[i].id
 
-                    if (id == it.kd_produk) {
+                    if (id == it.id) {
                         jumlah = hasil[i].jumlah!!
                     }
+                }
+                if(jumlah == 1) {
+                    println("Dalam jumlah 1")
+                    delete(Pesanan.Table_Pesanan, "Id_Pesanan ={id}", "id" to it.idPesana.toString())
                 }
                 update(
                         Pesanan.Table_Pesanan, Pesanan.jumlah to jumlah.minus(i)
                 )
-                        .whereArgs("${Pesanan.Id} = ${it.kd_produk}")
+                        .whereArgs("${Pesanan.Id} = ${it.id}")
                         .exec()
 
                 listPesanan.clear()
-                ambilDataDatabase()
             }
         } catch (e: SQLiteConstraintException) {
             e.localizedMessage
         }
         adapterKanan.notifyDataSetChanged()
+    }
+
+    private fun tambahPesanan(it: Pesanan) {
+        try {
+            database?.use {
+                var ada = false
+                var jumlah = 0
+
+                val cek = select(Pesanan.Table_Pesanan)
+                val hasil = cek.parseList(classParser<Pesanan>())
+
+                for (i in hasil.indices) {
+                    val id = hasil[i].id
+
+                    if (id == it.id) {
+                        ada = true
+                        jumlah = hasil[i].jumlah!!
+                    }
+                }
+
+
+                if (ada) {
+                    toast("pesanan sudah ada")
+                    jumlah.plus(1)
+                    update(
+                            Pesanan.Table_Pesanan, Pesanan.jumlah to jumlah.plus(1)
+                    )
+                            .whereArgs("${Pesanan.Id} = ${it.id}")
+                            .exec()
+                }
+                if (!ada) {
+                    insert(
+
+                            Pesanan.Table_Pesanan,
+                            Pesanan.Id to it.id,
+                            Pesanan.Nama to it.nama,
+                            Pesanan.Harga to it.harga,
+                            Pesanan.Gambar to it.gambar,
+                            Pesanan.jumlah to jumlah.plus(1)
+                    )
+                    toast("Pesanan Sudah ditambahkan")
+
+                }
+
+
+            }
+
+
+        } catch (e: SQLiteConstraintException) {
+            e.localizedMessage
+            Log.d("Tag", "" + e.message)
+
+
+        }
     }
 
 

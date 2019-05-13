@@ -40,12 +40,17 @@ class PesananAdapter(val menus: List<Pesanan>, val Min:(Pesanan)->Unit, val Plus
         val nama: TextView = view.find(R.id.tv_nama_barang_keranjang)
         val harga: TextView = view.find(R.id.tv_harga_kerjang)
         val jumlah: TextView = view.find(R.id.tv_quantity_keranjang)
+        val total :TextView = view.find(R.id.tv_harga_total_keranjang)
 
         fun bindItem(menus: Pesanan, Min: (Pesanan) -> Unit, Plus: (Pesanan) -> Unit) {
             Picasso.get().load(menus.gambar).into(gambar)
             jumlah.text = menus.jumlah.toString()
             nama.text = menus.nama.toString()
-            harga.text = "Rp${menus.harga}"
+            harga.text = tambahTitik(menus.harga.toString())
+            val hargas = menus.harga
+            val jumlahs = menus.jumlah
+            val grandtotal = jumlahs!! * hargas!!
+            total.text = tambahTitik(grandtotal.toString())
             Log.d("Tag", "adapter " + menus.harga)
 
             mMin.setOnClickListener {
