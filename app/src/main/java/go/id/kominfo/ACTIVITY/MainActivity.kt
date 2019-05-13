@@ -269,6 +269,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         return if (id == R.id.action_cart) {
+            startActivity<KeranjangActivity>()
             true
         } else super.onOptionsItemSelected(item)
 

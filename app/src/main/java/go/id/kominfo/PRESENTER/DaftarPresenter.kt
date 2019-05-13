@@ -51,5 +51,30 @@ lateinit var data:DaftarResponse
             }
 
         }
+    fun kirimDataPembelian (no_trans: String,
+                            kd_produk: String,
+                            tgl_trans: String,
+                            nm_pembeli: String,
+                            no_hp_pembeli: String,
+                            alamat: String,
+                            qty: String,
+                            harga: String,
+                            total: String){
+
+        doAsync {
+            data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.kirimPembelian(no_trans,
+                    kd_produk,
+                    tgl_trans,
+                    nm_pembeli,
+                    no_hp_pembeli,
+                    alamat,
+                    qty,
+                    harga,
+                    total)),DaftarResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
     }
 

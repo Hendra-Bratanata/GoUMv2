@@ -18,6 +18,7 @@
         <activity android:name=".ACTIVITY.DetailBannerActivity" />
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity android:name=".ACTIVITY.DetailProductActivity" />
+        <activity android:name=".ACTIVITY.PembeliDataActivity"/>
         <activity
             android:name=".ACTIVITY.Register2"
             android:screenOrientation="portrait"

@@ -1,15 +1,23 @@
 package go.id.kominfo.ACTIVITY
 
+import android.app.Activity
+import android.content.Intent
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.google.gson.Gson
 import go.id.kominfo.ADAPTER.PesananAdapter
 import go.id.kominfo.ADAPTER.tambahTitik
+import go.id.kominfo.ApiRepository.ApiReposirtory
+import go.id.kominfo.INTERFACE.DaftarView
+import go.id.kominfo.ITEM.AmbilTanggal
 import go.id.kominfo.ITEM.database
+import go.id.kominfo.POJO.Daftar
 import go.id.kominfo.POJO.Pesanan
 import go.id.kominfo.POJO.Produk
+import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_keranjang.*
 import org.jetbrains.anko.db.*
@@ -17,16 +25,33 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
-class KeranjangActivity : AppCompatActivity() {
+class KeranjangActivity : AppCompatActivity(),DaftarView {
+    override fun showData(list: List<Daftar>) {
+println(list[0].pesan)
+
+        if (list[0].pesan.equals("berhasil",true)){
+            flushDatabase()
+            startActivity<KeranjangActivity>()
+            finish()
+        }
+    }
 
     lateinit var pesanan: List<Pesanan>
     lateinit var listPesanan: MutableList<Pesanan>
     var hargaTotal: Int = 0
     lateinit var adapterKanan: PesananAdapter
+    lateinit var gson: Gson
+    lateinit var apiReposirtory: ApiReposirtory
+    lateinit var presenter: DaftarPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_keranjang)
+
+        gson = Gson()
+        apiReposirtory = ApiReposirtory()
+        presenter = DaftarPresenter(apiReposirtory,gson,this)
+
 
         listPesanan = mutableListOf()
         pesanan = mutableListOf()
@@ -47,6 +72,38 @@ class KeranjangActivity : AppCompatActivity() {
         rv_keranjang.adapter = adapterKanan
 
         ambilDataDatabase()
+
+        btn_proses.setOnClickListener {
+            val inten = Intent(this,PembeliDataActivity::class.java)
+            startActivityForResult(inten,3000)
+
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == 3000){
+                val tanggal = AmbilTanggal()
+                val nama = data?.getStringExtra("nama")
+                val tlp = data?.getStringExtra("tlp")
+                val alamat = data?.getStringExtra("alamat")
+                val total = tvHargaTotalKeranjang.text.toString()
+                for (i in listPesanan.indices){
+                    val noTransaksi =tanggal.ambilTanggalLengkap()
+                    val kdProduk = listPesanan[i].id
+                    val tanggalTransaksi = tanggal.ambilTanggal()
+                    val qty = listPesanan[i].jumlah
+                    val harga = listPesanan[i].harga
+                    presenter.kirimDataPembelian(noTransaksi,kdProduk.toString(),tanggalTransaksi,nama.toString(),tlp.toString(),alamat.toString(),qty.toString(),harga.toString(),total)
+                }
+
+                println(nama)
+                println(tlp)
+                println(alamat)
+            }
+        }
+
     }
 
     private fun ambilDataDatabase() {
@@ -161,5 +218,20 @@ class KeranjangActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun flushDatabase() {
+        try {
+            database.use {
+                val resault = select(Pesanan.Table_Pesanan)
+                pesanan = resault.parseList(classParser())
+                if (pesanan.size > 0) {
+                    listPesanan.clear()
+                    for (i in pesanan.indices) {
+                        delete(Pesanan.Table_Pesanan, "Id_Pesanan ={id}", "id" to pesanan[i].idPesana)
+                    }
+                }
+            }
+        } catch (e: SQLiteConstraintException) {
+            e.printStackTrace()
+        }
+    }
 }
