@@ -48,9 +48,10 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:layout_weight="1"
                         android:id="@+id/btn_aturToko"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="130dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:background="@drawable/kotak_kosong"
@@ -64,9 +65,10 @@
                         android:textStyle="bold" />
 
                     <Button
+                        android:layout_weight="1"
                         android:id="@+id/btn_TambahProduk"
                         style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="130dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
