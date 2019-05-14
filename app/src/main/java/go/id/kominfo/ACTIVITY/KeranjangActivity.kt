@@ -27,9 +27,9 @@ import org.jetbrains.anko.toast
 
 class KeranjangActivity : AppCompatActivity(),DaftarView {
     override fun showData(list: List<Daftar>) {
-println(list[0].pesan)
+         println(list[0].pesan)
 
-        if (list[0].pesan.equals("berhasil",true)){
+        if (list[0].pesan.equals("Sukses",true)){
             flushDatabase()
             startActivity<KeranjangActivity>()
             finish()

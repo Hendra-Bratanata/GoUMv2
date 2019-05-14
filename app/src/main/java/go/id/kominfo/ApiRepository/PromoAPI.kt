@@ -85,7 +85,7 @@ object PromoAPI {
         val nm_pembeli = URLEncoder.encode(nm_pembeli, "ASCII")
         val no_hp_pembeli = URLEncoder.encode(no_hp_pembeli, "ASCII")
         val alamat = URLEncoder.encode(alamat, "ASCII")
-        val Url = BuildConfig.BASE_URL + "register.php?" +
+        val Url = BuildConfig.BASE_URL + "transaksi.php?" +
                 "no_trans=$no_trans" +
                 "&kd_produk=$kd_produk" +
                 "&tgl_trans=$tgl_trans" +
