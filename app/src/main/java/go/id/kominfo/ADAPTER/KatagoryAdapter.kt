@@ -18,7 +18,7 @@ class KatagoryAdapter(val listProduk: List<Produk>,val detail:(Produk)-> Unit) :
 
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val view = LayoutInflater.from(p0.context).inflate(R.layout.kategori1, p0, false)
+        val view = LayoutInflater.from(p0.context).inflate(R.layout.item_grid, p0, false)
         return ViewHolder(view)
     }
 
@@ -29,9 +29,9 @@ class KatagoryAdapter(val listProduk: List<Produk>,val detail:(Produk)-> Unit) :
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val gambarMakanan: ImageView = view.find(R.id.img_katagori1)
-        val tvHargaNormal: TextView = view.find(R.id.tv_hargaKatagori)
-        val tvNamaProduk: TextView = view.find(R.id.tv_namaKatagori)
+        val gambarMakanan: ImageView = view.find(R.id.img_grid)
+        val tvHargaNormal: TextView = view.find(R.id.tv_harga_kategori_grid)
+        val tvNamaProduk: TextView = view.find(R.id.tv_nama_kategori_grid)
         fun bindItem(produk: Produk,detail: (Produk) -> Unit) {
 
 
