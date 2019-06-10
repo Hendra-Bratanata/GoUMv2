@@ -1,104 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="5dp"
-    app:cardCornerRadius="7dp"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingEnd="16dp"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
     tools:context=".ACTIVITY.PembeliDataActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Data Diri"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="120dp"
+            tools:layout_editor_absoluteY="100dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="30dp"
+            android:layout_weight="3">
 
             <TextView
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:layout_gravity="center"
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Data Diri"
-                tools:layout_editor_absoluteX="120dp"
-                tools:layout_editor_absoluteY="100dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:text="Nama :"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtNamaPemebeli"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight="3">
-                <TextView
-                    android:textSize="20sp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Nama :"/>
-                <EditText
-                    android:id="@+id/edtNamaPemebeli"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:hint="Nama"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight="3">
-                <TextView
-                    android:textSize="20sp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tlp :"/>
-                <EditText
-                    android:id="@+id/edtTlpPembeli"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:hint="telepon"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight="3">
-                <TextView
-                    android:textSize="20sp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Alamat :"/>
-                <EditText
-                    android:id="@+id/edtAlamatPembeli"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:hint="Alamat"
-                    android:layout_height="wrap_content" />
-
-
-
-            </LinearLayout>
-            <Button
-                android:id="@+id/btnSelesaiDataDiriPembeli"
-                android:layout_margin="5dp"
-                android:text="Selesai"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_weight="2"
+                android:hint="Masukkan Nama" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:text="No Hp :"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtTlpPembeli"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Masukkan No Hp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:text="Alamat :"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtAlamatPembeli"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Masukkan Alamat Lengkap" />
+
+        </LinearLayout>
+
+        <Button
+          android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:id="@+id/btnSelesaiDataDiriPembeli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/kotak_ungu"
+            android:text="Selesai"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+</ScrollView>

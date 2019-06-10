@@ -8,10 +8,19 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="#9C9C9C"
+                android:padding="5dp"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/item_catatan_toko"
@@ -27,16 +36,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="2dp"
-                android:background="#9C9C9C"
-                android:padding="5dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:paddingBottom="8dp"
+            <EditText
+                android:hint="@string/lorem"
                 android:id="@+id/tv_catatan_toko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
                 android:layout_marginEnd="10dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:text="@string/lorem"
+                android:paddingBottom="8dp"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
