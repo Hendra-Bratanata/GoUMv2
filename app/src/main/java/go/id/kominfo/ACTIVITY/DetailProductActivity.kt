@@ -21,6 +21,7 @@ import go.id.kominfo.PRESENTER.UmkmPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_detail_product.*
 import org.jetbrains.anko.db.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.text.NumberFormat
 import java.util.*
@@ -131,6 +132,7 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
 
 
         btn_detailToko.setOnClickListener {
+            startActivity<ProfilTokoActivity>("data" to produk)
         }
       
 

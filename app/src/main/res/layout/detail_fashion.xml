@@ -57,6 +57,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_judul_Lihat_semua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

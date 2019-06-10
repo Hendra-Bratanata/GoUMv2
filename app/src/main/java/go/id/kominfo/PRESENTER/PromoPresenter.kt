@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ApiRepository.PromoAPI
 import go.id.kominfo.INTERFACE.MainView
-import go.id.kominfo.POJO.PromoResponse
+import go.id.kominfo.POJO.ProdukResponse
 import go.id.kominfo.POJO.bannerResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -15,7 +15,7 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
     fun getPromo(){
        doAsync {
            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getPromo())
-                   , PromoResponse::class.java)
+                   , ProdukResponse::class.java)
            uiThread {
                view.showData(data.data)
 
@@ -23,10 +23,10 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
 
        }
     }
-    fun getFashionPria (){
+    fun getFashion (){
         doAsync {
             val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getFashion())
-                    , PromoResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
                 view.showDataPria(data.data)
 
@@ -34,10 +34,10 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
 
         }
     }
-    fun getFashionWanita (){
+    fun getCraft (){
         doAsync {
             val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getCraft())
-                    , PromoResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
                 view.showDataWanita(data.data)
 
@@ -46,12 +46,12 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
         }
     }
 
-    fun getMinuman (){
+    fun getKuliner (){
         doAsync {
             val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getKuliner())
-                    , PromoResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
-                view.showDataMinuman(data.data)
+                view.showDataMinuman(data.data,"kuliner")
 
             }
 
@@ -69,4 +69,49 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
         }
 
     }
+    fun getMinuman (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getMinuman())
+                    , ProdukResponse::class.java)
+            uiThread {
+                view.showDataMinuman(data.data,"minuman")
+
+            }
+        }
+
+    }
+    fun getRumahTangga (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getRumahTangga())
+                    , bannerResponse::class.java)
+            uiThread {
+                view.showDataBanner(data.data)
+
+            }
+        }
+
+    }
+    fun getJasa (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
+                    , bannerResponse::class.java)
+            uiThread {
+                view.showDataBanner(data.data)
+
+            }
+        }
+
+    }
+    fun getLainLain (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
+                    , bannerResponse::class.java)
+            uiThread {
+                view.showDataBanner(data.data)
+
+            }
+        }
+
+    }
+
 }
