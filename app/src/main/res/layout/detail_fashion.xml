@@ -12,34 +12,34 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="start"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+            <!--<ImageView-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:gravity="start"-->
+                <!--android:src="@drawable/ic_arrow_back_black_24dp" />-->
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/kotak_search"
-                android:drawableStart="@drawable/ic_search_white_24dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:hint="cari produk disini"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorDarkPurple" />
-        </android.support.v7.widget.Toolbar>
+            <!--<EditText-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:background="@drawable/kotak_search"-->
+                <!--android:drawableStart="@drawable/ic_search_white_24dp"-->
+                <!--android:drawablePadding="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:hint="cari produk disini"-->
+                <!--android:padding="10dp"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textColorHint="@color/colorDarkPurple" />-->
+        <!--</android.support.v7.widget.Toolbar>-->
 
     </android.support.design.widget.AppBarLayout>
 
@@ -57,6 +57,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_judul_Lihat_semua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

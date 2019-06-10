@@ -31,6 +31,7 @@ import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.PromoPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
@@ -51,13 +52,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         katagoriAdapterWanita.notifyDataSetChanged()
     }
 
-    override fun showDataMinuman(listProduk: List<Produk>) {
+    override fun showDataMinuman(listProduk: List<Produk>,kode: String) {
         swpMain.isRefreshing = false
         conn = 1
-        listMinuman.clear()
-        listMinuman.addAll(listProduk)
-        katagoriAdapterMinuman.notifyDataSetChanged()
-        loading.visibility = View.INVISIBLE
+        if(kode.equals("minuman" ,true)){
+            listMinuman.clear()
+            listMinuman.addAll(listProduk)
+            katagoriAdapterMinuman.notifyDataSetChanged()
+            loading.visibility = View.INVISIBLE
+        }
+        if(kode.equals("kuliner",true)){
+            listKuliner.clear()
+            listKuliner.addAll(listProduk)
+            katagoriAdapterKuliner.notifyDataSetChanged()
+            loading.visibility = View.INVISIBLE
+        }
+
         viewVisible()
 
     }
@@ -88,10 +98,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var listPria: MutableList<Produk>
     lateinit var listWanita: MutableList<Produk>
     lateinit var listMinuman: MutableList<Produk>
+    lateinit var listKuliner: MutableList<Produk>
     lateinit var presenter: PromoPresenter
     lateinit var bannerAdapter: BannerAdapter
     lateinit var katagoriAdapterPria: KatagoryAdapter
     lateinit var katagoriAdapterMinuman: KatagoryAdapter
+    lateinit var katagoriAdapterKuliner: KatagoryAdapter
     lateinit var katagoriAdapterWanita: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
@@ -185,6 +197,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<DetailProductActivity>("detail" to it)
         })
 
+        listKuliner = mutableListOf()
+        katagoriAdapterKuliner = KatagoryAdapter(listKuliner,{
+            startActivity<DetailProductActivity>("detail" to it)
+        })
+
         listBanner = mutableListOf()
         bannerAdapter = BannerAdapter(listBanner, {
             startActivity<DetailBannerActivity>("banner" to it)
@@ -206,7 +223,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         rv_wanita.adapter = katagoriAdapterWanita
 
         rv_electronik.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_electronik.adapter = katagoriAdapterMinuman
+        rv_electronik.adapter = katagoriAdapterKuliner
+
+        rv_makanan_minuman.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_makanan_minuman.adapter = katagoriAdapterMinuman
 
         rv_banner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_banner.adapter = bannerAdapter
@@ -221,6 +241,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             conn = 0
             requestData()
         }
+         tv_lihat_semua_fashion.setOnClickListener {
+             startActivity<LihatSemuaActivity>("kode" to "fashion")
+         }
+        tv_lihat_semua_craft.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "craft")
+        }
+        tv_lihat_semua_kuliner.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "kuliner")
+        }
+        tv_lihat_semua_makanan_minuman.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "minuman")
+        }
+        edtCari.setOnClickListener {
+            startActivity<CariActivity>()
+        }
+
+
+
 
 
     }
@@ -228,10 +266,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun requestData() {
 
         presenter.getPromo()
-        presenter.getFashionPria()
-        presenter.getFashionWanita()
-        presenter.getMinuman()
+        presenter.getFashion()
+        presenter.getCraft()
+        presenter.getKuliner()
         presenter.getBenner()
+        presenter.getMinuman()
 
         if (conn == 0) {
             Thread(Runnable {

@@ -27,6 +27,7 @@
                 android:src="@drawable/tangerang" />
 
             <EditText
+                android:id="@+id/edtCari"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
@@ -38,6 +39,9 @@
                 android:padding="10dp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorDarkPurple" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

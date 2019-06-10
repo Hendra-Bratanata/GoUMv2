@@ -46,6 +46,22 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getMinuman(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/makanan_minuman.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getRumahTangga(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/rumah_tangga.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getJasa(): String {
+        val Url = BuildConfig.BASE_URL + "kategori/jasa.php"
+        Log.d("data", Url)
+        return Url
+    }
+
 
     fun kirimRegister(ktp: String,
                       npwp: String,
@@ -126,6 +142,11 @@ object PromoAPI {
 
     fun getUmkmKd(kd: String): String {
         val Url = BuildConfig.BASE_URL + "user_umkm_kdUmkm.php?kdUmkm=$kd"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllProduk(cari: String): String {
+        val Url = BuildConfig.BASE_URL + "Cari_Produk.php?cari=$cari"
         Log.d("data", Url)
         return Url
     }

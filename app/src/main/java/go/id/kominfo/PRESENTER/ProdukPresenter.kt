@@ -4,10 +4,8 @@ package go.id.kominfo.PRESENTER
 import com.google.gson.Gson
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ApiRepository.PromoAPI
-import go.id.kominfo.INTERFACE.MainView
 import go.id.kominfo.INTERFACE.ProdukView
-import go.id.kominfo.POJO.PromoResponse
-import go.id.kominfo.POJO.bannerResponse
+import go.id.kominfo.POJO.ProdukResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -16,7 +14,7 @@ class ProdukPresenter(val view: ProdukView, val gson: Gson, val apiReposirtory: 
     fun getProduk(){
        doAsync {
            val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getProduk())
-                   , PromoResponse::class.java)
+                   , ProdukResponse::class.java)
            uiThread {
                view.showDataProduk(data.data)
 
@@ -27,7 +25,7 @@ class ProdukPresenter(val view: ProdukView, val gson: Gson, val apiReposirtory: 
     fun getProdukByKdUmkm(id:String){
         doAsync {
             val data =gson.fromJson(apiReposirtory.doRequest(PromoAPI.getProdukbyKode(id))
-                    , PromoResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
                 view.showDataProduk(data.data)
 

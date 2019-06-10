@@ -27,6 +27,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.*
+import org.jetbrains.anko.db.NULL
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -104,12 +105,13 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
             val katagoriItem= listKatagoryId[spinnerTambahProduk.selectedItemPosition]
             val nm_produk = edt_nama_produk.text.toString()
             val harga = edt_harga_produk.text.toString()
-            val diskon:String? = edt_promo.text.toString()
-            val tanggalAkhir:String? = edt_tangga_akhir.text.toString()
+            var diskon:String? = edt_promo.text.toString()
+            var tanggalAkhir:String? = edt_tangga_akhir.text.toString()
             val bulanAkhir:String? = edt_bulan_akhir.text.toString()
             val tahunAkhir:String?= edt_tahun_akhir.text.toString()
 
-            val exp_diskon = "20$tahunAkhir-$bulanAkhir-$tanggalAkhir"
+
+            var exp_diskon = "20$tahunAkhir-$bulanAkhir-$tanggalAkhir"
             val deskripsi = edt_deskripsi_produk.text.toString()
 
             if(nm_produk.isEmpty()){
@@ -119,6 +121,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
                 edt_harga_produk.setError("Harga Produk Tidak Boleh Kosong")
 
             }
+
 
             else{
                 uploadImanges(kd_umkm,katagoriItem,nm_produk,harga,diskon,exp_diskon,deskripsi)
@@ -187,26 +190,33 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
                       nm_produk: String,
                       harga: String,
                       diskon: String?,
-                      exp_diskon: String,
+                      exp_diskon: String?,
                       deskripsi: String) {
 
 //        val regBody = RequestBody.create(MediaType.parse("multipart/form-file"), file)
-
-        val kd_umkm = RequestBody.create(MultipartBody.FORM,kd_umkm)
-        val ktgori = RequestBody.create(MultipartBody.FORM,katagoriItem)
-        val namaProduk = RequestBody.create(MultipartBody.FORM,nm_produk)
-        val harga = RequestBody.create(MultipartBody.FORM,harga)
-        val diskon = RequestBody.create(MultipartBody.FORM,diskon)
-        val exp_diskon = RequestBody.create(MultipartBody.FORM,exp_diskon)
-        val deskripsi = RequestBody.create(MultipartBody.FORM,deskripsi)
+        var dataDiskon = diskon
+        var dataExp = exp_diskon
+        if(dataDiskon.isNullOrBlank()){
+            dataDiskon = ""
+            dataExp = ""
+        }
+        val kd_umkmData = RequestBody.create(MultipartBody.FORM,kd_umkm)
+        val ktgoriData = RequestBody.create(MultipartBody.FORM,katagoriItem)
+        val namaProdukData = RequestBody.create(MultipartBody.FORM,nm_produk)
+        val hargaData = RequestBody.create(MultipartBody.FORM,harga)
+        var diskonData = RequestBody.create(MultipartBody.FORM,dataDiskon)
+        var exp_diskonData = RequestBody.create(MultipartBody.FORM,dataExp)
+        val deskripsiData = RequestBody.create(MultipartBody.FORM,deskripsi)
         val regBody = RequestBody.create(MediaType.parse("multipart/form-file"),file)
         var multipartBody = MultipartBody.Part.createFormData("gambar", file.name, regBody)
 
 
 
+
+
         val apiServices = RetrofitClient.getApiServices()
 
-        call = apiServices.addProduk(multipartBody,kd_umkm,ktgori,namaProduk,harga,diskon,exp_diskon,deskripsi)
+        call = apiServices.addProduk(multipartBody,kd_umkmData,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
         println("CALL ${call}")
 
 
