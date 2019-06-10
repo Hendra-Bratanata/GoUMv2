@@ -31,6 +31,7 @@ import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.PromoPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
@@ -251,6 +252,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         tv_lihat_semua_makanan_minuman.setOnClickListener {
             startActivity<LihatSemuaActivity>("kode" to "minuman")
+        }
+        edtCari.setOnClickListener {
+            startActivity<CariActivity>()
         }
 
 

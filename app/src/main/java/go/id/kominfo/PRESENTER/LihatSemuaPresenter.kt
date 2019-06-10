@@ -115,4 +115,14 @@ class LihatSemuaPresenter(val view: LihatSemuaView, val gson: Gson, val apiRepos
 //
 //    }
 
+    fun getAllByABC(cari: String){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllProduk(cari)),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+
 }

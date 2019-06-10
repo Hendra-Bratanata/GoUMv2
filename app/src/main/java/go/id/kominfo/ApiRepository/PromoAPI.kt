@@ -145,4 +145,9 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getAllProduk(cari: String): String {
+        val Url = BuildConfig.BASE_URL + "Cari_Produk.php?cari=$cari"
+        Log.d("data", Url)
+        return Url
+    }
 }
