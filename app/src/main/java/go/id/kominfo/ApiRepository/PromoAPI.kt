@@ -150,4 +150,9 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getDataPenjualan(kdUmkm: String): String {
+        val Url = BuildConfig.BASE_URL + "transaksi/filter_transaksi_toko.php?kd_umkm=$kdUmkm"
+        Log.d("data", Url)
+        return Url
+    }
 }

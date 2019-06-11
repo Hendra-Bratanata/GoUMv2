@@ -14,56 +14,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Muhamad Ardiyansyah"
-                android:textColor="@color/colorBlack" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="end"
-                android:padding="4dp"
-                android:text="23 April 2019"
-                android:textColor="@color/colorBlack" />
-
-        </LinearLayout>
-
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<ImageView-->
-        <!--android:id="@+id/img_toko"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:contentDescription="@string/gambar"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--android:src="@drawable/logo_rumah" />-->
-        <!--<TextView-->
-        <!--android:id="@+id/tv_nama_produk"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:text="@string/braun_classic_watch"-->
-        <!--android:textColor="@color/colorBlack"-->
-        <!--android:textStyle="bold" />-->
-
-        <!--</LinearLayout>-->
-
         <RelativeLayout
             android:id="@+id/item_now_play"
             android:layout_width="match_parent"
@@ -71,7 +21,7 @@
             android:padding="4dp">
 
             <ImageView
-                android:id="@+id/img_item_produk"
+                android:id="@+id/img_item_data_pesanan"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_alignParentStart="true"
@@ -82,14 +32,14 @@
                 android:src="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/tv_produk"
+                android:id="@+id/tv_nama_produk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
-                android:layout_toEndOf="@id/img_item_produk"
-                android:layout_toRightOf="@id/img_item_produk"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/braun_classic_watch"
@@ -98,15 +48,15 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_item_harga"
+                android:id="@+id/tv_harga_data_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_produk"
+                android:layout_below="@id/tv_nama_produk"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
-                android:layout_toEndOf="@id/img_item_produk"
-                android:layout_toRightOf="@id/img_item_produk"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
                 android:text="Rp200.000"
                 android:textColor="@color/colorred"
                 android:textSize="14sp" />
@@ -115,21 +65,21 @@
                 android:id="@+id/tv_item_qty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_item_harga"
+                android:layout_below="@id/tv_harga_data_pesanan"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
-                android:layout_toEndOf="@id/img_item_produk"
-                android:layout_toRightOf="@id/img_item_produk"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
                 android:text="Qty    : "
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_qty"
+                android:id="@+id/tv_qty_data_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_item_harga"
+                android:layout_below="@id/tv_harga_data_pesanan"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
@@ -146,15 +96,15 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@id/img_item_produk"
-                android:layout_toRightOf="@id/img_item_produk"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
                 android:text="total  :"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <TextView
 
-                android:id="@+id/tv_total_nominal_harga"
+                android:id="@+id/tv_total_harga_data_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_item_qty"
@@ -166,45 +116,7 @@
                 android:text="Rp400.000"
                 android:textColor="@color/colorred"
                 android:textSize="14sp" />
-            <!--<TextView-->
-            <!--android:id="@+id/tv_item_date"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_marginLeft="@dimen/activity_vertical_margin"-->
-            <!--android:layout_marginStart="@dimen/activity_vertical_margin"-->
-            <!--android:layout_toEndOf="@+id/img_item_poster"-->
-            <!--android:layout_toRightOf="@+id/img_item_poster"-->
-            <!--android:drawableLeft="@drawable/ic_date_range"-->
-            <!--android:drawablePadding="3dp"-->
-            <!--android:drawableStart="@drawable/ic_date_range"-->
-            <!--android:gravity="center"-->
-            <!--android:maxLines="1"-->
-            <!--tools:text="@string/releaseDate" />-->
+
         </RelativeLayout>
     </LinearLayout>
-
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:padding="4dp">-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginEnd="2dp"-->
-    <!--android:src="@drawable/ic_checkbox" />-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="2dp"-->
-    <!--android:src="@drawable/ic_close" />-->
-    <!--</LinearLayout>-->
-
-
 </android.support.v7.widget.CardView>

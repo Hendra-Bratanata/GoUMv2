@@ -46,7 +46,7 @@
                     android:id="@+id/rv_data_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_data_pesanan">
+                    tools:listitem="@layout/item_data_pesanan_detail">
 
                 </android.support.v7.widget.RecyclerView>
 

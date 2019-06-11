@@ -80,4 +80,5 @@
     <string name="selesai">SELESAI</string>
     <string name="deskripsi_produk">Deskripsi Produk</string>
     <string name="edit_produk">Edit Produk</string>
+    <string name="total_pesanan_t_t">Total Pesanan  \t\t\t :</string>
 </resources>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/item_now_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tv_nama_pembeli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/braun_classic_watch"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_noHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_nama_pembeli"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
+                android:text="inv089879"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_noInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_noHp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
+                android:text="inv089879"
+                android:textColor="@color/colorred"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_item_qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_noInvoice"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
+                android:text="Jumlah Pesanan   : "
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_qty_data_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_noInvoice"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@id/tv_item_qty"
+                android:layout_toRightOf="@id/tv_item_qty"
+                android:text="2"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_total_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_item_qty"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/img_item_data_pesanan"
+                android:layout_toRightOf="@id/img_item_data_pesanan"
+                android:text="@string/total_pesanan_t_t"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_total_harga_data_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_item_qty"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/tv_total_harga"
+                android:layout_toRightOf="@id/tv_total_harga"
+                android:text="Rp400.000"
+                android:textColor="@color/colorred"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

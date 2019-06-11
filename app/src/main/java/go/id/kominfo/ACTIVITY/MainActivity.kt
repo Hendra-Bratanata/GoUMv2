@@ -339,6 +339,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 sharedPreferences.clearSharedPreference()
                 startActivity<MainActivity>()
             }
+            R.id.nav_sales_order ->{
+                startActivity<SalesOrderActivity>()
+            }
         }
 
 

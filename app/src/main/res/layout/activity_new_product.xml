@@ -332,7 +332,7 @@
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progresBarProduk"
         style="@android:style/Widget.ProgressBar.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
