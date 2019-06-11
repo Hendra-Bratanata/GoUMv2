@@ -44,12 +44,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_new_product_form"
+                android:id="@+id/tv_edit_product_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/calibri"
                 android:gravity="center"
-                android:text="@string/tambah_produk"
+                android:text="@string/edit_produk"
                 android:textColor="@color/colorDarkPurple"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -319,7 +319,7 @@
                         android:layout_marginLeft="10dp"
                         android:background="@drawable/kotak_ungu"
                         android:fontFamily="@font/calibri"
-                        android:text="Tambah"
+                        android:text="Simpan"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"

@@ -1,62 +1,341 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/colorWhite"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="8dp"
+    tools:context="go.id.kominfo.ACTIVITY.NewProductActivity">
 
-
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:gravity="center">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="start"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/kotak_search"
-                android:drawableStart="@drawable/ic_search_white_24dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:hint="cari produk disini"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorDarkPurple" />
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/tv_footer_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/powered_by_diskominfo"
+            android:textColor="@color/colorDarkPurple"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_horizontal_margin">
+        android:layout_above="@+id/footer"
+        android:fillViewport="true">
 
-        <android.support.v7.widget.RecyclerView
+        <LinearLayout
+            android:id="@+id/linear_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fillViewport="true"
+            android:orientation="vertical">
 
-        </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:id="@+id/tv_new_product_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri"
+                android:gravity="center"
+                android:text="@string/tambah_produk"
+                android:textColor="@color/colorDarkPurple"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/form_new_produk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/item_new_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/img_add_produk"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/kotak_ungu"
+                        android:contentDescription="gambar"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_image_white_24dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical"
+                        android:paddingEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/edt_nama_produk"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Nama Produk"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+
+                        <EditText
+                            android:id="@+id/edt_harga_produk"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/kotak"
+                            android:hint="Harga Produk"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerTambahProduk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/kotak"
+                            tools:listitem="" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="120dp"
+                        android:paddingEnd="10dp"
+                        android:text="Promo"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_promo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/kotak"
+                        android:gravity="center"
+                        android:hint="10"
+                        android:inputType="number"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="%"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26dp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_promo"
+                        android:layout_width="40dp"
+
+                        android:layout_height="40dp"
+                        android:layout_marginStart="15dp"
+                        android:buttonTint="@color/colorDarkPurple"
+                        android:checked="false" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aktif"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="120dp"
+                        android:paddingEnd="10dp"
+                        android:text="Batas Akhir Periode"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_tanggal_mulai"-->
+                    <!--android:layout_width="25dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="28"-->
+                    <!--android:inputType="date"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="14sp" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_bulan_mulai"-->
+                    <!--android:layout_width="25dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="04"-->
+                    <!--android:inputType="date"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="14sp" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/edt_tahun_mulai"-->
+                    <!--android:layout_width="25dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@drawable/kotak"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="19"-->
+                    <!--android:inputType="date"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="14sp" />-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="6dp"-->
+                    <!--android:paddingEnd="10dp"-->
+                    <!--android:text="s/d"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textStyle="bold" />-->
+
+                    <EditText
+                        android:id="@+id/edt_tangga_akhir"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/kotak"
+                        android:gravity="center"
+                        android:hint="28"
+                        android:inputType="date"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/edt_bulan_akhir"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/kotak"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:hint="05"
+                        android:inputType="date"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/edt_tahun_akhir"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/kotak"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:hint="19"
+                        android:inputType="date"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10sp">
+
+                    <EditText
+                        android:id="@+id/edt_deskripsi_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:background="@drawable/kotak_putih"
+                        android:gravity="start"
+                        android:hint="@string/deskripsi_dodol_tenjo"
+                        android:padding="5dp" />
+
+                    <Button
+                        android:id="@+id/btn_TambahProdukBaru"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/kotak_ungu"
+                        android:fontFamily="@font/calibri"
+                        android:text="Tambah"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
-
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>
