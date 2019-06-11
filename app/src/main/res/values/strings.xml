@@ -79,4 +79,5 @@
     <string name="alamat_toko">Alamat Toko</string>
     <string name="selesai">SELESAI</string>
     <string name="deskripsi_produk">Deskripsi Produk</string>
+    <string name="edit_produk">Edit Produk</string>
 </resources>
