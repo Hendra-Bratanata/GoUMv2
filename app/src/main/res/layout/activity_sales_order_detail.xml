@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ACTIVITY.SalesOrderDetail">
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2">
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:text="@string/nama"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"/>
+
+       <TextView
+           android:id="@+id/tvnama_pembeli_salesOrder"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1.5"
+           android:hint="Hendra"
+           android:textColor="@color/colorBlack"
+           android:textSize="16sp" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/alamat_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tvalamat_pembeli_salesOrder"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:hint="citraraya"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/no_inv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tvInv_pembeli_salesOrder"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:hint="no/inv/00000000"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/tanggal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tvTanggal_pembeli_salesOrder"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:hint="20/02/1999"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tvStatus_salesOrder"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:textStyle="bold"
+            android:hint="Status"
+            android:textColor="@color/colorHijau"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorBlack"
+        android:layout_height="1dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvDetailPembelian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorBlack"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:weightSum="2">
+        <View
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tvTotal_pembeli_salesOrder"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:hint="20/02/1999"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:weightSum="1">
+        <Button
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorHijau"
+            android:id="@+id/btnTerimaOrder"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Terima"/>
+        <Button
+            android:layout_margin="5dp"
+            android:background="@color/colorred"
+            android:id="@+id/btnTolakOrder"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tolak"/>
+
+    </LinearLayout>
+
+</LinearLayout>

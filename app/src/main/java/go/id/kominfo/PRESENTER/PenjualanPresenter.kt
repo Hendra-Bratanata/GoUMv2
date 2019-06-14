@@ -20,4 +20,13 @@ class PenjualanPresenter(val view: PesananView, val gson: Gson, val apiReposirto
             }
         }
     }
+    fun getPenjualanFilter(kdUmkm:String,status:String){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getDataPenjualanFilter(kdUmkm,status)),
+                    PenjualanResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
 }

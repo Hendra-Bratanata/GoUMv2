@@ -13,7 +13,8 @@
         android:roundIcon="@drawable/goumkab"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ACTIVITY.CariActivity"></activity>
+        <activity android:name=".ACTIVITY.SalesOrderDetail"/>
+        <activity android:name=".ACTIVITY.CariActivity" />
         <activity android:name=".ACTIVITY.LihatSemuaActivity" />
         <activity android:name=".ACTIVITY.TokoActivity" />
         <activity android:name=".ACTIVITY.ProfilTokoActivity" />

@@ -29,10 +29,11 @@ class DataPesananAdapter(val listPenjualan: List<Penjualan>,val detail:(Penjuala
     class ViewHolder(v: View):RecyclerView.ViewHolder(v){
 
         val img:ImageView = v.find(R.id.img_item_data_pesanan)
-        val nama:TextView = v.find(R.id.tv_nama_pembeli)
-        val harga:TextView = v.find(R.id.tv_noInvoice)
+        val nama:TextView = v.find(R.id.tv_nama_produk)
+        val harga:TextView = v.find(R.id.tv_harga_data_pesanan)
         val qty:TextView = v.find(R.id.tv_qty_data_pesanan)
         val total:TextView = v.find(R.id.tv_total_harga_data_pesanan)
+
 
 
         fun bindItem(penjualan: Penjualan,detail: (Penjualan) -> Unit){
@@ -42,7 +43,9 @@ class DataPesananAdapter(val listPenjualan: List<Penjualan>,val detail:(Penjuala
             nama.text = penjualan.nm_produk.toString()
             harga.text = penjualan.harga.toString()
             qty.text = penjualan.qty.toString()
-            total.text = penjualan.total.toString()
+            val totalBelanja = penjualan.qty!!.toInt() * penjualan.harga!!.toInt()
+            total.text = totalBelanja.toString()
+
 
 
         itemView.setOnClickListener {

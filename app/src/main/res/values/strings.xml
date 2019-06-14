@@ -81,4 +81,10 @@
     <string name="deskripsi_produk">Deskripsi Produk</string>
     <string name="edit_produk">Edit Produk</string>
     <string name="total_pesanan_t_t">Total Pesanan  \t\t\t :</string>
+    <string name="alamat_order">Alamat \t\t\t\t:</string>
+    <string name="nama">Nama \t\t\t\t\t:</string>
+    <string name="no_inv">No INV \t\t\t\t:</string>
+    <string name="tanggal">Tanggal\t\t\t:</string>
+    <string name="total">Total \t\t\t\t:</string>
+    <string name="status">Status\t\t\t\t\t:</string>
 </resources>
