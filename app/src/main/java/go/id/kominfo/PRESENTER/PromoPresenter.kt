@@ -83,9 +83,9 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
     fun getRumahTangga (){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getRumahTangga())
-                    , bannerResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
-                view.showDataBanner(data.data)
+                view.showDataRumah(data.data)
 
             }
         }

@@ -174,7 +174,7 @@
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Terima"/>
+            android:text="PROSES"/>
         <Button
             android:layout_margin="5dp"
             android:background="@color/colorred"
@@ -187,5 +187,15 @@
             android:text="Tolak"/>
 
     </LinearLayout>
+    <Button
+        android:visibility="gone"
+        android:layout_margin="5dp"
+        android:background="#0040FF"
+        android:id="@+id/btnKirimOrder"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tolak"/>
 
 </LinearLayout>

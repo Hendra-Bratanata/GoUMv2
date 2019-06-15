@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Button
 import com.google.gson.Gson
-import go.id.kominfo.ADAPTER.DataPesananAdapter
 import go.id.kominfo.ADAPTER.DataPesananListAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.PesananView
@@ -22,7 +20,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
 
-class SalesOrderActivity : AppCompatActivity(),PesananView{
+class SalesOrderUserActivity : AppCompatActivity(),PesananView{
     override fun showData(list: List<Penjualan>) {
         swDataPesanan.isRefreshing = false
         var invSekarang = ""
@@ -53,7 +51,7 @@ class SalesOrderActivity : AppCompatActivity(),PesananView{
     lateinit var listPenjualan: MutableList<Penjualan>
     lateinit var sharedPreferences: SharedPreference
     lateinit var adapter: DataPesananListAdapter
-    var KDUMKM =""
+    var noHp =""
     var kode = 0
 
 
@@ -62,7 +60,7 @@ class SalesOrderActivity : AppCompatActivity(),PesananView{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sales_order)
         sharedPreferences = SharedPreference(this)
-        KDUMKM = sharedPreferences.getValueString("kd_umkm").toString()
+        noHp = sharedPreferences.getValueString("noHpPembeli").toString()
 
         listPenjualan = mutableListOf()
         gson = Gson()
@@ -74,50 +72,50 @@ class SalesOrderActivity : AppCompatActivity(),PesananView{
 
         rv_data_pesanan.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         rv_data_pesanan.adapter = adapter
-        presenter.getPenjualan(KDUMKM)
+        presenter.getPembelian(noHp)
         colorBtnState(1)
         swDataPesanan.onRefresh {
-            presenter.getPenjualan(KDUMKM)
+            presenter.getPembelian(noHp)
             colorBtnState(1)
         }
 
         btnAllPesananFilter.setOnClickListener {
-            presenter.getPenjualan(KDUMKM)
+            presenter.getPembelian(noHp)
             colorBtnState(1)
 
         }
         btnProsesPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"proses")
+            presenter.getPembelianFilter(noHp,"proses")
             colorBtnState(2)
 
         }
         btnKirimPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"kirim")
+            presenter.getPembelianFilter(noHp,"kirim")
             colorBtnState(3)
         }
         btnTolakPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"tolak")
+            presenter.getPembelianFilter(noHp,"tolak")
             colorBtnState(4)
         }
 
         btnTerimaPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"terima")
+            presenter.getPembelianFilter(noHp,"terima")
             colorBtnState(5)
         }
         btnSelesaiPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"selesai")
+            presenter.getPembelianFilter(noHp,"selesai")
             colorBtnState(6)
         }
 
         btnKomplainPesananFilter.setOnClickListener {
-            presenter.getPenjualanFilter(KDUMKM,"komplain")
+            presenter.getPembelianFilter(noHp,"komplain")
             colorBtnState(7)
         }
     }
 
     override fun onResume() {
         super.onResume()
-       presenter.getPenjualan(KDUMKM)
+       presenter.getPembelian(noHp)
     }
   fun colorBtnState(code:Int){
       when(code){

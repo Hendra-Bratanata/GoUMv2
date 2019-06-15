@@ -155,8 +155,25 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getDataPembelian(noHp: String): String {
+        val Url = BuildConfig.BASE_URL + "transaksi/filter_transaksi_pembeli.php?no_hp_pembeli=$noHp"
+        Log.d("data", Url)
+        return Url
+    }
     fun getDataPenjualanFilter(kdUmkm: String,status:String): String {
         val Url = BuildConfig.BASE_URL + "transaksi/filter_transaksi_toko.php?kd_umkm=$kdUmkm&status=$status"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getDataPembelianFilter(noHp: String,status:String): String {
+        val Url = BuildConfig.BASE_URL + "transaksi/filter_transaksi_pembeli.php?no_hp_pembeli=$noHp&status=$status"
+        Log.d("data", Url)
+        return Url
+    }
+    fun setDataPenjualanStatus(kdUmkm: String,status:String,no_trans: String): String {
+
+        val stat = URLEncoder.encode(status,"ASCII")
+        val Url = BuildConfig.BASE_URL + "transaksi/transaksi_update.php?kd_umkm=$kdUmkm&status=$stat&no_trans=$no_trans"
         Log.d("data", Url)
         return Url
     }

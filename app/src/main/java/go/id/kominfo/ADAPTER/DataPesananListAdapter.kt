@@ -47,14 +47,17 @@ class DataPesananListAdapter(var listPenjualan: List<Penjualan>, val detail:(Pen
                 jumlah.text = jumlahItem.toString()
                 total.text = penjualan.total.toString()
                 statusB.text = penjualan.status
-            if (penjualan.status == "terima"){
+            if (penjualan.status.equals("proses",true)){
                 statusB.backgroundColor = Color.GREEN
             }
-            if(penjualan.status == "tolak"){
+            if(penjualan.status.equals("tolak",true)){
                 statusB.backgroundColor = Color.RED
             }
-            else{
+            if(penjualan.status.equals("kirim",false)){
                 statusB.backgroundColor = Color.BLUE
+            }
+            if(penjualan.status.equals("selesai",false)){
+                statusB.backgroundColor = Color.LTGRAY
             }
 
                 itemView.setOnClickListener {

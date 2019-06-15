@@ -9,5 +9,6 @@ fun showData(listProduk: List<Produk>)
    fun showDataWanita(listProduk: List<Produk>)
    fun showDataMinuman(listProduk: List<Produk>,kode:String)
    fun showDataBanner(listBanner: List<Banner>)
+   fun showDataRumah(listRumah: List<Produk>)
 
 }

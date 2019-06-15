@@ -38,6 +38,12 @@ import org.jetbrains.anko.support.v4.onRefresh
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+    override fun showDataRumah(listRumah: List<Produk>) {
+        listRumahTangga.clear()
+        listRumahTangga.addAll(listRumah)
+        katagoriAdapterRumah.notifyDataSetChanged()
+    }
+
     override fun showDataBanner(listBann: List<Banner>) {
         listBanner.clear()
         listBanner.addAll(listBann)
@@ -52,16 +58,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         katagoriAdapterWanita.notifyDataSetChanged()
     }
 
-    override fun showDataMinuman(listProduk: List<Produk>,kode: String) {
+    override fun showDataMinuman(listProduk: List<Produk>, kode: String) {
         swpMain.isRefreshing = false
         conn = 1
-        if(kode.equals("minuman" ,true)){
+        if (kode.equals("minuman", true)) {
             listMinuman.clear()
             listMinuman.addAll(listProduk)
             katagoriAdapterMinuman.notifyDataSetChanged()
             loading.visibility = View.INVISIBLE
         }
-        if(kode.equals("kuliner",true)){
+        if (kode.equals("kuliner", true)) {
             listKuliner.clear()
             listKuliner.addAll(listProduk)
             katagoriAdapterKuliner.notifyDataSetChanged()
@@ -99,12 +105,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var listWanita: MutableList<Produk>
     lateinit var listMinuman: MutableList<Produk>
     lateinit var listKuliner: MutableList<Produk>
+    lateinit var listRumahTangga: MutableList<Produk>
     lateinit var presenter: PromoPresenter
     lateinit var bannerAdapter: BannerAdapter
     lateinit var katagoriAdapterPria: KatagoryAdapter
     lateinit var katagoriAdapterMinuman: KatagoryAdapter
     lateinit var katagoriAdapterKuliner: KatagoryAdapter
     lateinit var katagoriAdapterWanita: KatagoryAdapter
+    lateinit var katagoriAdapterRumah: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
@@ -112,6 +120,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var sharedPreferences: SharedPreference
     var LOGIN = false
     var NOHP = ""
+    var noHpPemebeli = ""
+    var alamatPemebeli =""
+    var namaPembeli = ""
+
     lateinit var swpMain: SwipeRefreshLayout
     var conn = 0
 
@@ -139,8 +151,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         LOGIN = sharedPreferences.getValueBoolien("LOGIN", false)
         NOHP = sharedPreferences.getValueString("noHP").toString()
         KDUMKM = sharedPreferences.getValueString("kd_umkm").toString()
+        noHpPemebeli = sharedPreferences.getValueString("noHpPembeli").toString()
+        alamatPemebeli = sharedPreferences.getValueString("alamatPembeli").toString()
+        namaPembeli = sharedPreferences.getValueString("namaPembeli").toString()
         Log.d("LOGIN", "$LOGIN")
         Log.d("No HP", "$NOHP")
+        if (noHpPemebeli.isNotEmpty()){
+            val nav: NavigationView = findViewById(R.id.nav_view)
+            val M: Menu = nav.menu
+            val akun = M.findItem(R.id.nav_akun)
+            akun.setVisible(true)
+            akun.setTitle(namaPembeli)
+        }
 
         if (LOGIN) {
             Log.d("in LOGIN ", "$LOGIN")
@@ -185,7 +207,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         adapter = PromoAdapter(list, {
             startActivity<DetailProductActivity>("detail" to it)
         })
-
+        listRumahTangga = mutableListOf()
+        katagoriAdapterRumah = KatagoryAdapter(listRumahTangga, {
+            startActivity<DetailProductActivity>("detail" to it)
+        })
 
         listWanita = mutableListOf()
         katagoriAdapterWanita = KatagoryAdapter(listWanita, {
@@ -198,7 +223,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
 
         listKuliner = mutableListOf()
-        katagoriAdapterKuliner = KatagoryAdapter(listKuliner,{
+        katagoriAdapterKuliner = KatagoryAdapter(listKuliner, {
             startActivity<DetailProductActivity>("detail" to it)
         })
 
@@ -225,11 +250,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         rv_electronik.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_electronik.adapter = katagoriAdapterKuliner
 
-        rv_makanan_minuman.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_makanan_minuman.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_makanan_minuman.adapter = katagoriAdapterMinuman
 
         rv_banner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_banner.adapter = bannerAdapter
+
+        rv_rumah_tangga.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_rumah_tangga.adapter = katagoriAdapterRumah
 
         gson = Gson()
         apiReposirtory = ApiReposirtory()
@@ -241,9 +269,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             conn = 0
             requestData()
         }
-         tv_lihat_semua_fashion.setOnClickListener {
-             startActivity<LihatSemuaActivity>("kode" to "fashion")
-         }
+        tv_lihat_semua_fashion.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "fashion")
+        }
         tv_lihat_semua_craft.setOnClickListener {
             startActivity<LihatSemuaActivity>("kode" to "craft")
         }
@@ -253,12 +281,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_makanan_minuman.setOnClickListener {
             startActivity<LihatSemuaActivity>("kode" to "minuman")
         }
+        tv_lihat_semua_rumah_tangga.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "rumah")
+        }
         edtCari.setOnClickListener {
             startActivity<CariActivity>()
         }
-
-
-
 
 
     }
@@ -271,6 +299,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         presenter.getKuliner()
         presenter.getBenner()
         presenter.getMinuman()
+        presenter.getRumahTangga()
 
         if (conn == 0) {
             Thread(Runnable {
@@ -339,8 +368,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 sharedPreferences.clearSharedPreference()
                 startActivity<MainActivity>()
             }
-            R.id.nav_sales_order ->{
+            R.id.nav_sales_order -> {
                 startActivity<SalesOrderActivity>()
+            }
+            R.id.nav_promo -> {
+                startActivity<SalesOrderUserActivity>()
             }
         }
 

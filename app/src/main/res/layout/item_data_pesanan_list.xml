@@ -142,7 +142,7 @@
         android:clickable="false"
         android:textColor="@color/colorWhite"
         android:text="Status"
-        android:textSize="16dp"
+        android:textSize="10dp"
         android:textStyle="bold" />
 </LinearLayout>
 

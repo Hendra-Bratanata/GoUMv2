@@ -73,5 +73,9 @@ class LihatSemuaActivity : AppCompatActivity(),LihatSemuaView {
             tv_judul_Lihat_semua.text = "Makanan dan Minuman"
             presenter.getMinuman()
         }
+        else if(data.equals("rumah",false)){
+            tv_judul_Lihat_semua.text = "Rumah Tangga"
+            presenter.getRumahTangga()
+        }
     }
 }

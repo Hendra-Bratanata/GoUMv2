@@ -20,9 +20,27 @@ class PenjualanPresenter(val view: PesananView, val gson: Gson, val apiReposirto
             }
         }
     }
+    fun getPembelian(noHp:String){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getDataPembelian(noHp)),
+                    PenjualanResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
     fun getPenjualanFilter(kdUmkm:String,status:String){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getDataPenjualanFilter(kdUmkm,status)),
+                    PenjualanResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getPembelianFilter(noHp:String,status:String){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getDataPembelianFilter(noHp,status)),
                     PenjualanResponse::class.java)
             uiThread {
                 view.showData(data.data)
