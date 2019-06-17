@@ -18,8 +18,7 @@ import android.view.Window
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+
 import go.id.kominfo.ACTIVITY.DetailActivity.DetailBannerActivity
 import go.id.kominfo.ACTIVITY.DetailActivity.DetailProductActivity
 import go.id.kominfo.ADAPTER.BannerAdapter
@@ -27,7 +26,6 @@ import go.id.kominfo.ADAPTER.KatagoryAdapter
 import go.id.kominfo.ADAPTER.PromoAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.MainView
-import go.id.kominfo.ITEM.Pria
 import go.id.kominfo.ITEM.SharedPreference
 import go.id.kominfo.POJO.Banner
 import go.id.kominfo.POJO.Produk
@@ -44,6 +42,12 @@ import org.jetbrains.anko.yesButton
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+    override fun showDataPria(listProduk: List<Produk>) {
+        listPria.clear()
+        listPria.addAll(listProduk)
+        katagoriAdapterPria.notifyDataSetChanged()
+    }
+
     override fun showDataRumah(listRumah: List<Produk>) {
         listRumahTangga.clear()
         listRumahTangga.addAll(listRumah)
@@ -84,17 +88,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    override fun showDataPria(listProduk: List<Produk>) {
-
-        listPria = mutableListOf()
-        listPria.clear()
-        listPria.addAll(listProduk)
-        listPria.map {
-            group.add(Pria(it) {
-                startActivity<DetailProductActivity>("detail" to it)
-            })
-        }
-    }
 
     override fun showData(listProduk: List<Produk>) {
         list.clear()
@@ -122,7 +115,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
-    var group: GroupAdapter<ViewHolder> = GroupAdapter()
+
     lateinit var sharedPreferences: SharedPreference
     var LOGIN = false
     var NOHP = ""
@@ -243,17 +236,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<DetailBannerActivity>("banner" to it)
         })
 
-        rv_fashion.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = group
-        }
+        listPria = mutableListOf()
+        katagoriAdapterPria = KatagoryAdapter(listPria,{
+            startActivity<DetailProductActivity>("detail" to it)
+        })
+
+
 
 
 
         rv_promo.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_promo.adapter = adapter
 
-
+        rv_fashion.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_fashion.adapter = katagoriAdapterPria
 
         rv_craft.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_craft.adapter = katagoriAdapterCraft
