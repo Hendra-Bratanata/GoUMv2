@@ -20,23 +20,39 @@
         <activity
             android:name=".LoginPembeli"
             android:label="@string/title_activity_login_pembeli"></activity>
-        <activity android:name=".ACTIVITY.SalesOrderDetail" />
-        <activity android:name=".ACTIVITY.SalesOrderUserActivity" />
-        <activity android:name=".ACTIVITY.CariActivity" />
-        <activity android:name=".ACTIVITY.LihatSemuaActivity" />
-        <activity android:name=".ACTIVITY.TokoActivity" />
-        <activity android:name=".ACTIVITY.ProfilTokoActivity" />
-        <activity android:name=".ACTIVITY.DetailBannerActivity" />
+        <activity android:name=".ACTIVITY.SalesOrderDetail"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.SalesOrderUserActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.CariActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.LihatSemuaActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ACTIVITY.TokoActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.ProfilTokoActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.DetailBannerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
-        <activity android:name=".ACTIVITY.DetailProductActivity" />
-        <activity android:name=".ACTIVITY.PembeliDataActivity" />
+        <activity android:name=".ACTIVITY.DetailProductActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ACTIVITY.PembeliDataActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".ACTIVITY.Register2"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ACTIVITY.RegisterActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ACTIVITY.MainActivity"
             android:screenOrientation="portrait"
@@ -44,15 +60,23 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ACTIVITY.SalesOrderActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ACTIVITY.KeranjangActivity" />
-        <activity android:name=".ACTIVITY.ProsesActivity" />
-        <activity android:name=".ACTIVITY.NewProductActivity" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ACTIVITY.KeranjangActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.ProsesActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ACTIVITY.NewProductActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".ACTIVITY.LoginActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ACTIVITY.StatistikActivity" />
+        <activity android:name=".ACTIVITY.StatistikActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ACTIVITY.FlashScreenActivity"
             android:configChanges="orientation|screenSize"

@@ -56,6 +56,7 @@
                         android:layout_height="wrap_content">
 
                         <LinearLayout
+                            android:paddingTop="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -68,7 +69,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="ALL"
+                                android:text="SEMUA"
                                 android:textSize="10dp" />
                             //proses
 
@@ -140,10 +141,9 @@
                         android:id="@+id/tvTidakAdatransaksi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:hint="Tidak Ada Transaksi"
                         android:textAlignment="center"
-
                         android:textSize="16sp"
                         android:visibility="gone" />
 

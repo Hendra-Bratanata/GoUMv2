@@ -5,159 +5,179 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ACTIVITY.SalesOrderDetail">
-   <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="2">
+    tools:context=".ACTIVITY.SalesOrderDetail"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_horizontal_margin">
 
-    <TextView
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorBlack"
-        android:text="@string/nama"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"/>
-
-       <TextView
-           android:id="@+id/tvnama_pembeli_salesOrder"
-           android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:layout_weight="1.5"
-           android:hint="Hendra"
-           android:textColor="@color/colorBlack"
-           android:textSize="16sp" />
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
 
         <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:text="@string/alamat_order"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:text="@string/nama"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvnama_pembeli_salesOrder"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:hint="Hendra"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/alamat_order"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvalamat_pembeli_salesOrder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:hint="citraraya"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:layout_height="wrap_content" />
+            android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
 
         <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:text="@string/no_inv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:text="@string/no_inv"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvInv_pembeli_salesOrder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:hint="no/inv/00000000"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:layout_height="wrap_content" />
+            android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
 
         <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:text="@string/tanggal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:text="@string/tanggal"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvTanggal_pembeli_salesOrder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:hint="20/02/1999"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:layout_height="wrap_content" />
+            android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
 
         <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:text="@string/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:text="@string/status"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvStatus_salesOrder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:textStyle="bold"
             android:hint="Status"
             android:textColor="@color/colorHijau"
             android:textSize="16sp"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
     </LinearLayout>
+
     <View
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:background="@color/colorBlack"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorDarkPurple" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvDetailPembelian"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <View
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:background="@color/colorBlack"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorDarkPurple" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:weightSum="2">
-        <View
-            android:layout_weight="0.8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:text="@string/total"
+        <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.8" />
+
         <TextView
+            android:layout_marginTop="4dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/total"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_marginTop="4dp"
             android:id="@+id/tvTotal_pembeli_salesOrder"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:hint="20/02/1999"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:layout_height="wrap_content" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -165,37 +185,40 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:weightSum="1">
+
         <Button
-            android:layout_margin="5dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorWhite"
-            android:background="@color/colorHijau"
             android:id="@+id/btnTerimaOrder"
-            android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="PROSES"/>
-        <Button
             android:layout_margin="5dp"
-            android:background="@color/colorred"
-            android:id="@+id/btnTolakOrder"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp"
             android:layout_weight="0.5"
+            android:background="@color/colorHijau"
+            android:text="PROSES"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btnTolakOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tolak"/>
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="@color/colorred"
+            android:text="Tolak"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
 
     </LinearLayout>
+
     <Button
-        android:visibility="gone"
-        android:layout_margin="5dp"
-        android:background="#0040FF"
         android:id="@+id/btnKirimOrder"
-        android:textColor="@color/colorWhite"
-        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tolak"/>
+        android:layout_margin="5dp"
+        android:background="#0040FF"
+        android:text="Tolak"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:visibility="gone" />
 
 </LinearLayout>

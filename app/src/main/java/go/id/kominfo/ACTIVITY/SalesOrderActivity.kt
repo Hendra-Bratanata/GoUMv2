@@ -3,6 +3,7 @@ package go.id.kominfo.ACTIVITY
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Button
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_sales_order.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.textColor
 
 
 class SalesOrderActivity : AppCompatActivity(),PesananView{
@@ -122,7 +124,8 @@ class SalesOrderActivity : AppCompatActivity(),PesananView{
   fun colorBtnState(code:Int){
       when(code){
           1 ->{
-              btnAllPesananFilter.backgroundColor = Color.DKGRAY
+              btnAllPesananFilter.backgroundColor = ContextCompat.getColor(this,R.color.colorDarkPurple)
+              btnAllPesananFilter.textColor = Color.WHITE
               btnProsesPesananFilter.backgroundColor = Color.LTGRAY
               btnKirimPesananFilter.backgroundColor =Color.LTGRAY
               btnTolakPesananFilter.backgroundColor = Color.LTGRAY
@@ -133,6 +136,7 @@ class SalesOrderActivity : AppCompatActivity(),PesananView{
           }
           2 ->{
               btnAllPesananFilter.backgroundColor = Color.LTGRAY
+              btnAllPesananFilter.textColor = Color.BLACK
               btnProsesPesananFilter.backgroundColor = Color.DKGRAY
               btnKirimPesananFilter.backgroundColor =Color.LTGRAY
               btnTolakPesananFilter.backgroundColor = Color.LTGRAY
