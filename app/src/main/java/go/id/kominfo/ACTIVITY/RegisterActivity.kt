@@ -1,45 +1,30 @@
 package go.id.kominfo.ACTIVITY
 
-import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
-import android.util.Log
 import android.view.Window
 import com.google.gson.Gson
 import go.id.kominfo.ApiRepository.ApiReposirtory
-import go.id.kominfo.ApiRepository.RetrofitClient
 import go.id.kominfo.INTERFACE.DaftarView
 import go.id.kominfo.ITEM.MD5
 import go.id.kominfo.ITEM.ScalingUtilities
 import go.id.kominfo.ITEM.ScalingUtilities.createScaledBitmap
 import go.id.kominfo.ITEM.ScalingUtilities.decodeFile
 import go.id.kominfo.POJO.Daftar
-import go.id.kominfo.POJO.DataRespon
-import go.id.kominfo.POJO.Umkm
 import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_register.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -53,7 +38,7 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
 
         if (kode == "1"){
             toast("Pendaftaran $pesan")
-            startActivity<Register2>("noHp" to hp)
+            startActivity<Register2Activity>("noHp" to hp)
             this.finish()
         }else{
             toast("pendaftaran $pesan")

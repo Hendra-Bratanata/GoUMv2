@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.google.gson.Gson
 import go.id.kominfo.ADAPTER.PesananAdapter
 import go.id.kominfo.ADAPTER.tambahTitik
@@ -16,7 +17,6 @@ import go.id.kominfo.ITEM.AmbilTanggal
 import go.id.kominfo.ITEM.database
 import go.id.kominfo.POJO.Daftar
 import go.id.kominfo.POJO.Pesanan
-import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.DaftarPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_keranjang.*
@@ -31,7 +31,7 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
 
         if (list[0].pesan.equals("Sukses",true)){
             flushDatabase()
-            startActivity<KeranjangActivity>()
+            startActivity<PembelianActivity>()
             finish()
         }
     }
@@ -72,9 +72,27 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
         rv_keranjang.adapter = adapterKanan
 
         ambilDataDatabase()
+        if(pesanan.size > 0){
+            tvKeranjang.visibility =View.VISIBLE
+            tvKeranjangKosong.visibility = View.GONE
+            btn_proses.visibility = View.VISIBLE
+            vKeranjang.visibility = View.VISIBLE
+            tvTotalKeranjang.visibility = View.VISIBLE
+            tvHargaTotalKeranjang.visibility = View.VISIBLE
+
+
+        }else{
+            tvKeranjang.visibility =View.GONE
+            tvKeranjangKosong.visibility = View.VISIBLE
+            btn_proses.visibility = View.GONE
+            vKeranjang.visibility = View.GONE
+            tvTotalKeranjang.visibility = View.GONE
+            tvHargaTotalKeranjang.visibility = View.GONE
+
+        }
 
         btn_proses.setOnClickListener {
-            val inten = Intent(this,PembeliDataActivity::class.java)
+            val inten = Intent(this,IsiDataPembeliActivity::class.java)
             startActivityForResult(inten,3000)
 
         }

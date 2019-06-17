@@ -48,6 +48,9 @@ class LoginActivity : AppCompatActivity(), UserView {
                         pref.save("LOGIN", true)
                         pref.save("noHP", "$hp")
                         pref.save("kd_umkm", "${user.kdUmkm.toString()}")
+                        pref.save("namaPembeli",user.nm_pemilik.toString())
+                        pref.save("noHpPembeli",user.hp)
+                        pref.save("alamatPembeli",user.alamat.toString())
                         startActivity<MainActivity>()
                         this.finish()
                     } else {

@@ -7,6 +7,7 @@ data class Pembelian(
 
         @SerializedName("kd_umkm")
         val kd_umkm: String? = null,
+
         @SerializedName("nm_umkm")
         val nm_umkm : String? = null,
         @SerializedName("id_trans")

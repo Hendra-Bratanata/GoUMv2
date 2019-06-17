@@ -7,6 +7,8 @@ data class Penjualan(
 
         @SerializedName("kd_umkm")
         val kd_umkm: String? = null,
+        @SerializedName("alamat")
+        val alamat: String? = null,
         @SerializedName("nm_umkm")
         val nm_umkm : String? = null,
         @SerializedName("id_trans")

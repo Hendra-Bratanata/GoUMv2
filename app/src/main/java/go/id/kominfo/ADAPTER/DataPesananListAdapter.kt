@@ -35,7 +35,7 @@ class DataPesananListAdapter(var listPenjualan: List<Penjualan>, val detail:(Pen
         val invoice:TextView = v.find(R.id.tv_noInvoice)
         val jumlah:TextView = v.find(R.id.tv_qty_data_pesanan)
         val total:TextView = v.find(R.id.tv_total_harga_data_pesanan)
-        val jumlahItem = listPenjualan.size
+
 
 
         fun bindItem(penjualan: Penjualan,detail: (Penjualan) -> Unit){
@@ -44,7 +44,7 @@ class DataPesananListAdapter(var listPenjualan: List<Penjualan>, val detail:(Pen
                 nama.text = penjualan.nm_pembeli.toString()
                 noHp.text = penjualan.no_hp_pembeli.toString()
                 invoice.text = "NO/INV/"+penjualan.no_trans.toString()
-                jumlah.text = jumlahItem.toString()
+                jumlah.text = penjualan.qty
                 total.text = penjualan.total.toString()
                 statusB.text = penjualan.status
             if (penjualan.status.equals("proses",true)){
@@ -53,11 +53,11 @@ class DataPesananListAdapter(var listPenjualan: List<Penjualan>, val detail:(Pen
             if(penjualan.status.equals("tolak",true)){
                 statusB.backgroundColor = Color.RED
             }
-            if(penjualan.status.equals("kirim",false)){
-                statusB.backgroundColor = Color.BLUE
+            if(penjualan.status.equals("konfirmasi",false)){
+                statusB.backgroundColor = Color.LTGRAY
             }
             if(penjualan.status.equals("selesai",false)){
-                statusB.backgroundColor = Color.LTGRAY
+                statusB.backgroundColor = Color.DKGRAY
             }
 
                 itemView.setOnClickListener {

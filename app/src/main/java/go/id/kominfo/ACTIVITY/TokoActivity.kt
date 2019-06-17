@@ -3,10 +3,10 @@ package go.id.kominfo.ACTIVITY
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import go.id.kominfo.ACTIVITY.DetailActivity.DetailProductActivity
 import go.id.kominfo.ADAPTER.ProdukAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.ProdukView
@@ -14,15 +14,11 @@ import go.id.kominfo.INTERFACE.UmkmView
 import go.id.kominfo.ITEM.SharedPreference
 import go.id.kominfo.POJO.Produk
 import go.id.kominfo.POJO.Umkm
-import go.id.kominfo.POJO.User
 import go.id.kominfo.PRESENTER.ProdukPresenter
 import go.id.kominfo.PRESENTER.UmkmPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.toko.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.noButton
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.yesButton
 
 class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     override fun showDataProduk(listProduk: List<Produk>) {

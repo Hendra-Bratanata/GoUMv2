@@ -15,10 +15,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.ProgressBar
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
+import go.id.kominfo.ACTIVITY.DetailActivity.DetailBannerActivity
+import go.id.kominfo.ACTIVITY.DetailActivity.DetailProductActivity
 import go.id.kominfo.ADAPTER.BannerAdapter
 import go.id.kominfo.ADAPTER.KatagoryAdapter
 import go.id.kominfo.ADAPTER.PromoAdapter
@@ -33,8 +36,11 @@ import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.noButton
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.yesButton
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
@@ -53,9 +59,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun showDataWanita(listProduk: List<Produk>) {
-        listWanita.clear()
-        listWanita.addAll(listProduk)
-        katagoriAdapterWanita.notifyDataSetChanged()
+        listCraft.clear()
+        listCraft.addAll(listProduk)
+        katagoriAdapterCraft.notifyDataSetChanged()
     }
 
     override fun showDataMinuman(listProduk: List<Produk>, kode: String) {
@@ -98,11 +104,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     internal lateinit var window: Window
-    lateinit var loading: ProgressBar
+    lateinit var loading: ImageView
     lateinit var list: MutableList<Produk>
     lateinit var listBanner: MutableList<Banner>
     lateinit var listPria: MutableList<Produk>
-    lateinit var listWanita: MutableList<Produk>
+    lateinit var listCraft: MutableList<Produk>
     lateinit var listMinuman: MutableList<Produk>
     lateinit var listKuliner: MutableList<Produk>
     lateinit var listRumahTangga: MutableList<Produk>
@@ -111,7 +117,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var katagoriAdapterPria: KatagoryAdapter
     lateinit var katagoriAdapterMinuman: KatagoryAdapter
     lateinit var katagoriAdapterKuliner: KatagoryAdapter
-    lateinit var katagoriAdapterWanita: KatagoryAdapter
+    lateinit var katagoriAdapterCraft: KatagoryAdapter
     lateinit var katagoriAdapterRumah: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
@@ -140,7 +146,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        loading = progressBarMain
+        loading = imgLoadingCart
+        Glide.with(this)
+                .load(R.drawable.loading_cart)
+                .into(loading)
+
+
         swpMain = swpfMain
 
         viewGone()
@@ -181,11 +192,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             nav_login.setVisible(false)
 
             akun.setVisible(LOGIN)
-            akun.setTitle(NOHP)
+            akun.setTitle(namaPembeli)
             nav_toko.setVisible(LOGIN)
 
             nav_salesOrder.setVisible(LOGIN)
-            nav_stat.setVisible(LOGIN)
+//            nav_stat.setVisible(LOGIN)
             logOut.setVisible(LOGIN)
             nav_login.setOnMenuItemClickListener {
                 false
@@ -212,8 +223,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<DetailProductActivity>("detail" to it)
         })
 
-        listWanita = mutableListOf()
-        katagoriAdapterWanita = KatagoryAdapter(listWanita, {
+        listCraft = mutableListOf()
+        katagoriAdapterCraft = KatagoryAdapter(listCraft, {
             startActivity<DetailProductActivity>("detail" to it)
         })
 
@@ -232,7 +243,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<DetailBannerActivity>("banner" to it)
         })
 
-        rv_pria.apply {
+        rv_fashion.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = group
         }
@@ -244,11 +255,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        rv_wanita.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_wanita.adapter = katagoriAdapterWanita
+        rv_craft.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_craft.adapter = katagoriAdapterCraft
 
-        rv_electronik.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_electronik.adapter = katagoriAdapterKuliner
+        rv_kuliner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_kuliner.adapter = katagoriAdapterKuliner
 
         rv_makanan_minuman.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_makanan_minuman.adapter = katagoriAdapterMinuman
@@ -365,14 +376,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity<TokoActivity>("kodeRequest" to 1001)
             }
             R.id.nav_logOut -> {
-                sharedPreferences.clearSharedPreference()
-                startActivity<MainActivity>()
+                alert("Keluar Dari Akun?") {
+                    yesButton { sharedPreferences.clearSharedPreference()
+                        startActivity<MainActivity>()
+                    }
+                    noButton {  }
+                }
+                        .show()
             }
             R.id.nav_sales_order -> {
-                startActivity<SalesOrderActivity>()
+                startActivity<PenjualanActivity>()
             }
             R.id.nav_promo -> {
-                startActivity<SalesOrderUserActivity>()
+                startActivity<PembelianActivity>()
             }
         }
 
@@ -383,11 +399,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun viewGone() {
+
         tvPromoMain.visibility = View.GONE
         tvStoreMain.visibility = View.GONE
         tvFashionMain.visibility = View.GONE
         tvCraftMain.visibility = View.GONE
         tvKulinerMain.visibility = View.GONE
+        tvMakananMinumanMain.visibility = View.GONE
+        tvRumahTanggaMain.visibility = View.GONE
+        tvJasaMain.visibility = View.GONE
+        tvLainnyaMain.visibility = View.GONE
+
+        tv_lihat_semua_rumah_tangga.visibility = View.GONE
+        tv_lihat_semua_makanan_minuman.visibility = View.GONE
+        tv_lihat_semua_kuliner.visibility = View.GONE
+        tv_lihat_semua_craft.visibility = View.GONE
+        tv_lihat_semua_fashion.visibility = View.GONE
+        tv_lihat_semua_jasa.visibility = View.GONE
+        tv_lihat_semua_lainnya.visibility = View.GONE
+
     }
 
     fun viewVisible() {
@@ -396,6 +426,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tvFashionMain.visibility = View.VISIBLE
         tvCraftMain.visibility = View.VISIBLE
         tvKulinerMain.visibility = View.VISIBLE
+        tvMakananMinumanMain.visibility = View.VISIBLE
+        tvRumahTanggaMain.visibility = View.VISIBLE
+        tvJasaMain.visibility = View.VISIBLE
+        tvLainnyaMain.visibility = View.VISIBLE
+
+
+        tv_lihat_semua_rumah_tangga.visibility = View.VISIBLE
+        tv_lihat_semua_makanan_minuman.visibility = View.VISIBLE
+        tv_lihat_semua_kuliner.visibility = View.VISIBLE
+        tv_lihat_semua_craft.visibility = View.VISIBLE
+        tv_lihat_semua_fashion.visibility = View.VISIBLE
+        tv_lihat_semua_jasa.visibility = View.VISIBLE
+        tv_lihat_semua_lainnya.visibility = View.VISIBLE
     }
 
 

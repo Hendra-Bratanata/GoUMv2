@@ -124,7 +124,7 @@
                         android:paddingBottom="5dp">
 
                         <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_pria"
+                            android:id="@+id/rv_fashion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -175,7 +175,7 @@
                         android:paddingBottom="5dp">
 
                         <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_wanita"
+                            android:id="@+id/rv_craft"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -226,7 +226,7 @@
                         android:paddingBottom="5dp">
 
                         <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_electronik"
+                            android:id="@+id/rv_kuliner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"

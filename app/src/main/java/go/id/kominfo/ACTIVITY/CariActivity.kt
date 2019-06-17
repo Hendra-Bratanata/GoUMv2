@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.google.gson.Gson
+import go.id.kominfo.ACTIVITY.DetailActivity.DetailProductActivity
 import go.id.kominfo.ADAPTER.KatagoryAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.LihatSemuaView
@@ -11,7 +12,6 @@ import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.LihatSemuaPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_cari.*
-import kotlinx.android.synthetic.main.detail_fashion.*
 import org.jetbrains.anko.startActivity
 
 class CariActivity : AppCompatActivity(), LihatSemuaView {

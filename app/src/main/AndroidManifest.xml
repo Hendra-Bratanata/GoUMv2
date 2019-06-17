@@ -18,12 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginPembeli"
+            android:name=".ACTIVITY.DetailActivity.DetailDataPembelian"
             android:label="@string/title_activity_login_pembeli"></activity>
-        <activity android:name=".ACTIVITY.SalesOrderDetail"
+        <activity android:name=".ACTIVITY.DetailActivity.DetailDataPenjualan"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".ACTIVITY.SalesOrderUserActivity"
+        <activity android:name=".ACTIVITY.PembelianActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity android:name=".ACTIVITY.CariActivity"
@@ -37,16 +37,16 @@
         <activity android:name=".ACTIVITY.ProfilTokoActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".ACTIVITY.DetailBannerActivity"
+        <activity android:name=".ACTIVITY.DetailActivity.DetailBannerActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
-        <activity android:name=".ACTIVITY.DetailProductActivity"
+        <activity android:name=".ACTIVITY.DetailActivity.DetailProductActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ACTIVITY.PembeliDataActivity"
+        <activity android:name=".ACTIVITY.IsiDataPembeliActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".ACTIVITY.Register2"
+            android:name=".ACTIVITY.Register2Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ACTIVITY.SalesOrderActivity"
+            android:name=".ACTIVITY.PenjualanActivity"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ACTIVITY.KeranjangActivity"
