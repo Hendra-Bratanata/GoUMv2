@@ -17,6 +17,7 @@ import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.firebase.jobdispatcher.*
 import com.google.gson.Gson
 
 import go.id.kominfo.ACTIVITY.DetailActivity.DetailBannerActivity
@@ -26,6 +27,8 @@ import go.id.kominfo.ADAPTER.KatagoryAdapter
 import go.id.kominfo.ADAPTER.PromoAdapter
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.INTERFACE.MainView
+import go.id.kominfo.ITEM.JobService
+import go.id.kominfo.ITEM.Notifikasi
 import go.id.kominfo.ITEM.SharedPreference
 import go.id.kominfo.POJO.Banner
 import go.id.kominfo.POJO.Produk
@@ -115,6 +118,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
+    lateinit var mDispatcher:FirebaseJobDispatcher
 
     lateinit var sharedPreferences: SharedPreference
     var LOGIN = false
@@ -295,10 +299,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<CariActivity>()
         }
 
-
+        mDispatcher = FirebaseJobDispatcher(GooglePlayDriver(this))
+        starJob()
     }
 
     private fun requestData() {
+
 
         presenter.getPromo()
         presenter.getFashion()
@@ -313,6 +319,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Thread.sleep(5000)
                 requestData()
                 println("req Runnable")
+
             }).start()
         }
     }
@@ -437,5 +444,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_lainnya.visibility = View.VISIBLE
     }
 
+    fun starJob()
+    {
+        print("start job main \n")
+        val myJob = mDispatcher.newJobBuilder()
+                .setService(JobService::class.java)
+                .setTag("myJob")
+                .setRecurring(true)
+                .setLifetime(Lifetime.FOREVER)
+                .setTrigger(Trigger.executionWindow(0, 60))
+                .setReplaceCurrent(true)
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setConstraints(
+                        Constraint.ON_ANY_NETWORK
+                )
+                .build()
+        mDispatcher.mustSchedule(myJob)
+
+
+    }
 
 }

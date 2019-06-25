@@ -13,7 +13,9 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import go.id.kominfo.ACTIVITY.ProfilTokoActivity
 import go.id.kominfo.ApiRepository.ApiReposirtory
+import go.id.kominfo.ApiRepository.PromoAPI
 import go.id.kominfo.INTERFACE.UmkmView
+import go.id.kominfo.ITEM.BukaWhatsApp
 import go.id.kominfo.ITEM.database
 import go.id.kominfo.POJO.Pesanan
 import go.id.kominfo.POJO.Produk
@@ -21,9 +23,8 @@ import go.id.kominfo.POJO.Umkm
 import go.id.kominfo.PRESENTER.UmkmPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_detail_product.*
+import org.jetbrains.anko.*
 import org.jetbrains.anko.db.*
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import java.text.NumberFormat
 import java.util.*
 
@@ -64,6 +65,11 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
 
         if (detaiCode == 12){
             lyDetailNamaToko.visibility = View.GONE
+            btnAdd.visibility = View.GONE
+            btnMin.visibility = View.GONE
+            tv_quantity.visibility = View.GONE
+            btn_editProduk.visibility = View.VISIBLE
+            btn_DeleteProduk.visibility = View.VISIBLE
 
         }
         else{
@@ -129,18 +135,41 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
 
 
         }
+        btn_editProduk.setOnClickListener {
+            startActivity<EditProdukActivity>("produk" to produk)
+        }
+        btn_DeleteProduk.setOnClickListener {
+            alert ("Anda yakin Ingin Menghapus Poduk ini"){
+                yesButton { doAsync {
+                    apiReposirtory.doRequest(PromoAPI.DeleteProduk(produk.kd_umkm.toString(),produk.kd_produk.toString()))
+                finish()
+                }
+
+                }
+                noButton {  }
+
+            }.show()
+
+
+        }
 
 
 
         btn_detailToko.setOnClickListener {
             startActivity<ProfilTokoActivity>("data" to produk)
         }
+        btn_chat.setOnClickListener {
+            val wa = BukaWhatsApp()
+            val pesan = "Saya tertarik dengan iklan anda ${produk.nm_produk} di App GOUM, bisa minta info lebih lanjut?"
+            wa.kirimPesanWa(this,umkm.hp,pesan)
+        }
+
       
 
     }
 
     fun tambahTitik( data:String):String{
-        val locale : Locale = Locale("id","ID")
+        val locale  = Locale("id","ID")
         val numberFormat : NumberFormat = NumberFormat.getCurrencyInstance(locale)
 
 

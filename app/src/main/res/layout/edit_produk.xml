@@ -71,7 +71,7 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/img_add_produk"
+                        android:id="@+id/img_add_produkE"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:background="@drawable/kotak_ungu"
@@ -87,7 +87,7 @@
                         android:paddingEnd="8dp">
 
                         <EditText
-                            android:id="@+id/edt_nama_produk"
+                            android:id="@+id/edt_edit_nama_produk"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
@@ -101,7 +101,7 @@
 
 
                         <EditText
-                            android:id="@+id/edt_harga_produk"
+                            android:id="@+id/edt_edit_harga_produk"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="8dp"
@@ -114,7 +114,7 @@
                             android:textSize="16sp" />
 
                         <Spinner
-                            android:id="@+id/spinnerTambahProduk"
+                            android:id="@+id/spinnerTambahProdukedit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/kotak"
@@ -140,7 +140,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/edt_promo"
+                        android:id="@+id/edt_promoE"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="8dp"
@@ -163,7 +163,7 @@
                         android:textStyle="bold" />
 
                     <CheckBox
-                        android:id="@+id/checkbox_promo"
+                        android:id="@+id/checkbox_promoEdit"
                         android:layout_width="40dp"
 
                         android:layout_height="40dp"
@@ -249,7 +249,7 @@
                     <!--android:textStyle="bold" />-->
 
                     <EditText
-                        android:id="@+id/edt_tangga_akhir"
+                        android:id="@+id/edt_tangga_akhirE"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginBottom="8dp"
@@ -263,7 +263,7 @@
                         android:visibility="gone" />
 
                     <EditText
-                        android:id="@+id/edt_bulan_akhir"
+                        android:id="@+id/edt_bulan_akhirE"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginBottom="8dp"
@@ -278,7 +278,7 @@
                         android:visibility="gone" />
 
                     <EditText
-                        android:id="@+id/edt_tahun_akhir"
+                        android:id="@+id/edt_tahun_akhirE"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginBottom="8dp"
@@ -303,7 +303,7 @@
                     android:padding="10sp">
 
                     <EditText
-                        android:id="@+id/edt_deskripsi_produk"
+                        android:id="@+id/edt_edit_deskripsi_produk"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -313,7 +313,7 @@
                         android:padding="5dp" />
 
                     <Button
-                        android:id="@+id/btn_TambahProdukBaru"
+                        android:id="@+id/btn_TambahProdukBaruEdit"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -332,7 +332,7 @@
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarE"
         style="@android:style/Widget.ProgressBar.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

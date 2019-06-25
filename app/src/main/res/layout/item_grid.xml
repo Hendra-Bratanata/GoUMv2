@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="180dp"
     android:layout_height="230dp"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -24,38 +24,39 @@
                 android:background="@drawable/goumrumah"
                 android:scaleType="centerCrop" />
         </RelativeLayout>
+
         <LinearLayout
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginStart="2dp"
-                android:paddingTop="2dp"
                 android:id="@+id/tv_nama_kategori_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="baju baru buat lebaran beli di go umkm murah meriah"
+                android:layout_marginStart="2dp"
                 android:fontFamily="@font/tahoma"
                 android:maxLines="2"
+                android:paddingTop="2dp"
+                android:text="baju baru buat lebaran beli di go umkm murah meriah"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <TextView
-                android:padding="4dp"
                 android:id="@+id/tv_harga_kategori_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/tahoma"
+                android:padding="4dp"
                 android:text="Rp200.000 "
                 android:textColor="@color/textDiscount"
                 android:textSize="14sp"
-                android:fontFamily="@font/tahoma"
                 android:textStyle="bold" />
 
         </LinearLayout>

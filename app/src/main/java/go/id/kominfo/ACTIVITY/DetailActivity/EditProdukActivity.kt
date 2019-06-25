@@ -1,4 +1,4 @@
-package go.id.kominfo.ACTIVITY
+package go.id.kominfo.ACTIVITY.DetailActivity
 
 import android.app.Activity
 import android.content.Intent
@@ -15,29 +15,32 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import go.id.kominfo.ACTIVITY.TokoActivity
 import go.id.kominfo.ApiRepository.ApiReposirtory
 import go.id.kominfo.ApiRepository.RetrofitClient
 import go.id.kominfo.INTERFACE.KatagoriView
 import go.id.kominfo.ITEM.SharedPreference
 import go.id.kominfo.POJO.DataRespon
 import go.id.kominfo.POJO.Katagori
+import go.id.kominfo.POJO.Produk
 import go.id.kominfo.PRESENTER.KatagoriPresenter
-
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.activity_new_product.*
+import kotlinx.android.synthetic.main.edit_produk.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.*
-import org.jetbrains.anko.db.NULL
+import org.jetbrains.anko.ctx
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-
-class NewProductActivity : AppCompatActivity(),KatagoriView {
+class EditProdukActivity : AppCompatActivity(),KatagoriView {
     override fun addKatagori(listKatagory: List<Katagori>) {
 
         for (i in listKatagory.indices) {
@@ -45,7 +48,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
             listItem.add(listKatagory[i].namaKatagori.toString())
         }
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, listItem)
-        spinnerTambahProduk.adapter = spinnerAdapter
+        spinnerTambahProdukedit.adapter = spinnerAdapter
     }
 
     lateinit var pref: SharedPreference
@@ -61,19 +64,33 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
     lateinit var listItem: MutableList<String>
     lateinit var file: File
     lateinit var options: BitmapFactory.Options
-
+    var kdProduk =""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_product)
+        setContentView(R.layout.edit_produk)
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+
+        val produk = intent.extras.getSerializable("produk") as Produk
+
         pref = SharedPreference(this)
         listKatagory = mutableListOf()
         listKatagoryId = mutableListOf()
         gson = Gson()
         apiReposirtory = ApiReposirtory()
+
+        edt_edit_harga_produk.setText(produk.harga.toString())
+        edt_edit_nama_produk.setText(produk.nm_produk.toString())
+        edt_promoE.setText(produk.diskon)
+        edt_bulan_akhirE.setText(produk.masa_diskon?.substring(4,6))
+        edt_tahun_akhirE.setText(produk.masa_diskon?.substring(0,3))
+        edt_tangga_akhirE.setText(produk.masa_diskon?.substring(7))
+        edt_edit_deskripsi_produk.setText(produk.deskripsi)
+        kdProduk = produk.kd_produk.toString()
+
+        Glide.with(this).load(produk.gambar).into(img_add_produkE)
 
 
 
@@ -86,51 +103,51 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
 
         presenter.getKatagori()
 
-        checkbox_promo.setOnClickListener {
-            if(checkbox_promo.isChecked){
-                edt_promo.visibility= View.VISIBLE
-                edt_tangga_akhir.visibility= View.VISIBLE
-                edt_bulan_akhir.visibility= View.VISIBLE
-                edt_tahun_akhir.visibility= View.VISIBLE
+        checkbox_promoEdit.setOnClickListener {
+            if(checkbox_promoEdit.isChecked){
+                edt_promoE.visibility= View.VISIBLE
+                edt_tangga_akhirE.visibility= View.VISIBLE
+                edt_bulan_akhirE.visibility= View.VISIBLE
+                edt_tahun_akhirE.visibility= View.VISIBLE
             }else{
-                edt_promo.visibility= View.GONE
-                edt_tangga_akhir.visibility= View.GONE
-                edt_bulan_akhir.visibility= View.GONE
-                edt_tahun_akhir.visibility= View.GONE
+                edt_promoE.visibility= View.GONE
+                edt_tangga_akhirE.visibility= View.GONE
+                edt_bulan_akhirE.visibility= View.GONE
+                edt_tahun_akhirE.visibility= View.GONE
             }
         }
 
-        img_add_produk.setOnClickListener {
+        img_add_produkE.setOnClickListener {
             getImage()
         }
 
-        btn_TambahProdukBaru.setOnClickListener {
+        btn_TambahProdukBaruEdit.setOnClickListener {
 
             val kd_umkm = pref.getValueString("kd_umkm")
-            val katagoriItem= listKatagoryId[spinnerTambahProduk.selectedItemPosition]
-            val nm_produk = edt_nama_produk.text.toString()
-            val harga = edt_harga_produk.text.toString()
-            var diskon:String? = edt_promo.text.toString()
-            var tanggalAkhir:String? = edt_tangga_akhir.text.toString()
-            val bulanAkhir:String? = edt_bulan_akhir.text.toString()
-            val tahunAkhir:String?= edt_tahun_akhir.text.toString()
+            val katagoriItem= listKatagoryId[spinnerTambahProdukedit.selectedItemPosition]
+            val nm_produk = edt_edit_nama_produk.text.toString()
+            val harga = edt_edit_harga_produk.text.toString()
+            var diskon:String? = edt_promoE.text.toString()
+            var tanggalAkhir:String? = edt_tangga_akhirE.text.toString()
+            val bulanAkhir:String? = edt_bulan_akhirE.text.toString()
+            val tahunAkhir:String?= edt_tahun_akhirE.text.toString()
 
 
             var exp_diskon = "20$tahunAkhir-$bulanAkhir-$tanggalAkhir"
-            val deskripsi = edt_deskripsi_produk.text.toString()
+            val deskripsi = edt_edit_deskripsi_produk.text.toString()
 
             if(nm_produk.isEmpty()){
-                edt_nama_produk.setError("Nama Produk Tidak Boleh Kosong")
+                edt_edit_nama_produk.setError("Nama Produk Tidak Boleh Kosong")
             }
             if(harga.isEmpty()){
-                edt_harga_produk.setError("Harga Produk Tidak Boleh Kosong")
+                edt_edit_harga_produk.setError("Harga Produk Tidak Boleh Kosong")
 
             }
 
 
             else{
                 uploadImanges(kd_umkm,katagoriItem,nm_produk,harga,diskon,exp_diskon,deskripsi)
-                progresBarProduk.visibility = View.VISIBLE
+                progressBarE.visibility = View.VISIBLE
                 println("kd_umkm: $kd_umkm")
                 println("katagori Id: $katagoriItem")
                 println("nama Produk: $nm_produk")
@@ -163,7 +180,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
             if (requestCode == 1000) {
                 getData(data)
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
-                img_add_produk.setImageBitmap(bitmap)
+                img_add_produkE.setImageBitmap(bitmap)
 
             }
 
@@ -206,6 +223,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
             dataExp = ""
         }
         val kd_umkmData = RequestBody.create(MultipartBody.FORM,kd_umkm)
+        val kd_produk = RequestBody.create(MultipartBody.FORM,kdProduk)
         val ktgoriData = RequestBody.create(MultipartBody.FORM,katagoriItem)
         val namaProdukData = RequestBody.create(MultipartBody.FORM,nm_produk)
         val hargaData = RequestBody.create(MultipartBody.FORM,harga)
@@ -221,7 +239,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
 
         val apiServices = RetrofitClient.getApiServices()
 
-        call = apiServices.addProduk(multipartBody,kd_umkmData,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
+        call = apiServices.editProduk(multipartBody,kd_umkmData,kd_produk,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
         println("CALL ${call}")
 
 
@@ -229,7 +247,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
 
             override fun onFailure(call: Call<DataRespon>, t: Throwable) {
                 println("ERRROO ${t}")
-                progresBarProduk.visibility = View.GONE
+                progressBarE.visibility = View.GONE
 
                 toast("Gagal Mengupload data").show()
 
@@ -243,7 +261,7 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
                 val data: DataRespon? = response.body()
                 toast("Produk Telah Ditambahkan").duration = Toast.LENGTH_LONG
 
-                progresBarProduk.visibility = View.GONE
+                progressBarE.visibility = View.GONE
                 startActivity<TokoActivity>()
                 finish()
 
@@ -253,4 +271,3 @@ class NewProductActivity : AppCompatActivity(),KatagoriView {
         })
     }
 }
-

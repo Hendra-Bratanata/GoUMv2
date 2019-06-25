@@ -11,6 +11,12 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class PenjualanPresenter(val view: PesananView, val gson: Gson, val apiReposirtory: ApiReposirtory){
+    fun setNotifikasi(kdUmkm: String,noTras:String,notif:String){
+        doAsync {
+            apiReposirtory.doRequest(PromoAPI.setNotif(kdUmkm,notif,noTras))
+        }
+    }
+
     fun getPenjualan(kdUmkm:String){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getDataPenjualan(kdUmkm)),

@@ -32,6 +32,20 @@ interface ApiServices {
 
 
             : Call<DataRespon>
+    @Multipart
+    @POST("edit_produk_user.php")
+    fun editProduk(
+            @Part foto: MultipartBody.Part,
+            @Part("kd_umkm") kdumkm: RequestBody,
+            @Part("kd_produk") kdproduk: RequestBody,
+            @Part("kd_kategori") kd_kategori: RequestBody,
+            @Part("nm_produk") nm_produk: RequestBody,
+            @Part("harga") harga: RequestBody,
+            @Part("diskon") diskon: RequestBody,
+            @Part("exp_diskon") exp_diskon: RequestBody,
+            @Part("deskripsi") deskripsi: RequestBody)
 
+
+            : Call<DataRespon>
 
 }

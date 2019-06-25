@@ -36,7 +36,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
+
                 android:hint="@string/lorem"
                 android:id="@+id/tv_catatan_toko"
                 android:layout_width="match_parent"

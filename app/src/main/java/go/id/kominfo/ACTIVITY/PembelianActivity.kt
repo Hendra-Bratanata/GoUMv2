@@ -33,10 +33,12 @@ class PembelianActivity : AppCompatActivity(),PesananView{
         listPenjualan.clear()
         for (i in list.indices){
             val penjualan = list[i]
-            if(kdToko == "" || kdToko != penjualan.kd_umkm){
-                kdToko = penjualan.kd_umkm.toString()
-                listBaru.add(penjualan)
+            if(invSekarang == "" || invSekarang != penjualan.no_trans){
+                invSekarang=penjualan.no_trans.toString()
+                    listBaru.add(penjualan)
+
             }
+
 
         }
 

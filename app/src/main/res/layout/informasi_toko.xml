@@ -52,7 +52,8 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
+                    android:clickable="false"
                     android:background="@android:color/transparent"
                     android:layout_marginStart="4dp"
                     android:id="@+id/tv_nama_pemilik"
@@ -79,7 +80,8 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
+                    android:clickable="false"
                     android:background="@android:color/transparent"
                     android:layout_marginStart="4dp"
                     android:id="@+id/tv_kategori_toko"

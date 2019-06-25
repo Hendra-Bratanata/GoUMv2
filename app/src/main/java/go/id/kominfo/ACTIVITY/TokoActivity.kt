@@ -19,10 +19,11 @@ import go.id.kominfo.PRESENTER.UmkmPresenter
 import go.id.kominfo.R
 import kotlinx.android.synthetic.main.toko.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.onRefresh
 
 class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     override fun showDataProduk(listProduk: List<Produk>) {
-
+        swProduk.isRefreshing = false
        this.listProduk.clear()
         this.listProduk.addAll(listProduk)
         produkAdapter.notifyDataSetChanged()
@@ -96,9 +97,9 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
       startActivity<NewProductActivity>()
             finish()
 
-
-
-
+        }
+        swProduk.onRefresh {
+            pref.getValueString("kd_umkm")?.let { presenterProduk.getProdukByKdUmkm(it) }
 
         }
 

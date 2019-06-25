@@ -35,7 +35,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
+                android:clickable="false"
                 android:background="@android:color/transparent"
                 android:id="@+id/tv_deskripsi_toko"
                 android:layout_width="match_parent"
@@ -79,7 +80,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:background="@android:color/transparent"
                     android:id="@+id/tv_tahun_toko"
                     android:layout_width="wrap_content"

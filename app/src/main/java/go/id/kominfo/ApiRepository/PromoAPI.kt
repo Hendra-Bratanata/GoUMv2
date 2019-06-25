@@ -177,4 +177,18 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+
+    fun setNotif(kdUmkm: String,notif:String,no_trans: String): String {
+
+        val stat = URLEncoder.encode(notif,"ASCII")
+        val Url = BuildConfig.BASE_URL + "transaksi/transaksi_update.php?kd_umkm=$kdUmkm&notif=$stat&no_trans=$no_trans"
+        Log.d("data", Url)
+        return Url
+    }
+    fun DeleteProduk(kdUmkm: String,kd_produk: String): String {
+
+        val Url = BuildConfig.BASE_URL + "delete_produk_user.php?kd_umkm=$kdUmkm&kd_produk=$kd_produk"
+        Log.d("data", Url)
+        return Url
+    }
 }

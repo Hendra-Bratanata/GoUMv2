@@ -51,9 +51,10 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_login"
+                    android:layout_weight="1"
+                    android:id="@+id/btn_chatWa"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="125dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/kotak_kosong"
@@ -68,9 +69,10 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btn_register"
+                    android:layout_weight="1"
+                    android:id="@+id/btn_bagikan"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="125dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/kotak_kosong"
                     android:fontFamily="@font/calibri"

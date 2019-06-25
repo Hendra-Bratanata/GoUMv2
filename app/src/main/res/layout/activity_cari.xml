@@ -9,6 +9,7 @@
     android:orientation="vertical"
     tools:context=".ACTIVITY.CariActivity">
 
+
     <LinearLayout
         android:paddingTop="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_horizontal_margin"
@@ -43,7 +44,14 @@
             android:layout_weight="1"
             android:src="@drawable/ic_search_white_24dp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tvProdukKosong"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="Produk Tidak Tersedia"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvCariProduk"
         android:layout_width="match_parent"

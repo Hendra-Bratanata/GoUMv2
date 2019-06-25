@@ -36,6 +36,8 @@ data class Penjualan(
         @SerializedName("total")
         val total: String? = null,
         @SerializedName("status")
-        val status : String? = null
+        val status : String? = null,
+        @SerializedName("notif")
+        val notif : String? = null
 
         ):Serializable
