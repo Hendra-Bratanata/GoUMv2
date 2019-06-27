@@ -15,27 +15,28 @@
     tools:context="go.id.kominfo.ACTIVITY.KeranjangActivity">
 
 
-
     <LinearLayout
         android:id="@+id/linear_keranjang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
-        android:id="@+id/tvKeranjangKosong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        android:text="Belum Ada Transaksi"/>
+            android:id="@+id/tvKeranjangKosong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum Ada Transaksi"
+            android:textAlignment="center"
+            android:textSize="16dp" />
+
         <TextView
-            android:textColor="@color/colorBlack"
             android:id="@+id/tvKeranjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:textStyle="bold"
+            android:text="Keranjang"
+            android:textColor="@color/colorBlack"
             android:textSize="16dp"
-            android:text="Keranjang"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +62,7 @@
             </LinearLayout>
 
             <View
-               android:id="@+id/vKeranjang"
+                android:id="@+id/vKeranjang"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="5dp"

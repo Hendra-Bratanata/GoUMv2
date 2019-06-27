@@ -62,8 +62,9 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ACTIVITY.Register2Activity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".ACTIVITY.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"

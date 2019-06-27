@@ -99,7 +99,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="FASHION"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -150,7 +151,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="CRAFT"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -201,7 +203,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="KULINER"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -251,7 +254,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="MAKANAN DAN MINUMAN"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -301,7 +305,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="RUMAH TANGGA"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -351,7 +356,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="JASA"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -401,7 +407,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="LAINNYA"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/colorDarkPurple"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
