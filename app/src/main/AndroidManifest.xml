@@ -25,41 +25,53 @@
 
         <activity
             android:name=".ACTIVITY.DetailActivity.DetailDataPembelian"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_pembeli" />
         <activity
             android:name=".ACTIVITY.DetailActivity.DetailDataPenjualan"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.PembelianActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.CariActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.LihatSemuaActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.TokoActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.ProfilTokoActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.DetailActivity.DetailBannerActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity
             android:name=".ACTIVITY.DetailActivity.DetailProductActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.IsiDataPembeliActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.Register2Activity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -68,35 +80,42 @@
         <activity
             android:name=".ACTIVITY.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ACTIVITY.PenjualanActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.KeranjangActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.ProsesActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.NewProductActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.StatistikActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ACTIVITY.FlashScreenActivity"
             android:configChanges="orientation|screenSize"

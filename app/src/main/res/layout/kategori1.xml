@@ -34,6 +34,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:ellipsize="end"
                 android:layout_marginStart="2dp"
                 android:paddingTop="2dp"
                 android:id="@+id/tv_namaKatagori"

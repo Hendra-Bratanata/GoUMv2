@@ -97,15 +97,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tv_lihat_semua_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="Lihat Semua"
-                android:textColor="@color/colorDarkPurple"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView

@@ -53,6 +53,7 @@
         android:textAlignment="center"
         android:text="Produk Tidak Tersedia"/>
     <android.support.v7.widget.RecyclerView
+        android:layout_gravity="center"
         android:id="@+id/rvCariProduk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

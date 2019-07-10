@@ -9,7 +9,9 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        buildConfigField("String", "BASE_URL", "\"http://35.196.161.29/goumkm/api/\"")
+
+        buildConfigField("String", "BASE_URL11", "\" http://35.196.161.29/goumkm/api/\"")
+        buildConfigField("String", "BASE_URL", "\"http://usahamikro.tangerangkab.go.id/api/\"")
         buildConfigField("String", "BASE_URLI", "\"http://ichiro.tech/\"")
         applicationId "go.id.kominfo"
         minSdkVersion 19
