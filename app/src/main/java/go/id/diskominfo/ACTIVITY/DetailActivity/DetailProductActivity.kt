@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.Window
+import com.github.florent37.shapeofview.ShapeOfView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import go.id.diskominfo.ACTIVITY.DetailToko
@@ -36,7 +37,6 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
            tv_NamaTokoDetail.setText(umkm.namaToko)
            tvAlamatTokoDetail.setText(umkm.alamatToko)
        }
-
 
 
     }
@@ -82,7 +82,10 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
             lyDetailNamaToko.visibility = View.VISIBLE
         }
         //memuat semua data pada produk
-        Picasso.get().load(produk.gambar).into(imageView)
+
+    // Original Code
+         Picasso.get().load(produk.gambar).into(imageView)
+
         tv_nama_produk.text = produk.nm_produk
         tv_deskripsi.text = produk.deskripsi
 

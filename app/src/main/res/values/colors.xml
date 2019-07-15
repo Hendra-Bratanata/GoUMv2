@@ -14,4 +14,6 @@
     <color name="textDiscount">#ff5722</color>
     <color name="colorAbuAbu">#e0e0e0</color>
     <color name="colorHijau">#0DF805</color>
+    <color name="colorHijauSukses">#00e676</color>
+    <color name="colorMerahBatal">#ff2600</color>
 </resources>

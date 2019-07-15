@@ -17,109 +17,127 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="go.id.diskominfo.ACTIVITY.EditTokoActivity"></activity>
-        <activity android:name="go.id.diskominfo.ACTIVITY.DetailActivity.EditProdukActivity" />
+        <activity
+            android:name=".ACTIVITY.GagalPopUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".ACTIVITY.SuksesPopUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.EditTokoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.DetailActivity.EditProdukActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
 
         <service
-            android:name="go.id.diskominfo.ITEM.JobService"
+            android:name=".ITEM.JobService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.DetailActivity.DetailDataPembelian"
+            android:name=".ACTIVITY.DetailActivity.DetailDataPembelian"
             android:label="@string/title_activity_login_pembeli"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.DetailActivity.DetailDataPenjualan"
+            android:name=".ACTIVITY.DetailActivity.DetailDataPenjualan"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.PembelianActivity"
+            android:name=".ACTIVITY.PembelianActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.CariActivity"
+            android:name=".ACTIVITY.CariActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.LihatSemuaActivity"
+            android:name=".ACTIVITY.LihatSemuaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.TokoActivity"
+            android:name=".ACTIVITY.TokoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.DetailToko"
+            android:name=".ACTIVITY.DetailToko"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.DetailActivity.DetailBannerActivity"
+            android:name=".ACTIVITY.DetailActivity.DetailBannerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="go.id.diskominfo.ACTIVITY.VerifikasiOtpActivity" />
+        <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.DetailActivity.DetailProductActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.IsiDataPembeliActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.Register2Activity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.PenjualanActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.KeranjangActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.ProsesActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.TambahProdukActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="go.id.diskominfo.ACTIVITY.StatistikActivity"
+            android:name=".ACTIVITY.DetailActivity.DetailProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="go.id.diskominfo.ACTIVITY.FlashScreenActivity"
+            android:name=".ACTIVITY.IsiDataPembeliActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.Register2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.PenjualanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.KeranjangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.ProsesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.TambahProdukActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ACTIVITY.StatistikActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ACTIVITY.FlashScreenActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
