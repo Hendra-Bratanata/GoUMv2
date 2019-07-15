@@ -238,12 +238,14 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         val deskripsiData = RequestBody.create(MultipartBody.FORM,deskripsi)
         val apiServices = RetrofitClient.getApiServices()
         if(gambarBaru) {
+            print("gambar baru")
             val regBody = RequestBody.create(MediaType.parse("multipart/form-file"), file)
             var multipartBody = MultipartBody.Part.createFormData("gambar", file.name, regBody)
             call = apiServices.editProduk(multipartBody, kd_umkmData, kd_produk, ktgoriData, namaProdukData, hargaData, diskonData, exp_diskonData, deskripsiData)
 
         }
         else{
+            print("gak ada gambar")
             call = apiServices.editProdukNoGambar(kd_umkmData,kd_produk,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
 
         }

@@ -94,24 +94,24 @@ class PromoPresenter(val view: MainView, val gson: Gson, val apiReposirtory: Api
     fun getJasa (){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
-                    , bannerResponse::class.java)
+                    , ProdukResponse::class.java)
             uiThread {
-                view.showDataBanner(data.data)
+                view.showDataJasa(data.data)
 
             }
         }
 
     }
-    fun getLainLain (){
-        doAsync {
-            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
-                    , bannerResponse::class.java)
-            uiThread {
-                view.showDataBanner(data.data)
-
-            }
-        }
-
-    }
+//    fun getLainLain (){
+//        doAsync {
+//            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
+//                    , bannerResponse::class.java)
+//            uiThread {
+//                view.showDataBanner(data.data)
+//
+//            }
+//        }
+//
+//    }
 
 }

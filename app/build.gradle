@@ -10,14 +10,14 @@ android {
     compileSdkVersion 28
     defaultConfig {
 
-        buildConfigField("String", "BASE_URL11", "\" http://35.196.161.29/goumkm/api/\"")
+        buildConfigField("String", "BASE_URL8", "\" http://35.196.161.29/goumkm/api/\"")
         buildConfigField("String", "BASE_URL", "\"http://usahamikro.tangerangkab.go.id/api/\"")
         buildConfigField("String", "BASE_URLI", "\"http://ichiro.tech/\"")
         applicationId "go.id.diskominfo"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

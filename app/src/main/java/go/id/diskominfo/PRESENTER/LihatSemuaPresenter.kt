@@ -91,17 +91,17 @@ class LihatSemuaPresenter(val view: LihatSemuaView, val gson: Gson, val apiRepos
         }
 
     }
-//    fun getJasa (){
-//        doAsync {
-//            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
-//                    , bannerResponse::class.java)
-//            uiThread {
-//                view.showData(data.data)
-//
-//            }
-//        }
-//
-//    }
+    fun getJasa (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
+                    , ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+
+            }
+        }
+
+    }
 //    fun getLainLain (){
 //        doAsync {
 //            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
