@@ -13,7 +13,7 @@ android {
         buildConfigField("String", "BASE_URL11", "\" http://35.196.161.29/goumkm/api/\"")
         buildConfigField("String", "BASE_URL", "\"http://usahamikro.tangerangkab.go.id/api/\"")
         buildConfigField("String", "BASE_URLI", "\"http://ichiro.tech/\"")
-        applicationId "go.id.kominfo"
+        applicationId "go.id.diskominfo"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

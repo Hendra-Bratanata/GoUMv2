@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="8dp"
-    tools:context="go.id.kominfo.ACTIVITY.NewProductActivity">
+    tools:context="go.id.diskominfo.ACTIVITY.TambahProdukActivity">
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -312,18 +312,38 @@
                         android:hint="@string/deskripsi_dodol_tenjo"
                         android:padding="5dp" />
 
-                    <Button
-                        android:id="@+id/btn_TambahProdukBaruEdit"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:text="Simpan"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Button
+
+                            android:id="@+id/btn_TambahProdukBaruEdit"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/kotak_ungu"
+                            android:fontFamily="@font/calibri"
+                            android:text="Simpan"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                        <Button
+                            android:id="@+id/btn_TambahProdukBatal"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/kotak_ungu"
+                            android:fontFamily="@font/calibri"
+                            android:text="Batal"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
 
                 </LinearLayout>
             </LinearLayout>

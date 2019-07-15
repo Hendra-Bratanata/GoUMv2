@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".ACTIVITY.ProfilTokoActivity">
+    tools:context=".ACTIVITY.DetailToko">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,6 +80,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/colorDarkPurple"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
@@ -89,6 +90,7 @@
         <include layout="@layout/catatan_toko" />
 
         <Button
+            android:visibility="gone"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center"
