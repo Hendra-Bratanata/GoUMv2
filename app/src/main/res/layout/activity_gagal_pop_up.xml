@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="8dp"
-    tools:context="go.id.diskominfo.ACTIVITY.TambahProdukActivity">
+    tools:context=".ACTIVITY.SuksesPopUp">
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -18,66 +18,91 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tv_footer_login"
+            android:id="@+id/tv_footer_pop_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/powered_by_diskominfo"
             android:textColor="@color/colorDarkPurple"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:id="@+id/linear_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/footer"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_sukses_pop_up"
+            android:id="@+id/img_gagal_pop_up"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:contentDescription="success"
-            android:src="@drawable/ic_success" />
+            android:src="@drawable/ic_sad"
+            android:tint="@color/colorMerahBatal" />
 
         <TextView
-            android:id="@+id/tv_sukses_pop_up"
+            android:id="@+id/tv_gagal_pop_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/typo_grotesk_demo"
-            android:text="Berhasil!"
-            android:textColor="@color/colorHijauSukses"
+            android:text="Ups gagal!"
+            android:textColor="@color/colorMerahBatal"
             android:textSize="40sp" />
 
         <TextView
-            android:id="@+id/tvsukses_pop_up"
+            android:id="@+id/tv_deskripsi_gagal_pop_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/robotoRegular"
-            android:text="Produk Anda berhasil ditambahkan, silahkan lihat produk anda."
+            android:text="Produk Anda gagal ditambahkan, silahkan coba lagi."
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <Button
-            android:layout_marginTop="30dp"
-            android:id="@+id/btn_login"
+        <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/kotak_ungu"
-            android:fontFamily="@font/typo_grotesk_demo"
-            android:text="Lihat Produk"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:layout_marginEnd="2dp"
+                android:id="@+id/btn_lihat_produk_pop_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/kotak_ungu"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:text="Lihat Produk"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <Button
+                android:layout_marginStart="2dp"
+                android:id="@+id/btn_coba_lagi_produk_pop_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/kotak_ungu"
+                android:fontFamily="@font/typo_grotesk_demo"
+                android:text="Coba Lagi"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
