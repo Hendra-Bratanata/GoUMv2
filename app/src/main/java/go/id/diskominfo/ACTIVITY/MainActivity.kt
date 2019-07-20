@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var NOHP = ""
     var noHpPemebeli = ""
     var alamatPemebeli =""
-    var namaPembeli = ""
+    var namaPembeli = "Tamu"
 
     lateinit var swpMain: SwipeRefreshLayout
     var conn = 0
@@ -173,6 +173,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         namaPembeli = sharedPreferences.getValueString("namaPembeli").toString()
         Log.d("LOGIN", "$LOGIN")
         Log.d("No HP", "$NOHP")
+        Log.d("No HP pembeli", "$noHpPemebeli")
         if (noHpPemebeli.isNotEmpty()){
             val nav: NavigationView = findViewById(R.id.nav_view)
             val M: Menu = nav.menu
@@ -180,7 +181,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             akun.setVisible(true)
             akun.setTitle(namaPembeli)
         }
-
+        if(noHpPemebeli.equals("null")){
+            val nav: NavigationView = findViewById(R.id.nav_view)
+            val M: Menu = nav.menu
+            val akun = M.findItem(R.id.nav_akun)
+            akun.setVisible(true)
+            akun.setTitle("Tamu")
+        }
         if (LOGIN) {
             Log.d("in LOGIN ", "$LOGIN")
             Log.d("in No HP", "$NOHP")
@@ -358,7 +365,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            alert("Ingin Keluar dari aplikasi?") {
+                yesButton {
+                    super.onBackPressed()
+                    finish()
+
+                }
+                noButton {
+
+                }
+
+            }.show()
         }
     }
 
@@ -492,5 +509,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+
 
 }

@@ -11,6 +11,7 @@ import go.id.diskominfo.ADAPTER.ProdukAdapter
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.INTERFACE.ProdukView
 import go.id.diskominfo.INTERFACE.UmkmView
+import go.id.diskominfo.ITEM.CacheClear
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.Produk
 import go.id.diskominfo.POJO.Umkm
@@ -101,7 +102,9 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
 
         }
         swProduk.onRefresh {
+            CacheClear.deleteCache(this)
             pref.getValueString("kd_umkm")?.let { presenterProduk.getProdukByKdUmkm(it) }
+            pref.getValueString("kd_umkm")?.let { presenter.getUmkmDataKdUmkm(it) }
 
         }
         btn_aturToko.setOnClickListener {

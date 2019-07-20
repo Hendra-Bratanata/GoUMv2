@@ -60,8 +60,8 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
     lateinit var listItem: MutableList<String>
     lateinit var file: File
     lateinit var options: BitmapFactory.Options
-
-
+    var katagoriItem = ""
+    var gambarAda = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,12 +101,20 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
 
         img_add_produk.setOnClickListener {
             getImage()
+            gambarAda = true
         }
 
         btn_TambahProdukBaru.setOnClickListener {
 
             val kd_umkm = pref.getValueString("kd_umkm")
-            val katagoriItem= listKatagoryId[spinnerTambahProduk.selectedItemPosition]
+
+            if (listKatagoryId.isNullOrEmpty()){
+                katagoriItem= "null"
+            }
+            else{
+                katagoriItem= listKatagoryId[spinnerTambahProduk.selectedItemPosition]
+            }
+
             val nm_produk = edt_nama_produk.text.toString()
             val harga = edt_harga_produk.text.toString()
             var diskon:String? = edt_promo.text.toString()
@@ -211,16 +219,23 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
         var diskonData = RequestBody.create(MultipartBody.FORM,dataDiskon)
         var exp_diskonData = RequestBody.create(MultipartBody.FORM,dataExp)
         val deskripsiData = RequestBody.create(MultipartBody.FORM,deskripsi)
-        val regBody = RequestBody.create(MediaType.parse("multipart/form-file"),file)
-        var multipartBody = MultipartBody.Part.createFormData("gambar", file.name, regBody)
-
-
-
-
 
         val apiServices = RetrofitClient.getApiServices()
 
-        call = apiServices.addProduk(multipartBody,kd_umkmData,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
+        if(gambarAda){
+            val regBody = RequestBody.create(MediaType.parse("multipart/form-file"),file)
+            var multipartBody = MultipartBody.Part.createFormData("gambar", file.name, regBody)
+            call = apiServices.addProduk(multipartBody,kd_umkmData,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
+        }else{
+            call = apiServices.addProdukNoGambar(kd_umkmData,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
+        }
+
+
+
+
+
+
+
         println("CALL ${call}")
 
 
@@ -231,7 +246,8 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
                 progresBarProduk.visibility = View.GONE
 
                 toast("Gagal Mengupload data").show()
-
+                startActivity<GagalPopUp>()
+                finish()
 
             }
 
@@ -243,13 +259,26 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
                 toast("Produk Telah Ditambahkan").duration = Toast.LENGTH_LONG
 
                 progresBarProduk.visibility = View.GONE
-                startActivity<TokoActivity>("kodeRequest" to 1003)
+                startActivity<SuksesPopUp>()
                 finish()
 
             }
 
 
         })
+    }
+
+    override fun onBackPressed() {
+        alert("Anda yakin ingin membatalkan aksi ini") {
+            yesButton {
+                super.onBackPressed()
+
+            }
+            noButton {
+
+            }
+
+        }.show()
     }
 }
 

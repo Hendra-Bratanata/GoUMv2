@@ -3,233 +3,245 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/linear1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_horizontal_margin">
-
-        <ImageView
-            android:id="@+id/img_tambah_foto"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progressBarToko"
+            android:visibility="gone"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_tambah_foto" />
-
-        <TextView
-            android:id="@+id/item_catatan_toko"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/calibri"
-            android:paddingTop="8dp"
-            android:paddingBottom="2dp"
-            android:text="Informasi Toko"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_centerInParent="true"/>
 
         <LinearLayout
+            android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/img_tambah_foto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_tambah_foto" />
 
             <TextView
-                android:id="@+id/tv_nama_toko_edit_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Toko"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_nama_toko_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Nama Toko"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_pemilik"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Pemilik"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_nama_pemilik_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Nama Asli"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_alamat_toko_edit_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alamat Toko"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_alamat_toko_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Alamat Toko"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-            <TextView
-                android:id="@+id/tv_kecamatan_toko_edit_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kecamatan"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_kecamatan_toko_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tigaraksa"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_kode_pos_toko_edit_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kode Pos"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_kode_pos_toko_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="contoh : 15710"
-                android:inputType="number"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/edt_kategori_edit_toko"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Kategori :"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_kategori_edit_produk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/kotak_edt"
-                    tools:listitem="" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/item_deskripsi_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:fontFamily="@font/calibri"
-                android:paddingTop="20dp"
-                android:paddingBottom="2dp"
-                android:text="Deskripsi Toko"
-                android:textColor="@color/colorBlack"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edt_deskripsi_edit_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Deskripsi Toko disini"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_catatan_toko"
+                android:id="@+id/item_catatan_toko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/calibri"
-                android:paddingTop="20dp"
+                android:paddingTop="8dp"
                 android:paddingBottom="2dp"
-                android:text="Catatan Toko"
+                android:text="Informasi Toko"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edt_catatan_toko_edit_toko"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukkan Catatan tambahan disini"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
+                android:layout_marginTop="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_nama_toko_edit_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Toko"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_nama_toko_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Nama Toko"
+                    android:inputType="text"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_pemilik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_nama_pemilik_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Nama Asli"
+                    android:inputType="text"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_toko_edit_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Toko"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_alamat_toko_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Alamat Toko"
+                    android:inputType="text"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/tv_kecamatan_toko_edit_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kecamatan"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_kecamatan_toko_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tigaraksa"
+                    android:inputType="text"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_kode_pos_toko_edit_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kode Pos"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_kode_pos_toko_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="contoh : 15710"
+                    android:inputType="number"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/edt_kategori_edit_toko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Kategori :"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_kategori_edit_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/kotak_edt"
+                        tools:listitem="" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/item_deskripsi_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/calibri"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="2dp"
+                    android:text="Deskripsi Toko"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_deskripsi_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Deskripsi Toko disini"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_catatan_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/calibri"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="2dp"
+                    android:text="Catatan Toko"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_catatan_toko_edit_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Catatan tambahan disini"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <Button
+                    android:id="@+id/btn_simpan_edit_toko"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kotak_ungu"
+                    android:fontFamily="@font/calibri"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="0dp"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_batal_edit_toko"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/kotak_ungu"
+                    android:fontFamily="@font/calibri"
+                    android:text="Batal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
+    </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
-
-            <Button
-                android:id="@+id/btn_simpan_edit_toko"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/kotak_ungu"
-                android:fontFamily="@font/calibri"
-                android:paddingStart="5dp"
-                android:paddingEnd="0dp"
-                android:text="Simpan"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_batal_edit_toko"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/kotak_ungu"
-                android:fontFamily="@font/calibri"
-                android:text="Batal"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
 </ScrollView>

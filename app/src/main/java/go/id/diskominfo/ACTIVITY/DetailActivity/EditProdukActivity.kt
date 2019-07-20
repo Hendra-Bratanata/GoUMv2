@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import go.id.diskominfo.ACTIVITY.TokoActivity
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
 import go.id.diskominfo.INTERFACE.KatagoriView
@@ -30,8 +31,7 @@ import kotlinx.android.synthetic.main.edit_produk.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.ctx
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -277,5 +277,19 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
 
 
         })
+    }
+
+    override fun onBackPressed() {
+
+        alert("Anda yakin ingin membatalkan aksi ini") {
+            yesButton {
+                super.onBackPressed()
+
+            }
+            noButton {
+
+            }
+
+        }.show()
     }
 }

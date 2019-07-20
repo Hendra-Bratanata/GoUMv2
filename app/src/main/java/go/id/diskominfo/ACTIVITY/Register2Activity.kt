@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -13,9 +14,11 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import com.google.gson.Gson
+import com.iceteck.silicompressorr.SiliCompressor
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
 import go.id.diskominfo.INTERFACE.UmkmView
+import go.id.diskominfo.ITEM.HendraCompress
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.DataRespon
 import go.id.diskominfo.POJO.Umkm
@@ -28,12 +31,14 @@ import kotlinx.android.synthetic.main.item_ktp.*
 import kotlinx.android.synthetic.main.item_npwp.*
 import kotlinx.android.synthetic.main.register_part2.*
 import okhttp3.*
-import org.jetbrains.anko.startActivity
+
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+
+
 
 class Register2Activity : AppCompatActivity(), UmkmView {
 
@@ -71,32 +76,19 @@ class Register2Activity : AppCompatActivity(), UmkmView {
 
         btn_pilih_ktp.setOnClickListener {
             getImage(1)
-            btn_kirim_ktp.isClickable = true
         }
         btn_pilih_npwp.setOnClickListener {
             getImage(2)
-            btn_kirim_npwp.isClickable = true
         }
-                btn_pilih_iumk.setOnClickListener {
-                    getImage(3)
-                }
-                btn_pilih_foto.setOnClickListener {
+        btn_pilih_iumk.setOnClickListener {
+            getImage(3)
+        }
+        btn_pilih_foto.setOnClickListener {
                     getImage(4)
-                }
-        ////        btn_pilih_reg5.setOnClickListener {
-        ////            getImage(5)
-        ////        }
-        ////        btn_upload_reg2.setOnClickListener {
-        ////            progressBarReg2.visibility = VISIBLE
-        ////            uploadImanges()
-        ////        }
+        }
         btn_kirim_ktp.setOnClickListener {
             uploadImanges(1)
             progressBarReg.visibility = VISIBLE
-
-
-
-
         }
         btn_kirim_npwp.setOnClickListener {
             uploadImanges(2)
@@ -113,8 +105,7 @@ class Register2Activity : AppCompatActivity(), UmkmView {
         }
 
         btn_selesai_reg2.setOnClickListener {
-
-            startActivity<MainActivity>()
+            finish()
         }
     }
     fun sukses(code: Int){
@@ -138,17 +129,18 @@ class Register2Activity : AppCompatActivity(), UmkmView {
             btn_kirim_iumk.isClickable = false
         }
         if(sukses && code == 4 ){
-
             btn_kirim_toko.setText("Terkirim")
             btn_kirim_toko.setBackgroundColor(resources.getColor(R.color.colorHijau))
             btn_kirim_toko.isClickable = false
+            btn_selesai_reg2.visibility= VISIBLE
         }
     }
 
     private fun init() {
         //Hilangkan semua view Extra file
 
-        val hp = intent.extras.getString("noHp")
+//        val hp = intent.extras.getString("noHp")
+        val hp = "085750077049"
         gson = Gson()
         apiReposirtory = ApiReposirtory()
         presenter = UmkmPresenter(apiReposirtory, gson, this)
@@ -158,8 +150,9 @@ class Register2Activity : AppCompatActivity(), UmkmView {
         cv_lainya.visibility = GONE
         cv_foto_toko.visibility = GONE
         btn_kirim_ktp.visibility = GONE
-        btn_kirim_npwp.visibility = GONE
-
+        btn_kirim_iumk.visibility = GONE
+        btn_kirim_toko.visibility = GONE
+        btn_selesai_reg2.visibility = GONE
         progressBarReg.visibility = GONE
     }
 
@@ -179,11 +172,9 @@ class Register2Activity : AppCompatActivity(), UmkmView {
         if (resultCode == Activity.RESULT_OK) {
             println("resault $resultCode")
             if (requestCode == 1) {
-                println("code Request $requestCode")
                 getData(data, 1)
-                val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
-                println(bitmap.byteCount)
-                img_item_file_ktp.setImageBitmap(bitmap)
+                val bitmapAsli =  BitmapFactory.decodeFile(file.absolutePath,options)
+                img_item_file_ktp.setImageBitmap(bitmapAsli)
                 tv_nama_file_ktp.text = file.name
                 btn_kirim_ktp.visibility = VISIBLE
 
@@ -195,12 +186,11 @@ class Register2Activity : AppCompatActivity(), UmkmView {
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
                 img_item_file_npwp.setImageBitmap(bitmap)
                 tv_nama_file_npwp.text = file.name
-               btn_kirim_npwp.visibility = VISIBLE
+                btn_kirim_npwp.visibility = VISIBLE
 
 
             }
             if (requestCode == 3) {
-                println("code $requestCode")
                 getData(data, 3)
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
                 img_item_foto_iumk.setImageBitmap(bitmap)
@@ -211,7 +201,6 @@ class Register2Activity : AppCompatActivity(), UmkmView {
 
             }
             if (requestCode == 4) {
-                println("code $requestCode")
                 getData(data, 4)
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
                 img_item_foto_toko.setImageBitmap(bitmap)
@@ -221,16 +210,6 @@ class Register2Activity : AppCompatActivity(), UmkmView {
 
 
             }
-//            if (requestCode == 5) {
-//                println("code $requestCode")
-//                getData(data, 5)
-//                val bitmap = BitmapFactory.decodeFile(file5.absolutePath, options)
-//                img_item_file5.setImageBitmap(bitmap)
-//                tv_nama_file5.text = file5.name
-//
-//                jumlahData = 5
-//
-//            }
         }
     }
 
@@ -305,7 +284,8 @@ class Register2Activity : AppCompatActivity(), UmkmView {
             val indexImg = cursor.getColumnIndex(imgProjection[0])
             Log.d("Log", cursor.getString(indexImg))
             val partImg = cursor.getString(indexImg)
-            file = File(partImg)
+            val fileImg = File(partImg)
+            file = HendraCompress.compress(fileImg,this)
             options = BitmapFactory.Options()
             options.inSampleSize = 1
         }

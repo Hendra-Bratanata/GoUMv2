@@ -24,5 +24,11 @@ data class Umkm(
         @SerializedName("alamat")
         val alamatToko :String,
         @SerializedName("ket_toko")
-        val ket_toko :String
+        val ket_toko :String,
+        @SerializedName("kecamatan")
+        val kecamatan :String,
+        @SerializedName("kode_pos")
+        val kode_pos :String,
+        @SerializedName("catatan")
+        val catatan	 :String
 )

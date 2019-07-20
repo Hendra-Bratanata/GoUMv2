@@ -61,6 +61,7 @@
                 android:textStyle="bold"/>
 
             <Button
+                android:visibility="gone"
                 android:textColor="@color/colorWhite"
                 android:id="@+id/btn_kirim_toko"
                 android:layout_width="match_parent"
