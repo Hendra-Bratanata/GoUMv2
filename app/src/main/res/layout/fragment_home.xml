@@ -29,16 +29,34 @@
 
             </android.support.v7.widget.RecyclerView>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_weight="2">
+    <TextView
+        android:id="@+id/tvPromoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Promo"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_lihat_semua_promo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingStart="0dp"
+        android:paddingEnd="8dp"
+        android:text="Lihat Semua"
+        android:textColor="@color/colorDarkPurple"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvPromoMain"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Promo"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+</LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/Linear_layout_promo"

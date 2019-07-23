@@ -5,9 +5,5 @@
         path="." />
     <external-path
         name="external_files"
-        path="Pictures/" />
-
-    <external-path
-        name="external_video_files"
-        path="Movies/" />
+        path="Pictures/GOUM" />
 </paths>

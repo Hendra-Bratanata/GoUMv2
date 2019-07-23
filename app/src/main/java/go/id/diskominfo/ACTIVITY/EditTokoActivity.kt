@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View.*
 import android.widget.Toast
@@ -17,7 +18,9 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
+import go.id.diskominfo.BuildConfig
 import go.id.diskominfo.INTERFACE.UmkmView
+import go.id.diskominfo.ITEM.CameraPath
 import go.id.diskominfo.ITEM.HendraCompress
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.DataRespon
@@ -26,6 +29,7 @@ import go.id.diskominfo.PRESENTER.UmkmPresenter
 import go.id.diskominfo.R
 import id.zelory.compressor.Compressor
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_new_product.*
 import kotlinx.android.synthetic.main.edit_toko.*
 import kotlinx.android.synthetic.main.register_part2.*
 import okhttp3.MediaType
@@ -51,6 +55,7 @@ class EditTokoActivity : AppCompatActivity(),UmkmView {
         Picasso.get().load(umkm.fotoUsaha).into(img_tambah_foto)
     }
 
+    lateinit var fileOri: File
     lateinit var pref : SharedPreference
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
@@ -94,7 +99,19 @@ class EditTokoActivity : AppCompatActivity(),UmkmView {
             }.show()
         }
         img_tambah_foto.setOnClickListener {
-            getImage()
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera()
+
+                }
+                negativeButton("Galery"){
+                    getImage()
+
+                }
+            }.show()
+        }
+        btn__editBerkas_toko.setOnClickListener {
+            startActivity<Register2Activity>("noHp" to umkm.hp,"kode" to "edit")
         }
 
 
@@ -107,16 +124,38 @@ class EditTokoActivity : AppCompatActivity(),UmkmView {
         inten.setAction(Intent.ACTION_PICK)
         startActivityForResult(Intent.createChooser(inten,"open gallery"),1000)
     }
+    private fun getCamera(){
+        try {
+            var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            inten.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID+".fileprovider", CameraPath.createImageFile()))
+            println("data :${CameraPath.cameraFilePath}")
+            startActivityForResult(inten,1001)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == 1000){
                 getData(data)
-                println("file ${file.length()}")
-                val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+                val bitmap = BitmapFactory.decodeFile(fileOri.absolutePath, options)
                 img_tambah_foto.setImageBitmap(bitmap)
                 gambar = true
+
+            }
+            if(requestCode == 1001){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                println("Compress: ${file}")
+                println("Compress: ${file.length()}")
+                img_tambah_foto.setImageURI(Uri.parse(CameraPath.cameraFilePath))
 
             }
         }
@@ -150,7 +189,7 @@ class EditTokoActivity : AppCompatActivity(),UmkmView {
             val indexImg = cursor.getColumnIndex(imgProjection[0])
             Log.d("Log", cursor.getString(indexImg))
             val partImg = cursor.getString(indexImg)
-            val fileOri = File(partImg)
+            fileOri = File(partImg)
             file = HendraCompress.compress(fileOri,this)
             options = BitmapFactory.Options()
             options.inSampleSize = 1

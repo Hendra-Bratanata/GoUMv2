@@ -11,14 +11,19 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.Gson
+import com.iceteck.silicompressorr.RealPathUtils
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
+import go.id.diskominfo.BuildConfig
 import go.id.diskominfo.INTERFACE.KatagoriView
+import go.id.diskominfo.ITEM.CameraPath
+import go.id.diskominfo.ITEM.HendraCompress
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.DataRespon
 import go.id.diskominfo.POJO.Katagori
@@ -43,7 +48,7 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
             listKatagoryId.add(listKatagory[i].kodeKatagori.toString())
             listItem.add(listKatagory[i].namaKatagori.toString())
         }
-        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, listItem)
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listItem)
         spinnerTambahProduk.adapter = spinnerAdapter
     }
 
@@ -100,8 +105,17 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
         }
 
         img_add_produk.setOnClickListener {
-            getImage()
-            gambarAda = true
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera()
+                    gambarAda = true
+                }
+                negativeButton("Galery"){
+                    getImage()
+                    gambarAda = true
+                }
+            }.show()
+
         }
 
         btn_TambahProdukBaru.setOnClickListener {
@@ -163,6 +177,18 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
         startActivityForResult(Intent.createChooser(inten, "open gallery"), 1000)
 
     }
+    private fun getCamera(){
+        try {
+            var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            inten.putExtra(MediaStore.EXTRA_OUTPUT,FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID+".fileprovider",CameraPath.createImageFile()))
+            println("data :${CameraPath.cameraFilePath}")
+            startActivityForResult(inten,1001)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -170,6 +196,18 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
             if (requestCode == 1000) {
                 getData(data)
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+                img_add_produk.setImageBitmap(bitmap)
+
+            }
+            if(requestCode == 1001){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                println("Compress: ${file}")
+                println("Compress: ${file.length()}")
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath,options)
                 img_add_produk.setImageBitmap(bitmap)
 
             }
@@ -191,12 +229,14 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
             val indexImg = cursor.getColumnIndex(imgProjection[0])
             Log.d("Log", cursor.getString(indexImg))
             val partImg = cursor.getString(indexImg)
-            file = File(partImg)
+            val fileImages = File(partImg)
+            file = HendraCompress.compress(fileImages,this)
             options = BitmapFactory.Options()
             options.inSampleSize = 16
         }
 
     }
+
     fun uploadImanges(kd_umkm: String?,
                       katagoriItem: String,
                       nm_produk: String,

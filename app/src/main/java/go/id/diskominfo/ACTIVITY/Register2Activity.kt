@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.GONE
@@ -15,15 +16,19 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.google.gson.Gson
 import com.iceteck.silicompressorr.SiliCompressor
+import com.squareup.picasso.Picasso
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
+import go.id.diskominfo.BuildConfig
 import go.id.diskominfo.INTERFACE.UmkmView
+import go.id.diskominfo.ITEM.CameraPath
 import go.id.diskominfo.ITEM.HendraCompress
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.DataRespon
 import go.id.diskominfo.POJO.Umkm
 import go.id.diskominfo.PRESENTER.UmkmPresenter
 import go.id.diskominfo.R
+import kotlinx.android.synthetic.main.activity_new_product.*
 import kotlinx.android.synthetic.main.item_foto_iumk.*
 import kotlinx.android.synthetic.main.item_foto_lainnya.*
 import kotlinx.android.synthetic.main.item_foto_toko.*
@@ -31,6 +36,7 @@ import kotlinx.android.synthetic.main.item_ktp.*
 import kotlinx.android.synthetic.main.item_npwp.*
 import kotlinx.android.synthetic.main.register_part2.*
 import okhttp3.*
+import org.jetbrains.anko.alert
 
 import org.jetbrains.anko.toast
 import retrofit2.Call
@@ -47,25 +53,50 @@ class Register2Activity : AppCompatActivity(), UmkmView {
     override fun showDataUmkm(listUmkm: List<Umkm>) {
         umkm = listUmkm[0]
         kode = umkm.kdUmkm
+        if (kodeEdit == "edit") {
+            println(umkm.fotoKtp)
+            println(umkm.fotoNpwp)
+            println(umkm.fotoIumk)
+            println(umkm.fotoUsaha)
+            cv_npwp.visibility = VISIBLE
+            cv_iumk.visibility = VISIBLE
+
+            img_item_file_ktp.visibility = VISIBLE
+            img_item_file_npwp.visibility = VISIBLE
+            img_item_foto_iumk.visibility = VISIBLE
+
+            btn_pilih_ktp.visibility = VISIBLE
+            btn_pilih_iumk.visibility = VISIBLE
+            btn_pilih_npwp.visibility = VISIBLE
+
+            Picasso.get().load(umkm.fotoIumk).into(img_item_foto_iumk)
+            Picasso.get().load(umkm.fotoKtp).into(img_item_file_ktp)
+            Picasso.get().load(umkm.fotoNpwp).into(img_item_file_npwp)
+
+            tv_nama_file_ktp.setText("KTP")
+            tv_nama_file_npwp.setText("NPWP")
+            tv_nama_file_iumk.setText("IUMK")
+            tv_nama_file_toko.setText("TOKO")
+
+            btn_selesai_reg2.visibility= VISIBLE
+
+
+
+        }
 
 
     }
 
     lateinit var file: File
-    lateinit var file2: File
-    lateinit var file3: File
-    lateinit var file4: File
-    lateinit var file5: File
     lateinit var options: BitmapFactory.Options
-    lateinit var pref: SharedPreference
     lateinit var kode: String
-    var jumlahData = 1
     lateinit var call: Call<DataRespon>
     lateinit var umkm: Umkm
     lateinit var presenter: UmkmPresenter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
     var sukses: Boolean = false
+    var kodeEdit = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,18 +104,59 @@ class Register2Activity : AppCompatActivity(), UmkmView {
         setContentView(R.layout.register_part2)
 
         init()
+        try{
+            kodeEdit = intent.extras.getString("kode")
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
 
         btn_pilih_ktp.setOnClickListener {
-            getImage(1)
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera(5)
+
+                }
+                negativeButton("Galery"){
+                    getImage(1)
+
+                }
+            }.show()
         }
         btn_pilih_npwp.setOnClickListener {
-            getImage(2)
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera(6)
+
+                }
+                negativeButton("Galery"){
+                    getImage(2)
+
+                }
+            }.show()
         }
         btn_pilih_iumk.setOnClickListener {
-            getImage(3)
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera(7)
+
+                }
+                negativeButton("Galery"){
+                    getImage(3)
+
+                }
+            }.show()
         }
         btn_pilih_foto.setOnClickListener {
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera(8)
+
+                }
+                negativeButton("Galery"){
                     getImage(4)
+
+                }
+            }.show()
         }
         btn_kirim_ktp.setOnClickListener {
             uploadImanges(1)
@@ -139,8 +211,8 @@ class Register2Activity : AppCompatActivity(), UmkmView {
     private fun init() {
         //Hilangkan semua view Extra file
 
-//        val hp = intent.extras.getString("noHp")
-        val hp = "085750077049"
+        val hp = intent.extras.getString("noHp")
+
         gson = Gson()
         apiReposirtory = ApiReposirtory()
         presenter = UmkmPresenter(apiReposirtory, gson, this)
@@ -158,11 +230,22 @@ class Register2Activity : AppCompatActivity(), UmkmView {
 
     //
     private fun getImage(code: Int) {
-        println("GetImages $code")
         var inten = Intent()
         inten.setType("image/*")
         inten.setAction(Intent.ACTION_PICK)
         startActivityForResult(Intent.createChooser(inten, "open gallery"), code)
+
+    }
+    private fun getCamera(code:Int){
+        try {
+            var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            inten.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID+".fileprovider", CameraPath.createImageFile()))
+            println("data :${CameraPath.cameraFilePath}")
+            startActivityForResult(inten,code)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
 
     }
 
@@ -209,6 +292,53 @@ class Register2Activity : AppCompatActivity(), UmkmView {
 
 
 
+            }
+            if(requestCode == 5){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath,options)
+                img_item_file_ktp.setImageBitmap(bitmap)
+                tv_nama_file_ktp.setText(file.name)
+                btn_kirim_ktp.visibility = VISIBLE
+
+            }
+            if(requestCode == 6){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath,options)
+                img_item_file_npwp.setImageBitmap(bitmap)
+                tv_nama_file_npwp.setText(file.name)
+                btn_kirim_npwp.visibility = VISIBLE
+
+            }
+            if(requestCode == 7){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath,options)
+                img_item_foto_iumk.setImageBitmap(bitmap)
+                tv_nama_file_iumk.setText(file.name)
+                btn_kirim_iumk.visibility = VISIBLE
+
+            }
+            if(requestCode == 8){
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath,options)
+                img_item_foto_toko.setImageBitmap(bitmap)
+                tv_nama_file_toko.setText(file.name)
+                btn_kirim_toko.visibility = VISIBLE
             }
         }
     }
@@ -291,5 +421,6 @@ class Register2Activity : AppCompatActivity(), UmkmView {
         }
 
     }
+
 
 }

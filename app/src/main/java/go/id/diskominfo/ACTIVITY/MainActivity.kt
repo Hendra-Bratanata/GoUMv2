@@ -329,6 +329,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_jasa.setOnClickListener {
             startActivity<LihatSemuaActivity>("kode" to "jasa")
         }
+        tv_lihat_semua_promo.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "promo")
+        }
+
         edtCari.setOnClickListener {
             startActivity<CariActivity>()
         }

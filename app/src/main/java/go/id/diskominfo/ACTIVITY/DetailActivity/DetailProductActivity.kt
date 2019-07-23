@@ -66,6 +66,7 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
         }
         //menerima inten produk startActivity inten adapter
         val produk: Produk = intent.extras.getSerializable("detail") as Produk
+        println("Produk : ${produk.kd_kategori}")
 
         // jika kode umkm sama dengan kode umkm produk maka produk hanya dapat di edit tidak dapat dibeli
         // nama dan detail toko dihilangkan

@@ -14,7 +14,7 @@ fun compress(file: File,context: Context):File{
             .setQuality(75)
             .setCompressFormat(Bitmap.CompressFormat.WEBP)
             .setDestinationDirectoryPath(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_PICTURES).absolutePath+File.separator+"GOUM")
+                    Environment.DIRECTORY_PICTURES).absolutePath+File.separator+"compress")
             .compressToFile(file)
 
 return gambarCompress

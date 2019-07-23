@@ -30,5 +30,12 @@ data class Umkm(
         @SerializedName("kode_pos")
         val kode_pos :String,
         @SerializedName("catatan")
-        val catatan	 :String
+        val catatan	 :String,
+        @SerializedName("iumk")
+        val fotoIumk	 :String,
+        @SerializedName("ktp")
+        val fotoKtp	 :String,
+        @SerializedName("npwp")
+        val fotoNpwp	 :String
+
 )

@@ -187,7 +187,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -199,98 +200,65 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_tanggal_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="28"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
 
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_bulan_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="04"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="horizontal"
+   >
 
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_tahun_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="19"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
+    <EditText
+        android:id="@+id/edt_tangga_akhirE"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/kotak"
+        android:gravity="center"
+        android:hint="28"
+        android:inputType="date"
+        android:layout_margin="10dp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
-                    <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginStart="6dp"-->
-                    <!--android:paddingEnd="10dp"-->
-                    <!--android:text="s/d"-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:textStyle="bold" />-->
+    <EditText
+        android:id="@+id/edt_bulan_akhirE"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/kotak"
+        android:clickable="false"
+        android:gravity="center"
+        android:hint="05"
+        android:inputType="date"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
-                    <EditText
-                        android:id="@+id/edt_tangga_akhirE"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/kotak"
-                        android:gravity="center"
-                        android:hint="28"
-                        android:inputType="date"
-                        android:text=""
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14sp"
-                        android:visibility="gone" />
+    <EditText
+        android:id="@+id/edt_tahun_akhirE"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/kotak"
+        android:clickable="false"
+        android:gravity="center"
+        android:hint="19"
+        android:inputType="date"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</LinearLayout>
 
-                    <EditText
-                        android:id="@+id/edt_bulan_akhirE"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/kotak"
-                        android:clickable="false"
-                        android:gravity="center"
-                        android:hint="05"
-                        android:inputType="date"
-                        android:text=""
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14sp"
-                        android:visibility="gone" />
+                    </RelativeLayout>
 
-                    <EditText
-                        android:id="@+id/edt_tahun_akhirE"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/kotak"
-                        android:clickable="false"
-                        android:gravity="center"
-                        android:hint="19"
-                        android:inputType="date"
-                        android:text=""
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14sp"
-                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -314,9 +282,10 @@
 
 
                     <LinearLayout
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
                         <Button
 
                             android:id="@+id/btn_TambahProdukBaruEdit"
@@ -330,6 +299,7 @@
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
                         <Button
                             android:id="@+id/btn_TambahProdukBatal"
                             android:layout_width="150dp"
