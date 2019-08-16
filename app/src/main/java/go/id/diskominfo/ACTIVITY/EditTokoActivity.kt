@@ -156,7 +156,7 @@ class EditTokoActivity : AppCompatActivity(),UmkmView {
                 println("Compress: ${file}")
                 println("Compress: ${file.length()}")
                 img_tambah_foto.setImageURI(Uri.parse(CameraPath.cameraFilePath))
-
+                gambar = true
             }
         }
     }
