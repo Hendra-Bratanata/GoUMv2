@@ -25,6 +25,7 @@ class PesananDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Pe
                 Pesanan.Table_Pesanan, true,
                 Pesanan.Id_Pesanan to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
                 Pesanan.Id to TEXT + UNIQUE,
+                Pesanan.kdUmkm to TEXT,
                 Pesanan.Nama to TEXT,
                 Pesanan.Harga to INTEGER,
                 Pesanan.Gambar to TEXT,

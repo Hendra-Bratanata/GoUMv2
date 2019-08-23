@@ -36,6 +36,7 @@ class PesananAdapter(val menus: List<Pesanan>, val Min:(Pesanan)->Unit, val Plus
         val mPlus : ImageView = view.find(R.id.img_add_keranjang)
         val mMin : ImageView = view.find(R.id.img_min_keranjang)
         val gambar: ImageView = view.find(R.id.img_Gambar_keranjang)
+        val kdUmkm: TextView = view.find(R.id.kdUmkm)
         val nama: TextView = view.find(R.id.tv_nama_barang_keranjang)
         val harga: TextView = view.find(R.id.tv_harga_kerjang)
         val jumlah: TextView = view.find(R.id.tv_quantity_keranjang)
@@ -45,6 +46,7 @@ class PesananAdapter(val menus: List<Pesanan>, val Min:(Pesanan)->Unit, val Plus
             Picasso.get().load(menus.gambar).into(gambar)
             jumlah.text = menus.jumlah.toString()
             nama.text = menus.nama.toString()
+            kdUmkm.text = menus.kdUmkm.toString()
             harga.text = tambahTitik(menus.harga.toString())
             val hargas = menus.harga
             val jumlahs = menus.jumlah
