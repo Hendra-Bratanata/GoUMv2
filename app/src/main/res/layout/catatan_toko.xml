@@ -38,7 +38,7 @@
 
             <TextView
 
-                android:hint="@string/lorem"
+                android:hint="@string/tambah_catatan"
                 android:id="@+id/tv_catatan_toko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

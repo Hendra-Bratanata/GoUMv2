@@ -22,108 +22,115 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvKeranjangKosong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Belum Ada Transaksi"
-            android:textAlignment="center"
-            android:textSize="16dp" />
-
-        <TextView
             android:id="@+id/tvKeranjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Keranjang"
             android:textColor="@color/colorBlack"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
+<FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvKeranjangKosong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum Ada Transaksi"
+        android:textAlignment="center"
+        android:layout_marginTop="200dp"
+        android:textSize="16sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
 
         <LinearLayout
+            android:id="@+id/linear_garis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:orientation="vertical">
 
-
-            <LinearLayout
-                android:id="@+id/linear_garis"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_keranjang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                tools:listitem="@layout/item_keranjang">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_keranjang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_keranjang">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/vKeranjang"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorDarkPurple"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/linear_total"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvTotalKeranjang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:paddingStart="80dp"
-                    android:paddingEnd="0dp"
-                    android:text="TOTAL"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvHargaTotalKeranjang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="0"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/vKeranjang"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorDarkPurple"
+            android:visibility="visible" />
+
         <LinearLayout
+            android:id="@+id/linear_total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_proses"
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/tvTotalKeranjang"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/kotak_ungu"
-                android:fontFamily="@font/calibri"
-                android:text="PROSES"
-                android:textColor="@color/colorWhite"
+
+                android:paddingStart="80dp"
+                android:paddingEnd="0dp"
+                android:text="TOTAL"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tvHargaTotalKeranjang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="0"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
+</FrameLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+
+        <Button
+            android:id="@+id/btn_proses"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kotak_ungu"
+            android:fontFamily="@font/calibri"
+            android:text="PROSES"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
 
 </ScrollView>

@@ -1,192 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:context="go.id.diskominfo.ACTIVITY.DetailActivity.DetailProductActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:context="go.id.kominfo.ACTIVITY.DetailActivity.DetailProductActivity"
+        tools:layout_editor_absoluteX="109dp">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:fitsSystemWindows="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/rectangle" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginBottom="16dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/rectangle"
+                app:layout_constraintBottom_toTopOf="@+id/tv_nama_produk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
 
             <TextView
                 android:id="@+id/tv_nama_produk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="80dp"
                 android:text="@string/braun_classic_watch"
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/view"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
             <TextView
                 android:id="@+id/tv_deskripsi_produk_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/deskripsi_produk"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_nama_produk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_nama_produk" />
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:background="#b9bdbf"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_deskripsi"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/description"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi_produk_detail" />
+
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/harga"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi" />
+
+            <TextView
+                android:id="@+id/tv_member_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/memberprice"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_harga"
+                app:layout_constraintTop_toBottomOf="@+id/tv_harga" />
+
+
+            <ImageButton
+                android:id="@+id/btnMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/minus"
+                android:src="@drawable/ic_remove_square"
+                app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi" />
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="44dp"
+                android:padding="8dp"
+                android:text="@string/_0"
+                android:textColor="@color/colorDarkPurple"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/btnAdd"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi" />
+
+            <ImageButton
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/plus"
+                android:src="@drawable/ic_add_square"
+                app:layout_constraintEnd_toEndOf="@+id/tv_deskripsi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi" />
+
+
+            <Button
+                android:padding="4dp"
+                android:id="@+id/btn_add_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="@string/masukkan_ke_keranjang"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_member_price" />
+
+            <Button
+                android:id="@+id/btn_editProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="@string/edit_produk"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/btn_DeleteProduk"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                app:layout_constraintTop_toTopOf="@+id/btn_DeleteProduk" />
+
+            <Button
+                android:id="@+id/btn_DeleteProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorDarkPurple"
+                android:fontFamily="@font/calibri"
+                android:text="@string/delete"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3" />
+
 
             <LinearLayout
-                android:id="@+id/linear_horizontal"
-                android:layout_width="match_parent"
+                android:id="@+id/linearLayout3"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
-                android:paddingStart="0dp"
-                android:paddingEnd="@dimen/activity_horizontal_margin">
-
-                <LinearLayout
-                    android:id="@+id/linear_vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_harga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/harga"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:visibility="gone"
-                        android:id="@+id/tv_member_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/memberprice"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/btnMin"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/minus"
-                    android:src="@drawable/ic_remove_square" />
-
-                <TextView
-                    android:id="@+id/tv_quantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="8dp"
-                    android:text="@string/_0"
-                    android:textColor="@color/colorDarkPurple"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/btnAdd"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/plus"
-                    android:src="@drawable/ic_add_square" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btn_add_to_cart"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="@color/colorDarkPurple"
-                    android:fontFamily="@font/calibri"
-                    android:text="@string/masukkan_ke_keranjang"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/btn_editProduk"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="@color/colorDarkPurple"
-                    android:fontFamily="@font/calibri"
-                    android:text="@string/edit_produk"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/btn_DeleteProduk"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="@color/colorDarkPurple"
-                    android:fontFamily="@font/calibri"
-                    android:text="@string/delete"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/kotak_abu"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_member_price">
 
                 <LinearLayout
                     android:id="@+id/lyDetailNamaToko"
@@ -208,9 +245,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:weightSum="2"
                         android:orientation="vertical"
-                        android:padding="6dp">
+                        android:padding="6dp"
+                        android:weightSum="2">
 
                         <TextView
                             android:id="@+id/tv_NamaTokoDetail"
@@ -232,19 +269,20 @@
                             android:textColor="@color/colorDarkPurple"
                             android:textSize="18sp" />
 
-                        <LinearLayout
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/linearLayout4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:orientation="horizontal">
+                            android:layout_marginTop="8dp">
 
                             <Button
 
                                 android:id="@+id/btn_chat"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="1"
+                                android:layout_marginBottom="16dp"
                                 android:background="@drawable/kotak_kosong"
                                 android:drawableStart="@drawable/ic_wa"
                                 android:fontFamily="@font/calibri"
@@ -253,22 +291,26 @@
                                 android:text="@string/chat_penjual"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorDarkPurple"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/btn_detailToko"
+                                app:layout_constraintStart_toStartOf="parent" />
 
                             <Button
                                 android:id="@+id/btn_detailToko"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_marginBottom="16dp"
                                 android:background="@drawable/kotak_kosong"
                                 android:fontFamily="@font/calibri"
                                 android:text="@string/detail"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorDarkPurple"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/btn_chat" />
+                        </android.support.constraint.ConstraintLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -324,10 +366,16 @@
                 <!--</LinearLayout>-->
             </LinearLayout>
 
-        </LinearLayout>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
 
 
-    </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
 
-</ScrollView>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

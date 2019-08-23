@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/powered_by_diskominfo"
+            android:text="@string/powered_by_dinkop"
             android:textColor="@color/colorDarkPurple"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -199,55 +199,6 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_tanggal_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="28"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
-
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_bulan_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="04"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
-
-                    <!--<EditText-->
-                    <!--android:id="@+id/edt_tahun_mulai"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:background="@drawable/kotak"-->
-                    <!--android:gravity="center"-->
-                    <!--android:hint="19"-->
-                    <!--android:inputType="date"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="14sp" />-->
-
-                    <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginStart="6dp"-->
-                    <!--android:paddingEnd="10dp"-->
-                    <!--android:text="s/d"-->
-                    <!--android:textColor="@color/colorBlack"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:textStyle="bold" />-->
-
                     <EditText
                         android:id="@+id/edt_tangga_akhir"
                         android:layout_width="25dp"
@@ -309,7 +260,7 @@
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
                         android:background="@drawable/kotak_putih"
                         android:gravity="start"
-                        android:hint="@string/deskripsi_dodol_tenjo"
+                        android:hint="@string/deskripsi"
                         android:padding="5dp" />
 
                     <Button

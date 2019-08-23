@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,16 +26,17 @@
                 android:src="@drawable/tangerang" />
 
             <EditText
+                android:textSize="13sp"
                 android:id="@+id/edtCari"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="4dp"
                 android:background="@drawable/kotak_search"
                 android:drawableStart="@drawable/ic_search_white_24dp"
-                android:drawablePadding="10dp"
+                android:drawablePadding="4dp"
                 android:gravity="center_vertical"
-                android:hint="cari produk disini"
-                android:padding="10dp"
+                android:hint="Cari Produk"
+                android:padding="4dp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorDarkPurple" />
             <ImageButton
