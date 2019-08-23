@@ -22,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:text="@string/powered_by_diskominfo"
+        android:text="@string/powered_by_dinkop"
         android:textColor="@color/colorDarkPurple" />
 </RelativeLayout>

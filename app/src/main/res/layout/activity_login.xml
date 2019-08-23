@@ -1,164 +1,167 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="8dp"
-    tools:context="go.id.diskominfo.ACTIVITY.LoginActivity">
-
-
-    <RelativeLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_footer_login"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/powered_by_dinkop"
+        android:textColor="@color/colorDarkPurple"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_login"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/tv_footer_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/powered_by_diskominfo"
-            android:textColor="@color/colorDarkPurple"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/footer"
-        android:fillViewport="true">
+    <ImageView
+        android:id="@+id/img_logo_tangerang"
+        android:layout_width="118dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="131dp"
+        android:src="@drawable/tangerang"
+        app:layout_constraintBottom_toTopOf="@+id/img_logo_umkm"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo_umkm"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/img_logo_umkm"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_logo_umkm"
+        android:layout_width="161dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:src="@drawable/goumbaru"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="273dp"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_tangerang"/>
+
+    <TextView
+        android:id="@+id/tv_pesan_login"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorYoungPurple"
+        android:gravity="center"
+        android:text="Pendaftaran GAGAl"
+        android:textColor="@color/colorred"
+        android:textSize="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/form_login"
+        app:layout_constraintEnd_toEndOf="@+id/form_login"
+        app:layout_constraintStart_toStartOf="@+id/form_login"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_umkm" />
+    <!---->
+    <!--<TextView-->
+    <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
+    <!--android:id="@+id/tv_masukkan_no_hp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Masukkan nomor ponsel Anda untuk Masuk ke Aplikasi GO UMKM"-->
+    <!--android:textColor="@color/colorWhite"-->
+    <!--android:textSize="16sp"-->
+    <!--android:textStyle="bold" />-->
+    <LinearLayout
+        android:id="@+id/form_login"
+        android:layout_width="326dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="43dp"
+        android:background="@drawable/card"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pesan_login">
+
+
+        <EditText
+            android:id="@+id/edt_phonelogin"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/kotak"
+            android:drawableEnd="@drawable/ic_contact_phone_black_24dp"
+            android:drawablePadding="16dp"
+            android:hint="08XXXXXXXX"
+            android:inputType="numberDecimal"
+            android:padding="7dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorPurple" />
+
+        <EditText
+            android:id="@+id/edt_password_login"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/kotak"
+            android:drawableEnd="@drawable/ic_lock_white_24dp"
+            android:drawablePadding="16dp"
+            android:hint="Masukkan Password"
+            android:inputType="textPassword"
+            android:padding="7dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorPurple" />
 
         <LinearLayout
-            android:id="@+id/linear_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:fillViewport="true"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/img_logo_tangerang"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/tangerang" />
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/kotak_ungu"
+                android:fontFamily="@font/calibri"
+                android:text="@string/masuk"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/img_logo_umkm"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/goumbaru" />
-
-            <TextView
-                android:id="@+id/tv_pesan_login"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/colorYoungPurple"
-                android:gravity="center"
-                android:text="Pendaftaran GAGAl"
-                android:textColor="@color/colorred"
-                android:textSize="20dp"
-                android:visibility="gone" />
-            <!---->
-            <!--<TextView-->
-            <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
-            <!--android:id="@+id/tv_masukkan_no_hp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:text="Masukkan nomor ponsel Anda untuk Masuk ke Aplikasi GO UMKM"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textSize="16sp"-->
-            <!--android:textStyle="bold" />-->
-            <LinearLayout
-                android:id="@+id/form_login"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btn_register_login"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/card"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin">
+                android:layout_weight="1"
+                android:background="@drawable/kotak_ungu"
+                android:fontFamily="@font/calibri"
+                android:text="@string/daftar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-
-                <EditText
-                    android:id="@+id/edt_phonelogin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/kotak"
-                    android:drawableEnd="@drawable/ic_contact_phone_black_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="08XXXXXXXX"
-                    android:inputType="numberDecimal"
-                    android:padding="7dp"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@color/colorPurple" />
-
-                <EditText
-                    android:id="@+id/edt_password_login"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/kotak"
-                    android:drawableEnd="@drawable/ic_lock_white_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="Masukkan Password"
-                    android:inputType="textPassword"
-                    android:padding="7dp"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@color/colorPurple" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_login"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:text="@string/masuk"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btn_register_login"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/kotak_ungu"
-                        android:fontFamily="@font/calibri"
-                        android:text="@string/daftar"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -166,5 +169,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone" />
-</RelativeLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="38dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/form_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_umkm" />
+
+</android.support.constraint.ConstraintLayout>
