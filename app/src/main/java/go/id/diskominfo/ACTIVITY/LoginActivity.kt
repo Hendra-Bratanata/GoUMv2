@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity(), UserView {
 
 
                 val MD5 = MD5()
-                pass = MD5.EncriptMD5(edt_password_login.text.toString())
+                pass = edt_password_login.text.toString()
 
                 //Password
                 if (user.pass == pass) {
@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity(), UserView {
                 loading.visibility = GONE
             } else {
 
-                if (hp.length < 12 || hp.length > 13) {
+                if (hp.length < 10 || hp.length > 13) {
                     edt_phonelogin.setError("Nomor Tidak Valid")
                     loading.visibility = GONE
 
@@ -126,6 +126,7 @@ class LoginActivity : AppCompatActivity(), UserView {
 
         btn_register_login.setOnClickListener {
             startActivity<RegisterActivity>()
+            finish()
         }
 
 

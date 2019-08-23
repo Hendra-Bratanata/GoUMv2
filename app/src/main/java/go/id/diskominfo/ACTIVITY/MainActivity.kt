@@ -44,6 +44,12 @@ import org.jetbrains.anko.yesButton
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+    override fun showDataJasa(listJASA: List<Produk>) {
+        listJasa.clear()
+        listJasa.addAll(listJASA)
+        katagoriAdapterJasa.notifyDataSetChanged()
+    }
+
     override fun showDataPria(listProduk: List<Produk>) {
         listPria.clear()
         listPria.addAll(listProduk)
@@ -107,6 +113,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var listMinuman: MutableList<Produk>
     lateinit var listKuliner: MutableList<Produk>
     lateinit var listRumahTangga: MutableList<Produk>
+    lateinit var listJasa : MutableList<Produk>
+    lateinit var listLainya: MutableList<Produk>
     lateinit var presenter: PromoPresenter
     lateinit var bannerAdapter: BannerAdapter
     lateinit var katagoriAdapterPria: KatagoryAdapter
@@ -114,6 +122,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var katagoriAdapterKuliner: KatagoryAdapter
     lateinit var katagoriAdapterCraft: KatagoryAdapter
     lateinit var katagoriAdapterRumah: KatagoryAdapter
+    lateinit var katagoriAdapterJasa: KatagoryAdapter
+    lateinit var katagoryAdapterLainya: KatagoryAdapter
     lateinit var adapter: PromoAdapter
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
@@ -124,7 +134,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var NOHP = ""
     var noHpPemebeli = ""
     var alamatPemebeli =""
-    var namaPembeli = ""
+    var namaPembeli = "Tamu"
 
     lateinit var swpMain: SwipeRefreshLayout
     var conn = 0
@@ -163,6 +173,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         namaPembeli = sharedPreferences.getValueString("namaPembeli").toString()
         Log.d("LOGIN", "$LOGIN")
         Log.d("No HP", "$NOHP")
+        Log.d("No HP pembeli", "$noHpPemebeli")
         if (noHpPemebeli.isNotEmpty()){
             val nav: NavigationView = findViewById(R.id.nav_view)
             val M: Menu = nav.menu
@@ -170,7 +181,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             akun.setVisible(true)
             akun.setTitle(namaPembeli)
         }
-
+        if(noHpPemebeli.equals("null")){
+            val nav: NavigationView = findViewById(R.id.nav_view)
+            val M: Menu = nav.menu
+            val akun = M.findItem(R.id.nav_akun)
+            akun.setVisible(true)
+            akun.setTitle("Tamu")
+        }
         if (LOGIN) {
             Log.d("in LOGIN ", "$LOGIN")
             Log.d("in No HP", "$NOHP")
@@ -244,6 +261,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<DetailProductActivity>("detail" to it)
         })
 
+        listJasa = mutableListOf()
+        katagoriAdapterJasa = KatagoryAdapter(listJasa,{
+            startActivity<DetailProductActivity>("detail" to it)
+        })
+
+//        listLainya = mutableListOf()
+//        katagoryAdapterLainya = KatagoryAdapter(listLainya,{
+//            startActivity<DetailProductActivity>("detail" to it)
+//        })
+
+
+
 
 
 
@@ -268,6 +297,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         rv_rumah_tangga.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_rumah_tangga.adapter = katagoriAdapterRumah
+
+        rv_jasa.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        rv_jasa.adapter = katagoriAdapterJasa
 
         gson = Gson()
         apiReposirtory = ApiReposirtory()
@@ -294,6 +326,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_rumah_tangga.setOnClickListener {
             startActivity<LihatSemuaActivity>("kode" to "rumah")
         }
+        tv_lihat_semua_jasa.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "jasa")
+        }
+        tv_lihat_semua_promo.setOnClickListener {
+            startActivity<LihatSemuaActivity>("kode" to "promo")
+        }
+
         edtCari.setOnClickListener {
             startActivity<CariActivity>()
         }
@@ -312,6 +351,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         presenter.getBenner()
         presenter.getMinuman()
         presenter.getRumahTangga()
+        presenter.getJasa()
+//        presenter.getLainLain()
 
         if (conn == 0) {
             Thread(Runnable {
@@ -328,7 +369,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            alert("Ingin Keluar dari aplikasi?") {
+                yesButton {
+                    super.onBackPressed()
+                    finish()
+
+                }
+                noButton {
+
+                }
+
+            }.show()
         }
     }
 
@@ -352,7 +403,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return if (id == R.id.action_cart) {
             startActivity<KeranjangActivity>()
             true
-        } else super.onOptionsItemSelected(item)
+        }
+        else super.onOptionsItemSelected(item)
 
     }
 
@@ -410,7 +462,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tvMakananMinumanMain.visibility = View.GONE
         tvRumahTanggaMain.visibility = View.GONE
         tvJasaMain.visibility = View.GONE
-        tvLainnyaMain.visibility = View.GONE
+
 
         tv_lihat_semua_rumah_tangga.visibility = View.GONE
         tv_lihat_semua_makanan_minuman.visibility = View.GONE
@@ -418,7 +470,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_craft.visibility = View.GONE
         tv_lihat_semua_fashion.visibility = View.GONE
         tv_lihat_semua_jasa.visibility = View.GONE
-        tv_lihat_semua_lainnya.visibility = View.GONE
+
 
     }
 
@@ -431,7 +483,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tvMakananMinumanMain.visibility = View.VISIBLE
         tvRumahTanggaMain.visibility = View.VISIBLE
         tvJasaMain.visibility = View.VISIBLE
-        tvLainnyaMain.visibility = View.VISIBLE
+
 
 
         tv_lihat_semua_rumah_tangga.visibility = View.VISIBLE
@@ -440,7 +492,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tv_lihat_semua_craft.visibility = View.VISIBLE
         tv_lihat_semua_fashion.visibility = View.VISIBLE
         tv_lihat_semua_jasa.visibility = View.VISIBLE
-        tv_lihat_semua_lainnya.visibility = View.VISIBLE
+
     }
 
     fun starJob()
@@ -462,5 +514,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+
 
 }

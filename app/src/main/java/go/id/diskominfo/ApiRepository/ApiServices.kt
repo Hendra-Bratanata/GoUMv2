@@ -32,6 +32,7 @@ interface ApiServices {
 
 
             : Call<DataRespon>
+
     @Multipart
     @POST("edit_produk_user.php")
     fun editProduk(
@@ -47,6 +48,7 @@ interface ApiServices {
 
 
             : Call<DataRespon>
+
     @Multipart
     @POST("edit_produk_user.php")
     fun editProdukNoGambar(
@@ -58,6 +60,52 @@ interface ApiServices {
             @Part("diskon") diskon: RequestBody,
             @Part("exp_diskon") exp_diskon: RequestBody,
             @Part("deskripsi") deskripsi: RequestBody)
+
+
+            : Call<DataRespon>
+
+    @Multipart
+    @POST("tambah_produk_user.php")
+    fun addProdukNoGambar(
+            @Part("kd_umkm") kdumkm: RequestBody,
+            @Part("kd_kategori") kd_kategori: RequestBody,
+            @Part("nm_produk") nm_produk: RequestBody,
+            @Part("harga") harga: RequestBody,
+            @Part("diskon") diskon: RequestBody,
+            @Part("exp_diskon") exp_diskon: RequestBody,
+            @Part("deskripsi") deskripsi: RequestBody)
+
+
+            : Call<DataRespon>
+
+
+    @Multipart
+    @POST("edit_user_umkm.php")
+    fun editTokoFoto (
+            @Part foto: MultipartBody.Part,
+            @Part("kd_umkm") kd_umkm: RequestBody,
+            @Part("nm_pemilik") nm_pemilik: RequestBody,
+            @Part("alamat") alamat : RequestBody,
+            @Part("nm_umkm") nm_umkm: RequestBody,
+            @Part("kecamatan") kecamatan: RequestBody,
+            @Part("kode_pos") kode_pos: RequestBody,
+            @Part("keterangan") keterangan: RequestBody,
+            @Part("catatan") catatan: RequestBody)
+
+
+            : Call<DataRespon>
+
+    @Multipart
+    @POST("edit_user_umkm.php")
+    fun editToko(
+            @Part("kd_umkm") kd_umkm: RequestBody,
+            @Part("nm_pemilik") nm_pemilik: RequestBody,
+            @Part("alamat") alamat : RequestBody,
+            @Part("nm_umkm") nm_umkm: RequestBody,
+            @Part("kecamatan") kecamatan: RequestBody,
+            @Part("kode_pos") kode_pos: RequestBody,
+            @Part("keterangan") keterangan: RequestBody,
+            @Part("catatan") catatan: RequestBody)
 
 
             : Call<DataRespon>

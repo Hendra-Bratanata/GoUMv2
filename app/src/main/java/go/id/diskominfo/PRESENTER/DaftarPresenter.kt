@@ -1,8 +1,7 @@
 package go.id.diskominfo.PRESENTER
 
 
-import android.graphics.Bitmap
-import android.util.Base64
+
 import com.google.gson.Gson
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.PromoAPI
@@ -10,7 +9,7 @@ import go.id.diskominfo.INTERFACE.DaftarView
 import go.id.diskominfo.POJO.DaftarResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import java.io.ByteArrayOutputStream
+
 
 class DaftarPresenter(val apiReposirtory:ApiReposirtory, val gson: Gson, val view: DaftarView){
 
@@ -38,17 +37,7 @@ lateinit var data:DaftarResponse
             }
         }
     }
-        fun kirimfoto(bitmap: Bitmap) {
-            doAsync {
-                var output = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, output)
-                val imgByte = output.toByteArray()
-                val encodeString = Base64.encodeToString(imgByte, Base64.DEFAULT)
-                apiReposirtory.doRequest(PromoAPI.kirimFoto(encodeString))
 
-            }
-
-        }
     fun kirimDataPembelian (no_trans: String,
                             kd_produk: String,
                             tgl_trans: String,

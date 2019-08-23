@@ -61,6 +61,41 @@ object PromoAPI {
         Log.d("data", Url)
         return Url
     }
+    fun getAllFashio():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_fashion.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllCraft():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_craft.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllKuliner():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_kuliner.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllMakanan():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_makanan_minuman.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllRumahTangga():String{
+        val Url = BuildConfig.BASE_URL + "kategori/rumah_tangga.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllJasa():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_jasa.php"
+        Log.d("data", Url)
+        return Url
+    }
+    fun getAllPromo():String{
+        val Url = BuildConfig.BASE_URL + "kategori/semua_promo.php"
+        Log.d("data", Url)
+        return Url
+    }
 
 
     fun kirimRegister(ktp: String,

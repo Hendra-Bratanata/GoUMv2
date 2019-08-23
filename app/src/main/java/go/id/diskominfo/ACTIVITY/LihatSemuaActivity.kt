@@ -51,23 +51,31 @@ class LihatSemuaActivity : AppCompatActivity(),LihatSemuaView {
 
         if(data.equals("fashion",true)){
             tv_judul_Lihat_semua.text = "Fashion"
-            presenter.getFashion()
+            presenter.getAllFashion()
         }
         else if(data.equals("craft",false)){
             tv_judul_Lihat_semua.text = "Craft"
-            presenter.getCraft()
+            presenter.getAllCraft()
         }
         else if(data.equals("kuliner",false)){
             tv_judul_Lihat_semua.text = "Kuliner"
-            presenter.getKuliner()
+            presenter.getAllKuliner()
         }
         else if(data.equals("minuman",false)){
             tv_judul_Lihat_semua.text = "Makanan dan Minuman"
-            presenter.getMinuman()
+            presenter.getAllMakanan()
         }
         else if(data.equals("rumah",false)){
             tv_judul_Lihat_semua.text = "Rumah Tangga"
-            presenter.getRumahTangga()
+            presenter.getAllRumahTangga()
+        }
+        else if(data.equals("jasa",false)){
+            tv_judul_Lihat_semua.text = "Jasa"
+            presenter.getAllJasa()
+        }
+        else if(data.equals("promo",false)){
+            tv_judul_Lihat_semua.text = "Promo"
+            presenter.getAllPromo()
         }
     }
 }

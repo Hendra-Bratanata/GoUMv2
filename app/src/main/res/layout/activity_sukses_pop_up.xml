@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/robotoRegular"
+            android:fontFamily="@font/robotoregular"
             android:text="Produk Anda berhasil ditambahkan, silahkan lihat produk anda."
             android:textAlignment="center"
             android:textSize="20sp" />

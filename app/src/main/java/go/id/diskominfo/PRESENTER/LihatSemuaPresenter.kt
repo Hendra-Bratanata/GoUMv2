@@ -56,18 +56,6 @@ class LihatSemuaPresenter(val view: LihatSemuaView, val gson: Gson, val apiRepos
 
         }
     }
-//
-//    fun getBenner (){
-//        doAsync {
-//            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getBenner())
-//                    , bannerResponse::class.java)
-//            uiThread {
-//                view.showData(data.data)
-//
-//            }
-//        }
-//
-//    }
     fun getMinuman (){
         doAsync {
             val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getMinuman())
@@ -91,28 +79,18 @@ class LihatSemuaPresenter(val view: LihatSemuaView, val gson: Gson, val apiRepos
         }
 
     }
-//    fun getJasa (){
-//        doAsync {
-//            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
-//                    , bannerResponse::class.java)
-//            uiThread {
-//                view.showData(data.data)
-//
-//            }
-//        }
-//
-//    }
-//    fun getLainLain (){
-//        doAsync {
-//            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
-//                    , bannerResponse::class.java)
-//            uiThread {
-//                view.showData(data.data)
-//
-//            }
-//        }
-//
-//    }
+    fun getJasa (){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getJasa())
+                    , ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+
+            }
+        }
+
+    }
+
 
     fun getAllByABC(cari: String){
         doAsync {
@@ -124,4 +102,67 @@ class LihatSemuaPresenter(val view: LihatSemuaView, val gson: Gson, val apiRepos
         }
     }
 
+    fun getAllFashion(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllFashio()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllCraft(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllCraft()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllKuliner(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllKuliner()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllMakanan(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllMakanan()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllRumahTangga(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllRumahTangga()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllJasa(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllJasa()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
+    fun getAllPromo(){
+        doAsync {
+            val data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.getAllPromo()),
+                    ProdukResponse::class.java)
+            uiThread {
+                view.showData(data.data)
+            }
+        }
+    }
 }

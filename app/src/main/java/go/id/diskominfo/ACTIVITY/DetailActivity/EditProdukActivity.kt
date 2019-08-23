@@ -11,27 +11,32 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import go.id.diskominfo.ACTIVITY.TokoActivity
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.ApiRepository.RetrofitClient
+import go.id.diskominfo.BuildConfig
 import go.id.diskominfo.INTERFACE.KatagoriView
+import go.id.diskominfo.ITEM.CameraPath
+import go.id.diskominfo.ITEM.HendraCompress
 import go.id.diskominfo.ITEM.SharedPreference
 import go.id.diskominfo.POJO.DataRespon
 import go.id.diskominfo.POJO.Katagori
 import go.id.diskominfo.POJO.Produk
 import go.id.diskominfo.PRESENTER.KatagoriPresenter
 import go.id.diskominfo.R
+import kotlinx.android.synthetic.main.activity_new_product.*
 import kotlinx.android.synthetic.main.edit_produk.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.ctx
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,8 +51,12 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         }
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, listItem)
         spinnerTambahProdukedit.adapter = spinnerAdapter
+        try {
+            spinnerTambahProdukedit.setSelection(produk.kd_kategori!!.toInt()-1)
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
-
     lateinit var pref: SharedPreference
     lateinit var presenter: KatagoriPresenter
     lateinit var gson: Gson
@@ -60,9 +69,11 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
     //    lateinit var spinner: Spinner
     lateinit var listItem: MutableList<String>
     lateinit var file: File
+    lateinit var fileAsli: File
     lateinit var options: BitmapFactory.Options
     var kdProduk =""
     var gambarBaru = false
+    lateinit var produk: Produk
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,8 +82,8 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
 
-        val produk = intent.extras.getSerializable("produk") as Produk
-
+        produk = intent.extras.getSerializable("produk") as Produk
+        println("Produk: ${produk.kd_kategori}")
         pref = SharedPreference(this)
         listKatagory = mutableListOf()
         listKatagoryId = mutableListOf()
@@ -88,6 +99,9 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         edt_edit_deskripsi_produk.setText(produk.deskripsi)
         kdProduk = produk.kd_produk.toString()
 
+
+
+
         Glide.with(this).load(produk.gambar).into(img_add_produkE)
 
 
@@ -100,6 +114,7 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         presenter = KatagoriPresenter(this, gson, apiReposirtory)
 
         presenter.getKatagori()
+
 
         checkbox_promoEdit.setOnClickListener {
             if(checkbox_promoEdit.isChecked){
@@ -116,8 +131,16 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         }
 
         img_add_produkE.setOnClickListener {
-            getImage()
-            gambarBaru = true
+            alert ("Foto Langsung Atau Dari Galery?"){
+                positiveButton("Camera"){
+                    getCamera()
+                    gambarBaru = true
+                }
+                negativeButton("Galery"){
+                    getImage()
+                    gambarBaru = true
+                }
+            }.show()
 
         }
 
@@ -179,14 +202,37 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         startActivityForResult(Intent.createChooser(inten, "open gallery"), 1000)
 
     }
+    private fun getCamera(){
+        try {
+            var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            inten.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID+".fileprovider", CameraPath.createImageFile()))
+            println("data :${CameraPath.cameraFilePath}")
+            startActivityForResult(inten,1001)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == 1000) {
                 getData(data)
-                val bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+                val bitmap = BitmapFactory.decodeFile(fileAsli.absolutePath, options)
                 img_add_produkE.setImageBitmap(bitmap)
+
+            }
+            if (requestCode == 1001) {
+                val stringUri = Uri.parse(CameraPath.cameraFilePath).path
+                val filePath = File(stringUri)
+                options = BitmapFactory.Options()
+                options.inSampleSize = 16
+                file = HendraCompress.compress(filePath,this)
+                println("Compress: ${file}")
+                println("Compress: ${file.length()}")
+                img_add_produkE.setImageURI(Uri.parse(CameraPath.cameraFilePath))
 
             }
 
@@ -207,7 +253,9 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
             val indexImg = cursor.getColumnIndex(imgProjection[0])
             Log.d("Log", cursor.getString(indexImg))
             val partImg = cursor.getString(indexImg)
-            file = File(partImg)
+            val filePath = File(partImg)
+            fileAsli = File(partImg)
+            file = HendraCompress.compress(filePath,this)
             options = BitmapFactory.Options()
             options.inSampleSize = 16
         }
@@ -238,12 +286,14 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
         val deskripsiData = RequestBody.create(MultipartBody.FORM,deskripsi)
         val apiServices = RetrofitClient.getApiServices()
         if(gambarBaru) {
+            print("gambar baru")
             val regBody = RequestBody.create(MediaType.parse("multipart/form-file"), file)
             var multipartBody = MultipartBody.Part.createFormData("gambar", file.name, regBody)
             call = apiServices.editProduk(multipartBody, kd_umkmData, kd_produk, ktgoriData, namaProdukData, hargaData, diskonData, exp_diskonData, deskripsiData)
 
         }
         else{
+            print("gak ada gambar")
             call = apiServices.editProdukNoGambar(kd_umkmData,kd_produk,ktgoriData,namaProdukData,hargaData,diskonData,exp_diskonData,deskripsiData)
 
         }
@@ -275,5 +325,19 @@ class EditProdukActivity : AppCompatActivity(),KatagoriView {
 
 
         })
+    }
+
+    override fun onBackPressed() {
+
+        alert("Anda yakin ingin membatalkan aksi ini") {
+            yesButton {
+                super.onBackPressed()
+
+            }
+            noButton {
+
+            }
+
+        }.show()
     }
 }

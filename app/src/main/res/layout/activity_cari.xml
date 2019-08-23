@@ -13,8 +13,6 @@
     <LinearLayout
         android:paddingTop="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="4">
