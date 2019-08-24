@@ -3,6 +3,7 @@ package go.id.diskominfo.POJO
 data class Pesanan(
         val idPesana:Long,
         val id: String?,
+        val kdUmkm: String?,
         val nama: String?,
         val harga: Int?,
         val gambar: String?,
@@ -12,6 +13,7 @@ data class Pesanan(
         const val Table_Pesanan: String = "TABLE_PESANAN"
         const val Id_Pesanan: String = "ID_PESANAN"
         const val Id: String = "ID"
+        const val kdUmkm: String = "KDUMKM"
         const val Nama: String = "NAMA"
         const val Harga: String = "HARGA"
         const val Gambar: String = "GAMBAR"

@@ -107,13 +107,18 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
                 val tlp = data?.getStringExtra("tlp")
                 val alamat = data?.getStringExtra("alamat")
                 val total = tvHargaTotalKeranjang.text.toString()
+//                val total = 0
                 for (i in listPesanan.indices){
+
                     val noTransaksi =tanggal.ambilTanggalLengkap()
                     val kdProduk = listPesanan[i].id
                     val tanggalTransaksi = tanggal.ambilTanggal()
                     val qty = listPesanan[i].jumlah
                     val harga = listPesanan[i].harga
+
                     presenter.kirimDataPembelian(noTransaksi,kdProduk.toString(),tanggalTransaksi,nama.toString(),tlp.toString(),alamat.toString(),qty.toString(),harga.toString(),total)
+
+
                 }
 
                 println(nama)
@@ -215,6 +220,7 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
 
                             Pesanan.Table_Pesanan,
                             Pesanan.Id to it.id,
+                            Pesanan.kdUmkm to it.kdUmkm,
                             Pesanan.Nama to it.nama,
                             Pesanan.Harga to it.harga,
                             Pesanan.Gambar to it.gambar,

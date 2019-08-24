@@ -237,6 +237,7 @@ class DetailProductActivity : AppCompatActivity(),UmkmView {
 
                             Pesanan.Table_Pesanan,
                             Pesanan.Id to produk.kd_produk,
+                            Pesanan.kdUmkm to produk.kd_umkm,
                             Pesanan.Nama to produk.nm_produk,
                             Pesanan.Harga to produk.harga,
                             Pesanan.Gambar to produk.gambar,

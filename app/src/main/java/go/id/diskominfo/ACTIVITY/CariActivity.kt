@@ -7,6 +7,7 @@ import android.view.View
 import com.google.gson.Gson
 import go.id.diskominfo.ACTIVITY.DetailActivity.DetailProductActivity
 import go.id.diskominfo.ADAPTER.KatagoryAdapter
+import go.id.diskominfo.ADAPTER.KatagoryAdapterCari
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.INTERFACE.LihatSemuaView
 import go.id.diskominfo.POJO.Produk
@@ -36,7 +37,7 @@ class CariActivity : AppCompatActivity(), LihatSemuaView {
     lateinit var gson: Gson
     lateinit var apiReposirtory: ApiReposirtory
     lateinit var presenter: LihatSemuaPresenter
-    lateinit var adapter: KatagoryAdapter
+    lateinit var adapter: KatagoryAdapterCari
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class CariActivity : AppCompatActivity(), LihatSemuaView {
         listProduk = mutableListOf()
         gson = Gson()
         apiReposirtory = ApiReposirtory()
-        adapter = KatagoryAdapter(listProduk,{
+        adapter = KatagoryAdapterCari(listProduk,{
             startActivity<DetailProductActivity>("detail" to it)
         })
         presenter = LihatSemuaPresenter(this,gson,apiReposirtory)
