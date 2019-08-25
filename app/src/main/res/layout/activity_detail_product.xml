@@ -179,6 +179,8 @@
                 android:id="@+id/btn_editProduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/colorDarkPurple"
                 android:fontFamily="@font/calibri"
                 android:text="@string/edit_produk"
@@ -187,16 +189,15 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/btn_DeleteProduk"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-                app:layout_constraintTop_toTopOf="@+id/btn_DeleteProduk" />
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/btn_DeleteProduk" />
 
             <Button
                 android:id="@+id/btn_DeleteProduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="192dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/colorDarkPurple"
                 android:fontFamily="@font/calibri"
                 android:text="@string/delete"
@@ -206,7 +207,6 @@
                 android:textStyle="bold"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout3" />
 
 
