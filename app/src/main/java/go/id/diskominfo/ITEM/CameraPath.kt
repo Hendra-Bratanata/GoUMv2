@@ -17,6 +17,14 @@ object CameraPath {
  var cameraFilePath: String? = null
     @Throws(IOException::class)
      fun createImageFile(): File {
+
+        val dir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"GOUM")
+        if(!dir.exists()){
+            println("Buat Folder baru didalam picture")
+            dir.mkdirs()
+        }
+
+
        println("dalam create File")
         // Create an image file name
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())

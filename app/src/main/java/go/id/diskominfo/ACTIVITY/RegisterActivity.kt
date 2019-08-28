@@ -1,5 +1,6 @@
 package go.id.diskominfo.ACTIVITY
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -52,6 +53,18 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
 
     internal lateinit var window: Window
 
+    //kode reques izin
+    var PERMISSION_ALL = 1
+
+    // list array izin yang dibutukan sesuikan dengan manifast
+    var PERMISSIONS = arrayOf(
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.CAMERA)
+    // fungsi untuk cek izin aplikasi dan meminta izin
+    fun hasPermissions(context: Context, vararg permissions: String): Boolean = permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +74,9 @@ class RegisterActivity : AppCompatActivity(),DaftarView {
             window = this.getWindow()
             window.statusBarColor = ContextCompat.getColor(this, R.color.colorDarkPurple)
         }
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+        if(!hasPermissions(this, *PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
+        }
 
 
 

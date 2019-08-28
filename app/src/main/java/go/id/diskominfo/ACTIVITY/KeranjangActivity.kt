@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -20,9 +21,12 @@ import go.id.diskominfo.POJO.Pesanan
 import go.id.diskominfo.PRESENTER.DaftarPresenter
 import go.id.diskominfo.R
 import kotlinx.android.synthetic.main.activity_keranjang.*
+import kotlinx.coroutines.delay
 import org.jetbrains.anko.db.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.sql.Time
+import java.util.*
 
 
 class KeranjangActivity : AppCompatActivity(),DaftarView {
@@ -69,9 +73,12 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
             startActivity<KeranjangActivity>()
             finish()
         })
-        rv_keranjang.adapter = adapterKanan
 
+        rv_keranjang.adapter = adapterKanan
+        //ambil data dari local database
         ambilDataDatabase()
+
+        //jika pesanan data lebih besar dari 0 maka tampilkan semua
         if(pesanan.size > 0){
             tvKeranjang.visibility =View.VISIBLE
             tvKeranjangKosong.visibility = View.GONE
@@ -102,32 +109,85 @@ class KeranjangActivity : AppCompatActivity(),DaftarView {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == 3000){
+
+                //inisialisai variable tanggal dengan object dari AmbilTanggal
                 val tanggal = AmbilTanggal()
+                //ambil data dari result yang dikirim dari dataPembeliActivity
                 val nama = data?.getStringExtra("nama")
                 val tlp = data?.getStringExtra("tlp")
                 val alamat = data?.getStringExtra("alamat")
-                val total = tvHargaTotalKeranjang.text.toString()
-//                val total = 0
+
+
+                //variable penampung data sementara
+                var dataKd = ""
+                var  dataKdTemp = ""
+                var total = 0
+                var jumlah = 0
+                var harga = 0
+                var totalTemp = 0
+                var pertama = true
+                // ambil waktu dan tanggal sebagai no transaksi
+                var noTransaksi = tanggal.ambilTanggalLengkap()
+
+                //cek jumlah list pesanan
                 for (i in listPesanan.indices){
+                    //ambil data kdUmkm dari listpesanan
+                     dataKd = listPesanan[i].kdUmkm.toString()
+                    //jika list baru pertama di periksa atau kdumkm list sama dengan kdumkm sebelumnya jadikan 1 list pemesanan
+                    if(pertama || dataKd == dataKdTemp){
 
-                    val noTransaksi =tanggal.ambilTanggalLengkap()
-                    val kdProduk = listPesanan[i].id
-                    val tanggalTransaksi = tanggal.ambilTanggal()
-                    val qty = listPesanan[i].jumlah
-                    val harga = listPesanan[i].harga
+                        //ambil jumlah dan harga dan hitung total semuanya
+                        jumlah = listPesanan[i].jumlah!!.toInt()
+                        harga = listPesanan[i].harga!!.toInt()
+                        total = jumlah * harga
+                        totalTemp+=total
+                        //ambil id peroduk dari list
+                        val kdProduk = listPesanan[i].id
+                        //ambil tanggal transaksi sesuia waktu gadget
+                        val tanggalTransaksi = tanggal.ambilTanggal()
+                        //ambil jumlah qty dari list
+                        val qty = listPesanan[i].jumlah
+                        //ambil harga dari list
+                        val harga = listPesanan[i].harga
 
-                    presenter.kirimDataPembelian(noTransaksi,kdProduk.toString(),tanggalTransaksi,nama.toString(),tlp.toString(),alamat.toString(),qty.toString(),harga.toString(),total)
+                        //kirim data data yang telah di ambil keserver
+                        presenter.kirimDataPembelian(noTransaksi,kdProduk.toString(),tanggalTransaksi,nama.toString(),tlp.toString(),alamat.toString(),qty.toString(),harga.toString(),totalTemp)
+                       //isi data dataKdTemp dengan dataKd umkm sekarang untuk perbandingan
+                        dataKdTemp = dataKd
+                        //rubah exekusi pertama menjadi false agar tidak terexekusi lagi sebagai yang pertama
+                        pertama = false
+                    }
+                    //jika dataKdTemp tidak sama dengan dataKd dari list sekarang
+                    if(dataKdTemp != dataKd){
 
+                        //kosong kan total untuk di hitung ulang
+                        totalTemp = 0
+                        //ambil jumlah dan harga dari list sekarang kemudian hitung dan masukan ke total kemudian tambahkan totalTemp
+                        // dengan total sekanrng
+                        jumlah = listPesanan[i].jumlah!!.toInt()
+                        harga = listPesanan[i].harga!!.toInt()
+                        total = jumlah * harga
+                        totalTemp+=total
+                        //tunggu selama 1 detik untuk merubah noinvoice agar tidak sama
+                        //setiap kdUmkm tidak sama denga kode yang sekarang maka akan digenerate dengan kode inv yang baru
+                        Thread.sleep(1000)
+                        val noTransaksi =tanggal.ambilTanggalLengkap()
 
-                }
+                        // ambil semua data pada list sekarang dan kirim ke server
+                        val kdProduk = listPesanan[i].id
+                        val tanggalTransaksi = tanggal.ambilTanggal()
+                        val qty = listPesanan[i].jumlah
+                        val harga = listPesanan[i].harga
+                        presenter.kirimDataPembelian(noTransaksi,kdProduk.toString(),tanggalTransaksi,nama.toString(),tlp.toString(),alamat.toString(),qty.toString(),harga.toString(),totalTemp)
+                        // isi data kdUmkm sekarang pada dataKdTemp untuk perbandingan nantinya
+                        dataKdTemp = dataKd
+                    }//akhir dari if(dataKdTemp != dataKd)
 
-                println(nama)
-                println(tlp)
-                println(alamat)
-            }
-        }
+                }// akhir dari for
+            }// akhri dari if(request Code)
+        }//akhir dari if(result code)
 
-    }
+    }//akhir dari fungsi onActivityResault
 
     private fun ambilDataDatabase() {
         val hargaSemetara = tvHargaTotalKeranjang.text.toString()

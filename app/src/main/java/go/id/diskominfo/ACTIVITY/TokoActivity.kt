@@ -21,6 +21,7 @@ import go.id.diskominfo.R
 import kotlinx.android.synthetic.main.toko.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.toast
 
 class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     override fun showDataProduk(listProduk: List<Produk>) {
@@ -38,10 +39,19 @@ class TokoActivity : AppCompatActivity() ,UmkmView,ProdukView{
     }
 
     override fun showDataUmkm(listUmkm: List<Umkm>) {
-        umkm = listUmkm[0]
 
-        tv_toko_toko.setText(umkm.namaToko)
-        Picasso.get().load(umkm.fotoUsaha).into(img_toko)
+        try
+        {
+            umkm = listUmkm[0]
+            tv_toko_toko.setText(umkm.namaToko)
+            Picasso.get().load(umkm.fotoUsaha).into(img_toko)
+        }
+        catch (e : Exception){
+            toast("")
+            e.printStackTrace()
+        }
+
+
 
 
     }

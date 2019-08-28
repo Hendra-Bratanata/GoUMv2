@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.google.gson.Gson
 import go.id.diskominfo.ACTIVITY.DetailActivity.DetailDataPembelian
+import go.id.diskominfo.ADAPTER.DataPembelianListAdapter
 import go.id.diskominfo.ADAPTER.DataPesananListAdapter
 import go.id.diskominfo.ApiRepository.ApiReposirtory
 import go.id.diskominfo.INTERFACE.PesananView
@@ -57,7 +58,7 @@ class PembelianActivity : AppCompatActivity(),PesananView{
     lateinit var presenter: PenjualanPresenter
     lateinit var listPenjualan: MutableList<Penjualan>
     lateinit var sharedPreferences: SharedPreference
-    lateinit var adapter: DataPesananListAdapter
+    lateinit var adapter: DataPembelianListAdapter
     var noHp =""
     var kode = 0
 
@@ -72,7 +73,7 @@ class PembelianActivity : AppCompatActivity(),PesananView{
         listPenjualan = mutableListOf()
         gson = Gson()
         apiReposirtory = ApiReposirtory()
-        adapter = DataPesananListAdapter(listPenjualan,{
+        adapter = DataPembelianListAdapter(listPenjualan,{
                 startActivity<DetailDataPembelian>("data" to it )
         })
         presenter = PenjualanPresenter(this,gson,apiReposirtory)

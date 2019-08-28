@@ -131,7 +131,7 @@ object PromoAPI {
                       alamat: String,
                       qty: String,
                       harga: String,
-                      total: String
+                      total: Int
     ): String {
         val nm_pembeli = URLEncoder.encode(nm_pembeli, "ASCII")
         val no_hp_pembeli = URLEncoder.encode(no_hp_pembeli, "ASCII")

@@ -46,7 +46,7 @@ lateinit var data:DaftarResponse
                             alamat: String,
                             qty: String,
                             harga: String,
-                            total: String){
+                            total: Int){
 
         doAsync {
             data = gson.fromJson(apiReposirtory.doRequest(PromoAPI.kirimPembelian(no_trans,

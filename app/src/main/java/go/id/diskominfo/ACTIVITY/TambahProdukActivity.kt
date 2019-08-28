@@ -1,6 +1,7 @@
 package go.id.diskominfo.ACTIVITY
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
@@ -52,6 +53,20 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
         spinnerTambahProduk.adapter = spinnerAdapter
     }
 
+    //kode reques izin
+    var PERMISSION_ALL = 1
+
+    // list array izin yang dibutukan sesuikan dengan manifast
+    var PERMISSIONS = arrayOf(
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.CAMERA)
+// fungsi untuk cek izin aplikasi dan meminta izin
+    fun hasPermissions(context: Context, vararg permissions: String): Boolean = permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+
     lateinit var pref: SharedPreference
     lateinit var presenter: KatagoriPresenter
     lateinit var gson: Gson
@@ -71,8 +86,16 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_product)
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+
+        //cek semua izin yang diperlukan dan terdaftar di list izin
+        if(!hasPermissions(this, *PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
+        }
+
+//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+//            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+//            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 1100)
         pref = SharedPreference(this)
         listKatagory = mutableListOf()
         listKatagoryId = mutableListOf()
@@ -320,5 +343,6 @@ class TambahProdukActivity : AppCompatActivity(),KatagoriView {
 
         }.show()
     }
+
 }
 
