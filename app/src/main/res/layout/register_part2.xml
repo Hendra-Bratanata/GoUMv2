@@ -5,7 +5,7 @@
     android:background="@color/colorWhite"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="8dp"
-    tools:context="go.id.diskominfo.ACTIVITY.Register2Activity">
+    tools:context="go.id.dinkop.ACTIVITY.Register2Activity">
 
     <RelativeLayout
         android:id="@+id/footer"

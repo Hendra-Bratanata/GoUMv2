@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="go.id.diskominfo.ACTIVITY.DetailActivity.DetailBannerActivity">
+    tools:context="go.id.dinkop.ACTIVITY.DetailActivity.DetailBannerActivity">
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include layout="@layout/periode_promo" />
+                    <!--<include layout="@layout/periode_promo" />-->
 
                     <include layout="@layout/syarat_ketentuan" />
                 </LinearLayout>

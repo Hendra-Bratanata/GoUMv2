@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="go.id.diskominfo.ACTIVITY.MainActivity">
+    tools:context="go.id.dinkop.ACTIVITY.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="8dp"
-    tools:context="go.id.diskominfo.ACTIVITY.TambahProdukActivity">
+    tools:context="go.id.dinkop.ACTIVITY.TambahProdukActivity">
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -194,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="120dp"
                         android:paddingEnd="10dp"
-                        android:text="Batas Akhir Periode"
+                        android:text="Periode"
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp"
                         android:textStyle="bold" />

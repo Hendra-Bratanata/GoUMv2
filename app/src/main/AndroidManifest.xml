@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="go.id.diskominfo">
+    package="go.id.dinkop">
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -18,82 +18,82 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ACTIVITY.GagalPopUp"
+            android:name="go.id.dinkop.ACTIVITY.GagalPopUp"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".ACTIVITY.SuksesPopUp"
+            android:name="go.id.dinkop.ACTIVITY.SuksesPopUp"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.EditTokoActivity"
+            android:name="go.id.dinkop.ACTIVITY.EditTokoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.DetailActivity.EditProdukActivity"
+            android:name="go.id.dinkop.ACTIVITY.DetailActivity.EditProdukActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
 
         <service
-            android:name=".ITEM.JobService"
+            android:name="go.id.dinkop.ITEM.JobService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".ACTIVITY.DetailActivity.DetailDataPembelian"
+            android:name="go.id.dinkop.ACTIVITY.DetailActivity.DetailDataPembelian"
             android:label="@string/title_activity_login_pembeli"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.DetailActivity.DetailDataPenjualan"
+            android:name="go.id.dinkop.ACTIVITY.DetailActivity.DetailDataPenjualan"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.PembelianActivity"
+            android:name="go.id.dinkop.ACTIVITY.PembelianActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.CariActivity"
+            android:name="go.id.dinkop.ACTIVITY.CariActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.LihatSemuaActivity"
+            android:name="go.id.dinkop.ACTIVITY.LihatSemuaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ACTIVITY.TokoActivity"
+            android:name="go.id.dinkop.ACTIVITY.TokoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.DetailToko"
+            android:name="go.id.dinkop.ACTIVITY.DetailToko"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.DetailActivity.DetailBannerActivity"
+            android:name="go.id.dinkop.ACTIVITY.DetailActivity.DetailBannerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ACTIVITY.VerifikasiOtpActivity" />
+        <activity android:name="go.id.dinkop.ACTIVITY.VerifikasiOtpActivity" />
         <activity
-            android:name=".ACTIVITY.DetailActivity.DetailProductActivity"
+            android:name="go.id.dinkop.ACTIVITY.DetailActivity.DetailProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ACTIVITY.IsiDataPembeliActivity"
+            android:name="go.id.dinkop.ACTIVITY.IsiDataPembeliActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.Register2Activity"
+            android:name="go.id.dinkop.ACTIVITY.Register2Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden"
@@ -108,46 +108,46 @@
         </activity>
 
         <activity
-            android:name=".ACTIVITY.RegisterActivity"
+            android:name="go.id.dinkop.ACTIVITY.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.MainActivity"
+            android:name="go.id.dinkop.ACTIVITY.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.PenjualanActivity"
+            android:name="go.id.dinkop.ACTIVITY.PenjualanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.KeranjangActivity"
+            android:name="go.id.dinkop.ACTIVITY.KeranjangActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.ProsesActivity"
+            android:name="go.id.dinkop.ACTIVITY.ProsesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.TambahProdukActivity"
+            android:name="go.id.dinkop.ACTIVITY.TambahProdukActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.LoginActivity"
+            android:name="go.id.dinkop.ACTIVITY.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ACTIVITY.StatistikActivity"
+            android:name="go.id.dinkop.ACTIVITY.StatistikActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ACTIVITY.FlashScreenActivity"
+            android:name="go.id.dinkop.ACTIVITY.FlashScreenActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
@@ -161,7 +161,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="go.id.diskominfo.fileprovider"
+            android:authorities="go.id.dinkop.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
